@@ -25,8 +25,13 @@
           </tr>
           <tr>
            
-            <td><%= customer.family_name %><%= customer.given_name%></td>
+            <td><%= customer.family_name %> <%= customer.given_name%></td>
+            <% if customer.addresses %>
+            <td>登録がありません</td>
+            <% else %>
+            
             <td><%= customer.addresses.first.prefecture %></td>
+            <% end %>
 
           </tr>
           

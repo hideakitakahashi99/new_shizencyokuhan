@@ -1,14 +1,13 @@
      
 <div class="container">
      <div class="row">
-      <div class="span12">
+      <div class="insert"></div>
+      <div class="span7">
         <div class="events">
-          <div class="pull-left"><%= image_tag("schedule.png", :size => "80x80") %></div>
-          <h2><strong><%= @staff_member.farm_name %><br/>スケジュール</strong><div class="pull-right">
-  <%= link_to "農産品を見にいく", customer_staff_member_store_index_path(@staff_member), { :class => "btn"} %>
-</div></h2>
+          <div class="pull-left"><h1><i class="ion-calendar">　</i></h1></div>
+          <h2><strong><%= @staff_member.farm_name %><br/>スケジュール</strong></h2>
 
-					<div class="widget">
+          <div class="widget">
            <% if @schedules.count == 0 %>
            <h4>ー現在表示できる投稿はありませんー</h4>
             <% end %>
@@ -22,11 +21,18 @@
                  <a href="events-detail.html"></a>
                </figure>
              <div class="detail">
-               <h5><a href="<%= customer_staff_member_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
+               <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>"><h5><strong><%= schedules.staff_member.farm_name %></h5><h6><%= schedules.harvest %><%= schedules.opening %></strong> </h6></a>
                 <ul>
-                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
+                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h6><strong>
+                  <% if schedules.harvest_date? %>
+                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
+                    <% end %>
+                    <% if schedules.opening_date? %>
+                    <%= schedules.opening_date %><br>　　　　&#8659;<br><%= schedules.closing_date %>
+                    <% end %></strong></h6></span></li>
+
                   <% if schedules.staff_member.additional_info %>
-                  <li><i class="ion-information-circled"></i> 自然栽培<%= schedules.staff_member.additional_info.farm_condition_year %>|<%= schedules.staff_member.additional_info.farm_condition %></li>
+                  
                   <li><i class="ion-heart"></i> 看板やさい：<%= schedules.staff_member.additional_info.masterpiece %></li>
                   <% end %>
                     <% if schedules.staff_member.staff_address %>
@@ -44,14 +50,20 @@
               
            
           </div><!-- widget ends -->
-                 
-                    <h5>
-                      <br/>農家さんをフォローすると、フォローした農家さんのスケジュールだけが見れる様になるよ！
-                      <br/>
-                      <%= link_to "この農家の詳細を見にいく", customer_staff_member_path(@staff_member), { :class => "btn"} %></h5>
 
                   
                 </div><!-- event-box ends -->
               </div>
+              <div class="span4">
+               <h5>
+                      <br/><i class="ion-information-circled">　</i>農家さんをフォローすると、メールで農家さんのスケジュールが届く様になります！
+                      <br><br>
+                      <%= link_to "この農家の詳細を見にいく", customer_staff_member_path(@staff_member), { :class => "btn"} %></h5>
+                      <div class="pull-left">
+  <%= link_to "農産品を見にいく", customer_staff_member_store_index_path(@staff_member), { :class => "btn"} %>
+</div>
+<div class="insert">　</div>
+                    </div>
+
               </div>
             </div>

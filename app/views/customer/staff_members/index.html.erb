@@ -30,13 +30,18 @@
                   <div class="detail">
                     <h5><i class="ion-leaf"></i> <%= m.farm_name %></h5>
                   <h5><a href="<%= customer_staff_member_store_index_path(m) %>"><%= p.suspended_mark %></a></h5>
+                  <ul>
                   <% if m.staff_address %>
-                  <h7><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h7>
+                  <li><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </li><br>
+                  <% else %>
+                  <li><i class="ion-ios-location"></i> 未登録</li><br>
                   <% end %>
                   <% if m.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.additional_info.masterpiece %> </h6>
+                  <li><i class="ion-heart"></i> 看板野菜：<%= m.additional_info.masterpiece %> </li>
+                  <% else %>
+                  <li><i class="ion-heart"></i> 看板野菜：未登録 </li>
                   <% end %>
-                    
+                    </ul>
                   
                           
                       <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %>

@@ -28,8 +28,7 @@ class Customer::TopController < Customer::Base
 
 		
 		end
-	end
-
+	end 
 	
 
 end
