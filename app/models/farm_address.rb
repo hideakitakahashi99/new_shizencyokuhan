@@ -1,0 +1,2 @@
+class FarmAddress < StaffAddress
+end

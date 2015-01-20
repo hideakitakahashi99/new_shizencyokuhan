@@ -1,0 +1,124 @@
+
+
+
+
+ 
+ <div class="top-image">
+
+  <%= render 'customer/shared/search_form' %>
+
+</div>
+<div class="insert">
+</div>
+
+
+  <div class="container">
+    <div class="row">
+
+      <div class="span7">
+        <div class="events">
+          <h2>今すぐ買える！<br>開店中の農家<br>INFO</h2>
+          <% @open_staff_members.each do |m| %>
+            <div class="span3">
+					<div class="events-area">
+            <ul class="events-list">
+              <li>
+                <div class="event-box event-box-featured">
+                  
+                  <div class="prof"><%= image_tag m.image.thumb.url %></div>
+               
+                  
+                  
+                  <div class="detail">
+                    <h5><%= m.farm_name %></h5>
+                  <h5><a href="events-detail.html">OPEN!!</a></h5>
+                  <h6>産地：<%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h6>
+                    
+                    <ul>
+                      <li><span><i class="icon-date"></i>22 - 03 - 2014</span><span>08:00am - 12:00pm</span></li>
+                      <br/>
+                      <li>
+                        
+                          <p style="margin-top: 15px;">
+                      <div><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %>
+                      </div>
+                          </p>
+                        </li>
+                        <li>
+                        
+                      <div><%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+                      </div>
+                    
+                          
+                        
+                      </li>
+                    </ul>
+                  </div>
+                
+                </div><!-- event-box ends -->
+              </li>
+            </ul>
+    
+          </div><!-- events-area ends -->
+          
+        </div><!-- events end -->
+   
+      <% end %>
+<%= page_entries_info @open_staff_members %>
+      </div>
+        </div>
+     
+  
+      <div class="row">
+      <div class="span5">
+        <div class="events">
+          <h2>全国農家からの<br>新着農作物を<br> <strong>チェック！！</strong></h2>
+					<div class="widget">
+            <div class="posts-list">
+              <ul>
+                <% @schedules.each do |schedules| %>
+
+           <li>
+             <div class="event-box">
+               <figure class="image">
+                 <a href="events-detail.html"></a>
+               </figure>
+             <div class="detail">
+               <h5><a href="events-detail.html">【○○農園】<%= schedules.harvest %><%= schedules.opening %></a></h5>
+                <ul>
+                  <li><span><i class="icon-date"></i><strong>開始日時：</strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></span></li>
+                  <li><span><i class="icon-location"></i>
+                    兵庫県　丹波市　市島町　北奥555</span></li>
+                </ul>
+             </div>
+             </div><!-- event-box ends -->
+           </li>
+<% end %>
+              </ul>
+            </div>
+          </div><!-- widget ends -->
+                 
+                    <h5><a href="events-detail.html">農家さんの開店予定が閲覧できます！好きな場所の農家さんから直接購入しよう！</a></h5>
+                    <ul>
+                      <li><span><i class="icon-date"></i>25 - 02 - 2013</span><span>08:00am - 12:00pm</span></li>
+                      <li><span><i class="icon-location"></i>Washington, United States</span></li>
+                    </ul>
+
+                  
+                </div><!-- event-box ends -->
+              </div>
+              </div>
+            </div>
+          </div>
+
+        
+      
+      
+
+        
+        
+
+        
+     
+ 
+  

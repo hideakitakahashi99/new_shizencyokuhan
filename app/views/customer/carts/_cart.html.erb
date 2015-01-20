@@ -1,0 +1,18 @@
+
+<div class="cart_title"><strong>現在のカート内容</strong></div>
+<table>
+<%= render(cart.line_items) %>
+
+<tr class="total_line">
+	<td colspan="2">合計</td>
+	<td class="total_cell"><%= sprintf("¥%0.00f", cart.total_price) %></td>
+</tr>
+
+</table>
+<div>
+<%= button_to "注文する", :new_customer_staff_member_order, method: :get %>
+</div>
+
+
+
+

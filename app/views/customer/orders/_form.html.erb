@@ -1,0 +1,40 @@
+<%= form_for [:customer, :staff_member, @order] do |f| %>
+<% if @order.errors.any? %>
+<div id="error_explanation">
+	<h2><%= Pluralize(@order.errors.count, "error") %>
+		prohibited this order form being saved:</h2>
+
+		<ul>
+			<% @order.errors.full_message.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+</div>
+<% end %>
+<fieldset>
+		<legend>お客様の情報を入力して下さい</legend>
+<div class="field">
+	<%= f.label :name %><br/>
+	<%= f.text_field :name, size: 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :address %><br/>
+	<%= f.text_area :address, rows: 3, cols: 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :email %><br/>
+	<%= f.email_field :email, size: 40 %>
+</div>
+
+<div class="field">
+	<%= f.label :pay_type %><br/>
+	<%= f.select :pay_type, Order::PAYMENT_TYPES, prompt: 'お支払い方法を選択して下さい' %>
+</div>
+
+<div class="actions">
+	<%= f.submit '注文する' %>
+</div>
+</fieldset>
+<% end %>

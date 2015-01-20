@@ -1,0 +1,10 @@
+
+ <ul class='tg-list'>
+  <li class='tg-list-item'>
+    <h4></h4>
+    <%= check_box_tag 'checkbox', '', @staff_member.suspended, {'status-id' => @staff_member.id, :class => 'tgl tgl-flip', :id => 'b5' } %>
+   
+    <label class='tgl-btn' data-tg-off='準備中 Closed' data-tg-on='開店中！ Open' for='b5' </label>
+  </li>
+</ul>
+

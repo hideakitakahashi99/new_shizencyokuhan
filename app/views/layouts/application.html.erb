@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title> <%= document_title %></title>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="HideakiTakahashi">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
+
+<%= csrf_meta_tags %>
+
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
+
+
+
+</head>
+
+<body>
+
+<%= render 'shared/header' %>
+
+
+  <%= yield %>
+</div>
+
+<%= link_to "Home", "/" %>
+  
+  <footer class="footer">
+      <div class="container">
+        <div class="row">
+          
+         
+          <div class="widget widget-text">
+            <h2>お問い合わせ</h2>
+            <a href="#"></a>
+            <p>Vel arcu in nec porttitor aliquam tempor platea, turpis? Ridiculus nascetur dignissim amet ac scelerisque facilisis etiam sed odio rhoncus, pellentesque nisi aenean vel. Sed a etiam in, non, velit ac cum in, magna, nisi ultrices, porta odio duis, urna tincidunt ac dis ultricies sit, lorem montes facilisis. Est, scelerisque, nisi ultrices, porta odio duis, urna tincidunt ac dis ultricies sit, lorem montes facilisis.</p>
+          </div><!-- widget ends -->        
+          <div class="widget widget_newsletter">
+            <h2>Newsletter</h2>
+            <div class="newsletter">
+              <p>新しい農家さんが追加された時や出荷予定が更新された時にいち早くお知らせします！</p>
+              <form action="index.html" method="post">
+                <input type="text" class="input-block-level" placeholder="Email Address">
+                <input type="submit" class="btn" value="登録">
+              </form>
+            </div>
+          </div><!-- widget ends -->
+        </div>
+      </div>  
+  </footer>
+  <div class="bottom">
+    <div class="container">
+      <div class="bottom-left">
+        <p>&copy;2014 株式会社 All rights reserved. </p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Environment</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Site Map</a></li>
+        </ul>
+      </div>
+      <div class="social-links">
+        <ul>
+          <li><a href="#" class="icon-yahoo tooltip" title="yahoo"></a></li>
+          <li><a href="#" class="icon-facebook tooltip" title="facebook"></a></li>
+          <li><a href="#" class="icon-rss tooltip" title="rss"></a></li>
+          
+         
+        </ul>
+      </div>
+    </div>
+  </div><!-- bottom ends -->
+</div><!-- wrap ends -->
+
+<div id="dialog-search">
+  <div class="heading">Search</div>
+  <div class="dialog-block">
+      <form method="get" action="index.html" class="user-search-form">
+        <input type="text" class="input-block-level" placeholder="Enter Any Keyword">
+        <input type="submit" class="btn" value="Search">
+      </form>
+  </div>
+  <!-- dialog-block ends --> 
+</div><!-- dialog ends -->
+<div id="dialog-login">
+  <div class="heading">User Login</div>
+  <div class="dialog-block">
+      <p class="navbar-text pull-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+<p class="notice">< %= notice %></p>
+<p class="alert">< %= alert %></p>
+
+  </div><!-- dialog-block ends --> 
+  <div class="dialog-btm">
+    アカウントはお持ちですか? <a href="#">簡単登録!</a>
+  </div>
+</div><!-- dialog ends -->
+<div class="dialog-overlay"></div>
+
+
+<div id="fb-root"></div>
+
+
+
+</body>
+
+</html>

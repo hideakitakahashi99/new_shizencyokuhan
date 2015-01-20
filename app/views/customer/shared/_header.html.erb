@@ -1,0 +1,57 @@
+
+
+<article>
+  <%= 
+       if current_customer
+        render 'customer/shared/member_header'
+      else
+        render 'customer/shared/pre_header'
+      end
+%>
+</article>
+<div class="wrapper">
+
+
+
+<div class="wrap">
+<div class="tp-bar">
+    <div class="container">
+      <div class="openNav">
+  <div class="icon"></div>
+</div>
+<script>
+$(".openNav").click(function() {
+  $("body").toggleClass("navOpen");
+  $("nav").toggleClass("open");
+  $(".wrapper").toggleClass("open");
+  $(this).toggleClass("open");
+});
+</script>
+
+      <div class="logo"> <%= image_tag 'logo20140114.png' %> <span class="slogan"> 全国の自然農、自然栽培農家が見つかる！繋がる！ </span> </div> 
+      <!-- logo ends -->
+ <div class="pull-right">
+<%= link_to "農産品を購入:新規会員登録はこちら！", :customer_signup, { :class => "sbtn" }  %>
+ </div>
+    </div>
+  </div><!-- tp-bar ends -->
+  
+  <div class="pull-right">
+    <div class="top-nav">
+    <%= link_to '販売者一覧', :customer_staff_members if current_customer %> |
+    <%= link_to '開店中の店舗一覧', :customer_open_index if current_customer %> |
+    <%= 
+       if current_customer
+        link_to 'ログアウト', :customer_session, method: :delete
+      else
+        link_to 'ログイン', :customer_login 
+      end
+    %> |
+    <%= link_to 'アカウント', :customer_root if current_customer %>
+  </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,40 @@
+<% p = StaffMemberFormPresenter.new(f, self) %>
+<div class="container">
+	<%= f.label 'ステータス変更', class: 'require' %>
+<p class="field switch">
+    <label class="cb-enable"><span>開店open</span></label>
+    <label class="cb-disable selected"><span>閉店closed</span></label>
+    <input type="checkbox" id="checkbox" class="checkbox" name="field2" />
+</p>
+</div>
+<div class="pull-right">
+	<%= p.notes %>
+</div>
+<div>
+	
+	</div>
+<%= p.text_field_block(:email, 'メールアドレス', size: 32, required: true) %>
+<%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %>
+<%= p.full_name_block(:family_name, :given_name, '氏名', required: true) %>
+<%= p.full_name_block(:family_name_kana, :given_name_kana, 'フリガナ', required: true) %>
+<%= p.date_field_block(:start_date, '開始日', required: true) %>
+<%= p.date_field_block(:end_date, '終了日') %>
+<%= p.check_boxes %>
+
+<script>
+$(document).ready( function(){
+    $(".cb-enable").click(function(){
+        var parent = $(this).parents('.switch');
+        $('.cb-disable',parent).removeClass('selected');
+        $(this).addClass('selected');
+        $('.checkbox',parent).attr('checked', true);
+    });
+    $(".cb-disable").click(function(){
+        var parent = $(this).parents('.switch');
+        $('.cb-enable',parent).removeClass('selected');
+        $(this).addClass('selected');
+        $('.checkbox',parent).attr('checked', false);
+    });
+});
+
+</script>

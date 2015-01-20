@@ -1,0 +1,220 @@
+
+<div class="alert alert-full">
+  
+    <div class="container">
+ 			<div class="alert-contents">
+        <h4>Introdaction</h4>
+        <p>　全国にちらばる自然栽培、自然農法で農業を営んでいる直販OKの農家さんを簡単に検索できるサイトです。お住まいの地域に最寄りの農家さんが見つかれば、直接取りに行ったり、実際に畑の土に触れることもできるかも！？自然と共に生きる、そんな方の為のサイトです。住所を入れて、今すぐ検索！！</p>
+        <a href="#" class="close">x</a>
+      </div>
+    </div>
+  </div><!-- alert ends -->
+  
+  <div class="alert alert-full">
+  <p>住所を入力：<input type="text" id="address" value=""> <input type="button" value="農家を探す！"onclick="moveMap();"></p>
+    <div id="map"></div>
+	<script>
+		var latlng = new google.maps.LatLng(35.66, 139.69);
+		var options = {
+			zoom: 11,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+		var map = new google.maps.Map(document.getElementById("map"),options);
+		
+		google.maps.event.addListener(map,'click', function(event){
+		var marker = new google.maps.Marker({
+			position: event.latLng,
+			map: map
+			}); 
+		});
+		
+		function moveMap() {
+			var geocoder = new google.maps.Geocoder();
+			geocoder.geocode({
+				'address': document.getElementById('address').value
+				}, function(result, status){
+					if (status == google.maps.GeocoderStatus.OK) {
+						map.panTo(result[0].geometry.location);
+			} else {
+				alert("ERROR!");
+			}
+		});
+		}
+		
+	</script>   
+</div>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <div class="events">
+          <h2>Featured<br>Farmer<br>INFO</h2>
+					<div class="events-area">
+            <ul class="events-list">
+              <li>
+                <div class="event-box event-box-featured">
+                  <figure class="image">
+                    <a href="events-detail.html"><img src="../../../Documents/vegetable_sample.png" ></a>
+                  </figure>
+                  <div class="detail">
+                    <h5><a href="events-detail.html">自然農野菜、自然栽培野菜が購入できます！！</a></h5>
+                    <ul>
+                      <li><span><i class="icon-date"></i>22 - 03 - 2014</span><span>08:00am - 12:00pm</span></li>
+                      <li><span><i class="icon-location"></i>Washington, United States</span></li>
+                    </ul>
+                  </div>
+                </div><!-- event-box ends -->
+              </li>
+    
+          </div><!-- events-area ends -->
+        </div><!-- events end -->
+      </div>
+      
+ 
+    <div class="row">
+      <div class="span6">
+        <div class="events">
+          <h2>全国農家からの<br>新着農作物を<br> <strong>チェック！！</strong></h2>
+					<div class="widget">
+            <div class="posts-list">
+              <ul>
+                <li>
+                  <img src="/assets/onion.jpg" width="55" height="52">
+<div class="post-text">
+                    <h5><a href="#">Lorem ipsum dolor sit ametc..</a></h5>
+                    <p>From the island-studded seas of the north to the meandering the....</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="/assets/nasu.jpg" width="48" height="54">
+                  <div class="post-text">
+                    <h5><a href="#">Lorem ipsum dolor sit ametc..</a></h5>
+                    <p>From the island-studded seas of the north to the meandering the....</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="/assets/tomato.jpg" width="48" height="64">
+                  <div class="post-text">
+                    <h5><a href="#">Lorem ipsum dolor sit ametc..</a></h5>
+                    <p>From the island-studded seas of the north to the meandering the....</p>
+                  </div>
+                </li>
+                <li>
+                  <img src="../../../Dropbox/スクリーンショット/tomato.jpg" width="48" height="32">
+                  <div class="post-text">
+                    <h5><a href="#">Lorem ipsum dolor sit ametc..</a></h5>
+                    <p>From the island-studded seas of the north to the meandering the....</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div><!-- widget ends -->
+                 
+                    <h5><a href="events-detail.html">農家さんの開店予定が閲覧できます！好きな場所の農家さんから直接購入しよう！</a></h5>
+                    <ul>
+                      <li><span><i class="icon-date"></i>25 - 02 - 2013</span><span>08:00am - 12:00pm</span></li>
+                      <li><span><i class="icon-location"></i>Washington, United States</span></li>
+                    </ul>
+                  </div>
+                </div><!-- event-box ends -->
+              </li>
+            </ul>
+                    </div> 
+          </div>
+        </div>
+       </div>
+     
+      
+      
+      
+      <div class="span12">
+        <div class="events">
+          <h2>畑イベントinfo</h2>
+          <div class="event-countdown">
+            <h3>丹波いちじまふぁーむ<br>夏季限定<br>Takibi Cafe＆BBQ</h3>
+            <div class="counter">
+              <div class="count-down"></div>
+            </div>
+            <p>晩夏の夕涼みをしながら、自然の織りなす物語を感じにきませんか？？夏から秋へと変わるこの時期の事を中心に、自然界の仕組みについて○○さんにお話いただきます。</p>
+            <ul class="list">
+              <li><span><i class="icon-date"></i>02 - 08 - 2014</span><span>08:00am - 12:00pm</span></li>
+              <li><span><i class="icon-location"></i>丹波市市島町北奥160, 日本</span></li>
+            </ul>
+          
+          </div><!-- event-countdown ends -->
+        </div><!-- events (countdonw ends -->
+       </div>
+        
+        
+        <div class="widget-facebook">
+          <h2>Facebook</h2>
+          <div class="fb-like-box" data-href="https://www.facebook.com/themebazaar" data-width="270" data-show-faces="true" data-stream="false" data-show-border="true" data-header="true"></div>
+        </div><!-- widget-facebook ends -->
+        
+     
+    </div>
+  </div><!-- /container --> 
+  
+  <div class="testimonials">
+    <div class="container">
+      <div class="testimonial-detail">
+        <ul class="testimoni">
+          <li>
+            <blockquote>
+              <p>Our site and logo was a little dated. Tone created us a great brand, established the right message and switched the focus of the site from being an online brochure to a finely tuned machine for turning our site visitors into leads. Leads from the web are up over 100%!</p>
+            </blockquote>
+            <span class="name">Dan Clark | LWSS</span>
+          </li>
+          <li>
+            <blockquote>
+              <p>Our site and logo was a little dated. Tone created us a great brand, established the right message and switched the focus of the site from being an online brochure to a finely tuned machine for turning our site visitors into leads. Leads from the web are up over 100%!</p>
+            </blockquote>
+            <span class="name">Dan Clark | LWSS</span>
+          </li>
+          <li>
+            <blockquote>
+              <p>Our site and logo was a little dated. Tone created us a great brand, established the right message and switched the focus of the site from being an online brochure to a finely tuned machine for turning our site visitors into leads. Leads from the web are up over 100%!</p>
+            </blockquote>
+            <span class="name">Dan Clark | LWSS</span>
+          </li>
+          <li>
+            <blockquote>
+              <p>Our site and logo was a little dated. Tone created us a great brand, established the right message and switched the focus of the site from being an online brochure to a finely tuned machine for turning our site visitors into leads. Leads from the web are up over 100%!</p>
+            </blockquote>
+            <span class="name">Dan Clark | LWSS</span>
+          </li>
+          <li>
+            <blockquote>
+              <p>Our site and logo was a little dated. Tone created us a great brand, established the right message and switched the focus of the site from being an online brochure to a finely tuned machine for turning our site visitors into leads. Leads from the web are up over 100%!</p>
+            </blockquote>
+            <span class="name">Dan Clark | LWSS</span>
+          </li>
+          <li>
+            <blockquote>
+              <p>Our site and logo was a little dated. Tone created us a great brand, established the right message and switched the focus of the site from being an online brochure to a finely tuned machine for turning our site visitors into leads. Leads from the web are up over 100%!</p>
+            </blockquote>
+            <span class="name">Dan Clark | LWSS</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div><!-- testimonials end -->
+
+
+<h1>Projects</h1>
+
+<ul>
+	<% @projects.each do |project| %>
+	<li>
+		<%= link_to project.title, project_path(project.id) %>
+		<%= link_to  "[Edit]", edit_project_path(project.id) %>
+		<%= link_to  "[Delete]", project_path(project.id), method: :delete,
+		data: { confirm: "Are you sure?" }%>
+	</li>
+
+	<% end %>
+</ul>
+
+<p><%= link_to "Add New", new_project_path %></p>
+

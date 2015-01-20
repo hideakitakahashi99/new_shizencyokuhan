@@ -1,0 +1,55 @@
+
+<div class="container">
+	<div class="row">
+		<div class="span4">
+			
+			<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<% @title = '農産品' %>
+			<% @title2 = 'カート'%>
+				<h2 class="text-pink">
+					<%= @title %>
+					<strong><%= @title2 %></strong>
+				</h2>
+<div id="cart"
+	<% if @cart.line_items.empty? %>
+	style="display: none"
+	<% end %>
+	>
+			<%= render (@cart) %>
+		
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="span1">
+
+
+		<% @staff_members.each do |m| %>
+	
+	<div class="left">
+		 <div class="entry">
+		 	<div><%= image_tag m.products.productimg.thumb.url %></div>
+			<h3><%= m.products.category %></h3>
+			<%= sanitize(m.products.description) %>
+				<div class="price_line">
+					<span class="price"><%= sprintf("¥%0.00f", m.products.price) %></span>
+
+					<div><%= button_to 'カートに入れる', customer_line_items_path(product_id: m), remote: true %>
+					</div>
+
+					<div>
+				</div>
+		 </div>
+	</div>
+		<% end %>
+		</div>
+	</div>
+</div>
+

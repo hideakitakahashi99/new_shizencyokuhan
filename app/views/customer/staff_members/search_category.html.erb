@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+		<% @products.each do |m| %>
+		
+		<div class="span4">
+			
+		 		<div class="entry">
+		 			<div><%= image_tag m.productimg.thumb.url %></div>
+					<h5><%= m.category %></h5>
+					<h6><%= sanitize(m.description) %></h6>
+					<h5><%= m.variety %></h5>
+					<h5><%= m.method %></h5>
+					
+						<div class="price_line">
+						<span class="price">
+						<%= m.net %>個入り
+						<%= sprintf("¥%0.00f", m.price) %></span>
+						
+						</div>
+				
+
+			
+		</div>
+		</div>
+		<% end %>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,60 @@
+<div class="wrap">
+<div class="tp-bar">
+    <div class="container">
+      <div class="logo"> <a href="index.html"><img src="" width="338" height="34"></a> <span class="slogan"> Getting health project for whole new world </span> </div>
+      <!-- logo ends -->
+      <div class="tp-right">
+        <div class="social-links">
+          <ul>
+            <li><a href="#" class="icon-yahoo tooltip" title="yahoo"></a></li>
+            <li><a href="#" class="icon-facebook tooltip" title="facebook"></a></li>
+            
+           
+            
+          </ul>
+        </div>
+        <div class="tweets">
+          <ul id="tweet">
+            <li>Here are 10 quality, affordable Zen Cart Templates, perfect for a wide variety of eCommerce needs. <a href="#">http://enva.to/XiCf5F</a></li>
+            <li>perfect for a wide variety of eCommerce needs. <a href="#">http://enva.to/XiCf5F</a></li>
+            <li>affordable Zen Cart Templates, perfect for a wide variety of eCommerce needs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- tp-bar ends -->
+  <div class="pull-right">
+   <% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'プロフィールを編集', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "会員登録", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "ログイン", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+  </div>
+</div><!--/.nav-collapse -->
+  <div class="insert">
+  <nav class="menu-bar">
+    <div class="container">
+      <a href="#" class="tablet-menu"></a>
+      <ul class="menu">
+        <li><a href="index.html">自然農家を検索！</a></li>
+        <li><a href="events.html">無肥料・無農薬野菜を売る！</a></li>
+        
+        <li>
+          <a href="gallery.html">自然栽培／自然農法について</a>
+          <ul>
+                <li><a href="gallery-2col.html">有機栽培との違い</a></li>
+                <li><a href="gallery.html">慣行農法／減農薬との違い</a></li>
+                <li><a href="gallery-4col.html">自然”栽培”、”農法”の違い</a></li>
+              </ul>
+        </li>
+        <li><a href="contact.html">info</a></li>
+
+      </ul><!-- menu ends --> 
+      
+    </div>
+  </nav><!-- menu-bar ends -->
+  </div>
+  

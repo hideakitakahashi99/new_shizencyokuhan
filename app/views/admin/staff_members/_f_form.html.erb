@@ -1,0 +1,59 @@
+<% p = StaffMemberFormPresenter.new(f, self) %>
+<div class="pull-right">
+	<%= p.notes %>
+</div>
+<div>
+<%= f.label :farm_name, '会社名／農場名', class: 'require' %>
+<%= f.text_field :farm_name, size: 32, required: true %>
+</div>
+
+<div>
+  <%= f.label :image, 'ロゴ又は紹介画像' %>
+　<%= image_tag @staff_member.image.thumb.url if @staff_member.image? %>
+　<%= f.file_field :image %>
+　<%= f.hidden_field :image_cache %> 
+</div>
+
+<%= f.fields_for :farm_address, f.object.farm_address do |ff| %>
+<%= markup do |m|
+	p2 = AddressFormPresenter.new(ff, self)
+	m << p2.postal_code_block(:postal_code, '郵便番号', size: 7)
+	m << p2.drop_down_list_block(:prefecture, '都道府県', 
+		Address::PREFECTURE_NAMES)
+	m << p2.text_field_block(:city, '市区町村', size: 16)
+	m << p2.text_field_block(:address1, '町域、番地等', size: 40)
+	m << p2.text_field_block(:address2, '建物名、部屋番号等', size: 40)
+
+	end %>
+	<% end %>
+
+<%= p.full_name_block(:family_name, :given_name, '販売責任者　氏名', required: true) %>
+<%= p.full_name_block(:family_name_kana, :given_name_kana, 'フリガナ', required: true) %>
+<%= p.text_field_block(:email, 'メールアドレス', size: 32, required: true) %>
+<%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %>
+
+<div>
+<%= f.label :vegetable_name_one, '作付け予定の野菜1', class: 'require' %>
+<%= f.text_field :vegetable_name_one, size: 32, required: true %>
+</div>
+<div>
+<%= f.label :vegetable_name_two, '作付け予定の野菜2', class: 'require' %>
+<%= f.text_field :vegetable_name_two, size: 32, required: true %>
+</div>
+<div>
+<%= f.label :vegetable_name_three, '作付け予定の野菜3', class: 'require' %>
+<%= f.text_field :vegetable_name_three, size: 32, required: true %>
+</div>
+<div>
+<%= f.label :vegetable_name_four, '作付け予定の野菜4', class: 'require' %>
+<%= f.text_field :vegetable_name_four, size: 32, required: true %>
+</div>
+<div>
+<%= f.label :vegetable_name_five, '作付け予定の野菜5', class: 'require' %>
+<%= f.text_field :vegetable_name_five, size: 32, required: true %>
+</div>
+
+<%= p.date_field_block(:start_date, '開始日', required: true) %>
+<%= p.date_field_block(:end_date, '終了日') %>
+<%= p.check_boxes %>
+

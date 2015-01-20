@@ -1,0 +1,185 @@
+/*
+ *
+ * btns.css
+ * Simple css utilities for building responsive buttons
+ * Author: mrmrs
+ * License: MIT
+ *
+ *                */
+/* 
+
+  Base .btn class 
+
+  Code:
+  <a href="#" class="btn">Default button</a>
+
+*/
+.sbtn, .sbtn:link, .sbtn:visited {
+  border-radius: 0.3em;
+  border-style: solid;
+  border-width: 1px;
+  color: #111;
+  display: inline-block;
+  font-family: avenir, helvetica, arial, sans-serif;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5em;
+  padding: 0.57em 0.75em;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-transition: color 0.4s, background-color 0.4s, border 0.4s;
+  transition: color 0.4s, background-color 0.4s, border 0.4s; }
+
+.sbtn:hover, .sbtn:focus {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  -webkit-transition: background-color 0.3s, color 0.3s, border 0.3s;
+  transition: background-color 0.3s, color 0.3s, border 0.3s; }
+
+.sbtn:active {
+  color: #0074D9;
+  border: 1px solid #0074D9;
+  -webkit-transition: background-color 0.3s, color 0.3s, border 0.3s;
+  transition: background-color 0.3s, color 0.3s, border 0.3s; }
+
+/* 
+
+  Sizes 
+  
+  Small  = .btn--s
+  Medium = .btn--m
+  Large  = .btn--l
+
+  Code:
+  <a href="#" class="btn btn--s">
+  <a href="#" class="btn btn--m">
+  <a href="#" class="btn btn--l">
+
+*/
+.sbtn--s {
+  font-size: 12px; }
+
+.sbtn--m {
+  font-size: 14px; }
+
+.sbtn--l {
+  font-size: 20px;
+  border-radius: 0.25em !important; }
+
+/* 
+
+  Layout utility for responsive buttons 
+
+  Code:
+  <a href="#" class="btn btn--full">
+
+*/
+.sbtn--full, .sbtn--full:link {
+  border-radius: 0.25em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 100%; }
+
+/*
+
+  Skins
+
+  * Black & White
+  * Grays
+  * Colors
+
+  Code:
+  <a href="#" class="btn btn--black">
+  <a href="#" class="btn btn--white">
+  <a href="#" class="btn btn--gray">
+  <a href="#" class="btn btn--gray-dark">
+  <a href="#" class="btn btn--gray-border">
+  <a href="#" class="btn btn--blue">
+
+*/
+/* BLACK & WHITE */
+.sbtn--black, .sbtn--black:link, .sbtn--black:visited {
+  color: #fff;
+  background-color: #000; }
+
+.sbtn--black:hover, .sbtn--black:focus {
+  color: #fff;
+  background-color: #777;
+  border-color: #777; }
+
+.sbtn--black:active {
+  color: #fff;
+  background-color: #999;
+  border-color: #999; }
+
+.sbtn--black:hover, .sbtn--black:focus {
+  background-color: #444; }
+
+.sbtn--black {
+  background-color: #000; }
+
+.sbtn--gray:link, .sbtn--gray:visited {
+  background-color: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #555; }
+
+.sbtn--gray:hover, .sbtn--gray:focus {
+  background-color: #ddd;
+  border-color: #ddd;
+  color: #444; }
+
+.sbtn--gray:active {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #444; }
+
+.sbtn--gray-border:link, .sbtn--gray-border:visited {
+  background-color: #fff;
+  border-color: #555;
+  border-width: 2px;
+  color: #555; }
+
+.sbtn--gray-border:hover, .sbtn--gray-border:focus {
+  background-color: #fff;
+  border-color: #ddd;
+  color: #777; }
+
+.sbtn--gray-border:active {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #444; }
+
+.sbtn--gray-dark:link, .sbtn--gray-dark:visited {
+  background-color: #555;
+  color: #eee; }
+
+.sbtn--gray-dark:hover, .sbtn--gray-dark:focus {
+  background-color: #333;
+  border-color: #333;
+  color: #eee; }
+
+.sbtn--gray-dark:active {
+  background-color: #777;
+  border-color: #777;
+  color: #eee; }
+
+/* BLUES */
+.sbtn--blue:link, .sbtn--blue:visited {
+  color: #fff;
+  background-color: #0074D9; }
+
+.sbtn--blue:hover, .sbtn--blue:focus {
+  color: #fff !important;
+  background-color: #0063aa;
+  border-color: #0063aa; }
+
+.sbtn--blue:active {
+  color: #fff;
+  background-color: #001F3F;
+  border-color: #001F3F; }
+
+/* Keep it mobile-first and responsive */
+@media screen and (min-width: 32em) {
+  .sbtn--full {
+    max-width: 16em !important; } }

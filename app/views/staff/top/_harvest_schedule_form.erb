@@ -1,0 +1,22 @@
+<%= form_for [ :staff, @schedule ] do |f| %>
+ 
+  <h4>大事に育てた農作物の収穫時期を<br/>みんなに知らせよう！</h4>
+  <h4><strong>収穫予定</strong></h4>
+  <div class="field">
+    <tr>
+      <th>開始日　</th>
+      <td>
+    <%= f.date_field :harvest_date %>
+  </td></br>
+  <th>コメント</th>
+  <td>
+    <%= f.text_area :harvest, placeholder: "Compose new micropost..." %>
+  </td>
+
+</tr>
+
+  </div>
+ 
+  <%= f.submit "収穫告知する", class: "btn btn-large btn-primary", :name => 'harvest' %>
+ 
+<% end %>

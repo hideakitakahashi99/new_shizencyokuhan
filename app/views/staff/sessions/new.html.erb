@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row" >
+		<div class="span12">
+
+<% @title = 'ログイン（販売専用）' %>
+
+<div id="login-form">
+	<h1><%= @title %></h1>
+
+	<%= form_for @form, url: :staff_session do |f| %>
+	<div>
+		<%= f.label :email, 'メールアドレス' %>
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.label :password, 'パスワード' %>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.submit 'ログイン' %>
+	</div>
+	<% end %>
+</div>
+<div class="container">
+<h5>
+<%= link_to "アカウントはお持ちですか？　新規ストア登録はこちら", :staff_signup %>
+</h5>
+</div>
+
+</div>
+</div>
+</div>

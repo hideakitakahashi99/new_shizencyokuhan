@@ -1,0 +1,27 @@
+<% provide(:title, @title) %>
+<div class="row">
+	<aside class="span4">
+		<section>
+			<h2><%= @customer.email %></h2>
+		</section>
+		<section>
+			<%= render 'stats' %>
+			<% if @staff_members.any? %>
+			<div class="staff_member_avatars">
+				<% @staff_members.each do |staff_member| %>
+				<%= staff_member.farm_name %>
+				<% end %>
+			</div>
+			<% end %>
+		</section>
+	</aside>
+	<div class="span8">
+		<h3><%= @title %></h3>
+		<% if @staff_members.any? %>
+		<ul class="staff_members">
+			<%= render @staff_members %>
+		</ul>
+		<%= will_paginate %>
+		<% end %>
+	</div>
+</div>

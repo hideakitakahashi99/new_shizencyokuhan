@@ -1,0 +1,180 @@
+
+<div class= "container">
+	<div class= "row">
+		<div class= "span12">
+<% @title = 'ダッシュボード' %>
+<h5>→現在のステータス</h5>
+<%= render 'toggle' %>
+
+<div class="left">
+
+</div>
+
+
+
+<div class= "container">
+<div class= "row">
+<div class= "span12">
+<% p = StaffMemberPresenter.new(@staff_member, self) %>
+<h2><%= p.suspended_mark %></h2>
+</div>
+</div>
+</div>
+
+ <section>
+        <%= render 'stats' %>
+ </section>
+
+
+<h1><%= image_tag @staff_member.image_url(:thumb).to_s %>  <%= @staff_member.farm_name %></h1>
+
+
+<div class="bread-bar clearfix">
+        <ul class="breadcrumb">
+          <li><%= link_to '顧客管理＞', :staff_customers %></a></li>
+          <li><%= link_to '農産品管理＞', :staff_products %></a></li>
+        </ul>
+      </div>
+
+
+
+<table class="table">
+	<tr>
+		<th>Image:</th>
+		<td>
+  			<%= image_tag @staff_member.image_url(:thumb).to_s %>
+		</td>
+	</tr>
+	<tr>
+		<th>会社名／農場名</th>
+		<td>
+			<%= @staff_member.farm_name %>
+		</td>
+	</tr>
+	<% if @staff_member.staff_address %>
+	<% p1 = StaffAddressPresenter.new(@staff_member.staff_address, self) %>
+	<tr>
+		<th>所在地</th>
+		<td>
+			<%= p1.postal_code %>
+			<%= p1.prefecture %>
+			<%= p1.city %>
+			<%= p1.address1 %>
+			<%= p1.address2 %>
+		</td>
+	</tr>
+	<% end %>
+	
+	<tr>
+		<th>氏名</th>
+		<td>
+			<%= @staff_member.family_name %>
+			<%= @staff_member.given_name %>
+		</td>
+	</tr>
+	<tr>
+		<th>フリガナ</th>
+		<td>
+			<%= @staff_member.family_name_kana %>
+			<%= @staff_member.given_name_kana %>
+		</td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td class="email">
+			<%= @staff_member.email %>
+		</td>
+	</tr>
+
+	<tr>
+		<th>パスワード</th>
+		<td class="password">**************</td>
+	</tr>
+	<tr>
+		<th>Vegetables</th>
+		<td>
+		</td>
+	</tr>
+	<tr>
+		<th>開始日</th>
+		<td class="date">
+			<%= @staff_member.start_date.strftime('%Y/%m/%d') %>
+		</td>
+	</tr>
+</table>
+
+
+
+<div class="left">
+<div class="span5">
+
+	<section class="comment-area">
+	<%= render 'harvest_schedule_form' %>
+	</section>
+	<section class="comment-area">
+		<%= render 'store_schedule_form' %>
+	</section>
+</div>
+</div>
+
+
+<div class="left">
+<div class="span5">
+<div class="events">
+  <div class="events-area">
+      <div class="detail">
+        <h5><a href="events-detail.html">[開店予告]8月21日17:00〜</a></h5>
+
+           <ul class="events-list">
+              <li><span><i class="icon-date"></i>25 - 02 - 2013</span><span>08:00am - 12:00pm</span></li>
+              <li><span><i class="icon-location"></i>
+              	<%= @staff_member.staff_address.prefecture %> 
+              	<%= @staff_member.staff_address.city %> 
+              	<%= @staff_member.staff_address.address1 %></span></li>
+           </ul>
+      </div>
+<% @schedules.each do |schedules| %>
+
+           <li>
+             <div class="event-box">
+               <figure class="image">
+                 <a href="events-detail.html"></a>
+               </figure>
+             <div class="detail">
+               <h5><a href="events-detail.html">【<%= @staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></a></h5>
+                <ul>
+                  <li><span><i class="icon-date"></i><strong>開始日時：</strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></span></li>
+                  <li><span><i class="icon-location"></i>
+                  	<%= @staff_member.staff_address.prefecture %> 
+                  	<%= @staff_member.staff_address.city %> 
+                  	<%= @staff_member.staff_address.address1 %></span></li>
+                </ul>
+             </div>
+             </div><!-- event-box ends -->
+           </li>
+<% end %>
+           <%= paginate @schedules %>
+       </div>
+   </div>
+</div>
+</div>
+
+<div id="calendar">
+
+</div>
+</div>
+</div>
+</div>
+
+<script>
+
+
+$(function() {
+	$("input[type=checkbox]").click(function() {
+	$.post('/staff/'+$(this).data('status-id')+'/toggle');
+    });
+});
+
+
+</script>
+

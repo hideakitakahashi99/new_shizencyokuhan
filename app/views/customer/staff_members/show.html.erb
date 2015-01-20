@@ -1,0 +1,94 @@
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+<% @title = '販売者詳細' %>
+<h1><%= @staff_member.farm_name %></h1>
+	<p style="margin-top: 0px;">
+							<div><%= link_to '商品を見る！', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+							</div>
+						</p>
+<div class= "container">
+<div class= "row">
+<div class= "span12">
+<% p = StaffMemberPresenter.new(@staff_member, self) %>
+<h2><%= p.suspended_mark %></h2>
+</div>
+</div>
+</div>
+
+<aside class="span4">
+ <section>
+        <%= render 'stats' %>
+ </section>
+</aside>
+
+
+
+<div class="links">
+
+	<%= link_to 'ユーザートップ', :customer_root %>
+
+</div>
+
+
+<div class="span8">
+	<%= render 'follow_form' %>
+</div>
+
+<table class="table">
+	<tr>
+		<th>Image:</th>
+		<td>
+  			<%= image_tag @staff_member.image_url(:thumb).to_s %>
+		</td>
+	</tr>
+	<tr>
+		<th>会社名／農場名</th>
+		<td>
+			<%= @staff_member.farm_name %>
+		</td>
+	</tr>
+	<% if @staff_member.staff_address %>
+	<% p1 = StaffAddressPresenter.new(@staff_member.staff_address, self) %>
+	<tr>
+		<th>所在地</th>
+		<td>
+			<%= p1.postal_code %>
+			<%= p1.prefecture %>
+			<%= p1.city %>
+			<%= p1.address1 %>
+			<%= p1.address2 %>
+		</td>
+	</tr>
+	<% end %>
+	
+	<tr>
+		<th>販売者氏名</th>
+		<td>
+			<%= @staff_member.family_name %>
+			<%= @staff_member.given_name %>
+		</td>
+	</tr>
+	<tr>
+		<th>フリガナ</th>
+		<td>
+			<%= @staff_member.family_name_kana %>
+			<%= @staff_member.given_name_kana %>
+		</td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td class="email">
+			<%= @staff_member.email %>
+		</td>
+	</tr>
+
+
+
+</table>
+
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<% @title = '農産品' %>
+			<% @title2 = '一覧'%>
+
+
+				<h2 class="text-pink">
+					<%= @title %>
+					<strong><%= @title2 %></strong>
+				</h2>
+
+
+
+		<div class="table-wrapper">
+			<div class="links">
+				<%= link_to '新規登録', :new_staff_product %>
+			</div>
+
+			<%= paginate @products %>
+
+				<table class="table">
+					<tr>
+						<th>表示画像</th>
+						<th>品目名</th>
+						<th>品種</th>
+						<th>作付け方法</th>
+						<th>入り数</th>
+						<th>価格</th>
+						<th>在庫数</th>
+						<th>説明</th>
+					</tr>
+						<% @products.each do |m| %>
+					<tr>
+						<td><%= image_tag m.productimg.thumb.url %></td>
+						<td><%= m.category %></td>
+						<td><%= m.variety %></td>
+						<td><%= m.method %></td>
+						<td><%= m.net %></td>
+						<td><%= m.price %></td>
+						<td><%= m.stock %></td>
+						<td><%= m.description %></td>
+						<td class="actions">
+							<%= link_to '編集', [ :edit_staff, m ] %> |
+							<%= link_to '削除', [ :staff, m ], method: :delete, data: { confirm: '本当に削除しますか？'} %>
+							
+						</td>
+					</tr>
+				<% end %>
+				</table>
+
+				<%= paginate @products %>
+
+			<div class="links">
+				<%= link_to '新規登録', :new_staff_product %>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

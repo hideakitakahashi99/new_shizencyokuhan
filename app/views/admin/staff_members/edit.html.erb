@@ -1,0 +1,19 @@
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+<% @title = '販売アカウントの編集' %>
+<h1><%= @title %></h1>
+
+<div id="generic-form">
+	<%= form_for [ :admin, @staff_member ] do |f| %>
+	<%= render 'f_form', f: f %>
+	<div class="buttons">
+		<%= f.submit '登録' %>
+		<%= link_to 'キャンセル', :admin_staff_members %>
+	</div>
+	<% end %>
+</div>
+</div>
+</div>
+</div>

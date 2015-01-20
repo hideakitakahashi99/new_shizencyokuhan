@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row" >
+		<div class="span12">
+
+<% @title = 'ログイン' %>
+
+<div id="login-form">
+	<h1><%= @title %></h1>
+
+	<%= form_for @form, url: :customer_session do |f| %>
+	<div>
+		<%= f.label :email, 'メールアドレス' %>
+		<%= f.text_field :email %>
+	</div>
+	<div>
+		<%= f.label :password, 'パスワード' %>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+		<%= f.submit 'login : ログイン', :class => 'sbtn' %>
+	</div>
+	<% end %>
+</div>
+
+<h5><%= link_to "Sign up : 新規会員登録", :customer_signup, { :class => "sbtn" }  %></h5>
+
+
+</div>
+</div>
+</div>

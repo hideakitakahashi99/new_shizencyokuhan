@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			
+<% @title = '農産品' %>
+<% @title2 = '登録'%>
+
+<h2 class="text-pink">
+<%= @title %>
+<strong><%= @title2 %></strong>
+</h2>
+
+
+<div id="generic-form">
+	<%= form_for [ :staff, @product ] do |f| %>
+	<%= render 'form', f: f %>
+	<div class="buttons">
+		<%= f.submit '登録' %>
+		<%= link_to 'キャンセル', :staff_products %>
+	</div>
+
+	<% end %>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,66 @@
+
+<div class="container">
+	<div class="row">
+		<div class="span6">
+			
+			<h1><%= @staff_member.farm_name %></h1>
+			<% @title = '農産品' %>
+			<% @title2 = '一覧'%>
+				<h2 class="text-pink">
+					<%= @title %>
+					<strong><%= @title2 %></strong>
+				</h2>
+			<div class="links">
+				<%= link_to 'ユーザートップ', :customer_root %>
+    		</div>
+				<div class="insert">
+					<div id="cart"
+						<% if @cart.line_items.empty? %>
+						style="display: none"
+						<% end %>
+						>
+					<%= render (@cart) %>
+
+					</div>
+					<div>
+	<%= button_to "カートを空にする", [:customer, @staff_member, @cart], method: :delete %>
+	</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<% @products.each do |m| %>
+		
+		<div class="span4">
+			
+		 		<div class="entry">
+		 			<div><%= image_tag m.productimg.thumb.url %></div>
+					<h5><%= m.category %></h5>
+					<h6><%= sanitize(m.description) %></h6>
+					<h5><%= m.variety %></h5>
+					<h5><%= m.method %></h5>
+					
+						<div class="price_line">
+						<span class="price">
+						<%= m.net %>個入り
+						<%= sprintf("¥%0.00f", m.price) %></span>
+						<p style="margin-top: 15px;">
+							<div><%= button_to 'カートに入れる', customer_staff_member_line_items_path(product_id: m), remote: true %>
+							</div>
+						</p>
+						</div>
+				
+
+			
+		</div>
+		</div>
+		<% end %>
+		
+	</div>
+</div>
+
+

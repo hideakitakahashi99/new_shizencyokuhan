@@ -1,0 +1,82 @@
+
+<div>
+
+    <% if @product.productimg? %>
+      <div class="thumbnail">
+        <%= image_tag @product.productimg.url %>
+      </div>
+    <% end %><br>
+    <%= f.label :image %><br>
+    <%= f.file_field :productimg %>
+    <%= f.hidden_field :productimg_cache %>
+  </div>
+   <label>
+        <%= f.check_box :remove_productimg %>
+        画像を削除
+      </label>
+  <div>
+    <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
+    <% if @product.persisted? && @product.productimg? %>
+     
+    <% end %>
+  </div>
+
+<div>
+
+	<%= f.label :category, '品目' %>
+	<%= f.select :category, [["", Product::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
+
+</div>
+
+
+<div>
+
+	<%= f.label :variety, '品種'%>
+	<%= f.text_field :variety, :placeholder => '品種名,固定種,在来種等を入力' %>
+
+</div>
+
+
+
+<div>
+
+	<%= f.label :method, '作付け方法' %>
+	<%= f.select :method, [["", Product::METHOD_NAMES]], :prompt => '以下よりお選び下さい' %>
+
+</div>
+
+
+<div>
+	<%= f.label :stock, '在庫数(袋/箱数)' %>
+	<%= f.text_field :stock, :placeholder => '出荷できる’上限’を入力'  %>
+</div>
+
+<div>
+
+	<%= f.label :net, '内容量(袋当り個数/BOXの場合は品目数)' %>
+	<%= f.text_field :net, :placeholder => '数字のみ入力'  %>
+
+</div>
+
+<div>
+
+	<%= f.label :price, '価格(１袋あたり)' %>
+	<%= f.text_field :price, :placeholder => '数字のみ入力'  %>
+
+</div>
+
+
+
+
+
+
+
+<div>
+
+	<%= f.label :description, '説明' %>
+	<%= f.text_area :description, rows: 6, :placeholder => '作物にかける想いや、作物の魅力を伝えましょう！（BOX販売の場合は品目数や品目毎の個数など、内容を記述して下さい）' %>
+
+</div>
+
+
+

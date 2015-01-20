@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		<div class="span6">
+			
+			
+			<% @title = '現在開店中！！' %>
+			<% @title2 = '店舗一覧'%>
+				<h2 class="text-pink">
+					<strong><%= @title %></strong>
+					<%= @title2 %>
+				</h2>
+			<div class="links">
+				<%= link_to 'ユーザートップ', :customer_root %>
+    		</div>
+				<div class="insert">
+				</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<% @staff_members.each do |m| %>
+		
+		<div class="span4">
+			
+		 		<div class="entry">
+					<h3><%= m.farm_name %></h3>
+					<h5>産地：<%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h5>
+						<p style="margin-top: 15px;">
+							<div><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %></div>
+							</p>
+								<p style="margin-top: 5px;">
+							<div><%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+							</div>
+						</p>
+				</div>
+				
+
+			
+		</div>
+		<% end %>
+		
+	</div>
+</div>
+
+

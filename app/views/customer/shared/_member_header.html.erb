@@ -1,0 +1,15 @@
+<div class="icon">
+  <div class="follows">
+    <%= render 'customer/shared/cstats' %>
+  </div>
+  <div class="cname">
+    <%= current_customer.email %>
+  </div>
+</div>
+  <ul>
+    <li><%= link_to "Home", :customer_root %></li>
+    <li>ごひいき農家一覧</li>
+    <li>ごひいき農家予定一覧</li>
+    <li><%= link_to '登録情報変更', :customer_root if current_customer %></li>
+    <li>運営からのお知らせ</li>
+  </ul>

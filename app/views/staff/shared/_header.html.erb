@@ -1,0 +1,53 @@
+<article>
+ 
+  <ul>
+    <li>Home</li>
+    <li>マイページ</li>
+    <li>Shopping Cart</li>
+    <li>ごひいき農家一覧</li>
+    <li>登録情報変更</li>
+  </ul>
+</article>
+<div class="wrapper">
+
+
+<div class="wrap">
+<div class="tp-bar">
+    <div class="container">
+
+           <div class="openNav">
+  <div class="icon"></div>
+</div>
+<script>
+$(".openNav").click(function() {
+  $("body").toggleClass("navOpen");
+  $("nav").toggleClass("open");
+  $(".wrapper").toggleClass("open");
+  $(this).toggleClass("open");
+});
+</script>
+      <div class="logo"> <%= link_to :staff_root, class: 'logo-mark' %> <span class="slogan"> Getting health project for whole new world </span> </div>
+      <!-- logo ends -->
+      
+    </div>
+  </div><!-- tp-bar ends -->
+  <div class="pull-right">
+    <%= 
+       if current_staff_member
+        link_to 'ログアウト', :staff_session, method: :delete
+      else
+        link_to 'ログイン', :staff_login 
+      end
+    %> | 
+    <%= link_to 'アカウント', :staff_account if current_staff_member %>
+  </div>
+</div><!--/.nav-collapse -->
+  <div class="insert">
+  </div>
+ 
+ 
+ <div class="flash">
+  <%= content_tag(:span, flash.notice, class: 'notice') if flash.notice %>
+    <%= content_tag(:span, flash.alert, class: 'alert') if flash.alert %>
+  </div>
+
