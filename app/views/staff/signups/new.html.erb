@@ -2,24 +2,38 @@
 	<div class="row" >
 		<div class="span12">
 
-<% @title = 'サインアップ（新規店舗登録）' %>
+<% @title = 'サインアップ(新規店舗登録)' %>
 
 <div id="login-form">
-	<h1><%= @title %></h1>
 
-	<%= form_for @staff_member, url: :staff_signup do |f| %>
-	<div>
-		<%= f.label :email, 'メールアドレス' %>
-		<%= f.text_field :email %>
-	</div>
-	<div>
-		<%= f.label :password, 'パスワード' %>
-		<%= f.password_field :password %>
-	</div>
 
-	<div>
-		<%= f.submit '登録' %>
-	</div>
+<%= form_for @staff_member, url: :staff_signup do |f| %>
+
+<div class="signin cf">
+  <h4><%= @title %></h4>
+  <form>
+    <div class="inputrow">
+      
+      <%= f.text_field :email, :placeholder => "メールアドレス" %>
+      <label for="name" class="ion-person"></label>
+    </div>
+    <div class="inputrow">
+      
+      <%= f.password_field :password,  :placeholder => "パスワード" %>
+      <label for="pass" class="ion-locked"></label>
+    </div>
+    
+     <div class="inputrow">
+      
+      <%= f.password_field :password,  :placeholder => "パスワード" %>
+      <label for="pass" class="ion-locked"></label>
+    </div>
+
+    <%= f.submit '新規登録' %>
+    
+  </form>
+
+</div>
 	<% end %>
 </div>
 </div>

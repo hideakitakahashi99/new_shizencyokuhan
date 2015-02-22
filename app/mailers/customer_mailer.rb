@@ -14,7 +14,7 @@ class CustomerMailer < ActionMailer::Base
     mail to: "hideakitakahashi99@gmail.com"
   end
 
-  def customer_create_mail(current_customer)
+  def customer_create_mail(@customer)
     @customer = current_customer
     mail(to: @customer.email, subject: '会員仮登録')
   end

@@ -15,15 +15,15 @@ class Customer::StaffMembersController < Customer::Base
 
 	def following
 		@title = "Following"
-		@staff_member = StaffMember.find(params[:id])
-		@customers = @staff_member.followed_customers.paginate(page: params[:page])
+		@customer = Customer.find(params[:id])
+		@staff_members = @customer.followed_staff_members.all
 		render 'show_follow'
 	end
 
 	def followers
 		@title = "Followers"
 		@staff_member = StaffMember.find(params[:id])
-		@customers = @staff_member.followers.paginate(page: params[:page])
+		@customers = @staff_member.followers.all
 		render 'show_follow'
 	end
 

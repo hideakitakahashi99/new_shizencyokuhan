@@ -1,20 +1,28 @@
+
+<div class="schedule_harvest cf">
 <%= form_for [ :staff, @schedule ] do |f| %>
   	<h4>開店予告をして<br/>集客につなげよう！</h4>
 	<h4><strong>開店予告</strong></h4>
 	<h7>※トップページ／ごひいきさんに通知が飛びます！</h7>
   <div class="field">
     <tr>
-      <th>開始日　</th>
+      <th>販売開始日時</th>
         <td>
+          <div class="inputrow">
         <%= f.datetime_select :opening_date, :prompt => { :day => '日', :month => '月', :year => '年' } %>
+      </div>
         </td></br>
-      <th>終了日　</th>
+      <th>販売終了日時</th>
         <td>
+          <div class="inputrow">
         <%= f.datetime_select :closing_date, :prompt => { :day => '日', :month => '月', :year => '年' } %>
+      </div>
         </td></br>
       <th>コメント</th>
         <td>
+          <div class="inputrow">
         <%= f.text_area :opening, placeholder: "Compose new micropost..." %>
+      </div>
         </td>
         
     </tr>
@@ -24,3 +32,4 @@
  <%= f.submit "開店予告する", class: "btn btn-large btn-primary", :name => 'store'  %>
  
 <% end %>
+</div>

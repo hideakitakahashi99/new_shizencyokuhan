@@ -19,6 +19,11 @@ class Customer::OrdersController < Customer::Base
 	end
 
 	def create 
+
+  webpay = WebPay.new(WEBPAY_SECRET_KEY)
+  charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
+  
+
 		@order = Order.new(order_params)
 		@order.add_line_items_from_cart(current_cart)
 
@@ -27,7 +32,7 @@ class Customer::OrdersController < Customer::Base
 				Cart.destroy(session[:cart_id])
 				session[:cart_id] = nil
 				OrderNotifier.received(@order).deliver
-				format.html { redirect_to :store_index, notice: 'ご注文ありがとうございます' }
+				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @order, status: :created, location: @order }
 			else
 				@cart = current_cart
@@ -36,6 +41,7 @@ class Customer::OrdersController < Customer::Base
 			end
 		end
 	end
+
 
 	 private
     # Use callbacks to share common setup or constraints between actions.

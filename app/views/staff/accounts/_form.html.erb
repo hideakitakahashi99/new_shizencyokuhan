@@ -15,10 +15,10 @@
 </div>
 <div>
 	<% if @staff_member.persisted? && @staff_member.image? %>
-	<label>
+	
 		<%= f.check_box :remove_image %>
 		画像を削除
-	</label>
+	
 	<% end %>
 </div>
 

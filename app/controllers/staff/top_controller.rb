@@ -7,6 +7,7 @@ class Staff::TopController < Staff::Base
 			@schedule = @staff_member.schedules.build
 			@schedules = @staff_member.schedules.order(:created_at)
 			@schedules = @schedules.page(params[:page])
+			
 			render action: 'dashboard'
 		else
 		render action: 'index'

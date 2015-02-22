@@ -40,13 +40,16 @@ namespace :staff, path: config[:staff][:path] do
     resource :account, except: [ :new, :create ]
     resource :password, only: [ :show, :edit, :update ]
     resource :signup, only: [ :create, :destroy ]
-    resources :customers
+    resources :customers do
+      member do
+    get :following, :followers
+    end
+  end
     resources :staff_addresses
  
     resources :schedules, only: [:create, :destroy ]
     resources :relationships, only: [:create, :destroy]
-    get :following, :followers
- 
+  
     resources :products do
     get :who_bought, on: :member
     end 

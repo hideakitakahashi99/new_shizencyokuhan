@@ -47,6 +47,11 @@ class Staff::CustomersController < Staff::Base
 		redirect_to :staff_customers
 	end
 
-
+    def followers
+    	@title = "Followers"
+    	@staff_member = StaffMember.find(params[:id])
+    	@customers = @staff_member.followers.all
+    	render'show_follow'
+    end
 
 end

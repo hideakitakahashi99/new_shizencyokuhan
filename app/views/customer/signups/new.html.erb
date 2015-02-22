@@ -2,15 +2,15 @@
 	<div class="row" >
 		<div class="span12">
 
-<% @title = 'SignUp(新規アカウント登録)' %>
+<% @title = 'SignUp' %>
+<% @title1 = '(新規アカウント登録)' %>
 
-<div id="login-form">
-	<h1><%= @title %></h1>
+<div class="signup cf">
+	<h1><%= @title %></h1><br>
+	<h2><%= @title1 %></h2>
 
 	<%= form_for @customer, url: :customer_signup do |f| %>
 
-:family_name, :given_name,
-			:family_name_kana, :given_name_kana
 
 	<div>
 		<%= f.label :family_name, '名字' %>

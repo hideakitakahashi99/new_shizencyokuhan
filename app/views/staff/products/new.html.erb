@@ -14,10 +14,7 @@
 <div id="generic-form">
 	<%= form_for [ :staff, @product ] do |f| %>
 	<%= render 'form', f: f %>
-	<div class="buttons">
-		<%= f.submit '登録' %>
-		<%= link_to 'キャンセル', :staff_products %>
-	</div>
+	
 
 	<% end %>
 </div>

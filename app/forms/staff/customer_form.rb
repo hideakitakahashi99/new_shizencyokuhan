@@ -7,7 +7,7 @@ class Staff::CustomerForm
 
 	def initialize(customer = nil)
 		@customer = customer
-		@customer ||= Customer.new(gender: 'male')
+		@customer ||= Customer.new
 		(1 - @customer.personal_phones.size).times do 
 			@customer.personal_phones.build
 		end

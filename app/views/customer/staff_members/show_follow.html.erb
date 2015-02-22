@@ -1,0 +1,55 @@
+ 
+<div class="container">
+  <div class="row">
+<div class="span12">
+ <h2>ごひいき農家一覧</h2>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+<div class="span12">
+    <section>
+      <h4><%= @customer.email %>のアカウント</h4>
+    </section>
+  </div>
+
+    <div class="span8">
+    <section>
+ 
+      <% if @staff_members.any? %>
+        <table class="table">
+          
+
+          
+          <tr>
+            <th></th>
+            <th>ごひいき農家名</th>
+            <th>現在のステータス</th>
+            <th>所在地</th>
+            <th>代表者</th>
+            <th>email</th>
+
+          </tr>
+          <% @staff_members.each do |staff| %>
+          <% p = StaffMemberPresenter.new(staff, self) %>
+          <tr>
+            
+            <td><%= staff.farm_name %></td>
+            <td><%= p.suspended_mark %></td>
+            <td><%= staff.staff_address.prefecture %></td>
+            <td><%= staff.family_name %><%= staff.given_name %></td>
+            <td><%= staff.email %></td>
+          </tr>
+          <% end %>
+        </table>
+          <% end %>
+       
+     
+    </section>
+  </div>
+</div>
+</div>

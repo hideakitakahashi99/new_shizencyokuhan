@@ -1,5 +1,6 @@
 
-<div>
+<div class="product_form cf">
+  <div>
 
     <% if @product.productimg? %>
       <div class="thumbnail">
@@ -23,6 +24,13 @@
 
 <div>
 
+  <%= f.label :method, '作付け方法' %>
+  <%= f.select :method, [["", Product::METHOD_NAMES]], :prompt => '以下よりお選び下さい' %>
+
+</div>
+
+<div>
+
 	<%= f.label :category, '品目' %>
 	<%= f.select :category, [["", Product::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
 
@@ -33,15 +41,6 @@
 
 	<%= f.label :variety, '品種'%>
 	<%= f.text_field :variety, :placeholder => '品種名,固定種,在来種等を入力' %>
-
-</div>
-
-
-
-<div>
-
-	<%= f.label :method, '作付け方法' %>
-	<%= f.select :method, [["", Product::METHOD_NAMES]], :prompt => '以下よりお選び下さい' %>
 
 </div>
 
@@ -78,5 +77,12 @@
 
 </div>
 
+
+<div class="buttons">
+   <%= link_to 'キャンセル', :staff_products %>
+    <%= f.submit '登録' %>
+  </div>
+
+</div>
 
 

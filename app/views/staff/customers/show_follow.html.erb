@@ -1,0 +1,46 @@
+ 
+<div>
+ <h2>Followers</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+<div class="span3">
+    <section>
+      <h1><%= @staff_member.farm_name %></h1>
+      <span><b>投稿済みスケジュール数:</b> <%= @staff_member.schedules.count %></span>
+    </section>
+  </div>
+
+    <div class="span8">
+    <section>
+ 
+      <% if @customers.any? %>
+        <table class="table">
+          <% @customers.each do |customer| %>
+
+          
+          <tr>
+         
+            <th>ごひいき顧客名</th>
+            <th>email</th>
+
+          </tr>
+          <tr>
+           
+            <td><%= customer.family_name %><%= customer.given_name%></td>
+            <td class="email"><%= customer.email %></td>
+
+          </tr>
+          
+  
+         
+          <% end %>
+        </table>
+          <% end %>
+       
+     
+    </section>
+  </div>
+</div>
+</div>

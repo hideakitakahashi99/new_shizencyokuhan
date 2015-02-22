@@ -75,3 +75,7 @@ gem 'spring',        group: :development
 
 gem 'momentjs-rails'
 
+gem 'whenever', :require => false
+
+gem 'webpay'
+

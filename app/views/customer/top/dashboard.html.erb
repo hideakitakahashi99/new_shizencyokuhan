@@ -31,7 +31,7 @@
                   
                   <div class="detail">
                     <h5><%= m.farm_name %></h5>
-                  <h5><a href="events-detail.html">OPEN!!</a></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(m) %>">OPEN!!</a></h5>
                   <h6>産地：<%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h6>
                     
                     <ul>
@@ -81,10 +81,11 @@
            <li>
              <div class="event-box">
                <figure class="image">
+                <%= image_tag schedules.staff_member.image.thumb.url %>
                  <a href="events-detail.html"></a>
                </figure>
              <div class="detail">
-               <h5><a href="events-detail.html">【○○農園】<%= schedules.harvest %><%= schedules.opening %></a></h5>
+               <h5><a href="<%= customer_staff_member_path(schedules.staff_member) %>">【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %> </a></h5>
                 <ul>
                   <li><span><i class="icon-date"></i><strong>開始日時：</strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></span></li>
                   <li><span><i class="icon-location"></i>

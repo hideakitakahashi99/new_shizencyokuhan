@@ -5,20 +5,38 @@
 <% @title = 'ログイン（販売専用）' %>
 
 <div id="login-form">
-	<h1><%= @title %></h1>
+	
 
 	<%= form_for @form, url: :staff_session do |f| %>
-	<div>
-		<%= f.label :email, 'メールアドレス' %>
-		<%= f.text_field :email %>
-	</div>
-	<div>
-		<%= f.label :password, 'パスワード' %>
-		<%= f.password_field :password %>
-	</div>
-	<div>
-		<%= f.submit 'ログイン' %>
-	</div>
+
+
+<div class="signin cf">
+  <h4><%= @title %></h4>
+  <form>
+    <div class="inputrow">
+      
+      <%= f.text_field :email, :placeholder => "メールアドレス" %>
+      <label for="name" class="ion-person"></label>
+    </div>
+    <div class="inputrow">
+      
+      <%= f.password_field :password,  :placeholder => "パスワード" %>
+      <label for="pass" class="ion-locked"></label>
+    </div>
+    <input type="checkbox" name="remember" id="remember"/>
+    <label for="remember" class="radio">ログイン状態を維持する</label>
+    <%= f.submit 'ログイン' %>
+    
+  </form>
+
+</div>
+
+
+
+
+
+
+
 	<% end %>
 </div>
 <div class="container">
