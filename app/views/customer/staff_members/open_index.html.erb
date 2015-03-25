@@ -24,7 +24,7 @@
 		<% @staff_members.each do |m| %>
 		
 		<div class="span4">
-			
+			<div class="prof"><%= image_tag m.image.thumb.url %></div>
 		 		<div class="entry">
 					<h3><%= m.farm_name %></h3>
 					<h5>産地：<%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h5>

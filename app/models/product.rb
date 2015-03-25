@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
 
 	mount_uploader :productimg, ProductimgUploader
 
-	METHOD_NAMES = %w(無肥料／無農薬栽培 無農薬／無化学肥料栽培（動物性堆肥不使用） 無農薬／無化学肥料栽培（動物性堆肥使用） 有機栽培（JAS認定） 減農薬栽培 特別栽培 慣行農法)
+	METHOD_NAMES = %w( 完全無肥料／無農薬栽培 無農薬／無化学肥料栽培＜動物性堆肥不使用＞)
 	CATEGORY_NAMES = %w(
 		アズキ／小豆 アスパラガス／竜髭菜 インゲンマメ／隠元豆 
 		エダマメ／枝豆 オクラ／秋葵 カブ／蕪 カボチャ／南瓜 カリフラワー／花甘藍 

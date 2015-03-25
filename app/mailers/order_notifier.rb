@@ -17,9 +17,9 @@ class OrderNotifier < ActionMailer::Base
   #
   #   en.order_notifier.shipped.subject
   #
-  def shipped
+  def shipped(order)
     @order = order
-
-    mail to: order.email, subject: 'SOILS Store Order Shipped'
-end
+    
+    mail to: 'hideakitakahashi99@gmail.com', subject: 'SOILS Store Order Shipped'
+  end
 end

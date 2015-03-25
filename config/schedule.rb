@@ -1,3 +1,10 @@
+
+
+every :hour do 
+  runner StatusBatch.auto_status_open
+  runner StatusBatch.auto_status_close
+end
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.

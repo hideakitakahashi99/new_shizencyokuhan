@@ -23,7 +23,7 @@ class Customer::OrdersController < Customer::Base
   webpay = WebPay.new(WEBPAY_SECRET_KEY)
   charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
   
-
+  		
 		@order = Order.new(order_params)
 		@order.add_line_items_from_cart(current_cart)
 
@@ -32,6 +32,7 @@ class Customer::OrdersController < Customer::Base
 				Cart.destroy(session[:cart_id])
 				session[:cart_id] = nil
 				OrderNotifier.received(@order).deliver
+				OrderNotifier.shipped(@order).deliver
 				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @order, status: :created, location: @order }
 			else

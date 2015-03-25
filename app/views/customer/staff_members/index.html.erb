@@ -9,24 +9,22 @@
 
 				<table class="table">
 					<tr>
+						<th>産地</th>
 						<th>会社名／農園名</th>
-						<th>氏名</th>
+						<th>販売責任者</th>
 						<th>フリガナ</th>
 						<th>メールアドレス</th>
-						<th>開始日</th>
-						<th>終了日</th>
-						<th>停止フラグ</th>
-						<th>アクション</th>
+						<th>現在のステータス</th>
+						<th></th>
 					</tr>
 						<% @staff_members.each do |m| %>
 						<% p = StaffMemberPresenter.new(m, self) %>
 					<tr>
+						<td><%= m.staff_address.prefecture %></td>
 						<td><%= m.farm_name %></td>
 						<td><%= m.family_name %> <%= m.given_name %></td>
 						<td><%= m.family_name_kana %> <%= m.given_name_kana %></td>
 						<td class="email"><%= m.email %></td>
-						<td class="date"><%= m.start_date.strftime('%Y/%m/%d') %></td>
-						<td class="date"><%= m.end_date.try(:strftime, '%Y/%m/%d') %></td>
 						<td class="boolean"><%= p.suspended_mark %></td>
 						<td class="actions">
 							<%= link_to '詳細', [ :customer, m ] %> |

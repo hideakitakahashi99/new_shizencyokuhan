@@ -15,6 +15,8 @@ class Staff::SignupsController < Staff::Base
 	def create
 		@staff_member = StaffMember.new(staff_member_params)
 		if @staff_member.save
+			@mail = StaffMemberMailer.registration_confirmation(@staff_member)
+			@mail.deliver
 			flash.notice = '販売アカウントを新規登録しました。'
 			redirect_to :staff_root
 		else

@@ -9,7 +9,10 @@ get 'projects/marker',  to: 'projects#marker',  as: :marker
 
   get 'calendar/index'
 
-  get 'static_pages/farmertop'
+  get 'static_pages/company'
+  get 'static_pages/delivery_charge'
+  get 'static_pages/low'
+  
 
 resources :projects do
     resources :tasks, only: [:create, :destroy]
@@ -79,7 +82,10 @@ namespace :customer, path: config[:customer][:path] do
     get 'signup' => 'signups#new'
     get 'open_index' => 'staff_members#open_index'
     get 'search' => 'staff_members#search'
-    get 'token/:uuid', :to => 'customers#token'
+    get 'token/:uuid', :to => 'signups#token'
+    get 'static_pages/company'
+    get 'static_pages/delivery_charge'
+    get 'static_pages/low'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
     resources :relationships, only: [ :create, :destroy ]

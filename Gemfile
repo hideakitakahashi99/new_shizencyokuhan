@@ -79,3 +79,7 @@ gem 'whenever', :require => false
 
 gem 'webpay'
 
+gem 'capistrano', '~> 3.0.1'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'

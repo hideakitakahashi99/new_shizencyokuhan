@@ -9,13 +9,25 @@
       <th>販売開始日時</th>
         <td>
           <div class="inputrow">
-        <%= f.datetime_select :opening_date, :prompt => { :day => '日', :month => '月', :year => '年' } %>
+        <%= f.datetime_select(
+         :opening_date, 
+         :prompt => { :day => '日', :month => '月', :year => '年' },
+         use_month_numbers: true,
+         start_year: (Time.now.year),
+         minute_step: 60
+         ) %>
       </div>
         </td></br>
       <th>販売終了日時</th>
         <td>
           <div class="inputrow">
-        <%= f.datetime_select :closing_date, :prompt => { :day => '日', :month => '月', :year => '年' } %>
+        <%= f.datetime_select(
+         :closing_date,
+         :prompt => { :day => '日', :month => '月', :year => '年' },
+         use_month_numbers: true,
+         start_year: (Time.now.year),
+         minute_step: 60
+         ) %>
       </div>
         </td></br>
       <th>コメント</th>

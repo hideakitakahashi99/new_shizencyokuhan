@@ -40,27 +40,27 @@
 <div>
 
 	<%= f.label :variety, '品種'%>
-	<%= f.text_field :variety, :placeholder => '品種名,固定種,在来種等を入力' %>
+	<%= f.text_field :variety, :placeholder => '例：在来種　※品種名,固定種,在来種等を入力' %>
 
 </div>
 
 
 <div>
-	<%= f.label :stock, '在庫数(袋/箱数)' %>
-	<%= f.text_field :stock, :placeholder => '出荷できる’上限’を入力'  %>
+	<%= f.label :stock, '在庫数　(袋/箱数)' %>
+	<%= f.text_field :stock, :placeholder => '例：100　※出荷できる’上限’を入力してください'  %>
 </div>
 
 <div>
 
-	<%= f.label :net, '内容量(袋当り個数/BOXの場合は品目数)' %>
-	<%= f.text_field :net, :placeholder => '数字のみ入力'  %>
+	<%= f.label :net, '内容量　(１個あたりグラム数)' %>
+	<%= f.text_field :net, :placeholder => '例：500　※数字のみ入力してください'  %>
 
 </div>
 
 <div>
 
-	<%= f.label :price, '価格(１袋あたり)' %>
-	<%= f.text_field :price, :placeholder => '数字のみ入力'  %>
+	<%= f.label :price, '価格　(１個あたり価格)' %>
+	<%= f.text_field :price, :placeholder => '例：700　※数字のみ入力してください'  %>
 
 </div>
 

@@ -2006,7 +2006,7 @@ input[type="checkbox"]:checked + label:after {
   display: block;
   position: relative;
   width: 300px;
-  margin: 20px auto;
+  
   padding: 20px;
   background-color: rgba(0,0,0,0.1);
   -webkit-border-radius: 5px;
@@ -2059,6 +2059,10 @@ input[type="checkbox"]:checked + label:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.schedule_harvest input[type="checkbox"] {
+  display: none;
 }
 
 
@@ -2189,4 +2193,9 @@ input[type="checkbox"]:checked + label:after {
 }
 .signup input[type="submit"]:active {
   background-color: #4a7b89;
+}
+
+
+.input-block input[type="checkbox"] {
+  display: none;
 }
