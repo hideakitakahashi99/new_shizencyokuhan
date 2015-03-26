@@ -81,8 +81,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.taskapp = {
-    staff: { host: 'soils.example.com', path: 'staff' },
-    admin: { host: 'soils.example.com', path: 'admin' },
-    customer: { host: 'soils.example.com', path: 'mypage' }
+    staff: { host: 'shizencyokuhan.com', path: 'staff' },
+    admin: { host: 'shizencyokuhan.com', path: 'admin' },
+    customer: { host: 'shizencyokuhan.com', path: 'mypage' }
   }
 end

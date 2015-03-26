@@ -1,16 +1,15 @@
 
 set :default_stage, "production"
 
-require 'capistrano_colors'
 
-require "bundler/capistrano"
 
-require "rvm/capistrano"
+require 'capistrano/bundler'
+
 set :rvm_ruby_string, '2.2.0'
 set :rvm_type, :user
 
 set :application, 'shizencyokuhan'
-set :repo_url, 'https://github.com/hideakitakahashi99/shizencyokuhan.git'
+set :repo_url, 'git@github.com:hideakitakahashi99/shizencyokuhan.git'
 
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -19,8 +18,6 @@ set :repo_url, 'https://github.com/hideakitakahashi99/shizencyokuhan.git'
 
 set :use_sudo, false
 set :default_run_options, :pty => true
-ssh_options[:port] = 22
-ssh_options[:forward_agent] = true
 
 set :keep_releases, 5
 
@@ -50,11 +47,13 @@ namespace :deploy do
 end
 
 
-  desc "passenger用に起動/停止タスクを変更"
-  task :restart, :roles => :web do
-    run "touch #{current_path}/tmp/restart.txt"
+    desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      run "touch #{current_path}/tmp/restart.txt"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
+    end
   end
 
 

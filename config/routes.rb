@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'errors#routing_error'
+  get '*anything' => 'errors#routing_error'
 
   resources :mapus
 

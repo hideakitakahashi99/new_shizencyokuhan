@@ -83,4 +83,4 @@ gem 'capistrano', '~> 3.0.1'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
 gem 'capistrano-rvm'
-gem 'capistrano_colors'
+
