@@ -38,8 +38,8 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.taskapp = {
-    staff: { host: 'soils.example.com', path: 'staff' },
-    admin: { host: 'soils.example.com', path: 'admin' },
-    customer: { host: 'soils.example.com', path: 'mypage' }
+    staff: { host: 'shizencyokuhan.com', path: 'staff' },
+    admin: { host: 'shizencyokuhan.com', path: 'admin' },
+    customer: { host: 'shizencyokuhan.com', path: 'mypage' }
   }
 end

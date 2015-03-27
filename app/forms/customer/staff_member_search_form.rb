@@ -8,6 +8,7 @@ class Customer::StaffMemberSearchForm
 		if category.present?
 			rel = rel.where(category: category)
 		end
+
 	end
 
 

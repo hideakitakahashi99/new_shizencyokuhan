@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'errors#routing_error'
-  get '*anything' => 'errors#routing_error'
+ 
 
   resources :mapus
 
@@ -161,4 +160,7 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root 'errors#routing_error'
+  get '*anything' => 'errors#routing_error'
 end
