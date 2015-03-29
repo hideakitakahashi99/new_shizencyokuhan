@@ -22,8 +22,6 @@ resources :projects do
  post '/projects/:project_id/tasks/:id/toggle' => 'tasks#toggle'
 
  
- devise_for :users
- 
 
 config = Rails.application.config.taskapp
 

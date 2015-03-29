@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'devise'
 
 gem 'fullcalendar-rails'
 
@@ -84,3 +83,5 @@ gem 'capistrano-rails'
 gem 'capistrano-bundler'
 gem 'capistrano-rvm'
 
+gem 'mysql2'
+gem 'yaml_db', github: 'jetthoughts/yaml_db'
