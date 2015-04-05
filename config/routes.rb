@@ -32,23 +32,24 @@ config = Rails.application.config.taskapp
 
 
 constraints host: config[:staff][:host] do
-
 namespace :staff, path: config[:staff][:path] do
     root 'top#index'
     post ':id/toggle' => 'top#toggle'
     get 'login' => 'sessions#new', as: :login
     get 'signup' => 'signups#new'
     resource :session, only: [ :create, :destroy ]
+    resource :signup, only: [ :create, :destroy ]
     resource :account, except: [ :new, :create ]
     resource :password, only: [ :show, :edit, :update ]
-    resource :signup, only: [ :create, :destroy ]
+    
     resources :customers do
       member do
     get :following, :followers
     end
   end
     resources :staff_addresses
- 
+    resources :additional_infos
+    resources :sales_terms
     resources :schedules, only: [:create, :destroy ]
     resources :relationships, only: [:create, :destroy]
   
@@ -85,6 +86,7 @@ namespace :customer, path: config[:customer][:path] do
     get 'static_pages/company'
     get 'static_pages/delivery_charge'
     get 'static_pages/low'
+    get 'static_pages/feed_page'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
     resources :relationships, only: [ :create, :destroy ]

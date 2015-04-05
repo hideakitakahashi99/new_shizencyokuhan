@@ -12,20 +12,38 @@
 <div class="signin cf">
   <h4><%= @title %></h4>
   <form>
-    <div class="inputrow">
-      
-      <%= f.text_field :email, :placeholder => "メールアドレス" %>
+
+    <div class="inputrow">  
+      <%= f.text_field :farm_name, :placeholder => "団体名／法人名" %>
+      <label for="home" class="ion-home"></label>
+    </div>
+
+    <div class="inputrow">  
+      <%= f.text_field :family_name, :placeholder => "販売責任者　姓" %>
+       <%= f.text_field :given_name, :placeholder => "販売責任者　名" %>
       <label for="name" class="ion-person"></label>
     </div>
-    <div class="inputrow">
-      
-      <%= f.password_field :password,  :placeholder => "パスワード" %>
+
+ <div class="inputrow">  
+      <%= f.text_field :family_name_kana, :placeholder => "姓(カナ)" %>
+       <%= f.text_field :given_name_kana, :placeholder => "名(カナ)" %>
+      <label for="name" class="ion-person"></label>
+    </div>
+
+    <div class="inputrow">  
+      <%= f.text_field :email, :placeholder => "メールアドレス" %>
+      <label for="email" class="ion-email"></label>
+    </div>
+
+    <div class="inputrow">  
+      <%= f.password_field :password, :placeholder => "パスワード" %>
       <label for="pass" class="ion-locked"></label>
     </div>
-    
 
-    <%= f.submit '新規登録' %>
-    
+      <%= f.submit '新規登録' %>
+
+     
+      
   </form>
 
 </div>

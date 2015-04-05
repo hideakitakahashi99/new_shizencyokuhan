@@ -1,0 +1,38 @@
+<%= form_for [ :staff, @additional_infos ] do |f| %>
+<div class="additional cf">
+  <h4><strong>追加情報編集</strong></h4>
+  <div class="field">
+    <tr>
+      <th>現在の農地が無施肥になってからの状況をお教え下さい。</br>(任意入力)</th>
+      <td>
+        <div class="inputrow">
+     <%= f.label :farm_condition, '農地のコンディション' %>
+  <%= f.select :farm_condition, [["", AdditionalInfo::CONDITION_NAMES]], :prompt => '以下よりお選び下さい' %>
+  </div>
+  </td></br>
+
+<th>上記で選択いただいた状況がどのくらいの期間、経過しているかお教え下さい。</br>(任意入力)</th>
+      <td>
+        <div class="inputrow">
+     <%= f.label :farm_condition_year, '上記コンディションの年数' %>
+  <%= f.select :farm_condition_year, [["", AdditionalInfo::CONDITION_YEARS]], :prompt => '以下よりお選び下さい' %>
+  </div>
+  </td></br>
+
+
+  <th>ご自身の作られるお野菜の中で、最もお客様に食べてもらいたい品目をお選びください。</br>(任意入力)</th>
+  <td>
+    <div class="inputrow">
+     <%= f.label :masterpiece, '看板やさい' %>
+   <%= f.select :masterpiece, [["", AdditionalInfo::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
+ </div>
+  </td>
+
+</tr>
+
+  </div>
+ 
+  <%= f.submit "追加情報を更新", class: "btn btn-large btn-primary" %>
+ 
+ </div>
+<% end %>

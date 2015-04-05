@@ -2082,7 +2082,8 @@ input[type="checkbox"]:checked + label:after {
 }
 
 .product_form input[type="date"],
-.product_form input[type="text"] {
+.product_form input[type="text"]
+ {
    padding: 10px 1px 10px 32px;
   display: block;
   width: 75%;
@@ -2106,6 +2107,28 @@ input[type="checkbox"]:checked + label:after {
 
 .product_form select {
    padding: 10px 1px 10px 32px;
+  
+  width: 75%;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+  font-weight: 300;
+  outline: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: border-color 300ms 0 ease;
+  -moz-transition: border-color 300ms 0 ease;
+  transition: border-color 300ms 0 ease;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.product_form textarea {
+   padding: 10px 1px 10px 2px;
   
   width: 75%;
   margin-bottom: 10px;
@@ -2194,6 +2217,94 @@ input[type="checkbox"]:checked + label:after {
 .signup input[type="submit"]:active {
   background-color: #4a7b89;
 }
+
+
+.additional {
+  display: block;
+  position: relative;
+  width: 100%;
+  
+  padding: 20px;
+  background-color: rgba(0,0,0,0.1);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 0 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 0 0 rgba(0,0,0,0.2);
+  box-shadow: inset 1px 1px 0 0 rgba(255,255,255,0.2), inset -1px -1px 0 0 rgba(0,0,0,0.2);
+}
+
+.additional input[type="date"],
+.additional input[type="number"] {
+   padding: 10px 1px 10px 2px;
+  
+  width: 50%;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+  font-weight: 300;
+  outline: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: border-color 300ms 0 ease;
+  -moz-transition: border-color 300ms 0 ease;
+  transition: border-color 300ms 0 ease;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.additional select {
+   padding: 10px 1px 10px 32px;
+  
+  width: 50%;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+  font-weight: 300;
+  outline: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: border-color 300ms 0 ease;
+  -moz-transition: border-color 300ms 0 ease;
+  transition: border-color 300ms 0 ease;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.additional textarea {
+   padding: 10px 1px 10px 2px;
+  
+  width: 75%;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255,255,255,0.5);
+  background-color: #fff;
+  color: #333;
+  font-size: 1em;
+  font-weight: 300;
+  outline: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: border-color 300ms 0 ease;
+  -moz-transition: border-color 300ms 0 ease;
+  transition: border-color 300ms 0 ease;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.additional input[type="checkbox"] {
+  display: none;
+}
+
 
 
 .input-block input[type="checkbox"] {

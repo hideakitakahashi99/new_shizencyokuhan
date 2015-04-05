@@ -1,0 +1,64 @@
+<%= form_for [ :staff, @sales_terms ] do |f| %>
+<div class="additional cf">
+  <h4><strong>販売条件編集</strong></h4>
+  <div class="field">
+    <tr>
+      
+      <td>送料代金の設定を行って下さい。</br>※全国一律料金での設定のみ可能です。</br>未設定の場合、かかる送料は販売者様でのご負担となりますので、ご注意下さい。</td>
+      <th>
+        <div class="inputrow">
+     <%= f.label :delivery_fee, '送料設定' %>
+  <%= f.text_field :delivery_fee, :placeholder => '例：700　※数字のみ' %>
+  </div>
+  </th>
+
+
+</br>
+
+
+<td>特定商取引に関する表示を編集いただけます。</br>(任意入力)</td>
+      <th>
+        <div class="inputrow">
+     <%= f.label :legal_info, '特定商取引に関する表示' %>
+  <%= f.text_area :legal_info, :placeholder => 
+"例：
+販売業者名　　　　　　　自然栽培農園
+代表者および運営責任者　自然太郎
+所在地　　　　　　　　　丹波市市島町北奥555
+電話番号　　　　　　　　123-456-7891
+FAX番号　　　　　　　　 123-456-7891
+メールアドレス　　　　　shizen@example.co.jp
+注文方法　　　　　　　　ホームページ上のお申し込みによる注文
+主な商品　　　　　　　　野菜、または食品等
+価格　　　　　　　　　　商品毎に記載
+商品代金以外の費用　　　配送費
+消費税　　　　　　　　　8%" %>
+  </div>
+  </th>
+
+</br>
+
+
+   <td>返品、払い戻しに関する規定を設定いただけます。</br>(任意入力)</td>
+  <th>
+    <div class="inputrow">
+     <%= f.label :return_policy, '返品規定' %>
+   <%= f.text_area :return_policy, :placeholder =>
+   "例：
+商品購入後のキャンセルは出来かねます。ご了承ください。
+万が一、お客様のご注文と異なる商品が届いた場合や不良品の場合は、商品到着後3日以内にメールにてご連絡ください。
+収穫状況を確認の上、ご指定の商品、良品または同等品をお送りいたします。
+返品送料は、不良品交換、誤送交換は当社負担とさせていただきます。
+お客様都合の場合はお客様負担となります。" %>
+ </div>
+  </th>
+ 
+
+</tr>
+
+  </div>
+ 
+  <%= f.submit "追加情報を更新", class: "btn btn-large btn-primary" %>
+ 
+ </div>
+<% end %>

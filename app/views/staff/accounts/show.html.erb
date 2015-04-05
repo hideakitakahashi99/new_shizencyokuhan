@@ -64,20 +64,19 @@
 		<td class="password">**************</td>
 	</tr>
 	<tr>
-		<th>Vegetables</th>
-		<td>
+		<th>看板野菜★</th>
+		<td><%= @staff_member.additional_info.masterpiece %>
 		</td>
 	</tr>
-	<tr>
-		<th>開始日</th>
-		<td class="date">
-			<%= @staff_member.start_date.strftime('%Y/%m/%d') %>
+　　　<tr>
+		<th>特定商取引に関する表示</th>
+		<td><%= simple_format @staff_member.sales_term.legal_info %>
 		</td>
 	</tr>
+
 </table>
 
   </div>
 
-</div>
 </div>
 </div>

@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<% @title = '追加情報' %>
+
+
+				<h2 class="text-pink">
+					<strong><%= @title %></strong>
+				</h2>
+
+
+
+		<div class="table-wrapper">
+			<div class="links">
+				<%= link_to '編集する', :edit_staff_additional_info %>
+			</div>
+
+			
+			
+				<table class="table">
+					<tr>
+						<th>農地のコンディション</th>
+							<td><%= @additional_infos.farm_condition %></td>
+						<th>上記コンディションの年数</th>
+							<td><%= @additional_infos.farm_condition_year %></td>
+						<th>看板野菜</th>
+							<td><%= @additional_infos.masterpiece %></td>
+						<th>看板野菜</th>
+							<td class="actions">
+							<%= link_to '編集', [ :edit_staff, m ] %> |
+							<%= link_to '削除', [ :staff, m ], method: :delete, data: { confirm: '本当に削除しますか？'} %>
+							</td>
+
+					</tr>
+				
+				</table>
+				
+			<div class="links">
+				<%= link_to '編集する', :edit_staff_additional_info %>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>

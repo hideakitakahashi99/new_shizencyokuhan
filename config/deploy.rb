@@ -8,6 +8,7 @@ require 'capistrano/bundler'
 set :rvm_ruby_string, '2.2.0'
 set :rvm_type, :user
 
+
 set :application, 'shizencyokuhan'
 set :repo_url, 'git@github.com:hideakitakahashi99/shizencyokuhan.git'
 
@@ -26,16 +27,15 @@ server '153.122.50.163', user: 'hideaki', roles: %w{web app db}
 set :user, "hideaki"
 set :password, "dai108dainaikakusouridaijinn"
 
-set :rvm_path, '/home/deploy01/.rvm'
+# set :format, :pretty
+ 
+# RVM
+set :rvm_path, '/home/deploy01/.rvm/'
 set :rvm_bin_path, "app/bin"
 set :rvm_lib_path, "app/lib"
 
-# set :format, :pretty
- 
-
-
 # set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 # set :keep_releases, 5

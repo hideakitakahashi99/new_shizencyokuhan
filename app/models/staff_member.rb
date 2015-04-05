@@ -12,21 +12,13 @@ class StaffMember < ActiveRecord::Base
 		class_name: "Relationship",
 		dependent: :destroy
 	has_many :followers, through: :reverse_relationships, source: :follower
+	has_one :additional_info, dependent: :destroy
+	has_one :sales_term, dependent: :destroy
 
 	
 	mount_uploader :image, ImageUploader
 
-	validates :start_date,presence: true, date: {
-		after_or_equal_to: Date.new(2000, 1, 1),
-		before: -> (obj) { 1.year.from_now.to_date },
-		allow_blank: true
-	}
-	validates :end_date, date: {
-		after: :start_date,
-		before: -> (obj) { 1.year.from_now.to_date },
-		allow_blank: true
-	}
-
+	
 
 	def password=(raw_password)
 		if raw_password.kind_of?(String)
@@ -39,6 +31,12 @@ class StaffMember < ActiveRecord::Base
 	def active?
 		!suspended? && start_date <= Date.today &&
 		(end_date.nil? || end_date > Date.today)
+	end
+
+
+
+	def self.feed(current_customer)
+		Schedule.from_staff_members_followed_by(current_customer)
 	end
 
 

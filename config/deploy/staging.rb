@@ -24,7 +24,7 @@ server '153.122.50.163', user: 'hideaki', roles: %w{web app db}
 set :ssh_options, {
     keys: %w(~/.ssh/id_rsa),
     forward_agent: false,
-    auth_methods: %w(password)
+    auth_methods: %w(password),
     password: 'dai108dainaikakusouridaijinn'
   }
 # and/or per server

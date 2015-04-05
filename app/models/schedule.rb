@@ -11,10 +11,9 @@ class Schedule < ActiveRecord::Base
 		収穫開始予定 開店予定
 		)
 
-
-	def self.from_customers_followed_by(customer)
-		followed_staff_member_ids = customer.followed_staff_members_ids
-		where("staff_member_id IN (?) OR staff_member_id = ?", followed_staff_member_ids, staff_member)
+	def self.from_staff_members_followed_by(current_customer)
+		followed_staff_member_ids = current_customer.followed_staff_member_ids
+		where("staff_member_id IN (?)", followed_staff_member_ids)
 	end
 
 end

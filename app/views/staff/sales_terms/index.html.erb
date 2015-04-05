@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<% @title = '販売条件設定' %>
+
+
+				<h2 class="text-pink">
+					<strong><%= @title %></strong>
+				</h2>
+
+				
+				<div class="table-wrapper">
+			<div class="links">
+				
+			</div>
+
+			
+			
+				<table class="table">
+					<tr>
+						<% if @staff_member.sale_term %>
+						<th>送料設定</th>
+							<td><%= @staff_member.sale_term.delivery_fee %></td>
+						<th>特定商取引に関する表示</th>
+							<td><%= @staff_member.sale_term.legal_info %></td>
+						<th>返品規定</th>
+							<td><%= @staff_member.sale_term.return_policy %></td>
+							
+						<th>看板野菜</th>
+							<td class="actions">
+							<%= link_to '編集', [ :edit_staff, @staff_member.sale_term ] %> |
+							<%= link_to '削除', [ :staff, @staff_member.sale_term ], method: :delete, data: { confirm: '本当に削除しますか？'} %>
+							</td>
+							<% end %>
+
+					</tr>
+				
+				</table>
+			
+			
+			</div>
+		</div>
+		
+		</div>
+	</div>
+</div>

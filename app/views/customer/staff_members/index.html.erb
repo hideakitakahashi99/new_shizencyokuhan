@@ -20,7 +20,9 @@
 						<% @staff_members.each do |m| %>
 						<% p = StaffMemberPresenter.new(m, self) %>
 					<tr>
-						<td><%= m.staff_address.prefecture %></td>
+						
+						<td><% if m.staff_address %><%= m.staff_address.prefecture %><% end %></td>
+						
 						<td><%= m.farm_name %></td>
 						<td><%= m.family_name %> <%= m.given_name %></td>
 						<td><%= m.family_name_kana %> <%= m.given_name_kana %></td>

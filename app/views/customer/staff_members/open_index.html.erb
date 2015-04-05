@@ -27,7 +27,9 @@
 			<div class="prof"><%= image_tag m.image.thumb.url %></div>
 		 		<div class="entry">
 					<h3><%= m.farm_name %></h3>
+					<% if m.staff_address %>
 					<h5>産地：<%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h5>
+					<% end %>
 						<p style="margin-top: 15px;">
 							<div><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %></div>
 							</p>

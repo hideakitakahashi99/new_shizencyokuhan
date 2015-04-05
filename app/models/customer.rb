@@ -35,4 +35,6 @@ class Customer < ActiveRecord::Base
 		relationships.find_by(followed_id: other_staff_member.id).destroy
 	end
 
+
+
 end

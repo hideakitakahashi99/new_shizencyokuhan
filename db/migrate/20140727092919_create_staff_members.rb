@@ -2,7 +2,7 @@ class CreateStaffMembers < ActiveRecord::Migration
   def change
     create_table :staff_members do |t|
      t.string :farm_name
-     t.string :email, null: false           #メールアドレス
+     t.string :email, null: false           
      t.string :email_for_index, null: false
      t.string :family_name
      t.string :given_name
@@ -13,8 +13,7 @@ class CreateStaffMembers < ActiveRecord::Migration
      t.date :end_date
      t.boolean :suspended, default: false
 
-
-      t.timestamps
+     t.timestamps
     end
 
     add_index :staff_members, :email_for_index, unique: true

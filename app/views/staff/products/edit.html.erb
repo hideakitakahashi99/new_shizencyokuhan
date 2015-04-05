@@ -7,10 +7,7 @@
 			<div id="generic-form">
 				<%= form_for [ :staff, @product], html: {multipart: true} do |f| %>
 				<%= render 'form', f: f %>
-				<div class="buttons">
-					<%= f.submit '更新' %>
-					<%= link_to 'キャンセル', :staff_products %>
-				</div>
+				
 				<% end %>
 			</div>
 		</div>

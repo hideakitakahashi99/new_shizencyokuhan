@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229054512) do
+ActiveRecord::Schema.define(version: 20150401110341) do
+
+  create_table "additional_infos", force: true do |t|
+    t.integer  "staff_member_id"
+    t.string   "type"
+    t.string   "farm_condition"
+    t.string   "farm_condition_year"
+    t.string   "masterpiece"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "additional_infos", ["staff_member_id"], name: "index_additional_infos_on_staff_member_id"
+  add_index "additional_infos", ["type", "staff_member_id"], name: "index_additional_infos_on_type_and_staff_member_id", unique: true
 
   create_table "addresses", force: true do |t|
     t.integer  "customer_id",                null: false
@@ -174,6 +187,19 @@ ActiveRecord::Schema.define(version: 20141229054512) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
 
+  create_table "sales_terms", force: true do |t|
+    t.integer  "staff_member_id"
+    t.string   "type"
+    t.text     "delivery_fee"
+    t.text     "legal_info"
+    t.text     "return_policy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sales_terms", ["staff_member_id"], name: "index_sales_terms_on_staff_member_id"
+  add_index "sales_terms", ["type", "staff_member_id"], name: "index_sales_terms_on_type_and_staff_member_id", unique: true
+
   create_table "schedules", force: true do |t|
     t.string   "harvest"
     t.string   "opening"
@@ -230,7 +256,6 @@ ActiveRecord::Schema.define(version: 20141229054512) do
   end
 
   add_index "staff_members", ["email_for_index"], name: "index_staff_members_on_email_for_index", unique: true
-  add_index "staff_members", ["family_name_kana", "given_name_kana"], name: "index_staff_members_on_family_name_kana_and_given_name_kana"
 
   create_table "tasks", force: true do |t|
     t.string   "title"
