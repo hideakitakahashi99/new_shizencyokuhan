@@ -1,0 +1,38 @@
+<%= form_for [:customer, :staff_member, @address] do |f| %>
+
+<fieldset>
+		<legend>お客様の情報を入力して下さい</legend>
+<div class="field">
+	<%= f.label :postal_code, '郵便番号（半角数字）' %><br/>
+	<%= f.text_field :postal_code, size: 7 %>
+</div>
+
+<div class="field">
+	<%= f.label :prefecture, '都道府県' %><br/>
+	<%= f.select :prefecture, Address::PREFECTURE_NAMES, prompt: '以下よりお選びください。'%>
+</div>
+
+<div class="field">
+	<%= f.label :city, '市町村区' %><br/>
+	<%= f.text_field :city %>
+</div>
+
+<div class="field">
+	<%= f.label :address1, '番地' %><br/>
+	<%= f.text_field :address1 %>
+</div>
+
+<div class="field">
+	<%= f.label :address2, '建物名等' %><br/>
+	<%= f.text_field :address2 %>
+</div>
+
+<div class="actions">
+	<%= f.submit '代金引き換えで注文する' %>
+</div>
+	<%= form_tag('customer/addresses', :method => :post) do %>
+<script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
+<% end %>
+</fieldset>
+<% end %>
+

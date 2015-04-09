@@ -2,8 +2,12 @@
 <div class="container">
 	<div class="row">
 		<div class="span12">
+			<div id="farm_prof"><%= image_tag @staff_member.image_url %></div>
 <% @title = '販売者詳細' %>
 <h1><%= @staff_member.farm_name %></h1>
+<% if @staff_member.additional_info %>
+<h1><i class="ion-ios-chatbubble"></i></h1><h4><%= @staff_member.additional_info.explanation %></h4>
+<% end %>
 	<p style="margin-top: 0px;">
 							<div><%= link_to '商品を見る！', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
 							</div>

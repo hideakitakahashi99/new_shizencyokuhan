@@ -63,16 +63,20 @@
 		<th>パスワード</th>
 		<td class="password">**************</td>
 	</tr>
+	<% if @staff_member.additional_info %>
 	<tr>
 		<th>看板野菜★</th>
 		<td><%= @staff_member.additional_info.masterpiece %>
 		</td>
 	</tr>
+	<% end %>
+	<% if @staff_member.sales_term %>
 　　　<tr>
 		<th>特定商取引に関する表示</th>
 		<td><%= simple_format @staff_member.sales_term.legal_info %>
 		</td>
 	</tr>
+	<% end %>
 
 </table>
 

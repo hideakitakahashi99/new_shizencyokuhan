@@ -2,6 +2,7 @@ class Address < ActiveRecord::Base
 	include StringNormalizer
 
 	belongs_to :customer
+	has_many :line_items, dependent: :destroy
 	has_many :phones, -> { order(:id) }, dependent: :destroy, autosave: true
 
 	before_validation do
@@ -26,4 +27,14 @@ class Address < ActiveRecord::Base
 
 	validates :postal_code, format: { with: /\A\d{7}\z/, allow_blank: true }
 	validates :prefecture, inclusion: { in: PREFECTURE_NAMES, allow_blank: true }
+
+	def add_line_items_from_cart(cart)
+		cart.line_items.each do |item|
+			item.cart_id = nil
+			line_items << item
+		end
+	end
+
+	PAYMENT_TYPES = [ "現金", "クレジットカード", "注文書"]
+
 end

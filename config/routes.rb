@@ -89,8 +89,8 @@ namespace :customer, path: config[:customer][:path] do
     get 'static_pages/feed_page'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
-    resources :relationships, only: [ :create, :destroy ]
 
+    resources :relationships, only: [ :create, :destroy ]
     resources :mypages
     resources :staff_members do
       member do
@@ -100,6 +100,7 @@ namespace :customer, path: config[:customer][:path] do
       resources :carts
       resources :line_items
       resources :orders 
+      resources :addresses
     end
   end
 end

@@ -34,6 +34,7 @@ class StaffMember < ActiveRecord::Base
 	end
 
 
+  
 
 	def self.feed(current_customer)
 		Schedule.from_staff_members_followed_by(current_customer)

@@ -30,15 +30,17 @@
                   
                   
                   <div class="detail">
-                    <h5><%= m.farm_name %></h5>
+                    <h5><i class="ion-leaf"></i> <%= m.farm_name %></h5>
                   <h5><a href="<%= customer_staff_member_store_index_path(m) %>">OPEN!!</a></h5>
                   <% if m.staff_address %>
-                  <h6>産地：<%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h6>
+                  <h6><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h6>
+                  <% end %>
+                  <% if m.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.additional_info.masterpiece %> </h6>
                   <% end %>
                     
                     <ul>
-                      <li><span><i class="icon-date"></i>22 - 03 - 2014</span><span>08:00am - 12:00pm</span></li>
-                      <br/>
+                    
                       <li>
                         
                           <p style="margin-top: 15px;">
@@ -89,14 +91,16 @@
              <div class="detail">
                <h5><a href="<%= customer_staff_member_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
                 <ul>
-                  <li>転換中農地</li>
-                  <li>トマト／ニンジン／カボチャ</li>
-                  <li><span><i class="ion-ios-clock"></i><strong>開始日時：</strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></span></li>
+                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：<%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></span></li>
+                  <% if schedules.staff_member.additional_info %>
+                  <li><i class="ion-information-circled"></i> 自然栽培<%= schedules.staff_member.additional_info.farm_condition_year %>|<%= schedules.staff_member.additional_info.farm_condition %></li>
+                  <li><i class="ion-heart"></i> 看板やさい：<%= schedules.staff_member.additional_info.masterpiece %></li>
+                  <% end %>
                     <% if schedules.staff_member.staff_address %>
-                  <li><span><i class="ion-ios-location"></i>
+                  <li><i class="ion-ios-location"></i> 
                     <%= schedules.staff_member.staff_address.prefecture %> 
                     <%= schedules.staff_member.staff_address.city %> 
-                    <%= schedules.staff_member.staff_address.address1 %> </span></li>
+                    <%= schedules.staff_member.staff_address.address1 %> </li>
                     <% end %>
               </ul>
              </div>

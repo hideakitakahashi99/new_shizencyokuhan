@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
 	belongs_to :staff_member
 	has_many :line_items
 	has_many :orders, through: :line_items
+	has_many :addresses, through: :line_items
 
 	before_destroy :ensure_not_referenced_by_any_line_item
 

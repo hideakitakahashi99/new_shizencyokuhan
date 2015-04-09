@@ -26,6 +26,18 @@
      <%= f.label :masterpiece, '看板やさい' %>
    <%= f.select :masterpiece, [["", AdditionalInfo::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
  </div>
+  </td></br>
+
+  <th>お野菜や畑の魅力が伝わるように、説明文を登録できます。お客様のページのトップに表示されます。</br>(任意入力)</th>
+  <td>
+    <div class="inputrow">
+     <%= f.label :explanation, '説明文' %>
+   <%= f.text_area :explanation, :placeholder => 
+   '例：
+   霧深い丹波の里で、新鮮な水と腐葉土で育まれた、自然栽培野菜をご堪能いただけます。
+   大豆や大麦、里芋、栗など、地域の特色を活かした、旬の作物で健康になってください！
+   ' %>
+ </div>
   </td>
 
 </tr>

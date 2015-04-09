@@ -15,12 +15,13 @@ class Staff::AccountsController < Staff::Base
 	def update
 		@staff_member = current_staff_member
 		@staff_member.assign_attributes(staff_member_params)
-		if @staff_member.save
-			flash.notice = 'アカウント情報を更新しました。'
-			redirect_to :staff_account
-		else
-			render action: 'edit'
-		end
+			if @staff_member.save
+				flash.notice = 'アカウント情報を更新しました。'
+				redirect_to :staff_account
+			else
+				render action: 'edit'
+			end
+		
 	end
 
 	private
@@ -28,8 +29,7 @@ class Staff::AccountsController < Staff::Base
 		params.require(:staff_member).permit(
 			:farm_name, :email, :password, :family_name, :given_name,
 			:family_name_kana, :given_name_kana,
-			:start_date, :end_date, :suspended, :name, 
-			:description, :image, :image_cache, :remove_image
+			:suspended, :image, :image_cache, :remove_image
 			)
 	end
 end

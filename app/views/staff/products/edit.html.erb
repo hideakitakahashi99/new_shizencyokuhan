@@ -1,11 +1,11 @@
 <div class="container">
 	<div class="row">
 		<div class="span12">
-			<% @title = '農産品情報編集' %>
+			<% @title = '農産品 情報編集' %>
 			<h1><%= @title %></h1>
 
 			<div id="generic-form">
-				<%= form_for [ :staff, @product], html: {multipart: true} do |f| %>
+				<%= form_for [ :staff, @product ], html: {multipart: true} do |f| %>
 				<%= render 'form', f: f %>
 				
 				<% end %>

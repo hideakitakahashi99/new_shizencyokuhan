@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401110341) do
+ActiveRecord::Schema.define(version: 20150409071144) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150401110341) do
     t.string   "masterpiece"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "explanation"
   end
 
   add_index "additional_infos", ["staff_member_id"], name: "index_additional_infos_on_staff_member_id"

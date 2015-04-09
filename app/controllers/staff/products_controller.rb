@@ -26,8 +26,8 @@ class Staff::ProductsController < Staff::Base
 
 		def update
 			@staff_member = current_staff_member
-			@products = @staff_member.products
-			if @products.build
+			@product = @staff_member.products
+			if @product.build
 				flash.notice = '産品情報を更新しました。'
 				redirect_to :staff_products
 			else
@@ -50,7 +50,7 @@ class Staff::ProductsController < Staff::Base
 		product = Product.find(params[:id])
 		product.destroy!
 		flash.notice = '農産品を削除しました。'
-		redirect_to :products
+		redirect_to :staff_products
 	end
 
 	def who_bought

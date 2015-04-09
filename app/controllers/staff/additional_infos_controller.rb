@@ -60,7 +60,7 @@ class Staff::AdditionalInfosController < Staff::Base
 
 
 	def additional_info_params
-		params.require(:additional_info).permit(:farm_condition, :farm_condition_year, :masterpiece)
+		params.require(:additional_info).permit(:farm_condition, :farm_condition_year, :masterpiece, :explanation)
 	end
 
 end

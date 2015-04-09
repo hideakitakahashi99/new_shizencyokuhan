@@ -11,14 +11,14 @@
     <%= f.file_field :productimg %>
     <%= f.hidden_field :productimg_cache %>
   </div>
-   <label>
-        <%= f.check_box :remove_productimg %>
-        画像を削除
-      </label>
+   
   <div>
     <!-- 既存レコード(DBに保存されている)かつ、画像が存在する場合 -->
     <% if @product.persisted? && @product.productimg? %>
-     
+     <label>
+        <%= f.check_box :remove_productimg %>
+        画像を削除
+      </label>
     <% end %>
   </div>
 
@@ -46,7 +46,7 @@
 
 
 <div>
-	<%= f.label :stock, '在庫数　(袋/箱数)' %>
+	<%= f.label :stock, '在庫数　(袋/箱数など)' %>
 	<%= f.text_field :stock, :placeholder => '例：100　※出荷できる’上限’を入力してください'  %>
 </div>
 
