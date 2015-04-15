@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<% @title = '所在地登録をONにしますか？' %>
+			<h2><%= @title %></h2>
+
+			<div id="generic-form">
+				<%= form_for [ :staff, @staff_address ] do |f| %>
+				
+				
+					<%= f.submit 'ONにする。', :class => "btn" %>
+					<%= link_to 'キャンセル', :staff_account %>
+				
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -2,7 +2,7 @@ class StaffAddress < ActiveRecord::Base
 	include StringNormalizer
 
 	belongs_to :staff_member
-	has_many :phones, -> { order(:id) }, dependent: :destroy, autosave: true
+	
 	
 	before_validation do
 		self.postal_code = normalize_as_postal_code(postal_code)

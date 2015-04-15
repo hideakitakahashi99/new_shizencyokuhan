@@ -91,7 +91,7 @@
              <div class="detail">
                <h5><a href="<%= customer_staff_member_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
                 <ul>
-                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：<%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></span></li>
+                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
                   <% if schedules.staff_member.additional_info %>
                   <li><i class="ion-information-circled"></i> 自然栽培<%= schedules.staff_member.additional_info.farm_condition_year %>|<%= schedules.staff_member.additional_info.farm_condition %></li>
                   <li><i class="ion-heart"></i> 看板やさい：<%= schedules.staff_member.additional_info.masterpiece %></li>

@@ -1,0 +1,51 @@
+<% p = StaffMemberFormPresenter.new(f, self) %>
+<div class="pull-right">
+	<%= p.notes %>
+</div>
+<div>
+<%= f.label :farm_name, '会社名／農場名', class: 'require' %>
+<%= f.text_field :farm_name, size: 32, required: true %>
+</div>
+
+<div>
+  <%= f.label :image, 'ロゴ又は紹介画像' %>
+　<%= image_tag @staff_member.image.thumb.url if @staff_member.image? %>
+　<%= f.file_field :image %>
+　<%= f.hidden_field :image_cache %> 
+</div>
+<div>
+	<% if @staff_member.persisted? && @staff_member.image? %>
+	
+		<%= f.check_box :remove_image %>
+		画像を削除
+	
+	<% end %>
+</div>
+
+<% if @staff_member.staff_address %>
+<%= f.fields_for :staff_address, f.object.staff_address do |ff| %>
+<%= markup do |m|
+	p2 = AddressFormPresenter.new(ff, self)
+	m << p2.postal_code_block(:postal_code, '郵便番号', size: 7)
+	m << p2.drop_down_list_block(:prefecture, '都道府県', 
+		StaffAddress::PREFECTURE_NAMES)
+	m << p2.text_field_block(:city, '市区町村', size: 16)
+	m << p2.text_field_block(:address1, '町域、番地等', size: 40)
+	m << p2.text_field_block(:address2, '建物名、部屋番号等', size: 40)
+
+	end %>
+	<% end %>
+	<% else @staff_member.staff_address %>
+	<%= link_to '所在地を新規登録', :new_staff_staff_address, {:class => "btn" } %>
+	<% end %>
+	
+
+<%= p.full_name_block(:family_name, :given_name, '販売責任者　氏名', required: true) %>
+<%= p.full_name_block(:family_name_kana, :given_name_kana, 'フリガナ', required: true) %>
+<%= p.text_field_block(:email, 'メールアドレス', size: 32, required: true) %>
+<%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %>
+
+
+
+<%= p.check_boxes %>
+

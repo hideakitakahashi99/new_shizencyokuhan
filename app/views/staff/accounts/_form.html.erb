@@ -22,6 +22,7 @@
 	<% end %>
 </div>
 
+<% if @staff_member.staff_address %>
 <%= f.fields_for :staff_address, f.object.staff_address do |ff| %>
 <%= markup do |m|
 	p2 = AddressFormPresenter.new(ff, self)
@@ -34,6 +35,15 @@
 
 	end %>
 	<% end %>
+	<% else @staff_member.staff_address %>
+</br>
+	<div class="events">
+	<%= f.label :staff_address, '農園／会社の所在地' %>
+	<%= link_to '所在地を新規登録', :new_staff_staff_address, :class => "btn" %>
+</div>
+
+	<% end %>
+	
 
 <%= p.full_name_block(:family_name, :given_name, '販売責任者　氏名', required: true) %>
 <%= p.full_name_block(:family_name_kana, :given_name_kana, 'フリガナ', required: true) %>

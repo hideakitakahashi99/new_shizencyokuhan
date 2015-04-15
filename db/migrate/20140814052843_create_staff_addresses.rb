@@ -1,12 +1,12 @@
 class CreateStaffAddresses < ActiveRecord::Migration
   def change
     create_table :staff_addresses do |t|
-    	t.references :staff_member, null: false
-    	t.string :postal_code, null: false
-    	t.string :prefecture, null: false
-    	t.string :city, null: false
-    	t.string :address1, null: false
-    	t.string :address2, null: false
+    	t.references :staff_member, null: false, default:''
+    	t.string :postal_code, null: false, default:''
+    	t.string :prefecture, null: false, default:''
+    	t.string :city, null: false, default:''
+    	t.string :address1, null: false, default:''
+    	t.string :address2, null: false, default:''
 
       t.timestamps
     end

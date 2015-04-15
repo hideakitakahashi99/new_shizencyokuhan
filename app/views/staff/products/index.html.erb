@@ -14,7 +14,8 @@
 
 		<div class="table-wrapper">
 			<div class="links">
-				<%= link_to '新規登録', :new_staff_product %>
+				<%= link_to '新規登録', :new_staff_product %>|
+				<%= link_to 'ホーム', :staff_root %>
 			</div>
 
 			<%= paginate @products %>
@@ -29,6 +30,7 @@
 						<th>価格</th>
 						<th>在庫数</th>
 						<th>説明</th>
+						<th></th>
 					</tr>
 						<% @products.each do |m| %>
 					<tr>
@@ -52,7 +54,8 @@
 				<%= paginate @products %>
 
 			<div class="links">
-				<%= link_to '新規登録', :new_staff_product %>
+				<%= link_to '新規登録', :new_staff_product %>|
+				<%= link_to 'ホーム', :staff_root %>
 			</div>
 		</div>
 		</div>

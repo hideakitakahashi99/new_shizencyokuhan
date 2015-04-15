@@ -6,6 +6,7 @@ class StaffMember < ActiveRecord::Base
 	has_many :events, class_name: 'StaffEvent', dependent: :destroy
 	has_many :microposts, dependent: :destroy
 	has_one :staff_address, dependent: :destroy
+	accepts_nested_attributes_for :staff_address
 	has_many :schedules, dependent: :destroy
 	has_many :products, dependent: :destroy
 	has_many :reverse_relationships, foreign_key: "followed_id",

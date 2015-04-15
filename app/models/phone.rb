@@ -3,6 +3,7 @@ class Phone < ActiveRecord::Base
 
 	belongs_to :customer
 	belongs_to :address
+	belongs_to :staff_address
 
 	before_validation  do 
 		self.number = normalize_as_phone_number(number)

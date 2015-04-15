@@ -2,6 +2,8 @@ class Address < ActiveRecord::Base
 	include StringNormalizer
 
 	belongs_to :customer
+	has_one :home_address, dependent: :destroy
+	has_one :work_address, dependent: :destroy
 	has_many :line_items, dependent: :destroy
 	has_many :phones, -> { order(:id) }, dependent: :destroy, autosave: true
 

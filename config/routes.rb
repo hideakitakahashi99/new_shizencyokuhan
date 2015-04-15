@@ -101,6 +101,7 @@ namespace :customer, path: config[:customer][:path] do
       resources :line_items
       resources :orders 
       resources :addresses
+      
     end
   end
 end

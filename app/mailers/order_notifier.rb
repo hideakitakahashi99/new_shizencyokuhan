@@ -8,6 +8,8 @@ class OrderNotifier < ActionMailer::Base
   #
   def received(address)
     @address = address
+    @customer_family = @address.customer.family_name
+    @customer_given = @address.customer.given_name
 
     mail to: address.customer.email, subject: 'SOILS Store Order Confirmation'
   end
@@ -19,6 +21,7 @@ class OrderNotifier < ActionMailer::Base
   #
   def shipped(address)
     @address = address
+    
     
     mail to: 'hideakitakahashi99@gmail.com', subject: 'SOILS Store Order Shipped'
   end

@@ -4,6 +4,10 @@ class Staff::SchedulesController < Staff::Base
 		.page(params[:page]) 
 	end
 
+	def edit
+		@schedule = Schedule.find(params[:id])
+	end
+
 	def create
 		if params[:harvest]
 			@schedule = current_staff_member.schedules.build(harvest_schedule_params)
@@ -26,7 +30,10 @@ class Staff::SchedulesController < Staff::Base
 
 
 	def destroy
-		@schedules = current_staff_member
+		@schedule = Schedule.find(params[:id])
+		@schedule.destroy!
+		flash.notice = 'スケジュールを削除しました。'
+		redirect_to :staff_root
 	end
 
 	private

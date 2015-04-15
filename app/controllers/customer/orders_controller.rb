@@ -2,6 +2,15 @@ class Customer::OrdersController < Customer::Base
 	  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
 	def show
+		@customer = current_customer
+	end
+
+	def edit
+		@customer = current_customer
+	end
+
+	def update
+		@customer = current_customer
 	end
 
 	def new

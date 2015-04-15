@@ -1,16 +1,45 @@
 class Customer::AddressesController < Customer::Base
 	  before_action :set_address, only: [:show, :edit, :update, :destroy]
 
+	def index
+		@customer = current_customer
+		@addresses = @customer.addresses.all
+		@addresses = @customer.addresses.page(params[:page])
+	end 
+
 	def show
 		@customer = current_customer
 	end
 
 	def edit
 		@customer = current_customer
+		@address = Address.find(params[:id])
+
 	end
 
 	def update
-		@customer = current_customer
+		
+		 webpay = WebPay.new(WEBPAY_SECRET_KEY)
+  charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
+  		@customer = current_customer
+  		@address = Address.find(params[:id])
+  		@address.assign_attributes(address_params) 
+		@address.add_line_items_from_cart(current_cart)
+		respond_to do |format|
+			if @address.save
+				Cart.destroy(session[:cart_id])
+				session[:cart_id] = nil
+
+				OrderNotifier.received(@address).deliver
+				OrderNotifier.shipped(@address).deliver
+				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
+				format.json { render json: @address, status: :created, location: @address }
+			else
+				@cart = current_cart
+				format.html { render action: "new" }
+				format.json { render json: @address.errors, status: :unprocessable_entity }
+			end
+		end
 	end
 
 	def new
@@ -65,4 +94,7 @@ class Customer::AddressesController < Customer::Base
       	:postal_code, :prefecture, :city, :address1, :address2
       	) 
     end
+    def phone_params(record_name)
+	 	params.require(record_name).permit(phones: [ :number, :primary ])
+	end
 end

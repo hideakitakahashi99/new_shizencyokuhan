@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="span8">
+<div class="depot_form">
+	<%= form_for @address,
+				url: [:customer, :staff_member, :address] do |f| %>
+	    
+		<%= render 'form', f: f %>
+		<%= form_tag('/mypage/staff_members/:staff_member_id/addresses/:id', :method => :patch) do %>
+<script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
+<% end %>
+		<% end %>
+		
+
+
+</div>
+</div>
+</div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409071144) do
+ActiveRecord::Schema.define(version: 20150409115519) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20150409071144) do
 
   create_table "addresses", force: true do |t|
     t.integer  "customer_id",                null: false
-    t.string   "type",                       null: false
     t.string   "postal_code",                null: false
     t.string   "prefecture",                 null: false
     t.string   "city",                       null: false
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150409071144) do
     t.string   "address2",                   null: false
     t.string   "company_name",  default: "", null: false
     t.string   "division_name", default: "", null: false
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 20150409071144) do
   add_index "addresses", ["customer_id"], name: "index_addresses_on_customer_id"
   add_index "addresses", ["prefecture", "city"], name: "index_addresses_on_prefecture_and_city"
   add_index "addresses", ["type", "city"], name: "index_addresses_on_type_and_city"
-  add_index "addresses", ["type", "customer_id"], name: "index_addresses_on_type_and_customer_id", unique: true
   add_index "addresses", ["type", "prefecture", "city"], name: "index_addresses_on_type_and_prefecture_and_city"
 
   create_table "administrators", force: true do |t|
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150409071144) do
     t.datetime "updated_at"
     t.integer  "quantity",   default: 1
     t.integer  "order_id"
+    t.integer  "address_id"
   end
 
   create_table "mapus", force: true do |t|
@@ -216,12 +216,12 @@ ActiveRecord::Schema.define(version: 20150409071144) do
   add_index "schedules", ["staff_member_id", "created_at"], name: "index_schedules_on_staff_member_id_and_created_at"
 
   create_table "staff_addresses", force: true do |t|
-    t.integer  "staff_member_id", null: false
-    t.string   "postal_code",     null: false
-    t.string   "prefecture",      null: false
-    t.string   "city",            null: false
-    t.string   "address1",        null: false
-    t.string   "address2",        null: false
+    t.integer  "staff_member_id", default: 0,  null: false
+    t.string   "postal_code",     default: "", null: false
+    t.string   "prefecture",      default: "", null: false
+    t.string   "city",            default: "", null: false
+    t.string   "address1",        default: "", null: false
+    t.string   "address2",        default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
