@@ -1,5 +1,20 @@
-<h1>OrderNotifier#received</h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/order_notifier/received.html.erb
-</p>
+<h5><%= @customer_family %> <%= @customer_given%>様</h5>
+
+<h6>この度は、[自然栽培ちょくはん]より、ご注文いただき誠にありがとうございます。<br>
+
+ご注文が確定いたしましたので、お知らせいたします。
+ご注文内容は以下をご確認ください。</h6>
+
+
+<h5>
+.....................................<br>
+会社／農園名：	<%= @staff_member.farm_name %><br>
+支払い方法：	<%= @payment %><br>
+商品内容：<br>
+<%= render @order.line_items %><br>
+<% if @staff_member.sales_term%>
+送料：		¥<%= @staff_member.sales_term.delivery_fee%><br>
+<% end %>
+.....................................<br>
+</h5>

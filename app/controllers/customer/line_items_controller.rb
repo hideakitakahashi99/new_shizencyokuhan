@@ -14,7 +14,7 @@ class Customer::LineItemsController < Customer::Base
 	end
 
 	def create
-		@cart = current_cart
+		@cart = Cart.find(params[:cart_id]) 
 		product = Product.find(params[:product_id])
 		@line_item = @cart.add_product(product.id)
 		respond_to do |format|

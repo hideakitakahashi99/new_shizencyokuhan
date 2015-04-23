@@ -11,7 +11,10 @@ class Customer::CartsController < Customer::Base
   # GET /carts/1.json
   def show
     begin
-      @cart = Cart.find(params[:id])
+      @staff_member = StaffMember.find(params[:staff_member_id])
+      customer = current_customer
+   @cart = Cart.find!(["staff_member_id = ? and customer_id = ?", @staff_member.id, customer.id])
+   
     rescue ActiveRecord::RecordNotFound
       logger.error "無効なカート#{params[:id]}にアクセスしようとしました"
       redirect_to store_url, notice: '無効なカートです'
@@ -35,10 +38,11 @@ class Customer::CartsController < Customer::Base
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
+    staff_member = StaffMember.find(params[:id])
+    cart = Cart.new(cart_params)
 
     respond_to do |format|
-      if @cart.save
+      if cart.save!
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else
@@ -65,7 +69,7 @@ class Customer::CartsController < Customer::Base
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    @cart = current_cart
+    @cart = Cart.find(params[:id])
     @cart.destroy
     session[:cart_id] = nil
 
@@ -75,6 +79,8 @@ class Customer::CartsController < Customer::Base
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
@@ -83,6 +89,8 @@ class Customer::CartsController < Customer::Base
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params[:cart]
+      params.require(:cart).permit(
+        :staff_member_id, :customer_id
+        ) 
     end
 end

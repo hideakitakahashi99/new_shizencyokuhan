@@ -1,0 +1,24 @@
+<div class="icon">
+  <div class="follows">
+    <%= render 'staff/shared/cstats' %>
+  </div>
+  <div class="cname">
+    <%= current_staff_member.farm_name %>
+  </div>
+</div>
+  <ul>
+    <li><%= link_to "Home", :staff_root %></li>
+    <li><%= link_to "フォロワ一覧", followers_staff_customer_path(current_staff_member) %></li>
+    <li><%= link_to "農産品管理", :staff_products %></li>
+    <% if current_staff_member.sales_term %>
+      <li><%= link_to '販売条件設定', [:edit_staff, current_staff_member.sales_term] %></li>
+    <% else current_staff_member.sales_term %>
+      <li><%= link_to_unless(current_staff_member.sales_term, "販売条件設定", { :controller => "sales_terms", :action => "new" }) %></li>
+    <% end %>
+    <% if current_staff_member.additional_info %>
+      <li><%= link_to '追加情報設定', [:edit_staff, current_staff_member.additional_info] %></li>
+    <% else current_staff_member.additional_info %>
+      <li><%= link_to_unless(current_staff_member.additional_info, "追加情報設定", { :controller => "additional_infos", :action => "new" }) %></li>
+    <% end %>
+    <li><%= link_to "運営からのお知らせ", :staff_root %></li>
+  </ul>

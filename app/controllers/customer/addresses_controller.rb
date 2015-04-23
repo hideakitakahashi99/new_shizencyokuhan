@@ -18,20 +18,37 @@ class Customer::AddressesController < Customer::Base
 	end
 
 	def update
-		
-		 webpay = WebPay.new(WEBPAY_SECRET_KEY)
-  charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
-  		@customer = current_customer
-  		@address = Address.find(params[:id])
+		@customer = current_customer
+  		@staff_member = StaffMember.find(params[:staff_member_id])
+		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
+		total_price = cart.total_price
+		if params[:webpay]
+			webpay = WebPay.new(WEBPAY_SECRET_KEY)
+  			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
+  			@payment = "クレジット支払い"
+  	    else
+  	    	@payment = "代金引き換え"
+  	    end
+  	    
+  		@address = Address.find(params[:id])	
   		@address.assign_attributes(address_params) 
-		@address.add_line_items_from_cart(current_cart)
-		respond_to do |format|
-			if @address.save
-				Cart.destroy(session[:cart_id])
-				session[:cart_id] = nil
+  		
+  		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id, :total_price => total_price)
+  		@order.add_line_items_from_cart(cart)
+  		address = @address
+		
 
-				OrderNotifier.received(@address).deliver
-				OrderNotifier.shipped(@address).deliver
+		respond_to do |format|
+			if @address.save!
+				@order.add_address(address)
+				@order.save!
+
+		
+				Cart.destroy(cart)
+				
+
+				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
+				OrderNotifier.shipped(@address, @payment, @order).deliver
 				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @address, status: :created, location: @address }
 			else
@@ -43,7 +60,9 @@ class Customer::AddressesController < Customer::Base
 	end
 
 	def new
-		@cart = current_cart
+		@customer = current_customer
+  		@staff_member = StaffMember.find(params[:staff_member_id])
+		@cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
 		if @cart.line_items.empty?
 			redirect_to :customer_staff_member_store_index, notice: "カートは空です"
 			return
@@ -58,19 +77,32 @@ class Customer::AddressesController < Customer::Base
 
 	def create 
 
-  webpay = WebPay.new(WEBPAY_SECRET_KEY)
-  charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
-  
-  		@customer = current_customer
+  		if params[:webpay]
+			webpay = WebPay.new(WEBPAY_SECRET_KEY)
+  			charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
+  			@payment = "クレジット支払い"
+  	    else
+  	    	@payment = "代金引き換え"
+  	    end
+
+  	    @customer = current_customer
+  		@staff_member = StaffMember.find(params[:staff_member_id])
 		@address = @customer.addresses.build(address_params)
-		@address.add_line_items_from_cart(current_cart)
+		
+		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id)
+  		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
+  		@order.add_line_items_from_cart(cart)
+  		address = @address
 
 		respond_to do |format|
 			if @address.save
-				Cart.destroy(session[:cart_id])
-				session[:cart_id] = nil
-				OrderNotifier.received(@address).deliver
-				OrderNotifier.shipped(@address).deliver
+				@order.add_address(address)
+				@order.save!
+
+				Cart.destroy(cart)
+				
+				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
+				OrderNotifier.shipped(@address, @payment, @order, @staff_member).deliver
 				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @address, status: :created, location: @address }
 			else
@@ -97,4 +129,9 @@ class Customer::AddressesController < Customer::Base
     def phone_params(record_name)
 	 	params.require(record_name).permit(phones: [ :number, :primary ])
 	end
+	def order_params
+      params.require(:order).permit(
+        :staff_member_id, :customer_id
+        ) 
+    end
 end

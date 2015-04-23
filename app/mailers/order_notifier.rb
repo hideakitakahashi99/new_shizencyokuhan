@@ -1,17 +1,20 @@
 class OrderNotifier < ActionMailer::Base
-  default from: 'Sam Ruby <from@example.com>'
+  default from: '自然ちょくはん <hideakitakahashi99@gmail.com>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.order_notifier.received.subject
   #
-  def received(address)
+  def received(address, payment, order, staff_member)
     @address = address
+    @payment = payment
+    @order = order
+    @staff_member = staff_member
     @customer_family = @address.customer.family_name
     @customer_given = @address.customer.given_name
 
-    mail to: address.customer.email, subject: 'SOILS Store Order Confirmation'
+    mail to: 'hideakitakahashi99@gmail.com', subject: '【自然ちょくはん】ご注文が確定いたしました。'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -19,10 +22,11 @@ class OrderNotifier < ActionMailer::Base
   #
   #   en.order_notifier.shipped.subject
   #
-  def shipped(address)
+  def shipped(address, items)
     @address = address
+    @items = items
     
     
-    mail to: 'hideakitakahashi99@gmail.com', subject: 'SOILS Store Order Shipped'
+    mail to: 'hideakitakahashi99@gmail.com', subject: '【自然ちょくはん】商品発送のお知らせ'
   end
 end

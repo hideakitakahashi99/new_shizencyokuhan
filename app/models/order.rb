@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
 	has_many :line_items, dependent: :destroy
-	validates :name, :address, :email, presence: true
-	
+	has_one :address, dependent: :destroy
+	belongs_to :customer
 
  PAYMENT_TYPES = [ "現金", "クレジットカード", "注文書"]
 
@@ -11,4 +11,12 @@ class Order < ActiveRecord::Base
 			line_items << item
 		end
 	end
+
+	def add_address(address)
+		address do |add_address|
+		address << add_address
+	end
+	end
+
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409115519) do
+ActiveRecord::Schema.define(version: 20150422032529) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150409115519) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   add_index "addresses", ["city"], name: "index_addresses_on_city"
@@ -67,6 +68,8 @@ ActiveRecord::Schema.define(version: 20150409115519) do
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "staff_member_id"
+    t.integer  "customer_id"
   end
 
   create_table "customers", force: true do |t|
@@ -128,13 +131,14 @@ ActiveRecord::Schema.define(version: 20150409115519) do
   add_index "microposts", ["staff_member_id", "created_at"], name: "index_microposts_on_staff_member_id_and_created_at"
 
   create_table "orders", force: true do |t|
-    t.string   "name"
-    t.text     "address"
-    t.string   "email"
-    t.string   "pay_type"
+    t.integer  "customer_id",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "staff_member_id"
+    t.decimal  "total_price"
   end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
 
   create_table "phones", force: true do |t|
     t.integer  "customer_id",                      null: false
@@ -158,7 +162,7 @@ ActiveRecord::Schema.define(version: 20150409115519) do
     t.string   "net",                                     null: false
     t.decimal  "price",           precision: 8, scale: 0, null: false
     t.string   "stock",                                   null: false
-    t.integer  "staff_member_id"
+    t.string   "staff_member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
@@ -166,6 +170,7 @@ ActiveRecord::Schema.define(version: 20150409115519) do
   end
 
   add_index "products", ["category"], name: "index_products_on_category"
+  add_index "products", ["staff_member_id"], name: "index_products_on_staff_member_id"
 
   create_table "projects", force: true do |t|
     t.string   "title"

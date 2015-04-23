@@ -15,6 +15,7 @@ class StaffMember < ActiveRecord::Base
 	has_many :followers, through: :reverse_relationships, source: :follower
 	has_one :additional_info, dependent: :destroy
 	has_one :sales_term, dependent: :destroy
+	has_many :carts, dependent: :destroy
 
 	
 	mount_uploader :image, ImageUploader

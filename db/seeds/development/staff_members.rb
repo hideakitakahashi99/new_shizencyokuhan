@@ -17,6 +17,7 @@ c.create_staff_address!(
 	address2: 'rails-building807'
 	)
 
+
 	family_names = %w{
 		佐藤:サトウ:sato
 		鈴木:スズキ:suzuki
@@ -32,6 +33,8 @@ c.create_staff_address!(
 		竹子:タケコ:takeko
 		梅子:ウメコ:umeko
 	}
+
+
 
 	city_names = %w(丹波市 篠山市 三田市)
 
@@ -60,6 +63,8 @@ c.create_staff_address!(
 		address1: '市島町北奥555',
 		address2: 'rails-building807'
 		)
+
+		
 		
        content = Faker::Lorem.sentence(5)
        staff_member_id = [1..20]

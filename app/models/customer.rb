@@ -10,7 +10,8 @@ class Customer < ActiveRecord::Base
 	has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 	has_many :followed_staff_members, through: :relationships, source: :followed
 	has_many :tokens
-	has_one :cart, dependent: :destroy
+	has_many :carts, dependent: :destroy
+	has_many :orders, dependent: :destroy
 
 
 

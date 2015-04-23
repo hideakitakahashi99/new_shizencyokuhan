@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+
+<h2><%= @order.created_at %>　<%= @order.customer.family_name %>様　注文内容</h2>
+
+
+<%= render @order.line_items %>
+
+<br>
+
+<%= link_to 'Home', :staff_root %>
+</div>
+</div>
+</div>

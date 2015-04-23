@@ -6,7 +6,8 @@ class Address < ActiveRecord::Base
 	has_one :work_address, dependent: :destroy
 	has_many :line_items, dependent: :destroy
 	has_many :phones, -> { order(:id) }, dependent: :destroy, autosave: true
-
+	belongs_to :order
+	
 	before_validation do
 		self.postal_code = normalize_as_postal_code(postal_code)
 		self.city = normalize_as_name(city)

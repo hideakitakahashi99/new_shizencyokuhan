@@ -1,12 +1,11 @@
 <article>
- 
-  <ul>
-    <li>Home</li>
-    <li>マイページ</li>
-    <li>Shopping Cart</li>
-    <li>ごひいき農家一覧</li>
-    <li>登録情報変更</li>
-  </ul>
+  <%= 
+       if current_staff_member
+        render 'staff/shared/member_header'
+      else
+        render 'staff/shared/pre_header'
+      end
+%>
 </article>
 <div class="wrapper">
 

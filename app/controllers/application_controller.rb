@@ -29,4 +29,5 @@ include ErrorHandlers if Rails.env.production?
     cart
   end
 
+ 
 end

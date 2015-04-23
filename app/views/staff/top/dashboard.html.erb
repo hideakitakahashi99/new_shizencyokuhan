@@ -43,6 +43,7 @@
           <% else @staff_member.additional_info %>
            <li><%= link_to_unless(@staff_member.additional_info, "追加情報設定＞", { :controller => "additional_infos", :action => "new" }) %></li>
            <% end %>
+           <li><%= link_to '売上確認＞', :staff_orders %></a></li>
         </ul>
       </div>
 

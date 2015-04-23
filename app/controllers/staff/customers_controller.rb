@@ -6,6 +6,9 @@ class Staff::CustomersController < Staff::Base
 
 	def show
 		@customer = Customer.find(params[:id])
+		@staff_member = current_staff_member
+		@order = Order.where(:staff_member_id => @staff_member.id, :customer_id => @customer.id)
+
 	end
 
 	def new

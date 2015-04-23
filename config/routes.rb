@@ -52,7 +52,7 @@ namespace :staff, path: config[:staff][:path] do
     resources :sales_terms
     resources :schedules, only: [:create, :destroy ]
     resources :relationships, only: [:create, :destroy]
-  
+    resources :orders, only: [ :index, :show ]
     resources :products do
     get :who_bought, on: :member
     end 
