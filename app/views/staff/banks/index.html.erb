@@ -1,0 +1,50 @@
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<% @title = '売上振込先口座' %>
+
+
+				<h2 class="text-pink">
+					<strong><%= @title %></strong>
+				</h2>
+
+				
+				<div class="table-wrapper">
+			<div class="links">
+				
+			</div>
+
+			
+			
+				<table class="table">
+					<tr>
+						<% if @staff_member.bank %>
+						<th>金融機関名</th>
+							<td><%= @staff_member.bank.bank_name %></td>
+						<th>支店名</th>
+							<td><%= @staff_member.bank.branch_name %></td>
+						<th>口座種別</th>
+							<td><%= @staff_member.bank.account_type %></td>
+						<th>口座番号</th>
+							<td><%= @staff_member.bank.account_number %></td>
+						<th>口座名義</th>
+							<td><%= @staff_member.bank.account_holder %></td>
+							
+						<th></th>
+							<td class="actions">
+							<%= link_to '編集', [ :edit_staff, @staff_member.bank ] %> |
+							<%= link_to '削除', [ :staff, @staff_member.bank ], method: :delete, data: { confirm: '本当に削除しますか？'} %>
+							</td>
+							<% end %>
+
+					</tr>
+				
+				</table>
+			
+			
+			</div>
+		</div>
+		
+		</div>
+	</div>
+</div>

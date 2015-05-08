@@ -1,0 +1,57 @@
+<%= form_for [ :staff, @bank ] do |f| %>
+<div class="additional cf">
+  <h4><strong>振込先口座編集</strong></h4>
+  <div class="field">
+    <tr>
+    
+      <td>
+        <div class="inputrow">
+     <%= f.label :bank_name, '金融機関名' %>
+  <%= f.text_field :bank_name, :placeholder => '例：○○銀行、○○信用金庫 etc' %>
+
+  </div>
+  </td></br>
+
+
+      <td>
+        <div class="inputrow">
+     <%= f.label :branch_name, '支店名' %>
+  <%= f.text_field :branch_name, :placeholder => '例：○○支店、○○営業所 etc' %>
+  </div>
+  </td></br>
+
+
+  
+  <td>
+    <div class="inputrow">
+     <%= f.label :account_type, '口座種別' %>
+   <%= f.select :account_type, [["", Bank::ACCOUNT_TYPES]], :prompt => '以下よりお選び下さい' %>
+ </div>
+  </td></br>
+
+ 
+  <td>
+    <div class="inputrow">
+     <%= f.label :account_number, '口座番号' %>
+   <%= f.text_field :account_number, :placeholder => 
+   '例：1234567(半角数字)' %>
+ </div>
+  </td>
+
+  
+  <td>
+    <div class="inputrow">
+     <%= f.label :account_holder, '口座名義' %>
+   <%= f.text_field :account_holder, :placeholder => 
+   '例：ヤマダ タロウ' %>
+ </div>
+  </td>
+
+</tr>
+
+  </div>
+ 
+  <%= f.submit "口座情報を更新", class: "btn btn-large btn-primary" %>
+ 
+ </div>
+<% end %>

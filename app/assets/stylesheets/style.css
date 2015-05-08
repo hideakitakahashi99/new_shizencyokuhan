@@ -1391,6 +1391,10 @@ article .icon {
 	color: #ffffff;
 	padding-left: 60px;
 }
+.fname {
+	color: #ffffff;
+	padding-left: 100px;
+}
 
 article ul {
   width: 300px;
@@ -1554,3 +1558,23 @@ article ul li a:hover {
 	height: 500px;
 	overflow: hidden;
 }
+
+
+i span{
+	display:none;
+	padding:12px 13px;
+	margin-left:8px;
+	width:250px;
+	border-radius:5%;
+}
+i:hover span{
+	display:inline;
+	position:absolute;
+	background:#ffffff;
+	border:1px solid #cccccc;
+	color:#6c6c6c;
+}
+i:hover { text-decoration:none;}
+
+
+

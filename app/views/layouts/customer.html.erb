@@ -19,12 +19,14 @@
 <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
-    <style>
-    #map {
-    width:  100%;
-    height: 300px;
-  }
-  </style>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_KS/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 </head>
 
@@ -36,17 +38,17 @@
   <%= yield %>
 
 
-<%= link_to "Home", "/" %>
+<%= link_to "Home", :customer_root %>
   
   <footer class="footer">
       <div class="container">
         <div class="row">
           
          
-          <div class="widget widget-text">
-            <h2>お問い合わせ</h2>
+          <div class="span4">
+            <h2></h2>
             <a href="#"></a>
-            <p>Vel arcu in nec porttitor aliquam tempor platea, turpis? Ridiculus nascetur dignissim amet ac scelerisque facilisis etiam sed odio rhoncus, pellentesque nisi aenean vel. Sed a etiam in, non, velit ac cum in, magna, nisi ultrices, porta odio duis, urna tincidunt ac dis ultricies sit, lorem montes facilisis. Est, scelerisque, nisi ultrices, porta odio duis, urna tincidunt ac dis ultricies sit, lorem montes facilisis.</p>
+            <div class="fb-page" data-href="https://www.facebook.com/shizencyokuhan" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/shizencyokuhan"><a href="https://www.facebook.com/shizencyokuhan">自然栽培ちょくはん</a></blockquote></div></div>
           </div><!-- widget ends -->        
           <div class="widget widget_newsletter">
             <h2>Newsletter</h2>

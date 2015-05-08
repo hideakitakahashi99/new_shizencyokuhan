@@ -47,4 +47,22 @@ class Product < ActiveRecord::Base
 		end
 	end
 
+	def self.decrease_stock(product)
+		product.stock -= 1
+		product.save
+	end
+
+	def self.increase_stock(product)
+		product.stock += 1
+		product.save
+	end
+
+    def self.increse_all(products)
+    	products do |product|
+    		product.stock +=1
+    		product.save
+    	end
+    end
+
+
 end

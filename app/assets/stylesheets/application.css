@@ -12,6 +12,7 @@
  *
  *= require fullcalendar
  *= require jquery-ui/datepicker
+ *= require bxslider
  *= require_tree .
  *= require_self
  */

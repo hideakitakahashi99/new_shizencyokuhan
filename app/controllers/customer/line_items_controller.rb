@@ -16,6 +16,7 @@ class Customer::LineItemsController < Customer::Base
 	def create
 		@cart = Cart.find(params[:cart_id]) 
 		product = Product.find(params[:product_id])
+		Product.decrease_stock(product)
 		@line_item = @cart.add_product(product.id)
 		respond_to do |format|
 			if @line_item.save

@@ -14,7 +14,7 @@
 　<%= f.hidden_field :image_cache %> 
 </div>
 
-<%= f.fields_for :farm_address, f.object.farm_address do |ff| %>
+<%= f.fields_for :staff_address, f.object.staff_address do |ff| %>
 <%= markup do |m|
 	p2 = AddressFormPresenter.new(ff, self)
 	m << p2.postal_code_block(:postal_code, '郵便番号', size: 7)
@@ -32,26 +32,7 @@
 <%= p.text_field_block(:email, 'メールアドレス', size: 32, required: true) %>
 <%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %>
 
-<div>
-<%= f.label :vegetable_name_one, '作付け予定の野菜1', class: 'require' %>
-<%= f.text_field :vegetable_name_one, size: 32, required: true %>
-</div>
-<div>
-<%= f.label :vegetable_name_two, '作付け予定の野菜2', class: 'require' %>
-<%= f.text_field :vegetable_name_two, size: 32, required: true %>
-</div>
-<div>
-<%= f.label :vegetable_name_three, '作付け予定の野菜3', class: 'require' %>
-<%= f.text_field :vegetable_name_three, size: 32, required: true %>
-</div>
-<div>
-<%= f.label :vegetable_name_four, '作付け予定の野菜4', class: 'require' %>
-<%= f.text_field :vegetable_name_four, size: 32, required: true %>
-</div>
-<div>
-<%= f.label :vegetable_name_five, '作付け予定の野菜5', class: 'require' %>
-<%= f.text_field :vegetable_name_five, size: 32, required: true %>
-</div>
+
 
 <%= p.date_field_block(:start_date, '開始日', required: true) %>
 <%= p.date_field_block(:end_date, '終了日') %>

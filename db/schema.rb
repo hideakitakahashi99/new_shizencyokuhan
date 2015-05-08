@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422032529) do
+ActiveRecord::Schema.define(version: 20150430024945) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20150422032529) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "banks", force: true do |t|
+    t.integer  "staff_member_id"
+    t.string   "bank_name"
+    t.string   "branch_name"
+    t.string   "account_type"
+    t.integer  "account_number"
+    t.string   "account_holder"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "banks", ["staff_member_id"], name: "index_banks_on_staff_member_id"
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -131,7 +144,9 @@ ActiveRecord::Schema.define(version: 20150422032529) do
   add_index "microposts", ["staff_member_id", "created_at"], name: "index_microposts_on_staff_member_id_and_created_at"
 
   create_table "orders", force: true do |t|
-    t.integer  "customer_id",     null: false
+    t.integer  "customer_id",                     null: false
+    t.integer  "address_id",                      null: false
+    t.boolean  "shipped",         default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "staff_member_id"
@@ -159,9 +174,9 @@ ActiveRecord::Schema.define(version: 20150422032529) do
     t.string   "variety",                                 null: false
     t.string   "method",                                  null: false
     t.text     "description"
-    t.string   "net",                                     null: false
+    t.integer  "net",                                     null: false
     t.decimal  "price",           precision: 8, scale: 0, null: false
-    t.string   "stock",                                   null: false
+    t.integer  "stock",                                   null: false
     t.string   "staff_member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -214,6 +229,7 @@ ActiveRecord::Schema.define(version: 20150422032529) do
     t.datetime "opening_date"
     t.datetime "closing_date"
     t.boolean  "allDay"
+    t.string   "event_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

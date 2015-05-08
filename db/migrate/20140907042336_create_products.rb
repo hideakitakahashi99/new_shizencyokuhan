@@ -5,9 +5,9 @@ class CreateProducts < ActiveRecord::Migration
     	t.string :variety, null: false
     	t.string :method, null: false
     	t.text :description
-      t.string :net, null: false
+      t.integer :net, null: false
     	t.decimal :price, precision: 8, null: false
-    	t.string :stock, null: false
+    	t.integer :stock, null: false
       t.references :staff_member, null: false
       t.string :staff_member_id
       t.timestamps

@@ -3,7 +3,8 @@
 	<div class= "row">
 		<div class= "span12">
 <% @title = 'ダッシュボード' %>
-<h5>→現在のステータス</h5>
+<h5>→現在のステータス<i class="ion-help-circled">
+          <span>下のボタンでステータスを変更できます。ステータスを開店にすると、登録商品が購入可能な様態になります。閉店時、お客様は商品をカートに追加できなくなります。</span></i></h5>
 <%= render 'toggle' %>
 
 <div class="left">
@@ -31,19 +32,31 @@
 
 <div class="bread-bar clearfix">
         <ul class="breadcrumb">
-          <li><%= link_to '顧客管理＞', :staff_customers %></a></li>
-          <li><%= link_to '農産品管理＞', :staff_products %></a></li>
+          <li><%= link_to '農産品管理＞', :staff_products %></li>
           <% if @staff_member.sales_term %>
           <li><%= link_to '販売条件設定＞', [:edit_staff, @staff_member.sales_term] %></li>
           <% else @staff_member.sales_term %>
-           <li><%= link_to_unless(@staff_member.sales_term, "販売条件設定＞", { :controller => "sales_terms", :action => "new" }) %></li>
+           <li><i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.sales_term, "販売条件設定＞", { :controller => "sales_terms", :action => "new" }) %></li>
            <% end %>
           <% if @staff_member.additional_info %>
           <li><%= link_to '追加情報設定＞', [:edit_staff, @staff_member.additional_info] %></li>
           <% else @staff_member.additional_info %>
-           <li><%= link_to_unless(@staff_member.additional_info, "追加情報設定＞", { :controller => "additional_infos", :action => "new" }) %></li>
+           <li><i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.additional_info, "追加情報設定＞", { :controller => "additional_infos", :action => "new" }) %></li>
            <% end %>
-           <li><%= link_to '売上確認＞', :staff_orders %></a></li>
+
+          <% if @staff_member.bank %>
+          <li><i class="ion-help-circled custom-icon">
+          </i><%= link_to '売上振込先＞', [:edit_staff, @staff_member.bank] %></li>
+          <% else @staff_member.bank %>
+           <li><i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.bank, "売上振込先＞", { :controller => "banks", :action => "new" }) %></li>
+           <% end %>
+
+
+           <li><% if @orders.count == 0 %>
+            <%= link_to '売上確認＞', :staff_orders %>
+            <% else %>
+            <i class="ion-alert custom-icon"><strong>(<%= @orders.count %>)</strong><span>未発送の商品があります。<br>発送処理を完了して下さい。</span>
+          </i><%= link_to '　 売上確認＞', :staff_orders %><% end %></li>
         </ul>
       </div>
 
@@ -55,12 +68,13 @@
 <div class="left">
 <div class="span6">
 
+  <section class="comment-area">
+  <%= render 'store_schedule_form' %>
+  </section>
 	<section class="comment-area">
 	<%= render 'harvest_schedule_form' %>
 	</section>
-	<section class="comment-area">
-		<%= render 'store_schedule_form' %>
-	</section>
+
 </div>
 </div>
 
@@ -69,10 +83,16 @@
 <div class="span5">
 <div class="events">
   <div class="events-area">
-      <div class="detail">
-        <h5><a href="events-detail.html">スケジュールタイムライン</a></h5>
-      </div>
-
+ 
+      
+        <h5><a href="events-detail.html">スケジュールタイムライン</a><i class="ion-help-circled">
+          <span>ご自身が投稿したスケジュールを確認いただけます。</span></i>
+        </h5>
+     
+<% if @schedules.count == 0 %>
+<h4>ー現在投稿はありませんー</h4>
+<% else %>
+<%= paginate @schedules %>
 <% @schedules.each do |schedules| %>
 
            <li>
@@ -82,7 +102,7 @@
                  <a href="events-detail.html"></a>
                </figure>
              <div class="detail">
-               <h5><a href="<%= staff_products_path %>">【<%= @staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></a></h5>
+               <h5><a href="<%= schedules.event_url %>">【<%= @staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></a></h5>
                 <ul>
                   <li><span><i class="ion-ios-clock"></i><strong> 開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
                   <% if @staff_member.staff_address %>
@@ -98,14 +118,16 @@
            </li>
 <% end %>
            <%= paginate @schedules %>
+           <% end %>
+           
        </div>
    </div>
 </div>
 </div>
 
-<div id="calendar">
 
-</div>
+
+
 </div>
 </div>
 </div>

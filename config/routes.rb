@@ -50,9 +50,12 @@ namespace :staff, path: config[:staff][:path] do
     resources :staff_addresses
     resources :additional_infos
     resources :sales_terms
+    resources :banks
     resources :schedules, only: [:create, :destroy ]
     resources :relationships, only: [:create, :destroy]
-    resources :orders, only: [ :index, :show ]
+    resources :orders, only: [ :index, :show ] do
+      get :shipped 
+    end
     resources :products do
     get :who_bought, on: :member
     end 
@@ -96,6 +99,7 @@ namespace :customer, path: config[:customer][:path] do
       member do
       get :following, :followers
       end
+      get :sales_term
       resources :store, only: [ :index ]
       resources :carts
       resources :line_items

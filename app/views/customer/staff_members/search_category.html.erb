@@ -1,23 +1,35 @@
 <div class="container">
 	<div class="row">
 		<div class="span12">
+			<h2>品目検索結果</h2>
+			<% if @products.count == 0 %>
+			<h4>大変申し訳ございません。現在お探しの品目は商品登録されておりません。</h4>
+			<h4>お手数ですが、他の品目をお探し下さい。</h4>
+			
+			<h4>画像</h4>
+			<%= link_to 'トップ画面に戻る', [:customer_root], {:class => "btn" }%>
+			<%= link_to '開店中の店舗一覧', [:customer_open_index], {:class => "btn" }%>
+			
+			<% end %>
 		<% @products.each do |m| %>
 		
 		<div class="span4">
 			
 		 		<div class="entry">
 		 			<div><%= image_tag m.productimg.thumb.url %></div>
-					<h5><%= m.category %></h5>
+		 			<h5><%= m.staff_member.staff_address.prefecture %>産<br/><%= m.category %>(<%= m.staff_member.farm_name %>)</h5>
 					<h6><%= sanitize(m.description) %></h6>
 					<h5><%= m.variety %></h5>
 					<h5><%= m.method %></h5>
 					
 						<div class="price_line">
 						<span class="price">
-						<%= m.net %>個入り
-						<%= sprintf("¥%0.00f", m.price) %></span>
+						<%= m.net %>g入り
+						<%= sprintf("¥%0.00f", m.price) %>（税込）</span>
 						
 						</div>
+						<h1>
+						<%= link_to 'お店に行く！', [:customer, m.staff_member, :store, :index], {:class => "btn"}%></h1>
 				
 
 			

@@ -4,8 +4,10 @@
         <div class="events">
           <h2>ごひいき農家<br>新着 <strong>ポスト</strong></h2>
 					<div class="widget">
-            
-              
+            <% if @feed_items.count == 0 %>
+            <h4>現在表示できるスケジュールはございません。</h4>
+              <%= link_to '一覧から農家を探してみる', [:customer_staff_members], {:class => "btn" }%>
+              <% end %>
 
                 <% @feed_items.each do |schedules| %>
                

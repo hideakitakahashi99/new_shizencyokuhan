@@ -1,13 +1,10 @@
- 
-<div>
- <h2>Followers</h2>
-</div>
+
 
 <div class="container">
   <div class="row">
 <div class="span3">
     <section>
-      <h1><%= @staff_member.farm_name %></h1>
+      <h2>followers</h2>
       <span><b>投稿済みスケジュール数:</b> <%= @staff_member.schedules.count %></span>
     </section>
   </div>
@@ -22,14 +19,14 @@
           
           <tr>
          
-            <th>ごひいき顧客名</th>
-            <th>email</th>
+            <th>氏名</th>
+            <th>お住まいの地域</th>
 
           </tr>
           <tr>
            
             <td><%= customer.family_name %><%= customer.given_name%></td>
-            <td class="email"><%= customer.email %></td>
+            <td><%= customer.addresses.first.prefecture %></td>
 
           </tr>
           

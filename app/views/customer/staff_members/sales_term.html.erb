@@ -1,0 +1,32 @@
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			
+			<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<% @title = '特定商取引に関する表示' %>
+				<h2 class="text-pink">
+					<%= @title %>
+				</h2>
+
+	</div>
+</div>
+
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+
+
+		<h4><strong><%= simple_format @staff_member.sales_term.legal_info %></strong></h4>
+		
+	<%= link_to 'お店に戻る＞', [:customer_staff_member_store_index], {:class => "btn btn-large btn-primary" } %>
+
+	</div>
+</div>
+</div>
+

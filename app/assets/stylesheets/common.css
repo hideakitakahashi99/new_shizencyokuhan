@@ -710,7 +710,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"],
 .uneditable-input {
-  padding:8px 6px;
+  padding:0px 6px;
   height:20px;
   line-height:20px;
   margin-bottom:15px;
@@ -1890,7 +1890,7 @@ div.input-block input {
 }
 .signin input[type="text"],
 .signin input[type="password"] {
-  padding: 10px 12px 10px 32px;
+  padding: 0px 0px 0px 32px;
   display: block;
   width: 100%;
   margin-bottom: 10px;
@@ -2018,7 +2018,7 @@ input[type="checkbox"]:checked + label:after {
 }
 
 .schedule_harvest input[type="date"] {
-   padding: 10px 1px 10px 32px;
+  padding: 0px 0px 0px 32px;
   display: block;
   width: 100%;
   margin-bottom: 10px;
@@ -2309,4 +2309,9 @@ input[type="checkbox"]:checked + label:after {
 
 .input-block input[type="checkbox"] {
   display: none;
+}
+
+.custom-icon {
+  position : absolute;
+  color : yellow;
 }

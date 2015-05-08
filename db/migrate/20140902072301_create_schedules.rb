@@ -9,6 +9,8 @@ class CreateSchedules < ActiveRecord::Migration
       t.datetime :opening_date
       t.datetime :closing_date
       t.boolean :allDay
+      t.string :event_url
+
 
       t.timestamps
     end

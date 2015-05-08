@@ -16,6 +16,7 @@ class StaffMember < ActiveRecord::Base
 	has_one :additional_info, dependent: :destroy
 	has_one :sales_term, dependent: :destroy
 	has_many :carts, dependent: :destroy
+	has_one :bank, dependent: :destroy
 
 	
 	mount_uploader :image, ImageUploader

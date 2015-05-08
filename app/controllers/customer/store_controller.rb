@@ -23,7 +23,7 @@ class Customer::StoreController < Customer::Base
 
 
 	def show
-		@staff_member = StaffMember.find(params[:id])
+		@staff_member = StaffMember.find(params[:staff_member_id])
 		@store = @staff_member.store
 
 		@cart = Cart.find!(["staff_member_id = ? and customer_id = ?", @staff_member.id, customer.id])

@@ -13,7 +13,11 @@
 
     <div class="span12">
     <section>
+ <% if @staff_members.count == 0 %>
+ <h4>現在フォローしている農家はございません。</h4>
+ <%= link_to 'お気に入りの農家を探してみる', [ :customer_staff_members ], { :class => "btn" }%>
  
+ <% end %>
       <% if @staff_members.any? %>
         <table class="table">
           

@@ -68,8 +68,14 @@ class Customer::CartsController < Customer::Base
 
   # DELETE /carts/1
   # DELETE /carts/1.json
-  def destroy
+  def destroy  
     @cart = Cart.find(params[:id])
+    if params[:delete]
+      @cart.line_items.each do |item|
+        item.product.stock += 1
+        item.product.save
+      end
+    end
     @cart.destroy
     session[:cart_id] = nil
 

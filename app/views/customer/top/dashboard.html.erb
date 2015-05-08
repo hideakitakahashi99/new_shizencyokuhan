@@ -9,6 +9,12 @@
 
 </div>
 <div class="insert">
+  <ul class="bxslider">
+  <li><h3 class="pull-right"><i class="ion-leaf"></i>　<%= link_to '美味しさ満載！自然なお野菜レポート　かすみんぶろぐ毎月20日更新！　　＞＞', [:customer_root ] %></h3></li>
+  <li><h3 class="pull-right"><i class="ion-flag"></i>　<%= link_to '今週の注目農家！　ー兵庫うむ農園ー　　＞＞', [:customer_root ] %></h3></li>
+  <li><h3 class="pull-right"><i class="ion-bookmark">　</i><%= link_to 'うむ特別販売会開催！　2016年3月25日＠横浜中華街　　＞＞', [:customer_root ] %></h3></li>
+  <li><h3 class="pull-right"><i class="ion-paper-airplane">　</i><%= link_to '今月の一押しイベント！　ー楽市楽座よいよいー　　＞＞', [:customer_root ] %></h3></li>
+</ul>
 </div>
 
 
@@ -17,7 +23,12 @@
 
       <div class="span7">
         <div class="events">
-          <h2>今すぐ買える！<br>開店中の農家<br>INFO</h2>
+          <h2>今すぐ買える！！<br/><strong>開店中の自然農家</strong><br/>INFO</h2>
+           <% if @open_staff_members.count == 0 %>
+           <h4>ー現在購入できる農家さんはありませんー</h4>
+           <h5>フォローして開店情報をいち早くGET！</h5>
+           <%= link_to '登録農家を見てみる！', [:customer_staff_members ], {:class => "btn" } %>
+            <% end %>
           <% @open_staff_members.each do |m| %>
             <div class="span3">
 					<div class="events-area">
@@ -68,18 +79,22 @@
         </div><!-- events end -->
    
       <% end %>
-<%= page_entries_info @open_staff_members %>
+
       </div>
-        </div>
+      <div class="pull-left">
+      <%= paginate @open_staff_members %>
+    </div>
+      </div>
      
   
       <div class="row">
       <div class="span5">
         <div class="events">
-          <h2>全国農家からの<br>新着農作物を<br> <strong>チェック！！</strong></h2>
+          <h2>全国農家からの<br/><strong>新着スケジュールを</strong><br/> チェック！！</h2>
 					<div class="widget">
-           
-            
+           <% if @schedules.count == 0 %>
+           <h4>ー現在表示できる投稿はありませんー</h4>
+            <% end %>
                 <% @schedules.each do |schedules| %>
 
            <li>
@@ -107,16 +122,14 @@
              </div><!-- event-box ends -->
            </li>
 <% end %>
+<%= paginate @schedules %>
               
            
           </div><!-- widget ends -->
                  
                     <h5><a href="events-detail.html">
-                      <br/>農家さんの開店予定が閲覧できます！好きな場所の農家さんから直接購入しよう！</a></h5>
-                    <ul>
-                      <li><span><i class="icon-date"></i>25 - 02 - 2013</span><span>08:00am - 12:00pm</span></li>
-                      <li><span><i class="icon-location"></i>Washington, United States</span></li>
-                    </ul>
+                      <br/>開催されるイベントや、開店のスケジュールを農家さんが共有してくれるよ！好きな農家さんをフォローしてスケジュールをいち早くGETしよう！</a></h5>
+                    
                   
 
                   
@@ -125,6 +138,30 @@
               </div>
             </div>
           </div>
+          <script>
+          $(document).ready(function(){
+  $('.bxslider').bxSlider({
+    auto: true,
+    nextSelector: '#slider-next',
+  prevSelector: '#slider-prev',
+  pause: 6000,
+  buildPager: function(slideIndex){
+    switch(slideIndex){
+      case 0:
+        return '<i class="ion-earth"></i>';
+      case 1:
+        return '<i class="ion-planet"></i>';
+      case 2:
+        return '<i class="ion-cube"></i>';
+      case 3:
+        return '<i class="ion-lightbulb"></i>';
+      case 4:
+        return '<i class="ion-earth"></i>';
+    }
+  }
+});
+  });
+          </script>
 
         
       

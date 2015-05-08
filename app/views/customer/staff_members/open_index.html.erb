@@ -20,6 +20,7 @@
 
 
 <div class="container">
+	<%= paginate @staff_members %>
 	<div class="row">
 		<% @staff_members.each do |m| %>
 		
@@ -45,6 +46,8 @@
 		<% end %>
 		
 	</div>
+	<%= paginate @staff_members %>
 </div>
+
 
 

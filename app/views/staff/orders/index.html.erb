@@ -1,11 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-<h1>今月の売上　¥<%= @total_sales %>-</h1>
+<h1><%= @month %>月度の売上　¥<%= @total_sales %>-</h1>
+<% if @orders.count == 0 %>
+<h4>ー現在表示できる売上がありませんー</h4>
+<% end %>
 <table class="table">
  
     <tr>
-      <th>都道府県</th>
+      <th>ステータス</th>
       <th>名前</th>
       <th>連絡先</th>
       <th>決済金額</th>
@@ -18,7 +21,11 @@
   
     <% @orders.each do |order| %>
       <tr>
-        <td><%=  %></td>
+        <% if order.shipped == false %>
+        <td><h3><%= link_to '発送完了メール送信', [:staff, order, :shipped], { :data => {:confirm => "発送完了の通知を送信しますか?"}, :class => "btn" } %> <i class="ion-alert-circled"><h5><span>　決済日から3日以内に商品の発送を完了し、「発送完了メール送信」ボタンを押してください。<br/><br/>　ボタンを押すと、発送完了のメールが、自動的にお客様に届きます。<br/><br/>　※一度押してしまうとキャンセルはできませんのでご注意下さい。</span></h5></i></h3></td>
+        <% else %>
+        <td>発送通知完了</td>
+        <% end %>
         <td><%= order.customer.family_name %> <%= order.customer.given_name %></td>
         <td><%= order.customer.email %></td>
         <td>¥<%= order.total_price %></td>

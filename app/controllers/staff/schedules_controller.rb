@@ -44,6 +44,6 @@ class Staff::SchedulesController < Staff::Base
 	end
 
 	def harvest_schedule_params
-		params.require(:schedule).permit(:harvest, :harvest_date)
+		params.require(:schedule).permit(:harvest, :harvest_date, :event_url)
 	end
 end

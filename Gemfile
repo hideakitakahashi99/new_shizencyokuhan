@@ -88,3 +88,8 @@ gem 'capistrano-rvm'
 
 # gem 'mysql2'
 gem 'yaml_db', github: 'jetthoughts/yaml_db'
+
+gem 'bxslider-rails'
+
+gem 'prawn'
+gem 'prawn-table'

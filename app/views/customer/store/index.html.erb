@@ -10,8 +10,10 @@
 					<%= @title %>
 					<strong><%= @title2 %></strong>
 				</h2>
-				<div><%= link_to '特定商取引に関する表示', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+				<% if @staff_member.sales_term.present? %>
+				<div><%= link_to '特定商取引に関する表示', [:customer_staff_member_sales_term], {:class => "btn btn-large btn-primary" } %>
 							</div>
+				<% end %>
 			<div class="links">
 				<%= link_to 'ユーザートップ', :customer_root %>
     		</div>
@@ -31,7 +33,7 @@
 
 					</div>
 					<div>
-	<%= button_to "カートを空にする", [:customer, @staff_member, @cart], method: :delete %>
+	<%= button_to "カートを空にする", [:customer, @staff_member, @cart], method: :delete, :name => 'delete'%>
 	</div>
 				</div>
 		</div>
@@ -41,6 +43,13 @@
 
 <div class="container">
 	<div class="row">
+		
+		<% if @products.count == 0 %>
+		<div class="span12">
+		<h4>大変、申し訳ございません。現在ご購入いただける商品はございません。</h4>
+		</div>
+		<% end %>
+
 		<% @products.each do |m| %>
 		
 		<div class="span4">

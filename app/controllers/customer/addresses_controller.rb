@@ -33,7 +33,7 @@ class Customer::AddressesController < Customer::Base
   		@address = Address.find(params[:id])	
   		@address.assign_attributes(address_params) 
   		
-  		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id, :total_price => total_price)
+  		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id, :total_price => total_price, :address_id => @address.id)
   		@order.add_line_items_from_cart(cart)
   		address = @address
 		
@@ -76,21 +76,21 @@ class Customer::AddressesController < Customer::Base
 	end
 
 	def create 
-
+		@customer = current_customer
+  		@staff_member = StaffMember.find(params[:staff_member_id])
+		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
+		total_price = cart.total_price
   		if params[:webpay]
 			webpay = WebPay.new(WEBPAY_SECRET_KEY)
-  			charge = webpay.charge.create(currency: 'jpy', amount: current_cart.total_price, card: params['webpay-token'])
+  			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
   			@payment = "クレジット支払い"
   	    else
   	    	@payment = "代金引き換え"
   	    end
 
-  	    @customer = current_customer
-  		@staff_member = StaffMember.find(params[:staff_member_id])
 		@address = @customer.addresses.build(address_params)
 		
-		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id)
-  		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
+		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id, :total_price => total_price, :address_id => @address.id)
   		@order.add_line_items_from_cart(cart)
   		address = @address
 
@@ -131,7 +131,7 @@ class Customer::AddressesController < Customer::Base
 	end
 	def order_params
       params.require(:order).permit(
-        :staff_member_id, :customer_id
+        :staff_member_id, :customer_id, :total_price, :address_id 
         ) 
     end
 end

@@ -38,6 +38,11 @@ class Customer::StaffMembersController < Customer::Base
 		render 'customer/staff_members/search_category'
 	end
 
+	def sales_term
+		@staff_member = StaffMember.find(params[:staff_member_id])
+	end
+
+
 	private
 
 	def authorize
