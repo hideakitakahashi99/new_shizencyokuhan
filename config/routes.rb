@@ -10,9 +10,14 @@ get 'projects/marker',  to: 'projects#marker',  as: :marker
 
   get 'calendar/index'
 
-  get 'static_pages/company'
-  get 'static_pages/delivery_charge'
-  get 'static_pages/low'
+    get 'static_pages/company'
+    get 'static_pages/feed_page'
+    get 'static_pages/intro'
+    get 'static_pages/qa'
+    get 'static_pages/commercial_transaction'
+    get 'static_pages/policy'
+    get 'static_pages/disclaimer'
+    get 'static_pages/term'
   
 
 resources :projects do
@@ -87,9 +92,13 @@ namespace :customer, path: config[:customer][:path] do
     get 'search' => 'staff_members#search'
     get 'token/:uuid', :to => 'signups#token'
     get 'static_pages/company'
-    get 'static_pages/delivery_charge'
-    get 'static_pages/low'
     get 'static_pages/feed_page'
+    get 'static_pages/intro'
+    get 'static_pages/qa'
+    get 'static_pages/commercial_transaction'
+    get 'static_pages/policy'
+    get 'static_pages/disclaimer'
+    get 'static_pages/term'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
 

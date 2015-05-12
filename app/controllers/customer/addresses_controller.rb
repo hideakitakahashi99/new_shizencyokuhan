@@ -48,7 +48,7 @@ class Customer::AddressesController < Customer::Base
 				
 
 				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
-				OrderNotifier.shipped(@address, @payment, @order).deliver
+				
 				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @address, status: :created, location: @address }
 			else
@@ -102,7 +102,7 @@ class Customer::AddressesController < Customer::Base
 				Cart.destroy(cart)
 				
 				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
-				OrderNotifier.shipped(@address, @payment, @order, @staff_member).deliver
+				
 				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @address, status: :created, location: @address }
 			else

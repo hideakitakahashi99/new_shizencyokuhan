@@ -28,7 +28,7 @@ $(".openNav").click(function() {
 });
 </script>
 
-      <div class="logo"> <%= image_tag 'logo20140114.png' %> <span class="slogan"> 全国の自然農、自然栽培農家が見つかる！繋がる！ </span> </div> 
+      <div class="logo"> <%= link_to image_tag ('logo20140114.png'), :action => "index" %> <span class="slogan"> 全国の自然農、自然栽培農家が見つかる！繋がる！ </span> </div> 
       <!-- logo ends -->
  <div class="pull-right">
 <%= link_to "農産品を購入:新規会員登録はこちら！", :customer_signup, { :class => "sbtn" }  %>
@@ -46,8 +46,7 @@ $(".openNav").click(function() {
       else
         link_to 'ログイン', :customer_login 
       end
-    %> |
-    <%= link_to 'アカウント', :customer_root if current_customer %>
+    %> 
   </div>
   </div>
 </div>

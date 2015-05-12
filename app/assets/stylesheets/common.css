@@ -2312,6 +2312,13 @@ input[type="checkbox"]:checked + label:after {
 }
 
 .custom-icon {
-  position : absolute;
-  color : yellow;
+  position: absolute;
+  color: yellow;
 }
+
+.stats {
+  margin-left: 3px;
+  margin-top: 5px;
+}
+
+

@@ -1,0 +1,51 @@
+  <div class="container">
+  <div class="row">
+      <div class="span12">
+        <div class="events">
+          <h2>ごひいき農家<br>新着 <strong>ポスト</strong></h2>
+					<div class="widget">
+            <% if @feed_items.count == 0 %>
+            <h4>現在表示できるスケジュールはございません。</h4>
+              <%= link_to '一覧から農家を探してみる', [:customer_staff_members], {:class => "btn" }%>
+              <% end %>
+
+                <% @feed_items.each do |schedules| %>
+               
+
+           <li>
+             <div class="event-box">
+               <figure class="image">
+                <%= image_tag schedules.staff_member.image.thumb.url %>
+                 <a href="events-detail.html"></a>
+               </figure>
+             <div class="detail">
+               <h5><a href="<%= customer_staff_member_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
+                <ul>
+                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
+                  <% if schedules.staff_member.additional_info %>
+                  <li><i class="ion-information-circled"></i> 自然栽培<%= schedules.staff_member.additional_info.farm_condition_year %>|<%= schedules.staff_member.additional_info.farm_condition %></li>
+                  <li><i class="ion-heart"></i> 看板やさい：<%= schedules.staff_member.additional_info.masterpiece %></li>
+                  <% end %>
+                    <% if schedules.staff_member.staff_address %>
+                  <li><i class="ion-ios-location"></i> 
+                    <%= schedules.staff_member.staff_address.prefecture %> 
+                    <%= schedules.staff_member.staff_address.city %> 
+                    <%= schedules.staff_member.staff_address.address1 %> </li>
+                    <% end %>
+              </ul>
+             </div>
+             </div><!-- event-box ends -->
+           </li>
+<% end %>
+              
+          </div><!-- widget ends -->
+                 
+                    
+                    
+
+                  
+                </div><!-- event-box ends -->
+              
+              </div>
+            </div>
+          </div>

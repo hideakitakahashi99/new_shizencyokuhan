@@ -45,11 +45,37 @@
         <div class="row">
           
          
+          <div class="span2">
+            <h2>INDEX</h2>
+            <ul>
+          <li><%= link_to '自然栽培ちょくはん とは', :customer_static_pages_intro %></li>
+          <li><%= link_to 'よくある質問', :customer_static_pages_qa %></li>
+          <li><%= link_to '特定商取引法に基づく表示', :customer_static_pages_commercial_transaction %></li>
+          <li><%= link_to '利用規約', :customer_static_pages_term %></li>
+          <li><%= link_to '免責事項', :customer_static_pages_disclaimer %></li>
+          <li><%= link_to 'プライバシーポリシー', :customer_static_pages_policy %></li>
+          <li><%= link_to 'お問い合わせ', :customer_static_pages_qa %></li>
+        </ul>
+          </div><!-- widget ends -->     
+
           <div class="span4">
-            <h2></h2>
-            <a href="#"></a>
-            <div class="fb-page" data-href="https://www.facebook.com/shizencyokuhan" data-hide-cover="false" data-show-facepile="false" data-show-posts="false"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/shizencyokuhan"><a href="https://www.facebook.com/shizencyokuhan">自然栽培ちょくはん</a></blockquote></div></div>
-          </div><!-- widget ends -->        
+            <h2>　</h2>
+            <ul>
+          <li><%= link_to '登録自然農家 一覧' , :customer_staff_members %></li>
+          <li><%= link_to '開店中の農家 一覧' , :customer_open_index %></li>
+          <li></li>
+          <li><i class="ion-information-circled"></i>
+            <%= link_to '自然農、自然栽培紹介ブログ「かすみんのお墨付き！」', "http://shizencyokuhan.cocolog-nifty.com/blog/", {:target => "_blank"} %></li>
+        </ul> 
+        <div class="social-links">
+          <h7>　</h7>
+        <ul>
+          <li><a href="https://www.facebook.com/shizencyokuhan"><i class="ion-social-facebook"></i></a></li>
+          <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+        </ul>
+         </div>
+          </div><!-- widget ends -->     
+
           <div class="widget widget_newsletter">
             <h2>Newsletter</h2>
             <div class="newsletter">
@@ -68,10 +94,8 @@
       <div class="bottom-left">
         <p>&copy;2015 うむ株式会社 All rights reserved. </p>
         <ul>
-          <li><a href=<%= "static_pages_company_path"%>>company</a></li>
-          <li><a href="#">Environment</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="#">Site Map</a></li>
+          <li><%= link_to '会社概要', :customer_static_pages_company %></li>
+          
         </ul>
       </div>
       <div class="social-links">

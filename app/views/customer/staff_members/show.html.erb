@@ -5,12 +5,17 @@
 			<div id="farm_prof"><%= image_tag @staff_member.image_url %></div>
 <% @title = '販売者詳細' %>
 <h1><%= @staff_member.farm_name %></h1>
+<div>
 <% if @staff_member.additional_info %>
 <h1><i class="ion-ios-chatbubble"></i></h1><h4><%= @staff_member.additional_info.explanation %></h4>
 <% end %>
+</div>
+
+
 	<p style="margin-top: 0px;">
 							<div><%= link_to '商品を見る！', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
 							</div>
+
 						</p>
 <div class= "container">
 <div class= "row">
@@ -21,14 +26,14 @@
 </div>
 </div>
 
-<aside class="span4">
- <section>
-        <%= render 'stats' %>
- </section>
-</aside>
-
-
-
+<div class="pull-left">
+	<%= render 'follow_form' %>
+</div>
+<div class="pull-left">
+<div class="stats">
+    <%= render 'stats' %>
+</div>
+</div>
 <div class="links">
 
 	<%= link_to 'ユーザートップ', :customer_root %>
@@ -36,9 +41,7 @@
 </div>
 
 
-<div class="span8">
-	<%= render 'follow_form' %>
-</div>
+
 
 <table class="table">
 	<tr>

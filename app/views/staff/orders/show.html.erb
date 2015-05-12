@@ -17,9 +17,7 @@
 <%= render @order.line_items %>
 <div class="pull-right"><h3>合計： ¥<%= @order.total_price %>-（税込）</h3></div>
 <br>
-
-
-<%= link_to 'Home', :staff_root %>
+<%= link_to "受注票をダウンロード(PDF形式)", staff_order_path(@order, format: "pdf"), :class => 'btn' %>
 </div>
 </div>
 </div>

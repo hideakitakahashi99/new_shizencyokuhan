@@ -10,6 +10,5 @@
     <li><%= link_to "Home", :customer_root %></li>
     <li><%= link_to "ごひいき農家一覧", following_customer_staff_member_path(current_customer) %></li>
     <li><%= link_to "ごひいき農家予定一覧", customer_static_pages_feed_page_path %></li>
-    <li><%= link_to '登録情報変更', :customer_root if current_customer %></li>
     <li><%= link_to "運営からのお知らせ", :customer_root %></li>
   </ul>

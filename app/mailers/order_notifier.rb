@@ -22,10 +22,11 @@ class OrderNotifier < ActionMailer::Base
   #
   #   en.order_notifier.shipped.subject
   #
-  def shipped(address, items)
+  def shipped(staff_member, address, order, customer)
     @address = address
-    @items = items
-    
+    @staff_member = staff_member
+    @order = order
+    @customer = customer
     
     mail to: 'hideakitakahashi99@gmail.com', subject: '【自然ちょくはん】商品発送のお知らせ'
   end
