@@ -42,6 +42,14 @@ namespace :staff, path: config[:staff][:path] do
     post ':id/toggle' => 'top#toggle'
     get 'login' => 'sessions#new', as: :login
     get 'signup' => 'signups#new'
+    get 'static_pages/company'
+    get 'static_pages/feed_page'
+    get 'static_pages/intro'
+    get 'static_pages/qa'
+    get 'static_pages/commercial_transaction'
+    get 'static_pages/policy'
+    get 'static_pages/disclaimer'
+    get 'static_pages/term'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
     resource :account, except: [ :new, :create ]
