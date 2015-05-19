@@ -1154,7 +1154,7 @@ font-size:10px !important;
 }
  @media only screen and (min-width: 0px) and (max-width: 479px) {
 .responsive .tp-bullets {
-	display:none
+	display:none;
 }
 .responsive .tparrows {
 	display:none;

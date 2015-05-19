@@ -106,7 +106,6 @@
 /*** Main Menu 
 /////////////////////////////// ***/
 .menu-bar {
-	display:;
 	background:#86C166;
 }
 .menu-bar .menu {
@@ -165,10 +164,10 @@
 }
 
 .menu-bar li li {
-	display:none
+	display:none;
 }
 .menu-bar li:hover li {
-	display:block
+	display:block;
 }
 .menu-bar li li a {
 	display:block;
