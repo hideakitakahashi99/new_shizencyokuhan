@@ -99,21 +99,6 @@ ActiveRecord::Schema.define(version: 20150430024945) do
 
   add_index "customers", ["email_for_index"], name: "index_customers_on_email_for_index", unique: true
 
-  create_table "events", force: true do |t|
-    t.integer  "staff_member_id", null: false
-    t.string   "type",            null: false
-    t.string   "title"
-    t.datetime "start"
-    t.datetime "end"
-    t.string   "color"
-    t.boolean  "allDay"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "events", ["staff_member_id"], name: "index_events_on_staff_member_id"
-  add_index "events", ["type", "staff_member_id"], name: "index_events_on_type_and_staff_member_id", unique: true
-
   create_table "line_items", force: true do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
@@ -186,16 +171,6 @@ ActiveRecord::Schema.define(version: 20150430024945) do
 
   add_index "products", ["category"], name: "index_products_on_category"
   add_index "products", ["staff_member_id"], name: "index_products_on_staff_member_id"
-
-  create_table "projects", force: true do |t|
-    t.string   "title"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "address"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -278,16 +253,6 @@ ActiveRecord::Schema.define(version: 20150430024945) do
   end
 
   add_index "staff_members", ["email_for_index"], name: "index_staff_members_on_email_for_index", unique: true
-
-  create_table "tasks", force: true do |t|
-    t.string   "title"
-    t.boolean  "done",       default: false
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
 
   create_table "tests", force: true do |t|
     t.datetime "created_at"

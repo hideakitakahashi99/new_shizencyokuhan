@@ -13,6 +13,5 @@ class CreateProducts < ActiveRecord::Migration
       t.timestamps
     end
     add_index :products, :staff_member_id
-    add_foreign_key :products, :staff_members
   end
 end
