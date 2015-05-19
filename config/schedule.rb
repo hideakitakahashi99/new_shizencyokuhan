@@ -1,9 +1,9 @@
 
 
-every :hour do 
-  runner StatusBatch.auto_status_open
-  runner StatusBatch.auto_status_close
-end
+# every :hour do 
+#  runner StatusBatch.auto_status_open
+#  runner StatusBatch.auto_status_close
+#end
 
 # Use this file to easily define all of your cron jobs.
 #
