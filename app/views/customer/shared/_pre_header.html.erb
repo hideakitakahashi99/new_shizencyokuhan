@@ -1,9 +1,8 @@
   <ul>
-    <li><a>Home</a></li>
-    <li><a>Shopping Cart</a></li>
-    <li><a>自然栽培ちょくはん とは</a></li>
-	<li><a>運営からのお知らせ</a></li>
-
-	<li><a>新規会員登録はこちら！</a></li>
+    <li><%= link_to "Home", :customer_root %></li>
+    <li><%= link_to "利用規約", :static_pages_term %></li>
+    <li><%= link_to "免責事項", :static_pages_disclaimer %></li>
+    <li><%= link_to '会社概要', :static_pages_company %></li>
+    <li><%= link_to "プライバシーポリシー", :static_pages_policy %></li>
   </ul>
 

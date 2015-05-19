@@ -12,7 +12,7 @@ gem 'date_validator', '~> 0.7.0'
 gem 'email_validator', '~> 1.4.0'
 
 ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
-gem 'nokogiri', '~> 1.6.3.1'
+gem 'nokogiri'
 
 gem 'capybara', '~> 2.2.1'
 
@@ -83,8 +83,8 @@ gem 'webpay'
 gem 'capistrano', '~> 3.0.1'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
-gem 'capistrano-rvm'
-# gem 'capistrano-rbenv'
+# gem 'capistrano-rvm'
+gem 'capistrano-rbenv'
 
 # gem 'mysql2'
 gem 'yaml_db', github: 'jetthoughts/yaml_db'
@@ -93,3 +93,10 @@ gem 'bxslider-rails'
 
 gem 'prawn'
 gem 'prawn-table'
+
+
+	gem 'mysql2'
+
+gem 'json', '~> 1.8.1'
+
+gem 'exception_notification'

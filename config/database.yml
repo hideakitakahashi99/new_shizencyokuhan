@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encording: utf8
+  reconnect: false
+  database: shizencyokuhan_production
+  pool: 5
+  username: hideaki
+  password: password
+  host: localhost

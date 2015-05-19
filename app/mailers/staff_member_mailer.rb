@@ -8,4 +8,10 @@ class StaffMemberMailer < ActionMailer::Base
     mail to: @staff_member.email, subject: '店舗登録完了のお知らせ'
   end
 
+  def push_info(current_staff_member, customer)
+  	@staff_member = current_staff_member
+  	@customer = customer
+  	mail to: @customer.email, subject: 'ごひいき農家からお知らせがあります。'
+  end
+
 end

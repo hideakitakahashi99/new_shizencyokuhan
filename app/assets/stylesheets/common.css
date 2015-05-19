@@ -1,8 +1,4 @@
-/*!
- * Help v.1.0.0
- * Copyright 2013 
- * 
- */
+
  
 article,
 aside,
@@ -12,10 +8,7 @@ figure,
 footer,
 header,
 hgroup,
-nav.
-section {
-  display:block;
-}
+
 figure {
 	margin:0px;
 }

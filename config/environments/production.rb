@@ -85,4 +85,14 @@ Rails.application.configure do
     admin: { host: 'shizencyokuhan.com', path: 'admin' },
     customer: { host: 'shizencyokuhan.com', path: 'mypage' }
   }
+
+  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+
+  config.middleware.use ExceptionNotification::Rack,
+    :email => {
+      :email_prefix         => "[Error] ",
+      :sender_address       => %{"notifier" <hideakitakahashi99@gmail.com>},
+      :exception_recipients => %w{hideakitakahashi99@gmail.com}
+    }
 end
