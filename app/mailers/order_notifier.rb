@@ -31,7 +31,7 @@ class OrderNotifier < ActionMailer::Base
     @customer = customer
     
     mail(to: @customer.email,
-         bcc: 'hideakitakahashi99@gmail.com' 
+         bcc: 'hideakitakahashi99@gmail.com', 
          subject: '【自然ちょくはん】商品発送のお知らせ')
   end
 end
