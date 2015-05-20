@@ -64,7 +64,11 @@ namespace :staff, path: config[:staff][:path] do
     resources :additional_infos
     resources :sales_terms
     resources :banks
-    resources :schedules, only: [:create, :destroy ]
+    resources :schedules, only: [:create, :destroy ] do
+      member do
+      get :push
+    end
+    end
     resources :relationships, only: [:create, :destroy]
     resources :orders, only: [ :index, :show ] do
       get :shipped 

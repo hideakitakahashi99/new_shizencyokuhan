@@ -112,6 +112,7 @@
                   	<%= @staff_member.staff_address.address1 %></span></li>
                     <% end %>
                     <li><%= link_to '削除', [ :staff, schedules ], method: :delete, data: { confirm: '本当に削除しますか？'} %></li>
+                    <li><%= link_to 'メールでシェア', [ :push, :staff, schedules ], data: { confirm: 'フォロワー宛にメールが送信されます。本当に送信しますか？'} %></li>
                 </ul>
              </div>
              </div><!-- event-box ends -->

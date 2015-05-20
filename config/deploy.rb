@@ -17,9 +17,8 @@ set :deproy_to, '/var/www/deploy01/'
 
  set :deploy_via, :remote_cache
  set :scm, :git
-
+ set :brunch, 'master'
 set :use_sudo, false
-set :default_run_options, :pty => true
 
 set :keep_releases, 5
 
@@ -48,31 +47,26 @@ set :rbenv_ruby, '2.1.2'
 # set :keep_releases, 5
 
 namespace :deploy do
-
- task :set_file_process_owner do
-  sudo "chown -r #{hideaki} #{deploy_to}"
-end
-
-
-    desc 'Restart application'
+  desc "cause Passenger to initiate a restart"
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      run "touch #{current_path}/tmp/restart.txt"
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
+    run "touch #{current_path}/tmp/restart.txt"
   end
 
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
+  desc "reload the database with seed data"
+  task :seed do
+    run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
   end
-
-
-
 end
+  
+
+
+  after "deploy:update_code", :bundle_install
+  desc "install the necessary prerequisites"
+  task :bundle_install, roles => :app do
+    run "cd #{release_path} && bundle install"
+  end
+
+
+
+
+

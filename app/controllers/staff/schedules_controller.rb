@@ -28,6 +28,15 @@ class Staff::SchedulesController < Staff::Base
 	    end
 	end
 
+	def push
+		@schedule = Schedule.find(params[:id])
+		@staff_member = current_staff_member 
+		@customers = @staff_member.followers.all
+		StaffMemberMailer.push_info(@schedule, @staff_member, @customers).deliver
+		flash.notice = 'フォロワーにお便りを出しました。'
+		redirect_to :staff_root
+	end
+
 
 	def destroy
 		@schedule = Schedule.find(params[:id])
