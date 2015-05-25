@@ -15,12 +15,12 @@ role :db,  %w{hideaki@153.122.50.163}
 
 # deploy ==========================
 
-after :deploy, "assets:precompile"
-after :deploy, "deploy:migrate"
-after :deploy, "deploy:restart"
+#　after :deploy, "assets:precompile"
+# after :deploy, "deploy:migrate"
+# after :deploy, "deploy:restart"
 
 
-after :deploy, "deploy:cleanup"
+# after :deploy, "deploy:cleanup"
 
 
 # Extended Server Syntax

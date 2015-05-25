@@ -25,9 +25,8 @@ class Staff::ProductsController < Staff::Base
 		end
 
 		def update
-			@staff_member = current_staff_member
-			@product = @staff_member.products
-			if @product.build
+			@product = Product.find(params[:id])
+			if @product.update(product_params)
 				flash.notice = '産品情報を更新しました。'
 				redirect_to :staff_products
 			else

@@ -47,24 +47,16 @@ set :rbenv_ruby, '2.1.2'
 # set :keep_releases, 5
 
 namespace :deploy do
-  desc "cause Passenger to initiate a restart"
+  desc 'Restart application'
   task :restart do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
+ end
 
-  desc "reload the database with seed data"
-  task :seed do
-    run "cd #{current_path}; rake db:seed RAILS_ENV=#{rails_env}"
-  end
+ after :publishing, 'deploy:restart'
+
 end
   
 
 
-  after "deploy:update_code", :bundle_install
-  desc "install the necessary prerequisites"
-  task :bundle_install, roles => :app do
-    run "cd #{release_path} && bundle install"
-  end
 
 
 

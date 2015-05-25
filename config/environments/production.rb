@@ -81,9 +81,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.taskapp = {
-    staff: { host: 'shizencyokuhan.com', path: 'staff' },
-    admin: { host: 'shizencyokuhan.com', path: 'admin' },
-    customer: { host: 'shizencyokuhan.com', path: 'mypage' }
+    staff: { host: 'www.shizencyokuhan.com', path: 'staff' },
+    admin: { host: 'www.shizencyokuhan.com', path: 'admin' },
+    customer: { host: 'www.shizencyokuhan.com', path: 'mypage' }
   }
 
   config.action_mailer.delivery_method = :sendmail

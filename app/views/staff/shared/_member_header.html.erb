@@ -10,6 +10,7 @@
     <li><%= link_to "Home", :staff_root %></li>
     <li><%= link_to "フォロワ一覧", followers_staff_customer_path(current_staff_member) %></li>
     <li><%= link_to "農産品管理", :staff_products %></li>
+    <li><%= link_to "基本情報管理", :staff_account %></li>
     <% if current_staff_member.sales_term %>
       <li><%= link_to '販売条件設定', [:edit_staff, current_staff_member.sales_term] %></li>
     <% else current_staff_member.sales_term %>
