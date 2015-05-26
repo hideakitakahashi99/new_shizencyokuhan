@@ -27,6 +27,7 @@ server '153.122.50.163', user: 'hideaki', roles: %w{web app db}
 set :user, "hideaki"
 set :password, "dai108dainaikakusouridaijinn"
 
+set :bundle_binstubs, nil
 # set :format, :pretty
  
 # RVM
@@ -37,7 +38,7 @@ set :password, "dai108dainaikakusouridaijinn"
 # set :linked_files, %w{config/database.yml}
 set :rbenv_type, :system
 set :rbenv_ruby, '2.1.2'
- set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
  set :rbenv_path, '~/.rbenv'
  set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
  set :rbenv_map_bins, %w{rake gem bundle ruby rails}
