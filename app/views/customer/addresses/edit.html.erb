@@ -6,12 +6,23 @@
 				url: [:customer, :staff_member, :address] do |f| %>
 	    
 		<%= render 'form', f: f %>
-		<%= form_tag('/mypage/staff_members/:staff_member_id/addresses/:id', :method => :patch, :name => 'webpay') do %>
+
+<div class="actions">
+	<%= link_to 'キャンセル', :customer_staff_member_addresses %>
+</div>
+
+	
+<div class="actions">
+	<%= f.submit "代金引き換えで注文する", data: { confirm: "注文を確定します。本当によろしいですか？" } %>
+</div>
+
+<%= form_tag('/mypage/staff_members/:staff_member_id/addresses/:id', :method => :patch, :name => 'webpay') do %>
 <script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
 <% end %>
-		<% end %>
-		
 
+</fieldset>
+
+<% end %>
 
 </div>
 </div>

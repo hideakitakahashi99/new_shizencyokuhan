@@ -36,9 +36,16 @@
 
 
   <%= yield %>
-
-
-<%= link_to "Home", :customer_root %>
+<div class="container">
+  <h2> </h2>
+<div class="pull-left">
+    <div class="top-nav">
+<%= link_to "＜Home", :customer_root, {:class => "btn" }%>
+<%= link_to '＜前に戻る', :back, {:class => "btn" } %> 
+</div>
+</div>
+</div>
+ 
   
   <footer class="footer">
       <div class="container">
@@ -70,22 +77,13 @@
         <div class="social-links">
           <h7>　</h7>
         <ul>
-          <li><a href="https://www.facebook.com/shizencyokuhan"><i class="ion-social-facebook"></i></a></li>
-          <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+          <li><a href="https://www.facebook.com/shizencyokuhan" target="_blank"><i class="ion-social-facebook"></i></a></li>
+          <li><a href="http://twitter.com/shizencyokuhan" target="_blank"><i class="ion-social-twitter"></i></a></li>
         </ul>
          </div>
           </div><!-- widget ends -->     
 
-          <div class="widget widget_newsletter">
-            <h2>Newsletter</h2>
-            <div class="newsletter">
-              <p>新しい農家さんが追加された時や出荷予定が更新された時にいち早くお知らせします！</p>
-              <form action="index.html" method="post">
-                <input type="text" class="input-block-level" placeholder="Email Address">
-                <input type="submit" class="btn" value="登録">
-              </form>
-            </div>
-          </div><!-- widget ends -->
+
         </div>
       </div>  
   </footer>
@@ -98,15 +96,7 @@
           
         </ul>
       </div>
-      <div class="social-links">
-        <ul>
-          <li><a href="#" class="icon-yahoo tooltip" title="yahoo"></a></li>
-          <li><a href="#" class="icon-facebook tooltip" title="facebook"></a></li>
-          <li><a href="#" class="icon-rss tooltip" title="rss"></a></li>
-          
-         
-        </ul>
-      </div>
+      
   </div><!-- bottom ends -->
 </div><!-- wrap ends -->
 </div>

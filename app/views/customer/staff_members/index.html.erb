@@ -13,7 +13,7 @@
 						<th>会社名／農園名</th>
 						<th>販売責任者</th>
 						<th>フリガナ</th>
-						<th>メールアドレス</th>
+						
 						<th>現在のステータス</th>
 						<th></th>
 					</tr>
@@ -26,7 +26,7 @@
 						<td><%= m.farm_name %></td>
 						<td><%= m.family_name %> <%= m.given_name %></td>
 						<td><%= m.family_name_kana %> <%= m.given_name_kana %></td>
-						<td class="email"><%= m.email %></td>
+						
 						<td class="boolean"><%= p.suspended_mark %></td>
 						<td class="actions">
 							<%= link_to '詳細', [ :customer, m ] %> |

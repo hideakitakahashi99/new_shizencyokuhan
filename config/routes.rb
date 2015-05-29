@@ -121,6 +121,7 @@ namespace :customer, path: config[:customer][:path] do
       get :following, :followers
       end
       get :sales_term
+      get :schedules
       resources :store, only: [ :index ]
       resources :carts
       resources :line_items

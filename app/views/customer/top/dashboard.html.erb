@@ -104,7 +104,7 @@
                  <a href="events-detail.html"></a>
                </figure>
              <div class="detail">
-               <h5><a href="<%= customer_staff_member_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
+               <h5><a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
                 <ul>
                   <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
                   <% if schedules.staff_member.additional_info %>
@@ -127,8 +127,9 @@
            
           </div><!-- widget ends -->
                  
-                    <h5><a href="events-detail.html">
-                      <br/>開催されるイベントや、開店のスケジュールを農家さんが共有してくれるよ！好きな農家さんをフォローしてスケジュールをいち早くGETしよう！</a></h5>
+                    <h5>
+                      <br/>農家さんをフォローすると、フォローした農家さんのスケジュールだけが見れる様になるよ！<br/>
+                      <%= link_to "→ごひいき農家予定一覧へ", customer_static_pages_feed_page_path, { :class => "btn"} %></h5>
                     
                   
 

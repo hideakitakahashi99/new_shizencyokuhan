@@ -17,9 +17,20 @@
 			<div class="links">
 				<%= link_to 'ユーザートップ', :customer_root %>
     		</div>
+    		<% if @staff_member.suspended? %>
+		<% else %>
+		<h4>ご好評につき、現在売り切れの状態です。<br/>農家さんをフォローしていただくと、開店の予定が登録された時にお知らせが届きます！</h4>
+		<div class="pull-left">
+			
+	<%= render 'follow_form' %>
+
+        </div>
+		<% end %>
     	</div>
     </div>
 </div>
+
+<% if @staff_member.suspended? %>
 <div class="container">
 	<div class="row">
 		<div class="span6">
@@ -39,7 +50,7 @@
 		</div>
 	</div>
 </div>
-
+<% end %>
 
 <div class="container">
 	<div class="row">
@@ -49,6 +60,8 @@
 		<h4>大変、申し訳ございません。現在ご購入いただける商品はございません。</h4>
 		</div>
 		<% end %>
+		
+		
 
 		<% @products.each do |m| %>
 		
@@ -60,7 +73,7 @@
 					<h6><%= sanitize(m.description) %></h6>
 					<h5><%= m.variety %></h5>
 					<h5><%= m.method %></h5>
-					
+					<% if @staff_member.suspended? %>
 						<div class="price_line">
 						<span class="price">
 						<%= m.net %>g
@@ -70,6 +83,9 @@
 							</div>
 						</p>
 						</div>
+						<% else %>
+						スタンバイ
+						<% end %>
 				
 
 			

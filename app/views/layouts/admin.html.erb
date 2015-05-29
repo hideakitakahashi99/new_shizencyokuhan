@@ -33,7 +33,13 @@
   <%= yield %>
 
 
-<%= link_to "Home", "/" %>
+<div class="container">
+<div class="pull-left">
+    <div class="top-nav">
+<%= link_to "Home", :admin_root, {:class => "btn" }%>
+<%= link_to '前に戻る', :back, {:class => "btn" } %> 
+</div>
+</div>
   
   <footer class="footer">
       <div class="container">

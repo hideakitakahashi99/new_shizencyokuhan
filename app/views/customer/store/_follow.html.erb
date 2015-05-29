@@ -1,0 +1,6 @@
+<h5><%= @staff_member.farm_name %>をフォローする</h5>
+<%= form_for [:customer, @customer.relationships.build(followed_id: @staff_member.id)] do |f| %>
+<div><%= f.hidden_field :followed_id %></div>
+<%= f.submit "Follow"%>
+<% end %>
+<h2> </h2>

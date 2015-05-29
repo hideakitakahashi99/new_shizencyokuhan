@@ -56,7 +56,7 @@ class Customer::OrdersController < Customer::Base
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(
-        :staff_member_id
+        :staff_member_id, :customer_id, :total_price, :address_id 
         ) 
     end
 end

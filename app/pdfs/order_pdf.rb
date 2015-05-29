@@ -53,7 +53,7 @@ class OrderPDF < Prawn::Document
 			row(-1).borders = []
 
 			self.header = true
-			self.column_widths = [120, 100, 160, 90]
+			self.column_widths = [150, 100, 120, 90]
 		end
 
 

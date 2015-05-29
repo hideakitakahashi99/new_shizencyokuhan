@@ -14,6 +14,7 @@ class Customer::StoreController < Customer::Base
 		.page(params[:page]) 
 
 	customer = current_customer
+	@customer = current_customer
     @cart = Cart.find_by!(staff_member_id: @staff_member.id, customer_id: customer.id)
    
     rescue ActiveRecord::RecordNotFound
