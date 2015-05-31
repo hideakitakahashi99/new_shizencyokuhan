@@ -1,0 +1,99 @@
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+<% @title = 'ご注文いただき、誠にありがとうございます。' %>
+<h3><%= @title %></h3>
+<h5>ご注文日から3日以内に商品が発送されます。商品の到着まで、今しばらくお待ち下さい。</h5>
+
+<table class="table">
+	<tr>
+		<th>お客様氏名</th>
+		<td>
+			<%= @customer.family_name %>　<%= @customer.given_name %>様
+		</td>
+	</tr>
+
+	<tr>
+		<th>送付先住所</th>
+		<td>
+			<%= @address.postal_code %>
+			<%= @address.prefecture %>
+			<%= @address.city %>
+			<%= @address.address1 %>
+			<%= @address.address2 %>
+		
+		</td>
+	</tr>
+
+	<tr>
+		<th>注文内容</th>
+		<td>
+			メールにてご確認ください。
+		
+		</td>
+	</tr>
+
+<tr>
+		<th>　　　　</th>
+		<td>
+		
+		</td>
+	</tr>
+<h6>
+	<tr>
+		<th>販売／出荷</th>
+		<td>
+			<%= @staff_member.farm_name %>
+		</td>
+	</tr>
+
+	<% if @staff_member.staff_address %>
+	<% p1 = StaffAddressPresenter.new(@staff_member.staff_address, self) %>
+	<tr>
+		<th>販売／集荷　所在地</th>
+		<td>
+			<%= p1.postal_code %>
+			<%= p1.prefecture %>
+			<%= p1.city %>
+			<%= p1.address1 %>
+			<%= p1.address2 %>
+		</td>
+	</tr>
+	<% end %>
+	
+	<tr>
+		<th>販売者氏名</th>
+		<td>
+			<%= @staff_member.family_name %>
+			<%= @staff_member.given_name %>
+		</td>
+	</tr>
+	<tr>
+		<th>フリガナ</th>
+		<td>
+			<%= @staff_member.family_name_kana %>
+			<%= @staff_member.given_name_kana %>
+		</td>
+	</tr>
+	<tr>
+		<th>メールアドレス</th>
+		<td class="email">
+			<%= @staff_member.email %>
+		</td>
+	</tr>
+
+	
+</h6>
+
+</table>
+<div class="pull-right">
+<h3>またのご利用を、心よりお待ちしております。</h3>
+<h5>~自然からの愛を届ける~　shizencyokuhan.com</h5>
+</div>
+
+<%= link_to 'TOPに戻る', :customer_root, {:class => "btn" } %>
+  </div>
+
+</div>
+</div>

@@ -9,6 +9,8 @@ class Customer::AddressesController < Customer::Base
 
 	def show
 		@customer = current_customer
+		@address = Address.find(params[:id])
+		@staff_member = StaffMember.find(params[:staff_member_id])
 
 	end
 
@@ -50,7 +52,7 @@ class Customer::AddressesController < Customer::Base
 
 				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
 				
-				format.html { redirect_to :customer_staff_member_store_index, notice: 'ご注文ありがとうございます' }
+				format.html { redirect_to :customer_staff_member_address, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @address, status: :created, location: @address }
 			else
 				@cart = current_cart

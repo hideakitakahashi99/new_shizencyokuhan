@@ -13,6 +13,7 @@ class OrderPDF < Prawn::Document
 		header
 		header_lead
 		table_content
+		footer
 		
 	end
 
@@ -72,7 +73,7 @@ class OrderPDF < Prawn::Document
 		y_position = cursor - 50
 		bounding_box([180, y_position], :width => 350, :height => 50)do 
 		font_size 10.5
-		text "販売元：自然栽培ちょくはん　http://www.shizensaibaicyokuhan.com"
+		text "販売元：自然栽培ちょくはん　http://www.shizencyokuhan.com"
 	end
 	end
 

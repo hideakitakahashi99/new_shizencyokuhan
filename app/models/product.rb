@@ -8,6 +8,10 @@ class Product < ActiveRecord::Base
 
 	validates :stock, :method, :price, :category, :description, presence: true
 	validates :price, numericality: {greater_than_or_equal_to: 0}
+	validates :stock, numericality: {greater_than_or_equal_to: 0}
+	validates :price, :format => { :with => /¥d+/, :message => "半角数字のみ入力できます" }
+	validates :net, :format => { :with => /¥d+/, :message => "半角数字のみ入力できます" }
+	validates :stock, :format => { :with => /¥d+/, :message => "半角数字のみ入力できます" }
 
 	mount_uploader :productimg, ProductimgUploader
 
