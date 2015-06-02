@@ -79,8 +79,12 @@
 						<%= m.net %>g
 						<%= sprintf("¥%0.00f", m.price) %></span>
 						<p style="margin-top: 15px;">
-							<div><%= button_to 'カートに入れる', customer_staff_member_line_items_path(product_id: m, cart_id: @cart.id), remote: true %>
+							<% if m.stock == 0 %>
+							ごめんなさい。売り切れました。
+							<% else %>
+							<div><%= button_to 'カートに入れる', customer_staff_member_line_items_path(product_id: m, cart_id: @cart.id), :class => "btn", remote: true %>
 							</div>
+							<% end %>
 						</p>
 						</div>
 						<% else %>

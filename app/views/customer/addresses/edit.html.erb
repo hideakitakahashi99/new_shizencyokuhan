@@ -13,12 +13,8 @@
 
 	
 <div class="actions">
-	<%= f.submit "代金引き換えで注文する", data: { confirm: "注文を確定します。本当によろしいですか？" } %>
+	<%= f.submit "送り先を確定して、次へ" %>
 </div>
-
-<%= form_tag('/mypage/staff_members/:staff_member_id/addresses/:id', :method => :patch, :name => 'webpay') do %>
-<script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
-<% end %>
 
 </fieldset>
 

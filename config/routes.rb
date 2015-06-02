@@ -126,8 +126,12 @@ namespace :customer, path: config[:customer][:path] do
       resources :carts
       resources :line_items
       resources :orders 
-      resources :addresses
-      
+      resources :addresses do
+        member do
+        post :order
+        get :thanks
+        end
+      end
     end
   end
 end

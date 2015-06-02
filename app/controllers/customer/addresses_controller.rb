@@ -7,12 +7,56 @@ class Customer::AddressesController < Customer::Base
 		@addresses = @customer.addresses.page(params[:page])
 	end 
 
-	def show
+	def order
 		@customer = current_customer
-		@address = Address.find(params[:id])
-		@staff_member = StaffMember.find(params[:staff_member_id])
+  		@staff_member_id = session[:order_staff]
+  		@staff_member = StaffMember.find_by(id: @staff_member_id)
+		cart = Cart.find_by(staff_member_id: @staff_member_id, customer_id: @customer.id)
+		total_price = cart.total_price
+		if params[:name] = 'webpay'
+			webpay = WebPay.new(WEBPAY_SECRET_KEY)
+  			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
+  			@payment = "クレジット支払い"
+  	    else
+  	    	@payment = "代金引き換え"
+  	    end
+  	    
+  		@address = Address.find(params[:id])	
+  		@order = Order.new(:staff_member_id => @staff_member_id, :customer_id => @customer.id, :total_price => total_price, :address_id => @address.id)
+  		@order.add_line_items_from_cart(cart)
+  		address = @address
+		
+
+		respond_to do |format|
+			if  @order.save!
+
+		
+				Cart.destroy(cart)
+				
+
+				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
+				
+				format.html { redirect_to :thanks_customer_staff_member_address, notice: 'ご注文ありがとうございます' }
+				format.json { render json: @address, status: :created, location: @address }
+			else
+				@cart = current_cart
+				format.html { redirect_to :customer_root, notice: '注文に失敗しました。' }
+				format.json { render json: @address.errors, status: :unprocessable_entity }
+			end
+		end
 
 	end
+
+
+	def show
+		@customer = current_customer
+  		@staff_member = StaffMember.find(params[:staff_member_id])
+		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
+		total_price = cart.total_price
+  		@address = Address.find(params[:id])
+  		session[:order_staff] = @staff_member.id	
+	end
+
 
 	def edit
 		@customer = current_customer
@@ -23,36 +67,14 @@ class Customer::AddressesController < Customer::Base
 	def update
 		@customer = current_customer
   		@staff_member = StaffMember.find(params[:staff_member_id])
-		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
-		total_price = cart.total_price
-		if params[:webpay]
-			webpay = WebPay.new(WEBPAY_SECRET_KEY)
-  			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
-  			@payment = "クレジット支払い"
-  	    else
-  	    	@payment = "代金引き換え"
-  	    end
   	    
   		@address = Address.find(params[:id])	
   		@address.assign_attributes(address_params) 
   		
-  		@order = Order.new(:staff_member_id => @staff_member.id, :customer_id => @customer.id, :total_price => total_price, :address_id => @address.id)
-  		@order.add_line_items_from_cart(cart)
-  		address = @address
-		
-
 		respond_to do |format|
 			if @address.save!
-				@order.add_address(address)
-				@order.save!
-
-		
-				Cart.destroy(cart)
-				
-
-				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
-				
-				format.html { redirect_to :customer_staff_member_address, notice: 'ご注文ありがとうございます' }
+							
+				format.html { redirect_to :customer_staff_member_address, notice: '住所が選択されました。' }
 				format.json { render json: @address, status: :created, location: @address }
 			else
 				@cart = current_cart

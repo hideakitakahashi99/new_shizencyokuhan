@@ -2,9 +2,9 @@
 <div class="container">
 	<div class="row">
 		<div class="span12">
-<% @title = 'ご注文いただき、誠にありがとうございます。' %>
+<% @title = 'ご注文内容確認' %>
 <h3><%= @title %></h3>
-<h5>ご注文日から3日以内に商品が発送されます。商品の到着まで、今しばらくお待ち下さい。</h5>
+<h5>以下の内容でご注文を承ります。内容をご確認の上「代金引き換え」もしくは「カード支払い」にてご注文を確定して下さい。</h5>
 
 <table class="table">
 	<tr>
@@ -29,7 +29,7 @@
 	<tr>
 		<th>注文内容</th>
 		<td>
-			メールにてご確認ください。
+			
 		
 		</td>
 	</tr>
@@ -87,12 +87,15 @@
 </h6>
 
 </table>
-<div class="pull-right">
-<h3>またのご利用を、心よりお待ちしております。</h3>
-<h5>~自然からの愛を届ける~　shizencyokuhan.com</h5>
+<div class="pull-left">
+<%= link_to '代金引き換えで注文', order_customer_staff_member_address_path(@staff_member, @address), :class => "btn", data: {confirm: "ご注文が確定します。宜しいですか？"} %>
+
+<%= form_tag(:action => 'order', :name => 'webpay') do %>
+<script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
+<% end %>
 </div>
 
-<%= link_to 'TOPに戻る', :customer_root, {:class => "btn" } %>
+
   </div>
 
 </div>
