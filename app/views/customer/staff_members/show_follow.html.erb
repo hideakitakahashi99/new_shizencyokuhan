@@ -28,7 +28,6 @@
             <th>現在のステータス</th>
             <th>所在地</th>
             <th>代表者</th>
-            <th>email</th>
             <th></th>
 
           </tr>
@@ -40,7 +39,6 @@
             <td><%= p.suspended_mark %></td>
             <td><% if staff.staff_address %><%= staff.staff_address.prefecture %><% else %>未登録<% end %></td>
             <td><%= staff.family_name %><%= staff.given_name %></td>
-            <td><%= staff.email %></td>
             <td class="actions">
               <%= link_to '詳細', [ :customer, staff ] %> |
               <%= link_to '農産品一覧',[:customer, staff, :store, :index ] %> 

@@ -63,6 +63,22 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => 'www.shizencyokuhan.com' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com', 
+    :port => 587,
+    :domain => 'smtp.gmail.com',
+    :user_name => 'shizencyokuhan.test@gmail.com',
+    :password => 'shizencyokuhan99',
+    :authentication => :plain,
+    :enable_starttls_auto => true
+     }
+
+
+
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -81,9 +97,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.taskapp = {
-    staff: { host: 'shizencyokuhan.com', path: 'staff' },
-    admin: { host: 'shizencyokuhan.com', path: 'admin' },
-    customer: { host: 'shizencyokuhan.com', path: 'mypage' }
+    staff: { host: 'www.shizencyokuhan.com', path: 'staff' },
+    admin: { host: 'www.shizencyokuhan.com', path: 'admin' },
+    customer: { host: 'www.shizencyokuhan.com', path: 'mypage' }
   }
 
   config.action_mailer.delivery_method = :sendmail

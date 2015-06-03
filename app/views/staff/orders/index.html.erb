@@ -10,7 +10,6 @@
     <tr>
       <th>ステータス</th>
       <th>名前</th>
-      <th>連絡先</th>
       <th>決済金額</th>
       <th>決済日時</th>
       <th>注文内容</th>
@@ -27,7 +26,7 @@
         <td>発送通知完了</td>
         <% end %>
         <td><%= order.customer.family_name %> <%= order.customer.given_name %></td>
-        <td><%= order.customer.email %></td>
+
         <td>¥<%= order.total_price %></td>
         <td><%= order.created_at %></td>
         <td><%= link_to '詳細確認＞', [:staff, order] %></td>

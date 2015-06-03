@@ -1281,6 +1281,11 @@ input[type="radio"] {
 	float:none;
 }
 
+.top-image {
+  background-image: url(yasai_20141231.jpg);
+  width: 100%;
+ 
+}
 
 
 }

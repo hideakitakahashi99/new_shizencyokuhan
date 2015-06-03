@@ -1998,7 +1998,6 @@ input[type="checkbox"]:checked + label:after {
 .schedule_harvest {
   display: block;
   position: relative;
-  width: 300px;
   
   padding: 20px;
   background-color: rgba(0,0,0,0.1);
@@ -2062,7 +2061,7 @@ input[type="checkbox"]:checked + label:after {
 .product_form {
   display: block;
   position: relative;
-  width: 80%;
+  
   margin: 20px auto;
   padding: 20px;
   background-color: rgba(134,193,102,0.5);

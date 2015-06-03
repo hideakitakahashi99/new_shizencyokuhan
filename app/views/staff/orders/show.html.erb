@@ -6,6 +6,7 @@
 <h3>受注票</h3><br/>
 <h5>　<strong>　注文日時：<%= @order.created_at %></strong></h5>
 <h5>　　　注文者：<%= @order.customer.family_name %> <%= @order.customer.given_name %>様</h5>
+<h5>　　　連絡先：<%= @order.customer.email %></h5>
 <h5>　送り先住所：〒<%= @address.postal_code %> <%= @address.prefecture %> <%= @address.city %> <%= @address.address1 %> <%= @address.address2 %></h5></div>
 </div>
 </div>
