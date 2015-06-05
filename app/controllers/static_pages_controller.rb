@@ -21,4 +21,9 @@ class StaticPagesController < ApplicationController
   def term
     render 'static_pages/term'
   end
+
+  def randing
+  # render 'static_pages/randing'
+    redirect_to 'https://peraichi.com/landing_pages/view/shizencyokuhan'
+  end 
 end

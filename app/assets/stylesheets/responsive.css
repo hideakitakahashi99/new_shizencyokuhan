@@ -927,6 +927,7 @@ span.points {
 }
 
 @media (max-width:767px) {
+
 body {
 	overflow-x:hidden;	
 }
@@ -1037,7 +1038,7 @@ textarea[class*="span"],
 }
 
 .tp-bar {
-	margin-top:50px;
+	margin-top:0px;
 }
 .tp-bar:after {
 	width:100%;

@@ -13,7 +13,9 @@
 
 
 	<p style="margin-top: 0px;">
-							<div><%= link_to '商品を見る！', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+							<div class="top-nav"><%= link_to '商品を見る！', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+							
+							<%= link_to 'スケジュールを見る！', [:customer, @staff_member, :schedules ], {:class => "btn btn-large btn-primary" } %>
 							</div>
 
 						</p>

@@ -1,7 +1,15 @@
+            <% @title = '品目検索' %>
+			<% @title2 = '結果一覧'%>
+
+
 <div class="container">
 	<div class="row">
 		<div class="span12">
-			<h2>品目検索結果</h2>
+			<div class="spa12">
+				<%= image_tag("search.png") %>
+			</div>
+	
+			<h2><strong><%= @title %></strong> <%= @title2 %></h2>
 			<% if @products.count == 0 %>
 			<h4>大変申し訳ございません。現在お探しの品目は商品登録されておりません。</h4>
 			<h4>お手数ですが、他の品目をお探し下さい。</h4>

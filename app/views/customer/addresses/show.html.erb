@@ -88,9 +88,9 @@
 
 </table>
 <div class="pull-left">
-<%= link_to '代金引き換えで注文', order_customer_staff_member_address_path(@staff_member, @address), :class => "btn", data: {confirm: "ご注文が確定します。宜しいですか？"} %>
+<%= link_to '代金引き換えで注文', order_conf_customer_staff_member_address_path(@staff_member, @address), method: :post, :class => "btn", data: {confirm: "ご注文が確定します。宜しいですか？"} %>
 
-<%= form_tag(:action => 'order', :name => 'webpay') do %>
+<%= form_tag(:action => 'order_conf', :name => 'webpay') do %>
 <script src="https://checkout.webpay.jp/v1/" class="webpay-button" data-key="<%= WEBPAY_PUBLIC_KEY %>"></script>
 <% end %>
 </div>

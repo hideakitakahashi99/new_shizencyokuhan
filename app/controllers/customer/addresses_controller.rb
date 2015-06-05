@@ -7,13 +7,13 @@ class Customer::AddressesController < Customer::Base
 		@addresses = @customer.addresses.page(params[:page])
 	end 
 
-	def order
+	def order_conf
 		@customer = current_customer
   		@staff_member_id = session[:order_staff]
   		@staff_member = StaffMember.find_by(id: @staff_member_id)
 		cart = Cart.find_by(staff_member_id: @staff_member_id, customer_id: @customer.id)
 		total_price = cart.total_price
-		if params[:name] = 'webpay'
+		if params[:name] == 'webpay'
 			webpay = WebPay.new(WEBPAY_SECRET_KEY)
   			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
   			@payment = "クレジット支払い"

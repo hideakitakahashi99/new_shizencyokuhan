@@ -1289,7 +1289,7 @@ width: 100% !important;
 
 #new_search {
   margin: 30px auto;
-  padding: 100px;
+  padding: 73px;
 
   }
 
@@ -1555,7 +1555,7 @@ article ul li a:hover {
 
 #farm_prof{
 
-	height: 500px;
+	height: 100%;
 	overflow: hidden;
 }
 

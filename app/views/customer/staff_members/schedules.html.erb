@@ -3,7 +3,7 @@
      <div class="row">
       <div class="span12">
         <div class="events">
-          
+          <div class="pull-left"><%= image_tag("schedule.png", :size => "80x80") %></div>
           <h2><strong><%= @staff_member.farm_name %><br/>スケジュール</strong><div class="pull-right">
   <%= link_to "農産品を見にいく", customer_staff_member_store_index_path(@staff_member), { :class => "btn"} %>
 </div></h2>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
- 
+  get '/', to: 'static_pages#randing', as: :top
 
   resources :mapus
 
@@ -128,7 +128,7 @@ namespace :customer, path: config[:customer][:path] do
       resources :orders 
       resources :addresses do
         member do
-        post :order
+        post :order_conf
         get :thanks
         end
       end
