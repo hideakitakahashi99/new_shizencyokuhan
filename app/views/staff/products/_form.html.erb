@@ -55,7 +55,9 @@
 
   <%= f.label :price, '価格　(１個あたり価格)' %>
   <%= f.text_field :price, :placeholder => '例：700　※数字のみ入力してください'  %>
-
+  <% if @product.errors.any? %>
+  <%= @product.errors.messages[:price][0] %>
+  <% end %>
 </div>
 
 

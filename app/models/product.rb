@@ -6,12 +6,11 @@ class Product < ActiveRecord::Base
 
 	before_destroy :ensure_not_referenced_by_any_line_item
 
-	validates :stock, :method, :price, :category, :description, presence: true
-	validates :price, numericality: {greater_than_or_equal_to: 0}
-	validates :stock, numericality: {greater_than_or_equal_to: 0}
-	validates :price, :format => { :with => /¥d+/, :message => "半角数字のみ入力できます" }
-	validates :net, :format => { :with => /¥d+/, :message => "半角数字のみ入力できます" }
-	validates :stock, :format => { :with => /¥d+/, :message => "半角数字のみ入力できます" }
+	validates :stock, :method, :price, :category, :description, presence: {message: "入力して下さい"}
+	validates :price, :stock, :net, numericality: {only_integer: true, greater_than_or_equal_to: 0, message: "0以上の半角数字を入力して下さい"}
+	#validates :stock, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+	#validates :net, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+	
 
 	mount_uploader :productimg, ProductimgUploader
 
@@ -67,6 +66,9 @@ class Product < ActiveRecord::Base
     		product.save
     	end
     end
+
+
+
 
 
 end
