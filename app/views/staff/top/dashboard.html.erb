@@ -1,4 +1,6 @@
 
+                    
+
 <div class= "container">
 	<div class= "row">
 		<div class= "span12">
@@ -110,6 +112,23 @@
                   	<%= @staff_member.staff_address.prefecture %> 
                   	<%= @staff_member.staff_address.city %> 
                   	<%= @staff_member.staff_address.address1 %></span></li>
+                    <% end %>
+
+                    <% if schedules.image1? %>
+                    <div class="img">
+                    <%= image_tag schedules.image1.url, :class => "intense" %>
+                   </div>
+                    
+                    <% end %>
+                    <% if schedules.image2? %>
+                    <div class="img">
+                    <%= image_tag schedules.image2.url, :class => "intense"  %>
+                  </div>
+                    <% end %>
+                    <% if schedules.image3? %>
+                    <div class="img">
+                    <%= image_tag schedules.image3.url, :class => "intense"  %>
+                  </div>
                     <% end %>
                     <li><%= link_to 'メールでシェア', [ :push, :staff, schedules ], data: { confirm: 'フォロワー宛にメールが送信されます。本当に送信しますか？'} %></li>
                     <li><%= link_to '削除', [ :staff, schedules ], method: :delete, data: { confirm: '本当に削除しますか？'} %></li>

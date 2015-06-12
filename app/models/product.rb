@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
 	has_many :line_items
 	has_many :orders, through: :line_items
 	has_many :addresses, through: :line_items
+	has_one :staff_addresses, through: :staff_member
 
 	before_destroy :ensure_not_referenced_by_any_line_item
 

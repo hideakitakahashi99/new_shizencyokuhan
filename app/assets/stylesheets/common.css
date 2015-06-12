@@ -1217,7 +1217,8 @@ button.close {
 }
 
 .btn,
-.footer .btn {
+.footer .btn,
+.search-btn{
   display:inline-block;
   *display:inline;
   padding:5px 12px;
@@ -1237,12 +1238,17 @@ button.close {
 	
 }
 
+.search-btn {
+  margin-top: 28px;
+}
+
 .btn:hover,
 .btn:active,
 .btn.active,
 .btn.disabled,
 .btn[disabled] {
-	color:#FFFFFF;
+	color:#DC9FB4;
+  background-color:#ffffff;
   text-decoration:none;
 }
 .btn-blue {

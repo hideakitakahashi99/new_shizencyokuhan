@@ -22,7 +22,8 @@ class Staff::SalesTermsController < Staff::Base
 				flash.notice = "販売条件を更新しました。"
 				redirect_to :staff_root
 			else
-			render 'staff_root'
+				flash.notice = '登録に失敗しました。もう一度やり直してください。'
+			redirect_to :staff_root
  	       end
 	    
 	end
@@ -35,8 +36,8 @@ class Staff::SalesTermsController < Staff::Base
 				flash.notice = "追加情報を更新しました。"
 				redirect_to :staff_root
 			else
-				flash.now.alert = '入力に誤りがあります。'
-			render action: 'edit'
+				flash.notice = '登録に失敗しました。もう一度やり直してください。'
+			redirect_to :staff_root
  	       end
     end
 
@@ -44,7 +45,7 @@ class Staff::SalesTermsController < Staff::Base
 		@staff_member = current_staff_member
 		@sales_terms = @staff_member.sales_terms.destroy!
 		flash.notice = '販売条件を削除しました。'
-		redirect_to :staff_roots
+		redirect_to :staff_root
 	end
 
 	private

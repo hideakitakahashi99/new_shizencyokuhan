@@ -37,7 +37,16 @@
         <%= f.text_area :opening, placeholder: "Compose new micropost..." %>
       </div>
         </td>
-        
+        <th>※画像を付けられます（3枚まで）</th><br/>
+  <td>
+    <%= f.file_field :image1 %>
+  </td></br>
+  <td>
+    <%= f.file_field :image2 %>
+  </td></br>
+  <td>
+    <%= f.file_field :image3 %>
+  </td>
     </tr>
 
   </div>

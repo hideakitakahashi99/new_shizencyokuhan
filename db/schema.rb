@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430024945) do
+ActiveRecord::Schema.define(version: 20150612044403) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20150430024945) do
     t.datetime "updated_at"
     t.integer  "staff_member_id"
     t.decimal  "total_price"
+    t.string   "payment"
   end
 
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
@@ -207,6 +208,9 @@ ActiveRecord::Schema.define(version: 20150430024945) do
     t.string   "event_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image1"
+    t.string   "image2"
+    t.string   "image3"
   end
 
   add_index "schedules", ["staff_member_id", "created_at"], name: "index_schedules_on_staff_member_id_and_created_at"
@@ -224,6 +228,7 @@ ActiveRecord::Schema.define(version: 20150430024945) do
     t.float    "longitude"
   end
 
+  add_index "staff_addresses", ["prefecture"], name: "index_staff_addresses_on_prefecture"
   add_index "staff_addresses", ["staff_member_id"], name: "index_staff_addresses_on_staff_member_id"
 
   create_table "staff_events", force: true do |t|

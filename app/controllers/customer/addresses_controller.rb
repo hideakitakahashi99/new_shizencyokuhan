@@ -22,7 +22,13 @@ class Customer::AddressesController < Customer::Base
   	    end
   	    
   		@address = Address.find(params[:id])	
-  		@order = Order.new(:staff_member_id => @staff_member_id, :customer_id => @customer.id, :total_price => total_price, :address_id => @address.id)
+  		@order = Order.new(
+  			:staff_member_id => @staff_member_id, 
+  			:customer_id => @customer.id, 
+  			:total_price => total_price, 
+  			:address_id => @address.id, 
+  			:payment => @payment
+  			)
   		@order.add_line_items_from_cart(cart)
   		address = @address
 		

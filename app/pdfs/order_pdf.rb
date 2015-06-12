@@ -36,9 +36,10 @@ class OrderPDF < Prawn::Document
 		y_position = cursor - 30
 		bounding_box([20, y_position], :width => 500, :height => 50)do 
 		font_size 10.5
-		text "　注文日時:  #{@order.created_at}"
-		text "　　注文者:  #{@order.customer.family_name} #{@order.customer.given_name}様"
-		text "送り先住所:  〒#{@address.postal_code} #{@address.prefecture} #{@address.city} #{@address.address1} #{@address.address2}"
+		text "　　注文日時:  #{@order.created_at}"
+		text "　　　注文者:  #{@order.customer.family_name} #{@order.customer.given_name}様"
+		text "　送り先住所:  〒#{@address.postal_code} #{@address.prefecture} #{@address.city} #{@address.address1} #{@address.address2}"
+		text "お支払い方法:  #{@order.payment}"
 			
 		end
 	end

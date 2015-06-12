@@ -1,14 +1,60 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-<h1><%= @month %>月度の売上　¥<%= @total_sales %>-</h1>
+<h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1>
+</br>
 <% if @orders.count == 0 %>
 <h4>ー現在表示できる売上がありませんー</h4>
 <% end %>
+<div class="span5">
+   <div class="pull-left">
+  <h3><i class="ion-social-yen"></i>　代金引き換え</h3>
+</div>
+  <table class="table">
+
+  <tr>
+  <th>売上</th>　
+  <td>¥<%= @m_total_sales %></td>
+</tr>
+ <tr>
+  <th>システム料</br>(売上の10％)</th>　
+  <td>¥<%= @m_total_sales * 0.1 %></td>
+</tr>
+ <tr>
+  <th>合計</th>　
+  <td>¥<%= @m_total_sales * 0.9 %></td>
+</tr>
+</table>
+</div>
+
+<div class="span5">
+   <div class="pull-left">
+  <h3><i class="ion-card"></i>　クレジット支払い</h3>
+</div>
+  <table class="table">
+
+  <tr>
+  <th>売上</th>　
+  <td>¥<%= @c_total_sales %></td>
+</tr>
+ <tr>
+  <th>システム料</br>(売上の10％)</th>　
+  <td>¥<%= @c_total_sales * 0.1 %></td>
+</tr>
+ <tr>
+  <th>合計</th>　
+  <td>¥<%= @c_total_sales * 0.9 %></td>
+</tr>
+</table>
+</div>
+
+<div class="span12">
+  <h3><i class="ion-stats-bars"></i>　注文履歴</h3>
 <table class="table">
  
     <tr>
       <th>ステータス</th>
+      <th>支払い方法</th>
       <th>名前</th>
       <th>決済金額</th>
       <th>決済日時</th>
@@ -25,6 +71,7 @@
         <% else %>
         <td>発送通知完了</td>
         <% end %>
+        <td><%= order.payment %></td>
         <td><%= order.customer.family_name %> <%= order.customer.given_name %></td>
 
         <td>¥<%= order.total_price %></td>
@@ -35,6 +82,12 @@
     <% end %>
 
 </table>
+
+</div>
+
+
+
+
 
 <br>
 </div>

@@ -4,6 +4,10 @@ class Schedule < ActiveRecord::Base
 	validates :staff_member_id, presence: true
 	self.inheritance_column = nil
 
+    mount_uploader :image1, SchedulesImgUploader
+    mount_uploader :image2, SchedulesImgUploader
+    mount_uploader :image3, SchedulesImgUploader
+
 
 	alias_attribute :occurred_at, :created_at
 

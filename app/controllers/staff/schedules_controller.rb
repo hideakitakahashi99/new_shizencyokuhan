@@ -49,10 +49,10 @@ class Staff::SchedulesController < Staff::Base
 
 
 	def store_schedule_params
-		params.require(:schedule).permit(:opening, :opening_date, :closing_date)
+		params.require(:schedule).permit(:opening, :opening_date, :closing_date, :image1, :image2, :image3)
 	end
 
 	def harvest_schedule_params
-		params.require(:schedule).permit(:harvest, :harvest_date, :event_url)
+		params.require(:schedule).permit(:harvest, :harvest_date, :event_url, :image1, :image2, :image3)
 	end
 end

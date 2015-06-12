@@ -3,10 +3,16 @@ class Staff::OrdersController < Staff::Base
 	def index
 		@staff_member = current_staff_member
 		staff_member_id = @staff_member.id
+		@credit_orders = Order.where(staff_member_id: @staff_member.id, created_at: Time.now.all_month, payment: "クレジット支払い")
+		@money_orders = Order.where(staff_member_id: @staff_member.id, created_at: Time.now.all_month, payment: "代金引き換え")
 		@orders = Order.where(staff_member_id: @staff_member.id, created_at: Time.now.all_month)
+		@c_total_sales = @credit_orders.sum(:total_price)
+		@m_total_sales = @money_orders.sum(:total_price)
 		@total_sales = @orders.sum(:total_price)
 		@month = Time.now.month
 	end
+
+
 
 	def show
 		@staff_member = current_staff_member

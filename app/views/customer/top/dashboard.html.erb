@@ -2,7 +2,6 @@
 
 
 
- 
  <div class="top-image">
 
   <%= render 'customer/shared/search_form' %>
@@ -117,6 +116,25 @@
                     <%= schedules.staff_member.staff_address.city %> 
                     <%= schedules.staff_member.staff_address.address1 %> </li>
                     <% end %>
+                    <br/>
+                    
+                    <% if schedules.image1? %>
+                    <div class="img">
+                    <%= image_tag schedules.image1.url, :class => "intense" %>
+                   </div>
+                    
+                    <% end %>
+                    <% if schedules.image2? %>
+                    <div class="img">
+                    <%= image_tag schedules.image2.url, :class => "intense"  %>
+                  </div>
+                    <% end %>
+                    <% if schedules.image3? %>
+                    <div class="img">
+                    <%= image_tag schedules.image3.url, :class => "intense"  %>
+                  </div>
+                    <% end %>
+                  
               </ul>
              </div>
              </div><!-- event-box ends -->
