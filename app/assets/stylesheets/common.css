@@ -1239,7 +1239,10 @@ button.close {
 }
 
 .search-btn {
-  margin-top: 28px;
+  margin-top: 26px;
+  background-color:#86C166;
+  border: 0px;
+  padding:8.5px 12px;
 }
 
 .btn:hover,

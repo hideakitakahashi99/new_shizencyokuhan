@@ -5,17 +5,17 @@
 <div class="pull-left">
 <div class="inputrow">
      <%= f.label :prefecture, '' %>
-  <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], :prompt => 'お好みの産地' %>
+  <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], {:include_blank => 'お好みの産地'} %>
   </div>
 </div>
 <div class="pull-left">
 <div class="inputrow">
      <%= f.label :category, '' %>
-  <%= f.select :category, [["", Product::CATEGORY_NAMES]], :prompt => 'お好みの品目' %>
+  <%= f.select :category, [["", Product::CATEGORY_NAMES]], {:include_blank => 'お好みの品目'}  %>
   </div>
 </div>
 
-  <%= f.submit "探す！", class: "search-btn" %>
+  <%= f.submit "お野菜を探す！", class: "search-btn" %>
 
 <% end %>
 </div>
