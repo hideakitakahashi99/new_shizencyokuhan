@@ -3,7 +3,7 @@
 <fieldset>
 		<legend>お客様の情報を入力して下さい</legend>
 <div class="field">
-	<%= f.label :postal_code, '郵便番号（半角数字）' %><br/>
+	<%= f.label :postal_code, '郵便番号（半角数字のみ）' %><br/>
 	<%= f.text_field :postal_code, size: 7 %>
 </div>
 
@@ -25,6 +25,11 @@
 <div class="field">
 	<%= f.label :address2, '建物名等' %><br/>
 	<%= f.text_field :address2 %>
+</div>
+
+<div class="field">
+	<%= f.label :phone, '電話番号（半角数字のみ）' %><br/>
+	<%= f.text_field :phone, size:11 %>
 </div>
 
 

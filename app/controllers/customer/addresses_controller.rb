@@ -12,7 +12,8 @@ class Customer::AddressesController < Customer::Base
   		@staff_member_id = session[:order_staff]
   		@staff_member = StaffMember.find_by(id: @staff_member_id)
 		cart = Cart.find_by(staff_member_id: @staff_member_id, customer_id: @customer.id)
-		total_price = cart.total_price
+		delivery_fee = @staff_member.sales_term.delivery_fee
+		total_price = cart.total_price + delivery_fee
 		if params[:name] == 'webpay'
 			webpay = WebPay.new(WEBPAY_SECRET_KEY)
   			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
@@ -41,6 +42,7 @@ class Customer::AddressesController < Customer::Base
 				
 
 				OrderNotifier.received(@address, @payment, @order, @staff_member).deliver
+				OrderNotifier.ordered(@address, @payment, @order, @staff_member).deliver
 				
 				format.html { redirect_to :thanks_customer_staff_member_address, notice: 'ご注文ありがとうございます' }
 				format.json { render json: @address, status: :created, location: @address }
@@ -60,7 +62,8 @@ class Customer::AddressesController < Customer::Base
 		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
 		total_price = cart.total_price
   		@address = Address.find(params[:id])
-  		session[:order_staff] = @staff_member.id	
+  		session[:order_staff] = @staff_member.id
+  		line_items = cart.line_items	
 	end
 
 
@@ -143,7 +146,7 @@ class Customer::AddressesController < Customer::Base
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
       params.require(:address).permit(
-      	:postal_code, :prefecture, :city, :address1, :address2
+      	:postal_code, :prefecture, :city, :address1, :address2, :phone
       	) 
     end
     def phone_params(record_name)

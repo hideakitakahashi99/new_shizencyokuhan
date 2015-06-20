@@ -19,6 +19,18 @@ class OrderNotifier < ActionMailer::Base
          subject: '【自然ちょくはん】ご注文が確定いたしました')
   end
 
+  def ordered(address, payment, order, staff_member)
+   @address = address
+    @payment = payment
+    @order = order
+    @staff_member = staff_member
+    @customer_family = @address.customer.family_name
+    @customer_given = @address.customer.given_name
+
+    mail(to: @staff_member.email,
+         bcc: 'hideakitakahashi99@gmail.com',
+         subject: '【自然ちょくはん】ご注文が確定いたしました')
+  end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #

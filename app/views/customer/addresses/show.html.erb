@@ -27,12 +27,29 @@
 	</tr>
 
 	<tr>
+		<th>電話番号</th>
+		<td>
+			<%= @address.phone %>
+		</td>
+	</tr>
+
+	<tr>
 		<th>注文内容</th>
+
 		<td>
 			
 		
 		</td>
 	</tr>
+
+
+<tr>
+		<th>一律送料（※注文代金に上乗せされます。）</th>
+		<td>
+			¥<%= @staff_member.sales_term.delivery_fee %>
+		</td>
+	</tr>
+
 
 <tr>
 		<th>　　　　</th>
@@ -83,6 +100,7 @@
 		</td>
 	</tr>
 
+	
 	
 </h6>
 

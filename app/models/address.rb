@@ -30,6 +30,7 @@ class Address < ActiveRecord::Base
 
 	validates :postal_code, format: { with: /\A\d{7}\z/, allow_blank: true }
 	validates :prefecture, inclusion: { in: PREFECTURE_NAMES, allow_blank: true }
+	validates :phone, format: { with: /\A\+?\d+(-\d+)*\z/, allow_blank: true }
 
 	def add_line_items_from_cart(cart)
 		cart.line_items.each do |item|

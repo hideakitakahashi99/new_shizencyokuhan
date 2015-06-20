@@ -1,0 +1,60 @@
+
+<h4><%= @staff_member.farm_name %>様</h4>
+
+<div>「自然栽培ちょくはん」にご登録の商品が購入されました。<br>
+ご注文日時より3日以内に商品の発送をお願いします。</div><br>
+
+<div><strong>１：[商品発送]</strong></div>
+<div>本商品の発送期限</div>
+<h4><strong><%= @order.created_at + 291600 %></strong></h4>
+<div>
+期限までに商品の発送をお願いいたします。</div>
+<div>この日までに発送が完了できない場合は、
+必ず、お客様と以下のアドレスにご一報ください。<br>
+連絡先：info@shizencyokuhan.com</div><br>
+
+<div>ご注文内容は本メールもしくは、生産者アカウントの「売上管理」の項目をご確認ください。<br>
+ご注文の詳細は販売者アカウントのトップページより、
+「売上管理」ページにアクセスしていただくことで、ご覧いただけます。</div><br><br>
+
+
+<div><strong>２：[発送が完了したら↓]</strong></div>
+<div>売上管理ページに設置の「発送完了メール」の
+送信ボタンを一度だけ押して下さい。<br>
+それにより、全ての手続きが完了いたします。<br>
+何卒宜しくお願い申し上げます。<br><br>
+ログインはこちら:
+http://www.shizencyokuhan.com/staff/login</div><br><br>
+
+
+<div><strong>ご注文内容</strong></div>
+<div>.....................................</div>
+<div>【注文番号】  5002<%= @order.id %></div>
+<div>【氏名】     <%= @customer_family %> <%= @customer_given%>様</div>
+<div>【支払い方法】<%= @payment %></div>
+<div>【商品内容】：</div>
+<div><%= render @order.line_items %></div>
+<div>.....................................</div>
+
+<div>
+生鮮品の取り扱いの為、一旦ご注文された商品のキャンセルは受け付けておりません。</div>
+
+<div>
+ご不明な点などございましたら、以下のアドレスにご連絡下さい。</div>
+
+<div>お問い合わせ：<br>
+info@shizencyokuhan.com</div><br>
+
+<div>これからも皆様のつくった新鮮で、安全な農産品を、全国の食卓にお届けできるよう、
+努力して参りますので、今後とも何卒宜しくお願い申し上げます。</div>
+
+<br><br>
+
+<div>自然栽培ちょくはん<br>
+info@shizencyokuhan.com<br>
+http://www.shizencyokuhan.com<br>
+</div>
+
+
+
+

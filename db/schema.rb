@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150612044403) do
+ActiveRecord::Schema.define(version: 20150620105001) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150612044403) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_id"
+    t.string   "phone"
   end
 
   add_index "addresses", ["city"], name: "index_addresses_on_city"
@@ -187,7 +188,7 @@ ActiveRecord::Schema.define(version: 20150612044403) do
   create_table "sales_terms", force: true do |t|
     t.integer  "staff_member_id"
     t.string   "type"
-    t.text     "delivery_fee"
+    t.integer  "delivery_fee"
     t.text     "legal_info"
     t.text     "return_policy"
     t.datetime "created_at"

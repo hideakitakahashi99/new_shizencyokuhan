@@ -8,15 +8,24 @@
 <h5>　　　注文者：<%= @order.customer.family_name %> <%= @order.customer.given_name %>様</h5>
 <h5>　　　連絡先：<%= @order.customer.email %></h5>
 <h5>　送り先住所：〒<%= @address.postal_code %> <%= @address.prefecture %> <%= @address.city %> <%= @address.address1 %> <%= @address.address2 %></h5>
+<h5>　　電話番号：<%= @address.phone %></h5>
 <h5>お支払い方法：<%= @order.payment %></h5></div>
 </div>
 </div>
 </div><br><br><br>
 <div class="container">
   <div class="row">
+  	<div class="span3">
+<table class="table">
+	<tr>
+<th>一律送料：  ¥<%= @staff_member.sales_term.delivery_fee %></th><td></td>
+		</tr>
+	</table>
+</div>
     <div class="span12">
 
 <%= render @order.line_items %>
+
 <div class="pull-right"><h3>合計： ¥<%= @order.total_price %>-（税込）</h3></div>
 <br>
 <%= link_to "受注票をダウンロード(PDF形式)", staff_order_path(@order, format: "pdf"), :class => 'btn' %>

@@ -15,6 +15,7 @@
 						<th>市町村区</th>
 						<th>番地</th>
 						<th>建物名等</th>
+
 					</tr>
 						<% @addresses.each do |m| %>
 					<tr>
@@ -24,6 +25,8 @@
 						<td><%= m.city %></td>
 						<td><%= m.address1 %></td>
 						<td><%= m.address2 %></td>
+						
+
 						<td class="actions">
 							<%= link_to '選択', controller:"addresses", action:"edit", id:m %> 
 						</td>

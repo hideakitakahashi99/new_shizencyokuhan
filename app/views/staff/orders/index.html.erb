@@ -3,6 +3,7 @@
     <div class="span12">
 <h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1>
 </br>
+
 <% if @orders.count == 0 %>
 <h4>ー現在表示できる売上がありませんー</h4>
 <% end %>
@@ -47,6 +48,23 @@
 </tr>
 </table>
 </div>
+
+<div class="span12">
+  <div class="pull-right">
+<table class="table">
+<tr>
+  <th><h4>　<%= @month %>月度 お振込金額：</h4></th>　
+  <td><h4>¥ <%= @c_total_sales * 0.9 - @m_total_sales * 0.1 %></h4></td>
+</tr>
+
+<tr>
+  <th>※マイナスの表示はご請求金額</th>　
+  <td></td>
+</tr>
+
+</table>
+</div>
+  </div>
 
 <div class="span12">
   <h3><i class="ion-stats-bars"></i>　注文履歴</h3>

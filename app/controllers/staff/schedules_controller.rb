@@ -32,7 +32,14 @@ class Staff::SchedulesController < Staff::Base
 		@schedule = Schedule.find(params[:id])
 		@staff_member = current_staff_member 
 		@customers = @staff_member.followers.all
-		StaffMemberMailer.push_info(@schedule, @staff_member, @customers).deliver
+		@harvest = @schedule.harvest
+		@opening = @schedule.opening
+		if @harvest.present?
+		StaffMemberMailer.push_info_ha(@schedule, @staff_member, @customers).deliver
+	    end
+	    if @opening.present?
+	    StaffMemberMailer.push_info_op(@schedule, @staff_member, @customers).deliver
+	    end
 		flash.notice = 'フォロワーにお便りを出しました。'
 		redirect_to :staff_root
 	end
