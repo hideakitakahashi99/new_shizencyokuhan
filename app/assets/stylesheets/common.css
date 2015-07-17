@@ -1239,7 +1239,7 @@ button.close {
 }
 
 .search-btn {
-  margin-top: 26px;
+  margin-top: -14px;
   background-color:#86C166;
   border: 0px;
   padding:8.5px 12px;
@@ -2040,6 +2040,11 @@ input[type="checkbox"]:checked + label:after {
   box-sizing: border-box;
 }
 
+.schedule_harvest input[type="file"] {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 .schedule_harvest select {
    padding: 10px 1px 10px 32px;
   
@@ -2104,6 +2109,11 @@ input[type="checkbox"]:checked + label:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.product_form input[type="file"] {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .product_form select {
@@ -2322,4 +2332,63 @@ input[type="checkbox"]:checked + label:after {
   margin-top: 5px;
 }
 
+.contents .map{
+  height: 500px;
+  clear:both;
+
+}
+
+
+   #map-canvas {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+  
+  #tab {
+    margin: 0 auto;
+  }
 

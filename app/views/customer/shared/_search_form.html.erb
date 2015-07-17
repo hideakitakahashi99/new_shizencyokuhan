@@ -1,22 +1,31 @@
 
 <div class="container">
 <div class="row">
+	<div class="span12">
+
+
+
+
 <%= form_for @search_form, as: 'search', url: :customer_search, html: { method: :get, class: 'search' } do |f| %>
-<div class="pull-left">
-<div class="inputrow">
-     <%= f.label :prefecture, '' %>
-  <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], {:include_blank => 'お好みの産地'} %>
-  </div>
-</div>
-<div class="pull-left">
-<div class="inputrow">
-     <%= f.label :category, '' %>
+
+
+               
+
+<span><h1>産地と品目で、農家さんを検索しよう！</h1></span><br>
+
+     
+ <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], {:include_blank => 'お好みの産地'} %>
+ 
+
+    
   <%= f.select :category, [["", Product::CATEGORY_NAMES]], {:include_blank => 'お好みの品目'}  %>
-  </div>
-</div>
+ 
 
   <%= f.submit "お野菜を探す！", class: "search-btn" %>
 
-<% end %>
+
+ 
+  <% end %>
+</div>
 </div>
 </div>

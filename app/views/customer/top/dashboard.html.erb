@@ -1,28 +1,38 @@
 
 
-
+  
 
  <div class="top-image">
 
   <%= render 'customer/shared/search_form' %>
 
 </div>
+
 <div class="insert">
-  <ul class="bxslider">
-  <li><h5 class="pull-right"><i class="ion-leaf"></i>　<%= link_to '美味しさ満載！自然なお野菜レポート　かすみんぶろぐ毎月20日更新！　　＞＞', 'http://shizencyokuhan.cocolog-nifty.com/', {:target => "_blank"} %></h5></li>
-  <li><h5 class="pull-right"><i class="ion-flag"></i>　<%= link_to '今週の注目農家！　ー兵庫うむ農園ー　　＞＞', [:customer_root ] %></h5></li>
-  <li><h5 class="pull-right"><i class="ion-bookmark">　</i><%= link_to 'うむ特別販売会開催！　2016年3月25日＠横浜中華街　　＞＞', [:customer_root ] %></h5></li>
-  <li><h5 class="pull-right"><i class="ion-paper-airplane">　</i><%= link_to '今月の一押しイベント！　ー楽市楽座よいよいー　　＞＞', [:customer_root ] %></h5></li>
+  <div class="span12">
+ <div id="tab">
+<ul>
+<div class= "pull-center"><li class="now"><h1><i class="ion-map"></i><h1><h5>地図で検索！</h5></li></div>
+<div class= "pull-center"><li><h1><i class="ion-home"></i></h><h5>開店中のお店！</h5></li></div>
+<div class= "pull-center"><li><h1><i class="ion-calendar"></i></h1><h5>農家のスケジュール！</h5></li></div>
+
 </ul>
 </div>
+</div>
 
+<div class="contents">
+  <div class="map">
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map-canvas"></div>
+</div>
+</div>
 
-  <div class="container">
+<div class="contents">
+ <div class="container">
     <div class="row">
 
-      <div class="span7">
+      <div class="span12">
         <div class="events">
-          <h2>今すぐ買える！！<br/><strong>開店中の自然農家</strong><br/>INFO</h2>
            <% if @open_staff_members.count == 0 %>
            <h4>ー現在購入できる農家さんはありませんー</h4>
            <h5>フォローして開店情報をいち早くGET！</h5>
@@ -30,12 +40,16 @@
             <% end %>
           <% @open_staff_members.each do |m| %>
             <div class="span3">
-					<div class="events-area">
+              <div class="bgc">
+          <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  
+                  <% if m.image? %>
                   <div class="prof"><%= image_tag m.image.thumb.url %></div>
+                  <% else %>
+                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <% end %>
                
                   
                   
@@ -43,30 +57,21 @@
                     <h5><i class="ion-leaf"></i> <%= m.farm_name %></h5>
                   <h5><a href="<%= customer_staff_member_store_index_path(m) %>">OPEN!!</a></h5>
                   <% if m.staff_address %>
-                  <h6><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h6>
+                  <h7><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h7>
                   <% end %>
                   <% if m.additional_info %>
                   <h6><i class="ion-heart"></i> 看板野菜：<%= m.additional_info.masterpiece %> </h6>
                   <% end %>
                     
-                    <ul>
-                    
-                      <li>
-                        
-                          <p style="margin-top: 15px;">
-                      <div><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %>
-                      </div>
-                          </p>
-                        </li>
-                        <li>
-                        
-                      <div><%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn btn-large btn-primary" } %>
-                      </div>
-                    
+                  
                           
-                        
-                      </li>
-                    </ul>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %>
+                      
+                        </div> 
+                       
+                        <div class="new-btn">
+                      <%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+                    </div>
                   </div>
                 
                 </div><!-- event-box ends -->
@@ -74,7 +79,7 @@
             </ul>
     
           </div><!-- events-area ends -->
-          
+          </div>
         </div><!-- events end -->
    
       <% end %>
@@ -84,13 +89,16 @@
       <%= paginate @open_staff_members %>
     </div>
       </div>
-     
-  
-      <div class="row">
-      <div class="span5">
+     </div>
+   </div>
+ </div>
+<div class="contents">  
+<div class="container">    
+  <div class="row">
+      <div class="span12">
         <div class="events">
-          <h2>全国農家からの<br/><strong>新着スケジュールを</strong><br/> チェック！！</h2>
-					<div class="widget">
+          
+          <div class="widget">
            <% if @schedules.count == 0 %>
            <h4>ー現在表示できる投稿はありませんー</h4>
             <% end %>
@@ -105,7 +113,13 @@
              <div class="detail">
                <h5><a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
                 <ul>
-                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
+                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong>
+                  <% if schedules.harvest_date? %>
+                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
+                    <% end %>
+                    <% if schedules.opening_date? %>
+                    <%= schedules.opening_date.strftime("%Y年%m月%d日 %H:%M") %><br>　　　　&#8659;<br><%= schedules.closing_date.strftime("%Y年%m月%d日 %H:%M") %>
+                    <% end %></strong></h3></span></li>
                   <% if schedules.staff_member.additional_info %>
                   <li><i class="ion-information-circled"></i> 自然栽培<%= schedules.staff_member.additional_info.farm_condition_year %>|<%= schedules.staff_member.additional_info.farm_condition %></li>
                   <li><i class="ion-heart"></i> 看板やさい：<%= schedules.staff_member.additional_info.masterpiece %></li>
@@ -146,7 +160,7 @@
           </div><!-- widget ends -->
                  
                     <h5>
-                      <br/>農家さんをフォローすると、フォローした農家さんのスケジュールだけが見れる様になるよ！<br/>
+                      <br/>
                       <%= link_to "→ごひいき農家予定一覧へ", customer_static_pages_feed_page_path, { :class => "btn"} %></h5>
                     
                   
@@ -156,7 +170,39 @@
               </div>
               </div>
             </div>
-          </div>
+            </div>
+<div class="contents"><div class="container">
+  <div class="low">
+          <div class="span12">
+
+
+<br>
+
+
+
+            <h2></h2>
+  <ul class="bxslider1">
+  <li><%= image_tag "flow_img.png" %></li>
+  <li><%= image_tag "flow_img2.png" %></li>
+  <li><%= image_tag "flow_img3.png" %></li>
+</ul>
+</div>
+</div>
+</div></div>
+<div class="contents">ここに タブ03 がアクティブの時に表示する内容</div>
+<div class="contents">ここに タブ04 がアクティブの時に表示する内容</div>
+</div>
+
+
+
+  
+
+          
+
+
+
+
+
           <script>
           $(document).ready(function(){
   $('.bxslider').bxSlider({
@@ -167,15 +213,40 @@
   buildPager: function(slideIndex){
     switch(slideIndex){
       case 0:
-        return '<i class="ion-earth"></i>';
+        return '';
       case 1:
-        return '<i class="ion-planet"></i>';
+        return '';
       case 2:
-        return '<i class="ion-cube"></i>';
+        return '';
       case 3:
-        return '<i class="ion-lightbulb"></i>';
+        return '';
       case 4:
-        return '<i class="ion-earth"></i>';
+        return '';
+    }
+  }
+});
+  });
+          </script>
+
+          <script>
+          $(document).ready(function(){
+  $('.bxslider1').bxSlider({
+    auto: true,
+    nextSelector: '#slider-next',
+  prevSelector: '#slider-prev',
+  pause: 6000,
+  buildPager: function(slideIndex){
+    switch(slideIndex){
+      case 0:
+        return '';
+      case 1:
+        return '';
+      case 2:
+        return '';
+      case 3:
+        return '';
+      case 4:
+        return '';
     }
   }
 });

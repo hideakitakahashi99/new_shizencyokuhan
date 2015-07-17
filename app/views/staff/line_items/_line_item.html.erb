@@ -3,6 +3,7 @@
  <tr>
       <th>品目</th>
       <th>品種</th>
+      <th>内容量</th>
       <th>注文数</th>
       <th>小計</th>
       
@@ -13,6 +14,7 @@
 	<tr>
 		<td><%= line_item.product.category %></td>
 			<td><%= line_item.product.variety %> </td>
+			<td><%= line_item.product.net %> g </td>
 		<td> &times;<%= line_item.quantity %></td>
 		<td class="item_price"><%= sprintf("¥%0.0f", line_item.total_price) %>（税込）</td>
 	</tr>

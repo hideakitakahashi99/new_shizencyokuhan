@@ -106,7 +106,14 @@
              <div class="detail">
                <h5><a href="<%= schedules.event_url %>">【<%= @staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></a></h5>
                 <ul>
-                  <li><span><i class="ion-ios-clock"></i><strong> 開始日時：</strong><h3><strong><%= schedules.harvest_date %><%= schedules.opening_date %> → <%= schedules.closing_date %></strong></h3></span></li>
+                  <li><span><i class="ion-ios-clock"></i><strong> 開始日時：</strong><h3><strong>
+                    <% if schedules.harvest_date? %>
+                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
+                    <% end %>
+                    <% if schedules.opening_date? %>
+                    <%= schedules.opening_date.strftime("%Y年%m月%d日 %H:%M") %><br>　　　　&#8659;<br><%= schedules.closing_date.strftime("%Y年%m月%d日 %H:%M") %>
+                    <% end %>
+                    </strong></h3></span></li>
                   <% if @staff_member.staff_address %>
                   <li><span><i class="ion-ios-location"></i>
                   	<%= @staff_member.staff_address.prefecture %> 

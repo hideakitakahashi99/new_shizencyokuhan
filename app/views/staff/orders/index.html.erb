@@ -4,9 +4,7 @@
 <h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1>
 </br>
 
-<% if @orders.count == 0 %>
-<h4>ー現在表示できる売上がありませんー</h4>
-<% end %>
+
 <div class="span5">
    <div class="pull-left">
   <h3><i class="ion-social-yen"></i>　代金引き換え</h3>
@@ -79,7 +77,9 @@
       <th>注文内容</th>
       <th colspan="3"></th>
     </tr>
- 
+ <% if @orders.count == 0 %>
+<h4>ー現在表示できる売上がありませんー</h4>
+<% end %>
 
   
     <% @orders.each do |order| %>

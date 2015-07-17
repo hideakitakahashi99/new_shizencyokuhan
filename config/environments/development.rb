@@ -26,6 +26,7 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
     :domain => 'smtp.gmail.com',
     :user_name => 'hideakitakahashi99@gmail.com',
     :password => 'dai108dainaikakusouridaijinn',
+    :password => 'lfmhlmhetxgecdjs',
     :authentication => :plain,
     :enable_starttls_auto => true
      }

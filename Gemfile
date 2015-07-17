@@ -100,3 +100,5 @@ gem 'prawn-table'
 gem 'json', '~> 1.8.1'
 
 gem 'exception_notification'
+
+gem 'tabulous'
