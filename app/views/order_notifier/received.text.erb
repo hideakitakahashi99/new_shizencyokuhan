@@ -6,11 +6,15 @@
 ご注文が確定いたしましたので、お知らせいたします。
 ご注文内容は以下をご確認ください。
 
+
+ご注文内容
 .....................................
-会社／農園名：<%= @staff_member.farm_name %>
-支払い方法：<%= @payment %>
+注文番号   　 7008<%= @order.id %>
+会社／農園名  <%= @staff_member.farm_name %>
+支払い方法    <%= @payment %>
 商品内容：
 <%= render @order.line_items %>
+送料　　      ¥<%= @staff_member.sales_term.delivery_fee%>
 .....................................
 
 速やかに発送手続きに入らせていただきます。
@@ -22,14 +26,14 @@
 詳しくは、各農家様が任意で設定されている返品規定をお読み下さい。
 
 ご不明な点などございましたら、以下のアドレスにご連絡下さい。
-info@shizencyokuhan.com
+info@shizencyokuhan.org
 
 これからも新鮮で、安全で、健康になれるような農産品を、皆様の食卓にお届けできるよう、努力して参りますので、今後とも何卒宜しくお願い申し上げます。
 
 
 自然栽培ちょくはん
-info@shizencyokuhan.com
-http://shizencyokuhan.com
+info@shizencyokuhan.org
+http://www.shizencyokuhan.com
 
 
 

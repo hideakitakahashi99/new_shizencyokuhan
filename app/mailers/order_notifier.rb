@@ -1,5 +1,5 @@
 class OrderNotifier < ActionMailer::Base
-  default from: '自然ちょくはん <hideakitakahashi99@gmail.com>'
+  default from: '自然ちょくはん <info@shizencyokuhan.org>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -28,7 +28,7 @@ class OrderNotifier < ActionMailer::Base
     @customer_given = @address.customer.given_name
 
     mail(to: @staff_member.email,
-         bcc: 'hideakitakahashi99@gmail.com',
+         bcc: 'info@shizencyokuhan.org',
          subject: '【自然ちょくはん】ご注文が確定いたしました')
   end
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -43,7 +43,7 @@ class OrderNotifier < ActionMailer::Base
     @customer = customer
     
     mail(to: @customer.email,
-         bcc: 'hideakitakahashi99@gmail.com', 
+         bcc: 'info@shizencyokuhan.org', 
          subject: '【自然ちょくはん】商品発送のお知らせ')
   end
 end

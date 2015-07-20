@@ -4,34 +4,69 @@
 
  <div class="top-image">
 
-  <%= render 'customer/shared/search_form' %>
+  <%= render 'customer/shared/image_only' %>
 
 </div>
-
-<div class="insert">
   <div class="span12">
  <div id="tab">
-<ul>
-<div class= "pull-center"><li class="now"><h1><i class="ion-map"></i><h1><h5>地図で検索！</h5></li></div>
-<div class= "pull-center"><li><h1><i class="ion-home"></i></h><h5>開店中のお店！</h5></li></div>
-<div class= "pull-center"><li><h1><i class="ion-calendar"></i></h1><h5>農家のスケジュール！</h5></li></div>
+<div class="span12">
+<%= form_for @search_form, as: 'search', url: :customer_search, html: { method: :get, class: 'search' } do |f| %>
+
+
+        
+
+     
+ <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], {:include_blank => 'お好みの産地'} %>
+ 
+
+    
+  <%= f.select :category, [["", Product::CATEGORY_NAMES]], {:include_blank => 'お好みの品目'}  %>
+ 
+
+  <%= f.submit "生産者を探す！", class: "search-btn" %>
+
+
+ 
+  <% end %>
+</div>
+<div class="span12">
+<ul class="center">
+
+<div class= "span2"><li class="now"><h1><i class="ion-map"></i><h1><h5>地図で検索!</h5></li></div>
+<div class= "span2"><li><h1><i class="ion-home"></i></h><h5>開店中のお店!</h5></li></div>
+<div class= "span2"><li><h1><i class="ion-calendar"></i></h1><h5>農家のスケジュール!</h5></li></div>
+<div class= "span2"><li><h1><i class="ion-help"></i></h1><h5>何ができるの?</h5></li></div>
+<div class= "span2"><li><h1><i class="ion-android-restaurant"></i></h1><h5>ペンギンレシピ!</h5></li></div>
+
+
 
 </ul>
 </div>
+</div>
+</div>
+
+<div class="insert">
+ 
 </div>
 
 <div class="contents">
   <div class="map">
   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
     <div id="map-canvas"></div>
+
 </div>
 </div>
 
+
 <div class="contents">
+  
  <div class="container">
     <div class="row">
 
       <div class="span12">
+        <h1>　
+ </h1>
         <div class="events">
            <% if @open_staff_members.count == 0 %>
            <h4>ー現在購入できる農家さんはありませんー</h4>
@@ -91,11 +126,16 @@
       </div>
      </div>
    </div>
- </div>
-<div class="contents">  
+</div>
+
+ <div class="contents">
+  <div class="insert">
+  </div>
 <div class="container">    
   <div class="row">
       <div class="span12">
+          <h1>　
+ </h1>
         <div class="events">
           
           <div class="widget">
@@ -171,7 +211,10 @@
               </div>
             </div>
             </div>
-<div class="contents"><div class="container">
+
+
+<div class="contents">
+  <div class="container">
   <div class="low">
           <div class="span12">
 
@@ -188,10 +231,30 @@
 </ul>
 </div>
 </div>
-</div></div>
-<div class="contents">ここに タブ03 がアクティブの時に表示する内容</div>
-<div class="contents">ここに タブ04 がアクティブの時に表示する内容</div>
 </div>
+</div>
+
+
+
+<div class="insert">
+  </div>
+
+  <div id="tab">
+       <strong><h2>自然ちょくはんは<br>自然に寄り添う生産者を応援し<br>増やしていく仕組みです!
+ </h2></strong>
+<div class="span4"><%= image_tag ("icon_sample3.png") %><br>
+  <h2>小規模生産者の基金！</h2><br><h4>　
+  地域の新規就農者の育成、地域の農を中心としたコミュニティーづくりに対して資金を提供する基金を創設します。</h4></div>
+<div class="span4"><%= image_tag ("icon_sample1.png") %><br><h2>地元／地域の食糧基盤！</h2><br><h4>　
+  地域の食糧自給の基盤となるシステムを提供します。皆様と生産者様が支え合い、助け合うことで生まれる、自立的な地域を作っていきます。
+  </h4></div>
+<div class="span4"><%= image_tag ("icon_sample2.png") %><br><h2>生産者と直接つながる！</h2><br><h4>　生産者さんから売りたいタイミングでメッセージが届くので、何度もサイトを訪問しなくても、好きな地域の好きな生産者さんから購入できます。</h4></div>
+</div>
+
+ <div class="top-image-1">
+<%= image_tag ("top_image_1.png") %>
+</div>
+
 
 
 

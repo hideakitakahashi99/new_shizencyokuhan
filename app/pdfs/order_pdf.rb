@@ -62,7 +62,7 @@ class OrderPDF < Prawn::Document
 	end
 
 	def line_item_rows
-		arr = [["品目","品種","内容量","注文数","小計(税込)"]]
+		arr = [["品目","品種","内容量(g)","注文数","小計(税込)"]]
 		@order.line_items.map.with_index do |item, i|
 		arr << [item.product.category, item.product.variety, item.product.net, item.quantity, item.total_price]
 		end

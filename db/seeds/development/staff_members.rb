@@ -1,10 +1,10 @@
 c = StaffMember.create!(
-	farm_name: 'タロウ農園',
-	email: 'taro@example.com',
-	family_name: '山田',
-	given_name: '太郎',
-	family_name_kana: 'ヤマダ',
-	given_name_kana: 'タロウ',
+	farm_name: '運営（うむ農園）',
+	email: 'info@shizencyokuhan.org',
+	family_name: '高橋',
+	given_name: '秀彰',
+	family_name_kana: 'タカハシ',
+	given_name_kana: 'ヒデアキ',
 	password: 'password',
 	start_date: Date.today
 )
@@ -14,7 +14,7 @@ c.create_staff_address!(
 	prefecture: '兵庫県',
 	city: '丹波市',
 	address1: '市島町北奥555',
-	address2: 'rails-building807'
+	address2: ''
 	)
 
 

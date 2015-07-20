@@ -12,6 +12,33 @@ class Staff::OrdersController < Staff::Base
 		@month = Time.now.month
 	end
 
+	def prev_month
+		prev = Time.now - 1.month
+
+		@staff_member = current_staff_member
+		staff_member_id = @staff_member.id
+		@credit_orders = Order.where(staff_member_id: @staff_member.id, created_at: prev.all_month, payment: "クレジット支払い")
+		@money_orders = Order.where(staff_member_id: @staff_member.id, created_at: prev.all_month, payment: "代金引き換え")
+		@orders = Order.where(staff_member_id: @staff_member.id, created_at: prev.all_month)
+		@c_total_sales = @credit_orders.sum(:total_price)
+		@m_total_sales = @money_orders.sum(:total_price)
+		@total_sales = @orders.sum(:total_price)
+		@month = prev.month
+
+	end
+
+	def the_month_before_last
+		tmbl = Time.now - 2.month
+		@staff_member = current_staff_member
+		staff_member_id = @staff_member.id
+		@credit_orders = Order.where(staff_member_id: @staff_member.id, created_at: tmbl.all_month, payment: "クレジット支払い")
+		@money_orders = Order.where(staff_member_id: @staff_member.id, created_at: tmbl.all_month, payment: "代金引き換え")
+		@orders = Order.where(staff_member_id: @staff_member.id, created_at: tmbl.all_month)
+		@c_total_sales = @credit_orders.sum(:total_price)
+		@m_total_sales = @money_orders.sum(:total_price)
+		@total_sales = @orders.sum(:total_price)
+		@month = tmbl.month
+	end
 
 
 	def show

@@ -1,5 +1,5 @@
 class CustomerMailer < ActionMailer::Base
-  default from: 'central@shizencyokuhan.com'
+  default from: 'info@shizencyokuhan.org'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,9 +8,9 @@ class CustomerMailer < ActionMailer::Base
   #
   def registration_confirmation(customer)
     @customer = customer
-    @url = 'shizencyokuhan.com'
+    @url = 'www.shizencyokuhan.com'
     @greeting = "おめでとうございます！　あなたのアカウントが登録されました！"
-    mail(to: @customer.email, bcc:'hideakitakahashi99@gmail.com', subject: 'アカウント登録完了のお知らせ' )
+    mail(to: @customer.email, bcc:'info@shizencyokuhan.org', subject: 'アカウント登録完了のお知らせ' )
     
   end
 

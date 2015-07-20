@@ -2388,7 +2388,11 @@ input[type="checkbox"]:checked + label:after {
       }
 
   
+  .center {
+   text-align:center;
+  }
+
   #tab {
-    margin: 0 auto;
+    text-align:center;
   }
 

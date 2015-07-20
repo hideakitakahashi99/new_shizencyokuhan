@@ -61,6 +61,8 @@ namespace :staff, path: config[:staff][:path] do
     get  'inquiry'         => 'inquiry#index'
     post 'inquiry/confirm' => 'inquiry#confirm'
     post 'inquiry/thanks'  => 'inquiry#thanks'
+
+ 
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
     resource :account, except: [ :new, :create ]

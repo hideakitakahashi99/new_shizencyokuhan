@@ -1,9 +1,12 @@
 
     <div><h4>【<%= @staff_member.farm_name %>】さんからのお知らせです！</h4></div>
     <regend>
-      <div>[メッセージ]　<%= @schedule.harvest %> </div>
-      <div>[開始日時]　　<%= @schedule.harvest_date %> </div>
-      <div>[イベントURL]<%= @schedule.event_url %> </div>
+      <div>[メッセージ]：</div>
+      <div><%= @schedule.harvest %> </div><br>
+      <div>[開始日時]：</div>
+      	<div>　<%= @schedule.harvest_date %> </div><br>
+      <div>[イベントURL]：</div>
+      	<div><%= @schedule.event_url %> </div><br>
   </regend><br>
 
       <div><%= link_to 'このごひいき農家さんのお店に行く', customer_staff_member_store_index_url(@staff_member) %> </div>

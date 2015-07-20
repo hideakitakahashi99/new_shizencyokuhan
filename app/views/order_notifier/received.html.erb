@@ -7,14 +7,37 @@
 ご注文内容は以下をご確認ください。</h6>
 
 
-<h5>
-.....................................<br>
-会社／農園名：	<%= @staff_member.farm_name %><br>
-支払い方法：	<%= @payment %><br>
-商品内容：<br>
-<%= render @order.line_items %><br>
+<div><strong>ご注文内容</strong></div>
+<div>.....................................</div>
+<div>【注文番号】   7008<%= @order.id %></div>
+<div>【ご注文者氏名】<%= @customer_family %> <%= @customer_given%>様</div>
+<div>【ご購入先】　　<%= @staff_member.farm_name %></div>
+<div>【支払い方法】  <%= @payment %></div>
+<div>【商品内容】：</div>
+<div><%= render @order.line_items %></div>
 <% if @staff_member.sales_term%>
-送料：		¥<%= @staff_member.sales_term.delivery_fee%><br>
+<div>【送料】       ¥<%= @staff_member.sales_term.delivery_fee%></div>
 <% end %>
-.....................................<br>
-</h5>
+<div>.....................................</div><br>
+
+<div>速やかに発送手続きに入らせていただきます。</div>
+<div>ご注文いただいた商品は、ご指定の農家様より、直接発送させていただきます。</div><br>
+
+<div>生鮮品の取り扱いの為、一旦ご注文された商品のキャンセルは受け付けておりません。</div>
+<div>ご不便をお掛けいたしますが、何卒ご了承下さいますよう宜しくお願い申し上げます。</div>
+
+<div>詳しくは、各農家様が任意で設定されている返品規定をお読み下さい。</div>
+
+<div>ご不明な点などございましたら、以下のアドレスにご連絡下さい。</div>
+<div>info@shizencyokuhan.com</div><br>
+
+
+<h4>商品の発送の際に、ご連絡いたします。</h4><br>
+<h4><strong><%= @order.created_at + 291600 %></strong>までに出荷が完了する予定です。</h4>
+
+<div>商品到着まで、今しばらくお待ち下さい。</div>
+<div>これからも新鮮で、安全で、健康になれるような農産品を、皆様の食卓にお届けできるよう、努力して参りますので、今後とも何卒宜しくお願い申し上げます。</div><br>
+
+<div>自然栽培ちょくはん</div>
+<div>info@shizencyokuyhan.org</div>
+<div>http://www.shizencyokuhan.com</div>
