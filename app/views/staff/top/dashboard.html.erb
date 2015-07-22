@@ -137,8 +137,8 @@
                     <%= image_tag schedules.image3.url, :class => "intense"  %>
                   </div>
                     <% end %>
-                    <li><%= link_to 'メールでシェア', [ :push, :staff, schedules ], data: { confirm: 'フォロワー宛にメールが送信されます。本当に送信しますか？'} %></li>
-                    <li><%= link_to '削除', [ :staff, schedules ], method: :delete, data: { confirm: '本当に削除しますか？'} %></li>
+                    <li><i class="ion-share"> </i><%= link_to 'メールでシェア', [ :push, :staff, schedules ], { data: { confirm: 'フォロワー宛にメールが送信されます。本当に送信しますか？'}, :class => "btn"}  %></li>
+                    <li><i class="ion-trash-a"> </i><%= link_to '削除', [ :staff, schedules ], method: :delete, data: { confirm: '本当に削除しますか？'} %></li>
                     
                 </ul>
              </div>

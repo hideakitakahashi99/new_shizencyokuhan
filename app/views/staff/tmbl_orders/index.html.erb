@@ -1,7 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="span12">
-<h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1>
+      <div class="top-nav">
+      <div class="pull-left">
+      <%= link_to '先月 >', [:staff_prev_orders], :class => "btn" %>
+       <%= link_to '当月 >', [:staff_orders], :class => "btn" %>
+       </div>
+<div class="span10"><h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1></div>
+</div>
 </br>
 
 

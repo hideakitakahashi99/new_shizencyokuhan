@@ -86,6 +86,13 @@ namespace :staff, path: config[:staff][:path] do
     resources :orders, only: [ :index, :show ] do
       get :shipped 
     end
+    resources :prev_orders, only: [ :index, :show ] do
+      get :shipped 
+    end
+    resources :tmbl_orders, only: [ :index, :show ] do
+      get :shipped 
+    end
+
     resources :products do
     get :who_bought, on: :member
     end 

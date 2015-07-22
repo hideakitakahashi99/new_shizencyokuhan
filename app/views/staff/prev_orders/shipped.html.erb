@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+
+<div><h3>発送完了通知が送信されました。ご対応いただき、誠にありがとうございます！</h3>
+	<h6>　<strong>【 <%= @order.created_at %> 】</strong>注文分の商品発送が完了した旨、通知いたしました。<br/>　伝達事項などございましたら、以下記載のメールアドレスへ、直接ご連絡ください。</h6><br/>
+	<h5>　　連絡先：<%= @order.customer.email %>
+	<h5>購入者氏名：<%= @order.customer.family_name %> <%= @order.customer.given_name %>様</h5>
+	<h5>送り先住所：〒<%= @address.postal_code %> <%= @address.prefecture %> <%= @address.city %> <%= @address.address1 %> <%= @address.address2 %></h5></div>
+	<h5>通知完了時刻：<%= Time.now %></h5>
+
+
+
+<br>
+
+
+<%= link_to 'Home', :staff_root %>
+</div>
+</div>
+</div>
