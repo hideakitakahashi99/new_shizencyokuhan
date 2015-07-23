@@ -50,12 +50,20 @@
 </div>
 
 <div class="contents">
-  <div class="map">
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
-    <div id="map-canvas"></div>
-
+ 
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
+
+<script>
+ handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+ </script>
+
 </div>
 
 
@@ -133,7 +141,11 @@
   </div>
 <div class="container">    
   <div class="row">
-      <div class="span12">
+    <div class="span3">
+      funifuni
+     
+    </div>
+      <div class="span6">
           <h1>　
  </h1>
         <div class="events">
@@ -151,15 +163,15 @@
                  <a href="events-detail.html"></a>
                </figure>
              <div class="detail">
-               <h5><a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>"><strong>【<%= schedules.staff_member.farm_name %>】<%= schedules.harvest %><%= schedules.opening %></strong> </a></h5>
+               <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>"><h5><strong><%= schedules.staff_member.farm_name %></h5><h6><%= schedules.harvest %><%= schedules.opening %></strong> </h6></a>
                 <ul>
-                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h3><strong>
+                  <li><span><i class="ion-ios-clock"></i> <strong>開始日時：</strong><h6>
                   <% if schedules.harvest_date? %>
-                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
+                    <%= schedules.harvest_date.strftime("%Y年 %m月 %d日") %>
                     <% end %>
                     <% if schedules.opening_date? %>
-                    <%= schedules.opening_date.strftime("%Y年%m月%d日 %H:%M") %><br>　　　　&#8659;<br><%= schedules.closing_date.strftime("%Y年%m月%d日 %H:%M") %>
-                    <% end %></strong></h3></span></li>
+                    <%= schedules.opening_date.strftime("%Y年 %m月 %d日 %H:%M") %><br>　　　　&#8659;<br><%= schedules.closing_date.strftime("%Y年 %m月 %d日 %H:%M") %>
+                    <% end %></h6></span></li>
                   <% if schedules.staff_member.additional_info %>
                   <li><i class="ion-information-circled"></i> 自然栽培<%= schedules.staff_member.additional_info.farm_condition_year %>|<%= schedules.staff_member.additional_info.farm_condition %></li>
                   <li><i class="ion-heart"></i> 看板やさい：<%= schedules.staff_member.additional_info.masterpiece %></li>
@@ -242,13 +254,14 @@
   <div id="tab">
        <strong><h2>自然ちょくはんは<br>自然に寄り添う生産者を応援し<br>増やしていく仕組みです!
  </h2></strong>
-<div class="span4"><%= image_tag ("icon_sample3.png") %><br>
+<div class="span3"><%= image_tag ("icon_sample3.png") %><br>
   <h2>小規模生産者の基金！</h2><br><h4>　
   地域の新規就農者の育成、地域の農を中心としたコミュニティーづくりに対して資金を提供する基金を創設します。</h4></div>
-<div class="span4"><%= image_tag ("icon_sample1.png") %><br><h2>地元／地域の食糧基盤！</h2><br><h4>　
+<div class="span3"><%= image_tag ("icon_sample1.png") %><br><h2>地元／地域の食糧基盤！</h2><br><h4>　
   地域の食糧自給の基盤となるシステムを提供します。皆様と生産者様が支え合い、助け合うことで生まれる、自立的な地域を作っていきます。
   </h4></div>
-<div class="span4"><%= image_tag ("icon_sample2.png") %><br><h2>生産者と直接つながる！</h2><br><h4>　生産者さんから売りたいタイミングでメッセージが届くので、何度もサイトを訪問しなくても、好きな地域の好きな生産者さんから購入できます。</h4></div>
+<div class="span3"><%= image_tag ("icon_sample2.png") %><br><h2>生産者と直接つながる！</h2><br><h4>　生産者さんから売りたいタイミングでメッセージが届くので、何度もサイトを訪問しなくても、好きな地域の好きな生産者さんから購入できます。</h4></div>
+<div class="span3"><%= image_tag ("icon_sample4.png") %><br><h2>新鮮な野菜を単品から！</h2><br><h4>　生産者さんが大切に育てた、新鮮なお野菜を、単品からその場で購入できます！</h4></div>
 </div>
 
  <div class="top-image-1">

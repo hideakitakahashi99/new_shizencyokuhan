@@ -1557,6 +1557,12 @@ article ul li a:hover {
 	color: #ffffff;
 }
 
+.top-image span h3{
+	width: 100%;
+	margin: 0 auto;
+	color: #ffffff;
+}
+
 .top-image label{
 	color: #ffffff;
 }

@@ -28,10 +28,14 @@ $(".openNav").click(function() {
 });
 </script>
 
-      <div class="logo"> <%= link_to image_tag ('cyokuhan_logo.png'), :action => "index" %> <span class="slogan"> 全国の自然農、自然栽培農家が見つかる！繋がる！ </span> </div> 
+      <div class="logo"> <%= link_to image_tag ('cyokuhan_logo.png'), :action => "index" %> <span class="slogan"></span> </div> 
       <!-- logo ends -->
  <div class="pull-right">
-<!--<%= link_to "農産品を購入:新規会員登録はこちら！", :customer_signup, { :class => "sbtn" }  %>-->
+  <%= 
+    link_to "農産品を購入:新規会員登録はこちら！", :customer_signup, { :class => "sbtn" } 
+ 
+    %>
+
  </div>
     </div>
   </div><!-- tp-bar ends -->

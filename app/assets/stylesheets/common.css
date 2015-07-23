@@ -2392,6 +2392,10 @@ input[type="checkbox"]:checked + label:after {
    text-align:center;
   }
 
+  .center_img {
+    margin: 87px;
+  }
+
   #tab {
     text-align:center;
   }
