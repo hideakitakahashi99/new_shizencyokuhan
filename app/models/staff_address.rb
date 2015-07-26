@@ -26,9 +26,14 @@ class StaffAddress < ActiveRecord::Base
 
 	validates :postal_code, format: { with: /\A\d{7}\z/, allow_blank: true }
 	validates :prefecture, inclusion: { in: PREFECTURE_NAMES, allow_blank: true }
+	
+def full_street_address
+  [prefecture, city, address1, address2].compact.join(', ')
+end
 
-	geocoded_by :city
+	geocoded_by :full_street_address
 	after_validation :geocode 
+	
 	
 
 end

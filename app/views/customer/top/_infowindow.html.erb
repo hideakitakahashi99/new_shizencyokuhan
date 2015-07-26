@@ -1,0 +1,7 @@
+<h5><%= staff_member.staff_member.farm_name %></h5>
+<h5>所在地:<%= staff_member.prefecture%> <%= staff_member.city %> <%= staff_member.address1 %> <%= staff_member.address2%></h5>
+<% if staff_member.staff_member.additional_info %>
+<h5>看板野菜:<%= staff_member.staff_member.additional_info.masterpiece %></h5>
+<% end %>
+<div class="pull-left"><div class="new-btn"><%= link_to 'どんな農家？', [:customer, staff_member.staff_member ], {:class => "btn" } %></div></div>
+<div class="pull-left"><div class="new-btn"><%= link_to 'スケジュール', [:customer, staff_member.staff_member, :schedules], {:class => "btn" } %></div> </div>
