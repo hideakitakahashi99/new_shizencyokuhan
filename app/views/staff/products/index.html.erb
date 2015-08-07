@@ -25,6 +25,7 @@
 						<th>表示画像</th>
 						<th>品目名</th>
 						<th>品種</th>
+						<th>自家採種の有無</th>
 						<th>作付け方法</th>
 						<th>入り数</th>
 						<th>価格</th>
@@ -37,6 +38,8 @@
 						<td><%= image_tag m.productimg.thumb.url %></td>
 						<td><%= m.category %></td>
 						<td><%= m.variety %></td>
+						<% p = ProductPresenter.new(m, self) %>
+						<td><%= p.seed_rising_mark %></td>
 						<td><%= m.method %></td>
 						<td><%= m.net %></td>
 						<td><%= m.price %></td>

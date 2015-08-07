@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620105001) do
+ActiveRecord::Schema.define(version: 20150807073434) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -157,18 +157,19 @@ ActiveRecord::Schema.define(version: 20150620105001) do
   add_index "phones", ["number_for_index"], name: "index_phones_on_number_for_index"
 
   create_table "products", force: true do |t|
-    t.string   "category",                                null: false
-    t.string   "variety",                                 null: false
-    t.string   "method",                                  null: false
+    t.string   "category",                                                null: false
+    t.string   "variety",                                                 null: false
+    t.string   "method",                                                  null: false
     t.text     "description"
-    t.integer  "net",                                     null: false
-    t.decimal  "price",           precision: 8, scale: 0, null: false
-    t.integer  "stock",                                   null: false
+    t.integer  "net",                                                     null: false
+    t.decimal  "price",           precision: 8, scale: 0,                 null: false
+    t.integer  "stock",                                                   null: false
     t.string   "staff_member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
     t.string   "productimg"
+    t.boolean  "seed_rising",                             default: false, null: false
   end
 
   add_index "products", ["category"], name: "index_products_on_category"

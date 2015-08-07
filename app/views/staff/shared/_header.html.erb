@@ -25,9 +25,17 @@ $(".openNav").click(function() {
   $(this).toggleClass("open");
 });
 </script>
-      <div class="logo"> <%= image_tag 'cyokuhan_logo.png' %> <span class="slogan"> 全国の自然農、自然栽培農家が見つかる！繋がる！ </span> </div> 
+      <div class="logo"> <%= image_tag 'cyokuhan_logo.png' %> <span class="slogan"></span> </div> 
       <!-- logo ends -->
       
+<div class="pull-right">
+  <%= 
+    link_to "新規生産者：登録申請", :staff_inquiry, { :class => "sbtn" } 
+ 
+    %>
+
+ </div>
+
     </div>
   </div><!-- tp-bar ends -->
   <div class="pull-right">

@@ -73,7 +73,8 @@ class Staff::OrdersController < Staff::Base
 		@order.shipped = !@order.shipped
 		@order.save
 		OrderNotifier.shipped(@staff_member, @address, @order, @customer).deliver
-		render 'shipped'
+		flash.notice = '発送通知が完了しました。'
+		redirect_to :action => 'index'
 	end
 end
 

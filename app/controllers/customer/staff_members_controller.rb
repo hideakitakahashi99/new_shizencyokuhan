@@ -1,6 +1,7 @@
 class Customer::StaffMembersController < Customer::Base
 
 	before_action :authorize
+	skip_before_action :authorize, only: [:show] 
 
 	def index
 		@staff_members = StaffMember.order(:family_name_kana, :given_name_kana)

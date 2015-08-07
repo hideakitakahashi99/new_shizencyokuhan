@@ -64,7 +64,7 @@ class Staff::ProductsController < Staff::Base
 		params.require(:product).permit(
 			:category, :variety, :method, 
 			:description, :price, :stock,
-			:net, :productimg, :productimg_cache, :remove_productimg
+			:net, :productimg, :productimg_cache, :remove_productimg, :seed_rising
 			)
 	end
 

@@ -2,7 +2,9 @@
 <div class="additional cf">
   <h4><strong>追加情報編集</strong></h4>
   <div class="field">
+    
     <tr>
+    <!--
       <th>現在の農地が無施肥になってからの状況をお教え下さい。</br>(任意入力)</th>
       <td>
         <div class="inputrow">
@@ -18,20 +20,23 @@
   <%= f.select :farm_condition_year, [["", AdditionalInfo::CONDITION_YEARS]], :prompt => '以下よりお選び下さい' %>
   </div>
   </td></br>
-
-
-  <th>ご自身の作られるお野菜の中で、最もお客様に食べてもらいたい品目をお選びください。</br>(任意入力)</th>
+  -->
+  <div class="pull-left"><i class="ion-heart">　</i></div>
+<%= f.label :masterpiece, '看板やさい' %>
+  <th>ご自身の作られるお野菜の中で、最もお客様に食べてもらいたい品目をお選びください。</th>
   <td>
     <div class="inputrow">
-     <%= f.label :masterpiece, '看板やさい' %>
+     
    <%= f.select :masterpiece, [["", AdditionalInfo::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
  </div>
   </td></br>
 
-  <th>お野菜や畑の魅力が伝わるように、説明文を登録できます。お客様のページのトップに表示されます。</br>(任意入力)</th>
+<div class="pull-left"><i class="ion-chatbox">　</i></div>
+<%= f.label :explanation, '農園、地域の説明文' %>
+  <th>お野菜や畑の魅力が伝わるように、説明文を登録できます。お客様のページのトップに表示されます。</th>
   <td>
     <div class="inputrow">
-     <%= f.label :explanation, '説明文' %>
+     
    <%= f.text_area :explanation, :placeholder => 
    '例：
    霧深い丹波の里で、新鮮な水と腐葉土で育まれた、自然栽培野菜をご堪能いただけます。

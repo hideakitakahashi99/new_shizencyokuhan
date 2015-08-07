@@ -1945,7 +1945,7 @@ div.input-block input {
 input[type="checkbox"] + label {
   position: relative;
   padding-left: 36px;
-  font-size: 0.6em;
+  font-size: 1.2em;
   font-weight: normal;
   line-height: 16px;
   opacity: 0.8;
@@ -2194,7 +2194,7 @@ input[type="checkbox"]:checked + label:after {
 .signup {
   display: block;
   position: relative;
-  width: 300px;
+  width: 250px;
   margin: 20px auto;
   padding: 20px;
   background-color: rgba(0,0,0,0.1);

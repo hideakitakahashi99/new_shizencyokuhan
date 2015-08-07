@@ -15,22 +15,15 @@
 
 
 
-<div class= "container">
-<div class= "row">
-<div class= "span12">
-<% p = StaffMemberPresenter.new(@staff_member, self) %>
-<h2><%= p.suspended_mark %></h2>
-</div>
-</div>
-</div>
-
+<br>
  <div class="stats">
         <%= render 'stats' %>
  </div>
 
 
-<h1><%= image_tag @staff_member.image_url(:thumb).to_s %>  <%= @staff_member.farm_name %></h1>
-
+<div class="pull-left"><h1><%= image_tag @staff_member.image_url(:thumb).to_s %>  <%= @staff_member.farm_name %></h1></div>
+<div class="span12">
+<h1><%= link_to image_tag("fbshare.png"), 'http://www.facebook.com/sharer.php?u='+customer_staff_member_url(@staff_member), :target => :blank %></h1></div>
 
 <div class="bread-bar clearfix">
         <ul class="breadcrumb">
@@ -87,7 +80,7 @@
   <div class="events-area">
  
       
-        <h5><a href="events-detail.html">スケジュールタイムライン</a><i class="ion-help-circled">
+        <h5>スケジュールタイムライン<i class="ion-help-circled">
           <span>ご自身が投稿したスケジュールを確認いただけます。</span></i>
         </h5>
      
@@ -138,7 +131,11 @@
                     <%= image_tag schedules.image3.url, :class => "intense"  %>
                   </div>
                     <% end %>
+                    <% if @staff_member.followers.count == 0 %>
+                    <li><i class="ion-share"></i> 現在フォロワーがいない為、送信できません。</li>
+                    <% else %>
                     <li><i class="ion-share"> </i><%= link_to 'メールでシェア', [ :push, :staff, schedules ], { data: { confirm: 'フォロワー宛にメールが送信されます。本当に送信しますか？'}, :class => "btn"}  %></li>
+                    <% end %>
                     <li><i class="ion-trash-a"> </i><%= link_to '削除', [ :staff, schedules ], method: :delete, data: { confirm: '本当に削除しますか？'} %></li>
                     
                 </ul>

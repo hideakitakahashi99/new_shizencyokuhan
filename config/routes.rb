@@ -50,6 +50,7 @@ namespace :staff, path: config[:staff][:path] do
     get 'static_pages/policy'
     get 'static_pages/disclaimer'
     get 'static_pages/term'
+    get 'static_pages/forbidden'
 
     get 'static_pages/staff_flow'
     get 'static_pages/additional_info'
@@ -131,6 +132,7 @@ namespace :customer, path: config[:customer][:path] do
     get 'static_pages/policy'
     get 'static_pages/disclaimer'
     get 'static_pages/term'
+    get 'static_pages/forbidden'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
 

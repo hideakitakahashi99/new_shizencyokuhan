@@ -1,47 +1,67 @@
+
+
+
+
 <div class="container">
-	<div class="row">
-		<div class="span12">
-			<% @title = '販売者一覧' %>
+    <div class="row">
+<div class="span12">
+      <% @title = '販売者一覧' %>
 			<h2><%= @title %></h2>
-		<div class="table-wrapper">
-
-			<%= paginate @staff_members %>
-
-				<table class="table">
-					<tr>
-						<th>産地</th>
-						<th>会社名／農園名</th>
-						<th>販売責任者</th>
-						<th>フリガナ</th>
-						
-						<th>現在のステータス</th>
-						<th></th>
-					</tr>
-						<% @staff_members.each do |m| %>
-						<% p = StaffMemberPresenter.new(m, self) %>
-					<tr>
-						
-						<td><% if m.staff_address %><%= m.staff_address.prefecture %><% end %></td>
-						
-						<td><%= m.farm_name %></td>
-						<td><%= m.family_name %> <%= m.given_name %></td>
-						<td><%= m.family_name_kana %> <%= m.given_name_kana %></td>
-						
-						<td class="boolean"><%= p.suspended_mark %></td>
-						<td class="actions">
-							<%= link_to '詳細', [ :customer, m ] %> |
-							<%= link_to '農産品一覧',[:customer, m, :store, :index ] %> |
-						</td>
-					</tr>
-						<% end %>
-				</table>
-
-
-
-				<%= paginate @staff_members %>
-
-			</div>
 		</div>
-	</div>
-</div>
+       
+        <div class="events">
+        	<%= paginate @staff_members %>
+          <% @staff_members.each do |m| %>
+          <% p = StaffMemberPresenter.new(m, self) %>
+            <div class="span3">
+              <div class="bgc">
+          <div class="events-area">
+            <ul class="events-list">
+              <li>
+                <div class="event-box event-box-featured">
+                  <% if m.image? %>
+                  <div class="prof"><%= image_tag m.image.thumb.url %></div>
+                  <% else %>
+                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <% end %>
+               
+                  
+                  
+                  <div class="detail">
+                    <h5><i class="ion-leaf"></i> <%= m.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(m) %>"><%= p.suspended_mark %></a></h5>
+                  <% if m.staff_address %>
+                  <h7><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h7>
+                  <% end %>
+                  <% if m.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.additional_info.masterpiece %> </h6>
+                  <% end %>
+                    
+                  
+                          
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %>
+                      
+                        </div> 
+                       
+                        <div class="new-btn">
+                      <%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+                    </div>
+                  </div>
+                
+                </div><!-- event-box ends -->
+              </li>
+            </ul>
+    
+          </div><!-- events-area ends -->
+          </div>
+        </div><!-- events end -->
+   
+      <% end %>
 
+      </div>
+      <div class="pull-left">
+      <%= paginate @staff_members %>
+    </div>
+      </div>
+     </div>
+  

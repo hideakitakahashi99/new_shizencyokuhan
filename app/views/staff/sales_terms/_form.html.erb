@@ -3,11 +3,11 @@
   <h4><strong>販売条件編集</strong></h4>
   <div class="field">
     <tr>
-      
-      <td>送料代金の設定を行って下さい。</br>※全国一律料金での設定のみ可能です。</br>未設定の場合、かかる送料は販売者様でのご負担となりますので、ご注意下さい。</td>
+      <div class="pull-left"><i class="ion-android-boat"></i>　</div><%= f.label :delivery_fee, '送料設定' %>
+      <td>送料代金の設定を行って下さい。</br>※全国一律料金での設定のみ可能です。</br>※未設定の場合、かかる送料は販売者様でのご負担となりますので、ご注意下さい。</td>
       <th>
         <div class="inputrow">
-     <%= f.label :delivery_fee, '送料設定' %>
+     
   <%= f.text_field :delivery_fee, :placeholder => '例：700　※数字のみ' %>
   </div>
   </th>
@@ -15,11 +15,11 @@
 
 </br>
 
-
-<td>特定商取引に関する表示を編集いただけます。</br>(任意入力)</td>
+<div class="pull-left"><i class="ion-flag">　</i> </div><%= f.label :legal_info, ' 特定商取引に関する表示' %>
+<td>特定商取引に関する表示を編集いただけます。<br>※改行／スペースが入力されたとおり、反映されます。</td>
       <th>
         <div class="inputrow">
-     <%= f.label :legal_info, '特定商取引に関する表示' %>
+     
   <%= f.text_area :legal_info, :placeholder => 
 "例：
 販売業者名　　　　　　　自然栽培農園
@@ -38,11 +38,11 @@ FAX番号　　　　　　　　 123-456-7891
 
 </br>
 
-
-   <td>返品、払い戻しに関する規定を設定いただけます。</br>(任意入力)</td>
+ <div class="pull-left"><i class="ion-arrow-return-left">　</i> </div><%= f.label :return_policy, ' 返品規定' %>
+   <td>返品、払い戻しに関する規定を設定いただけます。<br>※改行／スペースが入力されたとおり、反映されます。</td>
   <th>
     <div class="inputrow">
-     <%= f.label :return_policy, '返品規定' %>
+    
    <%= f.text_area :return_policy, :placeholder =>
    "例：
 商品購入後のキャンセルは出来かねます。ご了承ください。

@@ -46,6 +46,15 @@
 
 <div>
 
+  <%= f.label :seed_rising, '自家採種の有無'%>
+  <%= f.check_box :seed_rising, {}, true, false %>
+
+</div>
+
+
+
+<div>
+
   <%= f.label :net, '内容量　(１個あたりグラム数)' %>
   <%= f.text_field :net, :placeholder => '例：500　※数字のみ入力してください'  %>
 
