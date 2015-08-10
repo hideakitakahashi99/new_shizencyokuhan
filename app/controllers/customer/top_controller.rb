@@ -16,6 +16,7 @@ class Customer::TopController < Customer::Base
 		 marker.lng staff_member.longitude
 		 marker.infowindow render_to_string(:partial => "/customer/top/infowindow", :locals => { :staff_member => staff_member})
          marker.json({title: staff_member.staff_member.farm_name})
+         
 
 		@search_form = Customer::StaffMemberSearchForm.new(params[:search])
 		

@@ -10,6 +10,8 @@
 
  <div id="tab">
 <div class="span12">
+
+  <!--
 <%= form_for @search_form, as: 'search', url: :customer_search, html: { method: :get, class: 'search' } do |f| %>
 
 
@@ -17,9 +19,6 @@
 
      
  <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], {:include_blank => 'お好みの産地'} %>
- 
-
-    
   <%= f.select :category, [["", Product::CATEGORY_NAMES]], {:include_blank => 'お好みの品目'}  %>
  
 
@@ -28,6 +27,7 @@
 
  
   <% end %>
+-->
 </div>
 <div class="span12">
    <ul id="tabs">
@@ -252,20 +252,24 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   <div id="tab">
     <div class="span12">
       <h1> </h1><br>
-       <strong><h2>自然ちょくはんは<br>自然に寄り添う生産者を応援し<br>増やしていく仕組みです!
+       <strong><h2>自然ちょくはんは<br>自然に寄り添う<br>生産者を応援し<br>増やす仕組みです!
  </h2></strong></div>
-<div class="span3"><%= image_tag ("icon_sample3.png") %><br>
+
+<div class="span3"><%= image_tag ("icon_sample2.png") %><br><strong><h3>新鮮な野菜を単品から！</h3></strong><br><h4>　生産者さんが大切に育てた、新鮮なお野菜を、単品からその場で購入できます！</h4></div>
+
+ <div class="span3"><%= image_tag ("icon_sample4.png") %><br><strong><h3>生産者と直接つながる！</h3></strong><br><h4>　フォローすることで、サイト訪問なしで、好きな生産者から販売スケジュールが届きます！</h4></div>
+
+<div class="span3"><%= image_tag ("icon_sample1.png") %><br>
   <strong><h3>小規模生産者の基金！</h3></strong><br><h4>　
-  地域の新規就農者の育成、地域の農を中心としたコミュニティーづくりに対して資金を提供する基金を創設します。</h4></div>
-<div class="span3"><%= image_tag ("icon_sample1.png") %><br><strong><h3>地元／地域の食糧基盤！</h3></strong><br><h4>　
-  地域の食糧自給の基盤となるシステムを提供します。皆様と生産者様が支え合い、助け合うことで生まれる、自立的な地域を作っていきます。
+  地域の農を中心としたコミュニティーづくりに対して資金を提供する基金を創設します！</h4></div>
+<div class="span3"><%= image_tag ("icon_sample3.png") %><br><strong><h3>地元／地域の食糧基盤！</h3></strong><br><h4>　
+  物流を中心に地域の食糧自給の基盤となるシステムを提供します！
   </h4></div>
-<div class="span3"><%= image_tag ("icon_sample2.png") %><br><strong><h3>生産者と直接つながる！</h3></strong><br><h4>　生産者さんから売りたいタイミングでメッセージが届くので、何度もサイトを訪問しなくても、好きな地域の好きな生産者さんから購入できます。</h4></div>
-<div class="span3"><%= image_tag ("icon_sample4.png") %><br><strong><h3>新鮮な野菜を単品から！</h3></strong><br><h4>　生産者さんが大切に育てた、新鮮なお野菜を、単品からその場で購入できます！</h4></div>
+
 </div>
 
  <div class="top-image-1">
-<%= image_tag ("top_image_1.png") %>
+<%= image_tag ("top_sato.png") %>
 </div>
 
 
