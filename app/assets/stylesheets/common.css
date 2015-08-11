@@ -1218,7 +1218,9 @@ button.close {
 
 .btn,
 .footer .btn,
-.search-btn{
+.search-btn,
+.unfbtn,
+.fbtn{
   display:inline-block;
   *display:inline;
   padding:5px 12px;
@@ -1254,6 +1256,28 @@ button.close {
   background-color:#ffffff;
   text-decoration:none;
 }
+
+.fbtn:hover,
+.fbtn:active,
+.fbtn.active,
+.fbtn.disabled,
+.fbtn[disabled] {
+  color:#DC9FB4;
+  background-color:#ffffff;
+  text-decoration:none;
+}
+
+.unfbtn:hover,
+.unfbtn:active,
+.unfbtn.active,
+.unfbtn.disabled,
+.unfbtn[disabled] {
+  color:#DC9FB4;
+  background-color:#ffffff;
+  text-decoration:none;
+}
+
+
 .btn-blue {
   background-color:#006dcc;
 }
@@ -2400,3 +2424,6 @@ input[type="checkbox"]:checked + label:after {
     text-align:center;
   }
 
+.link_button a {
+  margin: 5px;
+}

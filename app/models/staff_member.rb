@@ -20,6 +20,9 @@ class StaffMember < ActiveRecord::Base
 
 	
 	mount_uploader :image, ImageUploader
+	mount_uploader :farmimg1, FarmimgUploader
+	mount_uploader :farmimg2, FarmimgUploader
+	mount_uploader :farmimg3, FarmimgUploader
 
 	
 

@@ -30,7 +30,9 @@ class Staff::AccountsController < Staff::Base
 		params.require(:staff_member).permit(
 			:farm_name, :email, :password, :family_name, :given_name,
 			:family_name_kana, :given_name_kana,
-			:suspended, :image, :image_cache, :remove_image,
+			:suspended, :image, :image_cache, :remove_image, 
+			:farmimg1, :farmimg2, :farmimg3, :farmimg1_cache, :farmimg2_cache, :farmimg3_cache, 
+			:remove_farmimg1, :remove_farmimg2, :remove_farmimg3, 
 			:staff_address_attributes => [:postal_code, :prefecture, :city, :address1, :address2]
 			)
 	end

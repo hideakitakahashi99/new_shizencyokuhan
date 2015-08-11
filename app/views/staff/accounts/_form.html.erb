@@ -48,7 +48,27 @@
 <%= p.full_name_block(:family_name, :given_name, '販売責任者　氏名', required: true) %>
 <%= p.full_name_block(:family_name_kana, :given_name_kana, 'フリガナ', required: true) %>
 <%= p.text_field_block(:email, 'メールアドレス', size: 32, required: true) %>
-<%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %>
+<%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %><br>
+<div>
+	<tr>
+<th><%= f.label :farmimg1, '農園や地域を紹介する写真を登録しよう！（3枚まで）' %></th><br/>
+ 
+ <td>
+    <%= f.file_field :image1 %>
+  </td></br>
+  <td>
+    <%= f.file_field :image2 %>
+  </td></br>
+  <td>
+    <%= f.file_field :image3 %>
+  </td>
+
+
+</tr>
+
+
+</div>
+
 
 
 

@@ -23,7 +23,9 @@
 
 <div class="pull-left"><h1><%= image_tag @staff_member.image_url(:thumb).to_s %>  <%= @staff_member.farm_name %></h1></div>
 <div class="span12">
-<h1><%= link_to image_tag("fbshare.png"), 'http://www.facebook.com/sharer.php?u='+customer_staff_member_url(@staff_member), :target => :blank %></h1></div>
+<div class="pull-left"><h1><%= link_to image_tag("fbshare.png"), 'http://www.facebook.com/sharer.php?u='+customer_staff_member_url(@staff_member), :target => :blank %></h1></div>
+<div class="pull-left"><h1>　<i class="ion-play"></i></h1></div><br>
+<div class="link_button"><%= link_to '店舗ページを確認', customer_staff_member_url(@staff_member), :target => :blank %></div></div>
 
 <div class="bread-bar clearfix">
         <ul class="breadcrumb">

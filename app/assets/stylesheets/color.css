@@ -11,6 +11,14 @@
 .progress .bar, .event-countdown, .bottom, .btn, .footer .btn {
 	background-color:#DAC9A6;
 }
+.fbtn{
+	background-color:#6DBD8E;
+}
+
+.unfbtn{
+	background-color:#BD786D;
+}
+
 .ui-dialog .ui-dialog-content .heading {
 	background:#DAC9A6;
 }

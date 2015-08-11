@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807073434) do
+ActiveRecord::Schema.define(version: 20150811035158) do
 
   create_table "additional_infos", force: true do |t|
     t.integer  "staff_member_id"
@@ -257,6 +257,9 @@ ActiveRecord::Schema.define(version: 20150807073434) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image"
+    t.string   "farmimg1"
+    t.string   "farmimg2"
+    t.string   "framimg3"
   end
 
   add_index "staff_members", ["email_for_index"], name: "index_staff_members_on_email_for_index", unique: true
