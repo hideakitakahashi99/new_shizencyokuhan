@@ -29,7 +29,11 @@
 		<% @staff_members.each do |m| %>
 		
 		<div class="span4">
-			<div class="prof"><%= image_tag m.image.thumb.url %></div>
+			<% if m.image? %>
+                  <div class="prof"><%= image_tag m.image.thumb.url %></div>
+                  <% else %>
+                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <% end %>
 		 		<div class="entry">
 					<h3><%= m.farm_name %></h3>
 					<% if m.staff_address %>

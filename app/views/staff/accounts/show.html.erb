@@ -77,6 +77,14 @@
 		</td>
 	</tr>
 	<% end %>
+<tr>
+		<th>紹介写真／画像</th>
+		<td><%= image_tag @staff_member.farmimg1_url(:thumb).to_s %>
+<%= image_tag @staff_member.farmimg2_url(:thumb).to_s %>
+<%= image_tag @staff_member.farmimg3_url(:thumb).to_s %>
+		</td>
+	</tr>
+
 	
 
 </table>

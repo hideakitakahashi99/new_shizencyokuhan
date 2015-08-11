@@ -259,7 +259,7 @@ ActiveRecord::Schema.define(version: 20150811035158) do
     t.string   "image"
     t.string   "farmimg1"
     t.string   "farmimg2"
-    t.string   "framimg3"
+    t.string   "farmimg3"
   end
 
   add_index "staff_members", ["email_for_index"], name: "index_staff_members_on_email_for_index", unique: true

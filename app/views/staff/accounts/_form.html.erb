@@ -50,21 +50,51 @@
 <%= p.text_field_block(:email, 'メールアドレス', size: 32, required: true) %>
 <%= p.password_field_block(:password, 'パスワード', size: 32, required: true) %><br>
 <div>
-	<tr>
-<th><%= f.label :farmimg1, '農園や地域を紹介する写真を登録しよう！（3枚まで）' %></th><br/>
+
+<%= f.label :farmimg1, '農園や地域を紹介する写真を登録しよう！（3枚まで）' %><br/>
  
- <td>
-    <%= f.file_field :image1 %>
-  </td></br>
-  <td>
-    <%= f.file_field :image2 %>
-  </td></br>
-  <td>
-    <%= f.file_field :image3 %>
-  </td>
+<div>
+　<%= image_tag @staff_member.farmimg1.thumb.url if @staff_member.farmimg1? %>
+　<%= f.file_field :farmimg1 %>
+　<%= f.hidden_field :farmimg1_cache %> 
+</div>
+<div>
+	<% if @staff_member.persisted? && @staff_member.farmimg1? %>
+	
+		<%= f.check_box :remove_farmimg1 %>
+		画像を削除
+	
+	<% end %>
+</div>
 
+<div>
+　<%= image_tag @staff_member.farmimg2.thumb.url if @staff_member.farmimg2? %>
+　<%= f.file_field :farmimg2 %>
+　<%= f.hidden_field :farmimg2_cache %> 
+</div>
+<div>
+	<% if @staff_member.persisted? && @staff_member.farmimg2? %>
+	
+		<%= f.check_box :remove_farmimg2 %>
+		画像を削除
+	
+	<% end %>
+</div>
 
-</tr>
+<div>
+　<%= image_tag @staff_member.farmimg3.thumb.url if @staff_member.farmimg3? %>
+　<%= f.file_field :farmimg3 %>
+　<%= f.hidden_field :farmimg3_cache %> 
+</div>
+<div>
+	<% if @staff_member.persisted? && @staff_member.farmimg3? %>
+	
+		<%= f.check_box :remove_farmimg3 %>
+		画像を削除
+	
+	<% end %>
+</div>
+
 
 
 </div>
