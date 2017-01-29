@@ -1,4 +1,4 @@
-class Article < ActiveRecord::Base
+class Article < ApplicationRecord
 	state_machine :status, initial: :close  do
 		state :close
 		state :open

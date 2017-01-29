@@ -1,4 +1,4 @@
-class Signup < ActiveRecord::Base
+class Signup < ApplicationRecord
 
 
 

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'rooms/show'
+
   get '/', to: 'static_pages#company', as: :top
 
   resources :mapus

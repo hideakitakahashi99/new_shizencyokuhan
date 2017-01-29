@@ -11,7 +11,7 @@ class Customer::SessionsController < Customer::Base
 	end
 
 	def create
-		@form = Customer::LoginForm.new(params[:customer_login_form])
+		@form = Customer::LoginForm.new(customer_login_form_params)
 		if @form.email.present?
 			customer = Customer.find_by(email_for_index: @form.email.downcase)
 		end
@@ -35,6 +35,10 @@ class Customer::SessionsController < Customer::Base
 		flash.notice = 'ログアウトしました。'
 		redirect_to :customer_root
 	end
+    
+    def customer_login_form_params
+        params.require(:customer_login_form).permit(:email, :password)
+    end
 
 	
 end

@@ -1,4 +1,4 @@
-class StaffMember < ActiveRecord::Base
+class StaffMember < ApplicationRecord
 	include EmailHolder
 	include PersonalNameHolder
 

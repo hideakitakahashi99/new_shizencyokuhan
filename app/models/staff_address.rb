@@ -1,4 +1,4 @@
-class StaffAddress < ActiveRecord::Base
+class StaffAddress < ApplicationRecord
 	include StringNormalizer
 
 	belongs_to :staff_member

@@ -1,4 +1,4 @@
-class Administrator < ActiveRecord::Base
+class Administrator < ApplicationRecord
 	include EmailHolder
 	include PasswordHolder
 	

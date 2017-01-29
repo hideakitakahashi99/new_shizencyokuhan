@@ -1,4 +1,4 @@
-class AdditionalInfo < ActiveRecord::Base
+class AdditionalInfo < ApplicationRecord
 	belongs_to :staff_member
 	validates :staff_member_id, presence: true
 

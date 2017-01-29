@@ -1,4 +1,4 @@
-class Phone < ActiveRecord::Base
+class Phone < ApplicationRecord
 	include StringNormalizer
 
 	belongs_to :customer

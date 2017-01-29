@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
     belongs_to :staff_member
     has_many :line_items
     has_many :orders, through: :line_items

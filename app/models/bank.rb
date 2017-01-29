@@ -1,4 +1,4 @@
-class Bank < ActiveRecord::Base
+class Bank < ApplicationRecord
 	belongs_to :staff_member
 	validates :staff_member_id, presence: true
 

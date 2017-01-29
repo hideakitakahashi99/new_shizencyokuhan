@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
 	has_many :tasks
 	validates :title, 
 	presence: { message: "入力して下さい。" },
