@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'rooms/show'
+  mount ActionCable.server => '/cable'
 
   get '/', to: 'static_pages#company', as: :top
 
@@ -161,6 +162,7 @@ namespace :customer, path: config[:customer][:path] do
     end
   end
 end
+
 
 
 

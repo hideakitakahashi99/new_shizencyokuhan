@@ -111,4 +111,8 @@ gem 'stripe'
 
 gem 'puma'
 
+gem 'redis'
+
+gem 'redis-rails'
+
 

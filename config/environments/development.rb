@@ -55,5 +55,7 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
     admin: { host: '192.168.33.11', path: 'admin' },
     customer: { host: '192.168.33.11', path: 'mypage' }
   }
+ 
+  config.action_cable.allowed_request_origins = [ 'http://192.168.33.11:3000' ]
 
 end
