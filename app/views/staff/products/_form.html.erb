@@ -31,16 +31,16 @@
 
 <div>
 
-	<%= f.label :category, '品目' %>
-	<%= f.select :category, [["", Product::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
+  <%= f.label :category, '品目/カテゴリー' %>
+  <%= f.select :category, [["", Product::CATEGORY_NAMES]], :prompt => '以下よりお選び下さい' %>
 
 </div>
 
 
 <div>
 
-	<%= f.label :variety, '品種'%>
-	<%= f.text_field :variety, :placeholder => '例：在来種　※品種名,固定種,在来種等を入力' %>
+  <%= f.label :variety, '品種/商品名'%>
+  <%= f.text_field :variety, :placeholder => '例：在来種　※品種名,固定種,在来種等を入力' %>
 
 </div>
 
@@ -55,8 +55,9 @@
 
 <div>
 
-  <%= f.label :net, '内容量　(１個あたりグラム数)' %>
+  <%= f.label :net, '内容量' %>
   <%= f.text_field :net, :placeholder => '例：500　※数字のみ入力してください'  %>
+  <%= f.select :unit, [["", Product::UNIT_NAMES]], :prompt => '単位を選択してください' %>
 
 </div>
 
@@ -71,15 +72,15 @@
 
 
 <div>
-	<%= f.label :stock, '在庫数　(袋/箱数など)' %>
-	<%= f.text_field :stock, :placeholder => '例：100　※出荷できる’上限’を入力してください'  %>
+  <%= f.label :stock, '在庫数　(袋/箱数など)' %>
+  <%= f.text_field :stock, :placeholder => '例：100　※出荷できる’上限’を入力してください'  %>
 </div>
 
 
 <div>
 
-	<%= f.label :description, '説明' %>
-	<%= f.text_area :description, rows: 6, :placeholder => '作物にかける想いや、作物の魅力を伝えましょう！（BOX販売の場合は品目数や品目毎の個数など、内容を記述して下さい）' %>
+  <%= f.label :description, '説明' %>
+  <%= f.text_area :description, rows: 6, :placeholder => '作物にかける想いや、作物の魅力を伝えましょう！（BOX販売の場合は品目数や品目毎の個数など、内容を記述して下さい）' %>
 
 </div>
 

@@ -1,127 +1,46 @@
 
 
-  
 
- <div class="top-image">
-
-  <%= render 'customer/shared/image_only' %>
-
-</div>
-
- <div id="tab">
-<div class="span12">
-
-  <!--
-<%= form_for @search_form, as: 'search', url: :customer_search, html: { method: :get, class: 'search' } do |f| %>
-
-
-        
-
-     
- <%= f.select :prefecture, [["", StaffAddress::PREFECTURE_NAMES]], {:include_blank => 'お好みの産地'} %>
-  <%= f.select :category, [["", Product::CATEGORY_NAMES]], {:include_blank => 'お好みの品目'}  %>
- 
-
-  <%= f.submit "生産者を探す！", class: "search-btn" %>
-
-
- 
-  <% end %>
--->
-</div>
-<div class="span12">
-   <ul id="tabs">
-    <li class="now"><h1><i class="ion-map"></i><h1><h5>地図で検索!</h5></li>
-    <li><h1><i class="ion-home"></i></h><h5>開店中のお店!</h5></li>
-    <li><h1><i class="ion-calendar"></i></h1><h5>農家のスケジュール!</h5></li>
-    <li><h1><i class="ion-help"></i></h1><h5>何ができるの?</h5></li>
-    <!--<li><h1><i class="ion-android-restaurant"></i></h1><h5>自然のレシピ!</h5></li>-->
-</ul>
-
-</div>
+<div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <a href="#" class="pure-menu-link pure-menu-heading">開店中のお店!</a>
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link"><i class="ion-map"></i> 地図で検索!</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">北海道</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">東北</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">関東</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">甲信越</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">中部</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">関西</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">近畿</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">山陰</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">山陽</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">九州</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">沖縄</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">News</a></li>
+        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Support</a></li>
+    </ul>
 </div>
 
 
-<div class="insert">
- 
-</div>
-
-<div class="contents">
- <div class="span12">
-        <div class="center"><h1>　</h1></div></div>
-<div class="span12">
-
-  <div id="panel">
-      <input id="address" type="textbox" value="">
-      <input id="submit" type="button" value="Geocode">
-    </div>
-
-  <div id="map" style='width: 100%; height: 400px;'></div>
-</div>
-
-<script>
- handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  
-});
-
-
-
- </script>
-
- <script>
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: -34.397, lng: 150.644}
-  });
-  var geocoder = new google.maps.Geocoder();
-
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(geocoder, map);
-  });
-}
-
-function geocodeAddress(geocoder, resultsMap) {
-  var address = document.getElementById('address').value;
-  geocoder.geocode({'address': address}, function(results, status) {
-    if (status === google.maps.GeocoderStatus.OK) {
-      resultsMap.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
-      });
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
-
-    </script>
- 
-
-</div>
 
 
 <div class="contents">
-  
+
  <div class="container">
     <div class="row">
 
-      <div class="span12">
-        <div class="center"><h1>　</h1></div></div>
-        <div class="events">
+      <div class="l-content">
+        
+        <div class="pricing-tables pure-g">
            <% if @open_staff_members.count == 0 %>
            <h4>ー現在購入できる農家さんはありませんー</h4>
            <h5>フォローして開店情報をいち早くGET！</h5>
            <%= link_to '登録農家を見てみる！', [:customer_staff_members ], {:class => "btn" } %>
             <% end %>
           <% @open_staff_members.each do |m| %>
-            <div class="span3">
-              <div class="bgc">
+          <div class="pure-u-1 pure-u-md-1-3">
+            
+              <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
@@ -151,7 +70,7 @@ function geocodeAddress(geocoder, resultsMap) {
                         </div> 
                        
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+                      <%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
                 
@@ -162,7 +81,7 @@ function geocodeAddress(geocoder, resultsMap) {
           </div><!-- events-area ends -->
           </div>
         </div><!-- events end -->
-   
+     
       <% end %>
 
       </div>

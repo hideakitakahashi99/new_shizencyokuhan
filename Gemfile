@@ -38,7 +38,7 @@ gem 'gmaps4rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -86,7 +86,7 @@ gem 'capistrano-bundler'
 # gem 'capistrano-rvm'
 gem 'capistrano-rbenv'
 
-# gem 'mysql2'
+gem 'mysql2', '~> 0.3.20'
 gem 'yaml_db', github: 'jetthoughts/yaml_db'
 
 gem 'bxslider-rails'
@@ -95,12 +95,18 @@ gem 'prawn'
 gem 'prawn-table'
 
 
-	gem 'mysql2'
 
-gem 'json', '~> 1.8.1'
+
+gem 'json'
 
 gem 'exception_notification'
 
 gem 'tabulous'
 
 gem 'jquery-turbolinks'
+
+gem 'materialize-sass'
+
+gem 'stripe'
+
+

@@ -1,20 +1,21 @@
 <div class="container">
 	<div class="row">
 		<div class="span12">
-			<% @title = '農産品' %>
+			<% @title = '農産品・加工品' %>
 			<% @title2 = '一覧'%>
-
 
 				<h2 class="text-pink">
 					<%= @title %>
 					<strong><%= @title2 %></strong>
 				</h2>
 
-
+<%= link_to '加工品を登録する', :pg_new_new_staff_product, :class => 'sbtn' %>
+<%= link_to '農産品を登録する', :new_staff_product, :class => 'sbtn' %>
 
 		<div class="table-wrapper">
 			<div class="links">
-				<%= link_to '新規登録', :new_staff_product %>|
+			<%= link_to '加工品を登録する', :pg_new_new_staff_product %>|
+				<%= link_to '農産品を登録する', :new_staff_product %>|
 				<%= link_to 'ホーム', :staff_root %>
 			</div>
 
@@ -23,11 +24,11 @@
 				<table class="table">
 					<tr>
 						<th>表示画像</th>
-						<th>品目名</th>
-						<th>品種</th>
+						<th>品目</th>
+						<th>品種/商品名</th>
 						<th>自家採種の有無</th>
 						<th>作付け方法</th>
-						<th>入り数</th>
+						<th>内容量</th>
 						<th>価格</th>
 						<th>在庫数</th>
 						<th>説明</th>
@@ -40,13 +41,17 @@
 						<td><%= m.variety %></td>
 						<% p = ProductPresenter.new(m, self) %>
 						<td><%= p.seed_rising_mark %></td>
-						<td><%= m.method %></td>
-						<td><%= m.net %></td>
+						<td><%= truncate(m.method, length: 9) %></td>
+						<td><%= m.net %><% if m.unit? %><%= m.unit %><% end %></td>
 						<td><%= m.price %></td>
 						<td><%= m.stock %></td>
-						<td><%= m.description %></td>
+						<td><%= truncate(m.description, length: 15) %></td>
 						<td class="actions">
-							<%= link_to '編集', [ :edit_staff, m ] %> |
+						<% if m.tag? %>
+						<%= link_to '編集する', [ :pg_edit_staff, m ] %> |
+						<% else %>
+							<%= link_to '編集する', [ :edit_staff, m ] %> |
+							<% end %>
 							<%= link_to '削除', [ :staff, m ], method: :delete, data: { confirm: '本当に削除しますか？'} %>
 							
 						</td>
@@ -57,7 +62,8 @@
 				<%= paginate @products %>
 
 			<div class="links">
-				<%= link_to '新規登録', :new_staff_product %>|
+			<%= link_to '加工品を登録する', :pg_new_new_staff_product %>|
+				<%= link_to '農産品を登録する', :new_staff_product %>|
 				<%= link_to 'ホーム', :staff_root %>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/', to: 'static_pages#randing', as: :top
+  get '/', to: 'static_pages#company', as: :top
 
   resources :mapus
 
@@ -96,6 +96,8 @@ namespace :staff, path: config[:staff][:path] do
 
     resources :products do
     get :who_bought, on: :member
+    get :pg_new, on: :new
+    get :pg_edit, on: :member
     end 
     
   end

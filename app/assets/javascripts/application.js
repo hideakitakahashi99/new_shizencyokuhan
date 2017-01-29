@@ -20,4 +20,5 @@
 //= require underscore
 //= require gmaps/google
 //= require moment
+//= require materialize-sprockets
 //= require_tree .

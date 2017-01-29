@@ -45,15 +45,15 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
-  config.assets.raise_runtime_errors = true
+  config.assets.raise_runtime_errors = false
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
   config.taskapp = {
-    staff: { host: 'shizencyokuhan.com', path: 'staff' },
-    admin: { host: 'shizencyokuhan.com', path: 'admin' },
-    customer: { host: 'shizencyokuhan.com', path: 'mypage' }
+    staff: { host: '192.168.33.11', path: 'staff' },
+    admin: { host: '192.168.33.11', path: 'admin' },
+    customer: { host: '192.168.33.11', path: 'mypage' }
   }
 
 end

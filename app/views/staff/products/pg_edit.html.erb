@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <% @title = '加工品 情報編集' %>
+      <h1><%= @title %></h1>
+
+      <div id="generic-form">
+      <%= form_for [ :staff, @product ], html: {multipart: true} do |f| %>
+        <%= render 'pg_form', f: f %>
+        
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

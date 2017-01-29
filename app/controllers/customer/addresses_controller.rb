@@ -15,8 +15,16 @@ class Customer::AddressesController < Customer::Base
 		delivery_fee = @staff_member.sales_term.delivery_fee
 		total_price = cart.total_price + delivery_fee
 		if params[:name] == 'webpay'
-			webpay = WebPay.new(WEBPAY_SECRET_KEY)
-  			charge = webpay.charge.create(currency: 'jpy', amount: total_price, card: params['webpay-token'])
+            customer = Stripe::Customer.create(
+                                               :email => params[:stripeEmail],
+                                               :source  => params[:stripeToken] 
+                                               )
+  			charge = Stripe::Charge.create(
+                                           :customer => customer.id,
+                                           :currency => 'jpy',
+                                           :amount => total_price,
+                                           :description => 'Rails Stripe customer'
+                                           )
   			@payment = "クレジット支払い"
   	    else
   	    	@payment = "代金引き換え"
@@ -59,11 +67,12 @@ class Customer::AddressesController < Customer::Base
 	def show
 		@customer = current_customer
   		@staff_member = StaffMember.find(params[:staff_member_id])
-		cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
-		total_price = cart.total_price
+		@cart = Cart.find_by(staff_member_id: @staff_member.id, customer_id: @customer.id)
+        @price = @cart.total_price
+		@total_price = @cart.total_price + @staff_member.sales_term.delivery_fee
   		@address = Address.find(params[:id])
   		session[:order_staff] = @staff_member.id
-  		line_items = cart.line_items	
+  		@line_items = @cart.line_items
 	end
 
 

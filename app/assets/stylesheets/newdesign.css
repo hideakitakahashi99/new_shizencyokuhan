@@ -1,0 +1,51 @@
+.block {
+    padding: 20px;
+    background: #fff;
+    border: 4px #66cdaa solid;
+    position: relative;
+    z-index: 10;
+}
+ 
+.block:before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    margin: 3px;
+    border: 2px #7accb0 solid;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    z-index: -10;
+}
+.span1 {
+  width: 250px;
+}
+
+img {
+   max-width: 100%;  /* 横幅に合わせて自動で拡大縮小する */
+}
+
+.thumbnail img {
+  border-radius: 100px;
+  height: 200px;
+  width: 200px;
+}
+
+.new-btn {
+  padding: 5px;
+}
+
+.logo img {
+  padding-left: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 70px;
+
+}
+.mugi img {
+    padding-top: 5px;
+  padding-bottom: 5px;
+  width: 70px;
+}
