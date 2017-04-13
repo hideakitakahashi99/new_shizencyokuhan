@@ -9,37 +9,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
             <!-- A wrapper for all the blog posts -->
-            <% if @schedules.count == 0 %>
+            
 
             <div class="posts">
-                <h1 class="content-subhead">Pinned Post</h1>
+                <h1 class="content-subhead">Selected Post</h1>
 
-                <!-- A single blog post -->
-                <section class="post">
-                    <h4>ー現在表示できる投稿はありませんー</h4>
-                </section>
-            </div>
-
-            <% end %>
-
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
-
-<% @schedules.each do |schedules| %>
                 <section class="post">
                     <header class="post-header">
-                    <!--<%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %>
-                        <img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" class="post-avatar" src="img/common/ericf-avatar.png">-->
+                    
 
-                        <h2 class="post-title"><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.opening, length: 15) %><% end %></h2>
+                        <h2 class="post-title"><%= truncate(@schedule.harvest, length: 15) %><%= truncate(@schedule.opening, length: 15) %></h2>
 
                         <p class="post-meta">
-                            By <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>", class="post-auther"><%= schedules.staff_member.farm_name %></a> under 
-                            <% if schedules.harvest %>
+                            By <a href="<%= customer_staff_member_schedules_path(@schedule.staff_member) %>", class="post-auther"><%= @schedule.staff_member.farm_name %></a> under 
+                            <% if @schedule.harvest %>
                             <a class="post-category post-category-design" href="#">収穫予告</a>
                             <% else %>
                             <a class="post-category post-category-js" href="#">開店予告</a>
                             <% end %>
+
                         </p>
                     </header>
 
@@ -47,9 +35,8 @@
 
 
                         <p class="schedule-meta">
-                        <%= schedules.harvest %><%= schedules.opening %>
+                        <%= simple_format(@schedule.harvest, :class => "blog") %><%= simple_format(@schedule.opening, :class => "blog") %>
                         </p>
-                        <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id ) %>
 
                             <div class="post-images pure-g">
                             <div class="pure-u-1 pure-u-md-1-2">
@@ -78,26 +65,26 @@
                         </div>
 
 
-                        <% if schedules.harvest_date? %>
+                        <% if @schedule.harvest_date? %>
                         予定日：
-                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
+                    <%= @schedule.harvest_date.strftime("%Y年%m月%d日") %>
                     <% end %>
-                    <% if schedules.opening_date? %>
+                    <% if @schedule.opening_date? %>
                     予定期間：<br>
-                    <%= schedules.opening_date %><br>　　　　&#8659;<br><%= schedules.closing_date %>
+                    <%= @schedule.opening_date %><br>　　　　&#8659;<br><%= @schedule.closing_date %>
                     <% end %>
                     </div>
                     <h1 class="content-subhead"></h1>
                 </section>
-        <% end %>
-
             </div>
-
         </div>
     </div>
+
    <div class="pure-u-1 pure-u-md-1-4">
-        <div class="header">
+        <div class="header content">
+        <% if @staff_member.image? %>
         <%= image_tag @staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %>
+        <% end %>
             <h1 class="brand-title"><%= @staff_member.farm_name %></h1>
             <h2 class="brand-tagline">ブログ</h2>
 
@@ -112,5 +99,35 @@
                 </ul>
             </nav>
         </div>
+
+          <div class="posts content">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+<% @schedules.each do |schedules| %>
+                <section class="post">
+                    <header class="post-header">
+                    <% if @staff_member.image? %>
+                    <%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %>
+                        <% end %>
+
+                        <p><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.opening, length: 15) %><% end %></p>
+                         <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id ) %>
+
+
+                        <p class="post-meta">
+                            By <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>", class="post-auther"><%= schedules.staff_member.farm_name %></a> under 
+                            <% if schedules.harvest %>
+                            <a class="post-category post-category-design" href="#">収穫予告</a>
+                            <% else %>
+                            <a class="post-category post-category-js" href="#">開店予告</a>
+                            <% end %>
+                        </p>
+                    </header>
+                </section>
+        <% end %>
+
+            </div>
+
+
     </div>
 </div>

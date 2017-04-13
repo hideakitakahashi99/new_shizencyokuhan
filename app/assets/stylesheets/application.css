@@ -17,5 +17,8 @@
  *= require_self
  */
 
-body{ background : #fff;}
+body{
+/*background-image: url("/assets/seamless_paper_texture.png");*/
+background-attachment: fixed;
+}
 @import "materialize";

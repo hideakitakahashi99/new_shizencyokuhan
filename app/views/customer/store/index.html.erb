@@ -6,10 +6,10 @@
 			<h1><%= @staff_member.farm_name %></h1>
 			<% @title = '農産品' %>
 			<% @title2 = '一覧'%>
-				<h2 class="text-pink">
+				<!--<h2 class="text-pink">
 					<%= @title %>
 					<strong><%= @title2 %></strong>
-				</h2>
+				</h2>-->
 				<% if @staff_member.sales_term.present? %>
 				<div><%= link_to '特定商取引に関する表示', [:customer_staff_member_sales_term], {:class => "btn btn-large btn-primary" } %>
 							</div>
@@ -31,10 +31,13 @@
 </div>
 
 <% if @staff_member.suspended? %>
-<div class="container">
-	<div class="row">
-		<div class="span6">
-				<div class="insert">
+<div class="fixing-base">
+        <div class="fixing-box">
+
+	
+		<div class="span-border">
+				<div class="margin15">
+				
 					<div id="cart"
 						<% if @cart.line_items.empty? %>
 						style="display: none"
@@ -47,28 +50,32 @@
 	<%= button_to "カートを空にする", [:customer, @staff_member, @cart], method: :delete, :name => 'delete'%>
 	</div>
 				</div>
+			</div>
 		</div>
-	</div>
-</div>
+		</div>
 <% end %>
 
+
+
 <div class="container">
-	<div class="row">
-		
-		<% if @products.count == 0 %>
+    <div class="row">
+
+      <div class="l-content">
+
+        <div class="pricing-tables pure-g">
+          <% if @products.count == 0 %>
 		<div class="span12">
 		<h4>大変、申し訳ございません。現在ご購入いただける商品はございません。</h4>
 		</div>
 		<% end %>
-		
-		
 
-		<% @products.each do |m| %>
-		
-		<div class="span4">
-			
-		 		<div class="entry">
+          <% @products.each do |m| %>
+          <div class="pure-u-1 pure-u-md-1-3">
+          <div class="thumbnail">
+      		 		<div class="entry">
+              <% if m.productimg? %>
 		 			<div><%= image_tag m.productimg.thumb.url %></div>
+          <% end %>
 					<h5><%= m.category %></h5>
 					<h6><%= sanitize(m.description) %></h6>
 					<h5><%= m.variety %></h5>
@@ -90,14 +97,15 @@
 						<% else %>
 						スタンバイ
 						<% end %>
-				
-
-			
 		</div>
-		</div>
-		<% end %>
-		
-	</div>
-</div>
+          </div>
+        </div><!-- events end -->
 
+      <% end %>
+
+      </div>
+
+      </div>
+   </div>
+   </div>
 

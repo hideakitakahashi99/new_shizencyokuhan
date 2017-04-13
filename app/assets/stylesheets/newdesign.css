@@ -23,6 +23,10 @@
   width: 250px;
 }
 
+.span-border{
+  border:outset thick #f7941d;
+}
+
 img {
    max-width: 100%;  /* 横幅に合わせて自動で拡大縮小する */
 }
@@ -49,3 +53,24 @@ img {
   padding-bottom: 5px;
   width: 70px;
 }
+
+.margin15 {
+  margin: 15px;
+}
+.fixing-base .fixing-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ffffff;
+}
+
+.schedule-meta {
+    font-size: 16px;
+    line-height: 30px;
+    margin-top: 15px;
+  }
+
+p.blog {
+  font-size: 17px;
+    line-height: 30px;
+  }

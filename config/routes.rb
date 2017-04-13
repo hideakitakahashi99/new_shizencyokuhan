@@ -149,6 +149,7 @@ namespace :customer, path: config[:customer][:path] do
       end
       get :sales_term
       get :schedules
+      get :schedule_show
       resources :store, only: [ :index ]
       resources :carts
       resources :line_items

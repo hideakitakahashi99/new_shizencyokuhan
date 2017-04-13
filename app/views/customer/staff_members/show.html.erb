@@ -1,8 +1,9 @@
 
 <div class="container">
 	<div class="row">
-		<div class="span12">
+		<div class="span12"><% if @staff_member.image? %>
 			<div id="farm_prof"><%= image_tag @staff_member.image_url %></div>
+      <% end %>
 <% @title = '販売者詳細' %>
 <h1><%= @staff_member.farm_name %></h1>
 <div>
@@ -132,18 +133,113 @@
 <div class= "container">
 <div class= "row">
 <div class= "span8">
+<% if @staff_member.farmimg1? %>
 	<%= image_tag @staff_member.farmimg1_url %>
+	<% end %>
 </div>
 <div class= "span4">
+<% if @staff_member.farmimg2? %>
 	<%= image_tag @staff_member.farmimg2_url %>
+	<% end %>
 </div>
 <div class= "span4">
+<% if @staff_member.farmimg3? %>
 	<%= image_tag @staff_member.farmimg3_url %>
+	<% end %>
 </div>
 </div>
 </div>
 
 
+    <div class="content pure-u-1 pure-u-md-1">
+        <div>
+            <!-- A wrapper for all the blog posts -->
+            <% if @schedules.count == 0 %>
+
+            <div class="posts">
+                <h1 class="content-subhead">Pinned Post</h1>
+
+                <!-- A single blog post -->
+                <section class="post">
+                    <h4>ー現在表示できる投稿はありませんー</h4>
+                </section>
+            </div>
+
+            <% end %>
+
+            <div class="posts">
+                <h1 class="content-subhead">Recent Posts</h1>
+
+<% @schedules.each do |schedules| %>
+                <section class="post">
+                    <header class="post-header">
+                    <!--<% if schedules.staff_member.image? %><%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %><% end %>
+                        <img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" class="post-avatar" src="img/common/ericf-avatar.png">-->
+
+                        <h2 class="post-title"><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.opening, length: 15) %><% end %></h2>
+
+                        <p class="post-meta">
+                            By <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>", class="post-auther"><%= schedules.staff_member.farm_name %></a> under 
+                            <% if schedules.harvest %>
+                            <a class="post-category post-category-design" href="#">収穫予告</a>
+                            <% else %>
+                            <a class="post-category post-category-js" href="#">開店予告</a>
+                            <% end %>
+                        </p>
+                    </header>
+
+                    <div class="post-description">
+
+
+                        <p class="schedule-meta">
+                        <%= schedules.harvest %><%= schedules.opening %>
+                        </p>
+                        <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) %>
+
+                            <div class="post-images pure-g">
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <a href="http://www.flickr.com/photos/uberlife/8915936174/">
+                                    <img alt="Photo of someone working poolside at a resort"
+                                         class="pure-img-responsive"
+                                         src="http://farm8.staticflickr.com/7448/8915936174_8d54ec76c6.jpg">
+                                </a>
+
+                                <!--<div class="post-image-meta">
+                                    <h3>CSSConf Photos</h3>
+                                </div>-->
+                            </div>
+
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <a href="http://www.flickr.com/photos/uberlife/8907351301/">
+                                    <img alt="Photo of the sunset on the beach"
+                                         class="pure-img-responsive"
+                                         src="http://farm8.staticflickr.com/7382/8907351301_bd7460cffb.jpg">
+                                </a>
+
+                                <!--<div class="post-image-meta">
+                                    <h3>JSConf Photos</h3>
+                                </div>-->
+                            </div>
+                        </div>
+
+
+                        <% if schedules.harvest_date? %>
+                        予定日：
+                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
+                    <% end %>
+                    <% if schedules.opening_date? %>
+                    予定期間：<br>
+                    <%= schedules.opening_date %><br>　　　　&#8659;<br><%= schedules.closing_date %>
+                    <% end %>
+                    </div>
+                    <h1 class="content-subhead"></h1>
+                </section>
+        <% end %>
+
+            </div>
+
+        </div>
+    </div>
 
   </div>
 

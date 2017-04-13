@@ -11,6 +11,7 @@ class Customer::StaffMembersController < Customer::Base
 	def show
 		@customer = current_customer
 		@staff_member = StaffMember.find(params[:id])
+        @schedules = @staff_member.schedules.all
 		
 	end
 
@@ -49,6 +50,13 @@ class Customer::StaffMembersController < Customer::Base
 		@schedules = @staff_member.schedules.all
 		render 'customer/staff_members/schedules'
 	end
+    
+    def schedule_show
+        @customer = current_customer
+        @staff_member = StaffMember.find(params[:staff_member_id])
+        @schedule = Schedule.find(params[:schedule_id])
+        @schedules = @staff_member.schedules.all
+    end
 
 	private
 

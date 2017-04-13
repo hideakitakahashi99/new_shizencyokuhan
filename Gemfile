@@ -5,7 +5,7 @@ gem 'fullcalendar-rails'
 
 gem 'foreigner', '~> 1.6.1'
 
-gem 'kaminari', '~> 0.15.1'
+gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 
 gem 'date_validator', '~> 0.7.0'
 
@@ -115,4 +115,9 @@ gem 'redis'
 
 gem 'redis-rails'
 
+gem 'will_paginate'
+
+gem 'mini_magick'
+
+gem 'chain-sdk', '~> 1.1.0', require: 'chain'
 

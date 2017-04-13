@@ -13,7 +13,7 @@
           background-color: #ffffff;
           margin-bottom: 1em;
           -webkit-font-smoothing: antialiased;
-          height: 2.1em;
+          height: 2.3em;
           overflow: hidden;
           -webkit-transition: height 0.5s;
           -moz-transition: height 0.5s;
@@ -103,7 +103,8 @@
                   <ul class="pure-menu-list">
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link">自然栽培とは</a></li>
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link">ちょくはんの野菜基準</a></li>
-                      <li class="pure-menu-item"><a href="#" class="pure-menu-link">ご贔屓農家のスケジュール</a></li>
+                      <li class="pure-menu-item">
+                      <%= link_to "ごひいき農家予定一覧", customer_static_pages_feed_page_path, :class => "pure-menu-link" %></li>
                   </ul>
               </div>
           </div>

@@ -1,0 +1,61 @@
+/* ----------------------------------------------------	
+	login & sign up
+---------------------------------------------------- */
+body.st-signup {
+	font-size: 12px;
+	background-image: url(http://www.shizencyokuhan.com/assets/top-img/stback1a2-sp.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center top;
+}
+
+
+.st-panel {
+	padding: 10px;
+	background-color: #fff;
+	border: 0;
+}
+
+.st-signup .form-control {
+	line-height: 2.1;
+}
+
+.btn-facebook {
+    color: #fff;
+    background: none repeat 0 0 #3B5998;
+    border-color: #3B5998;
+}
+
+.btn-facebook:hover {
+    color: #fff;
+    background: none repeat 0 0 #334D86;
+    border-color: #334D86;
+}
+
+.panel-info>.panel-heading {
+    font-weight: bold;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    color: inherit;
+}
+
+.page-info {
+	font-size: 13px;
+}
+
+.page-info strong {
+    color: #8BC34A;
+}
+
+@media screen and (max-width: 460px) {
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+}
+}/* @media */
