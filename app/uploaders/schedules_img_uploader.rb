@@ -52,7 +52,7 @@ class SchedulesImgUploader < CarrierWave::Uploader::Base
  process :convert => 'jpg'
 
   version :thumb do 
-    process :resize_to_limit => [80, 80]
+    process :resize_to_fill => [150, 150]
   end
 
   def extension_white_list

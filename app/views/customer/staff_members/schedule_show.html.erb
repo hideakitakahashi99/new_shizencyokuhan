@@ -1,6 +1,8 @@
      
 
+<div class="margin15">
 
+<%= link_to "ホーム", :customer_root %> > <%= link_to "ブログ・投稿一覧", :customer_staff_member_schedules %> > ブログ詳細 </div>
 
 
 <div id="layout" class="pure-g">
@@ -10,7 +12,7 @@
         <div>
             <!-- A wrapper for all the blog posts -->
             
-
+<div class="margin15">
             <div class="posts">
                 <h1 class="content-subhead">Selected Post</h1>
 
@@ -18,15 +20,16 @@
                     <header class="post-header">
                     
 
-                        <h2 class="post-title"><%= truncate(@schedule.harvest, length: 15) %><%= truncate(@schedule.opening, length: 15) %></h2>
+                        <h2 class="post-title"><%= truncate(@schedule.harvest, length: 15) %><%= truncate(@schedule.title, length: 15) %></h2>
 
                         <p class="post-meta">
                             By <a href="<%= customer_staff_member_schedules_path(@schedule.staff_member) %>", class="post-auther"><%= @schedule.staff_member.farm_name %></a> under 
                             <% if @schedule.harvest %>
                             <a class="post-category post-category-design" href="#">収穫予告</a>
                             <% else %>
-                            <a class="post-category post-category-js" href="#">開店予告</a>
-                            <% end %>
+                            <a class="post-category post-category-js" href="#">Blog</a>
+                            <% end %><br>
+<%= link_to 'http://www.facebook.com/sharer.php?u='+customer_staff_member_schedule_show_url(:staff_member_id => @staff_member, :schedule_id => @schedule.id ), :target => :blank do %> <%= image_tag 'FB.png' , :width => "20px" %>share<% end %>
 
                         </p>
                     </header>
@@ -35,52 +38,43 @@
 
 
                         <p class="schedule-meta">
-                        <%= simple_format(@schedule.harvest, :class => "blog") %><%= simple_format(@schedule.opening, :class => "blog") %>
+                        <%== @schedule.harvest %><%== @schedule.blog %>
                         </p>
 
                             <div class="post-images pure-g">
                             <div class="pure-u-1 pure-u-md-1-2">
-                                <a href="http://www.flickr.com/photos/uberlife/8915936174/">
-                                    <img alt="Photo of someone working poolside at a resort"
-                                         class="pure-img-responsive"
-                                         src="http://farm8.staticflickr.com/7448/8915936174_8d54ec76c6.jpg">
-                                </a>
+                                <% if @schedule.image1? %>
+                                <%= image_tag @schedule.image1.url, :class => "pure-img-responsive" %>
+                                <% end %>
+
+
+                                <!--<div class="post-image-meta">
+                                    <h3>CSSConf Photos</h3>
+                                </div>-->
+                            </div>
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <% if @schedule.image2? %>
+                                <%= image_tag @schedule.image2.url, :class => "pure-img-responsive" %>
+                                <% end %>
+
 
                                 <!--<div class="post-image-meta">
                                     <h3>CSSConf Photos</h3>
                                 </div>-->
                             </div>
 
-                            <div class="pure-u-1 pure-u-md-1-2">
-                                <a href="http://www.flickr.com/photos/uberlife/8907351301/">
-                                    <img alt="Photo of the sunset on the beach"
-                                         class="pure-img-responsive"
-                                         src="http://farm8.staticflickr.com/7382/8907351301_bd7460cffb.jpg">
-                                </a>
-
-                                <!--<div class="post-image-meta">
-                                    <h3>JSConf Photos</h3>
-                                </div>-->
-                            </div>
                         </div>
-
-
-                        <% if @schedule.harvest_date? %>
-                        予定日：
-                    <%= @schedule.harvest_date.strftime("%Y年%m月%d日") %>
-                    <% end %>
-                    <% if @schedule.opening_date? %>
-                    予定期間：<br>
-                    <%= @schedule.opening_date %><br>　　　　&#8659;<br><%= @schedule.closing_date %>
-                    <% end %>
                     </div>
-                    <h1 class="content-subhead"></h1>
                 </section>
             </div>
+        </div>
+
         </div>
     </div>
 
    <div class="pure-u-1 pure-u-md-1-4">
+
+<div class="margin15">
         <div class="header content">
         <% if @staff_member.image? %>
         <%= image_tag @staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %>
@@ -91,26 +85,29 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <%= link_to "この農家の詳細を見にいく", customer_staff_member_path(@staff_member), { :class => "pure-button"} %>
+                        <%= link_to "当農園詳細はこちら", customer_staff_member_path(@staff_member), { :class => "pure-button"} %>
                     </li>
                     <li class="nav-item">
-                        <%= link_to "農産品を見にいく", customer_staff_member_store_index_path(@staff_member), { :class => "pure-button"} %>
+                        <%= link_to "農産品はこちら", customer_staff_member_store_index_path(@staff_member), { :class => "pure-button"} %>
                     </li>
                 </ul>
             </nav>
         </div>
 
+    </div>
+
+
+<div class="margin15">
           <div class="posts content">
                 <h1 class="content-subhead">Recent Posts</h1>
-
-<% @schedules.each do |schedules| %>
+            <% @schedules.each do |schedules| %>
                 <section class="post">
                     <header class="post-header">
                     <% if @staff_member.image? %>
                     <%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %>
                         <% end %>
 
-                        <p><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.opening, length: 15) %><% end %></p>
+                        <p><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.title, length: 15) %><% end %></p>
                          <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id ) %>
 
 
@@ -119,14 +116,15 @@
                             <% if schedules.harvest %>
                             <a class="post-category post-category-design" href="#">収穫予告</a>
                             <% else %>
-                            <a class="post-category post-category-js" href="#">開店予告</a>
+                            <a class="post-category post-category-js" href="#">Blog</a>
                             <% end %>
                         </p>
                     </header>
                 </section>
-        <% end %>
-
+             <% end %>
             </div>
+
+        </div>
 
 
     </div>

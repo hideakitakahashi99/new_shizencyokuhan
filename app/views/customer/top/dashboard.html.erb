@@ -18,7 +18,7 @@ $(".contents").eq(num).css("display","block");
 <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
     <div class="pure-menu-link pure-menu-heading">開店中のお店!</div>
     <ul class="pure-menu-list">
-      <li class="pure-menu-item now"><div class="pure-menu-link"><i class="ion-map"></i> Today's MARCHE</div></li>
+      <li class="pure-menu-item now"><div class="pure-menu-link"><i class="ion-spoon"></i><i class="ion-fork"></i> Today's MARCHE</div></li>
       <li class="pure-menu-item"><div class="pure-menu-link">全国</div></li>
         <li class="pure-menu-item"><div class="pure-menu-link">北海道</div></li>
         <li class="pure-menu-item"><div class="pure-menu-link">東北</div></li>
@@ -45,39 +45,41 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @open_staff_members.count == 0 %>
-           <h4>ー現在購入できる農家さんはありませんー</h4>
+           <h4 class="top-margin">ー現在購入できる農家さんはありませんー</h4>
            <h5>フォローして開店情報をいち早くGET！</h5>
            <%= link_to '登録農家を見てみる！', [:customer_staff_members ], {:class => "btn" } %>
             <% end %>
-           <% @products.each do |m| %>
+           <% @products.each do |o| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.image? %>
-                  <div class="prof"><%= image_tag m.image.thumb.url %></div>
+                  <% if o.image? %>
+                  <div class="prof"><%= image_tag o.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div draggable="true" ondragstart="f1(event)" >
+                  <div class="prof"><%= image_tag ("sample_img.png"), :id => o.id %></div>
+                </div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><%= m.category %>（<%= m.staff_member.farm_name %>） </h5>
-                  <h5><%= link_to '在庫あり', [:customer, m.staff_member, :store, :index ] %></h5>
-                  <%= m.variety %>
-                  <%= m.method %>
+                    <h5><%= o.category %>（<%= o.staff_member.farm_name %>） </h5>
+                  <h5><%= link_to '在庫あり', [:customer, o.staff_member, :store, :index ] %></h5>
+                  <%= o.variety %>
+                  <%= o.method %>
                   <div class="price_line">
             <span class="price"><h5>
-            <%= m.net %><% if m.unit? %><%= m.unit %><% else %>g<% end %>
-            <%= sprintf("¥%0.00f", m.price) %></h5></span>
+            <%= o.net %><% if o.unit? %><%= o.unit %><% else %>g<% end %>
+            <%= sprintf("¥%0.00f", o.price) %></h5></span>
             </div>
 
-                 <h6><%= truncate(m.description, length: 50) %></h6>
+                 <h6><%= truncate(o.description, length: 50) %></h6>
             <div class="new-btn">
-                      <%= link_to '販売農家を見る', [:customer, m.staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
+                      <%= link_to '商品詳細', [:customer, o.staff_member, o ], {:class => "btn btn-large btn-primary" } %>
+                      <%= link_to '販売農家を見る', [:customer, o.staff_member ], {:class => "btn btn-large btn-primary" } %>
                     </div>
-    
 
                   </div>
 
@@ -107,39 +109,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @open_staff_members.count == 0 %>
-           <h4>ー現在購入できる農家さんはありませんー</h4>
+           <h4 class="top-margin">ー現在購入できる農家さんはありませんー</h4>
            <h5>フォローして開店情報をいち早くGET！</h5>
            <%= link_to '登録農家を見てみる！', [:customer_staff_members ], {:class => "btn" } %>
             <% end %>
-          <% @open_staff_members.each do |m| %>
+          <% @open_staff_members.each do |p| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.image? %>
-                  <div class="prof"><%= image_tag m.image.thumb.url %></div>
+                  <% if p.image? %>
+                  <div class="prof"><%= image_tag p.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m) %>">OPEN!!</a></h5>
-                  <% if m.staff_address %>
-                  <h7><i class="ion-ios-location"></i> <%= m.staff_address.prefecture %> <%= m.staff_address.city %> <%= m.staff_address.address1 %> </h7>
+                    <h5><i class="ion-leaf"></i> <%= p.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(p) %>">OPEN!!</a></h5>
+                  <% if p.staff_address %>
+                  <h7><i class="ion-ios-location"></i> <%= p.staff_address.prefecture %> <%= p.staff_address.city %> <%= p.staff_address.address1 %> </h7>
                   <% end %>
-                  <% if m.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.additional_info.masterpiece %> </h6>
+                  <% if p.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= p.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, p ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, p, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -172,37 +174,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @hokkaido.count == 0 %>
-           <h4>ー現在購入できる北海道の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる北海道の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @hokkaido.each do |m| %>
+          <% @hokkaido.each do |q| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if q.staff_member.image? %>
+                  <div class="prof"><%= image_tag q.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= q.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(q.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= q.prefecture %> <%= q.city %> <%= q.address1 %> </h7>
+                  
+                  <% if q.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= q.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, q.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, q.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -224,6 +228,9 @@ $(".contents").eq(num).css("display","block");
 </div>
 
 
+
+
+
 <div class="contents">
 <div class="container">
     <div class="row">
@@ -232,37 +239,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @tohoku.count == 0 %>
-           <h4>ー現在購入できる東北地方の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる東北地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @tohoku.each do |m| %>
+          <% @tohoku.each do |r| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if r.staff_member.image? %>
+                  <div class="prof"><%= image_tag r.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= r.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(r.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= r.prefecture %> <%= r.city %> <%= r.address1 %> </h7>
+                  
+                  <% if r.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= r.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, r.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, r.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -291,37 +300,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @kanto.count == 0 %>
-           <h4>ー現在購入できる関東地方の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる関東地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @kanto.each do |m| %>
+          <% @kanto.each do |s| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if s.staff_member.image? %>
+                  <div class="prof"><%= image_tag s.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= s.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(s.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= s.prefecture %> <%= s.city %> <%= s.address1 %> </h7>
+                  
+                  <% if s.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= s.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, s.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, s.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -350,37 +361,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @cyubu.count == 0 %>
-           <h4>ー現在購入できる中部地方の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる中部地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @cyubu.each do |m| %>
+          <% @cyubu.each do |t| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if t.staff_member.image? %>
+                  <div class="prof"><%= image_tag t.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= t.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(t.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= t.prefecture %> <%= t.city %> <%= t.address1 %> </h7>
+                  
+                  <% if t.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= t.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, t.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, t.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -409,37 +422,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @kinki.count == 0 %>
-           <h4>ー現在購入できる近畿地方の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる近畿地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @kinki.each do |m| %>
+          <% @kinki.each do |u| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if u.staff_member.image? %>
+                  <div class="prof"><%= image_tag u.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= u.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(u.staff_member) %>">OPEN!!</a></h5>
+                 
+                  <h7><i class="ion-ios-location"></i> <%= u.prefecture %> <%= u.city %> <%= u.address1 %> </h7>
+                  
+                  <% if u.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= u.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, u.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, u.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -468,37 +483,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @cyugoku.count == 0 %>
-           <h4>ー現在購入できる中国地方の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる中国地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @cyugoku.each do |m| %>
+          <% @cyugoku.each do |v| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if v.staff_member.image? %>
+                  <div class="prof"><%= image_tag v.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= v.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(v.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= v.prefecture %> <%= v.city %> <%= v.address1 %> </h7>
+                  
+                  <% if v.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= v.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, v.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, v.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -527,37 +544,43 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @shikoku.count == 0 %>
-           <h4>ー現在購入できる四国地方の農家さんはありませんー</h4>
+          <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる四国地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @shikoku.each do |m| %>
+          <% @shikoku.each do |w| %>
+
+
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if w.staff_member.image? %>
+                  <div class="prof"><%= image_tag w.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+
+                  <div class="prof"><%= image_tag ("sample_img.png"), :id => w.staff_member.id %></div>
+
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= w.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(w.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= w.prefecture %> <%= w.city %> <%= w.address1 %> </h7>
+                  
+                  <% if w.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= w.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, w.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, w.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -568,7 +591,6 @@ $(".contents").eq(num).css("display","block");
           </div><!-- events-area ends -->
           </div>
         </div><!-- events end -->
-
       <% end %>
 
       </div>
@@ -586,37 +608,39 @@ $(".contents").eq(num).css("display","block");
 
         <div class="pricing-tables pure-g">
            <% if @kyusyu.count == 0 %>
-           <h4>ー現在購入できる九州地方の農家さんはありませんー</h4>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる九州地方の農家さんはありませんー</h4>
+         </div>
             <% end %>
-          <% @kyusyu.each do |m| %>
+          <% @kyusyu.each do |x| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if x.staff_member.image? %>
+                  <div class="prof"><%= image_tag x.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= x.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(x.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= x.prefecture %> <%= x.city %> <%= x.address1 %> </h7>
+                  
+                  <% if x.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= x.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, x.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, x.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -640,42 +664,45 @@ $(".contents").eq(num).css("display","block");
 <div class="contents">
 <div class="container">
     <div class="row">
-<% if @okinawa.count == 0 %>
-           <h4>ー現在購入できる沖縄の農家さんはありませんー</h4>
-            <% end %>
-      <div class="l-content">
+    <div class="l-content">
 
         <div class="pricing-tables pure-g">
+<% if @okinawa.count == 0 %>
+           <div class="pure-u-1 pure-u-md-1">
+           <h4 class="top-margin">ー現在購入できる沖縄地方の農家さんはありませんー</h4>
+         </div>
+            <% end %>
 
-          <% @okinawa.each do |m| %>
+
+          <% @okinawa.each do |y| %>
           <div class="pure-u-1 pure-u-md-1-3">
           <div class="thumbnail">
           <div class="events-area">
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if m.staff_member.image? %>
-                  <div class="prof"><%= image_tag m.staff_member.image.thumb.url %></div>
+                  <% if y.staff_member.image? %>
+                  <div class="prof"><%= image_tag y.staff_member.image.thumb.url %></div>
                   <% else %>
                   <div class="prof"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
-                    <h5><i class="ion-leaf"></i> <%= m.staff_member.farm_name %></h5>
-                  <h5><a href="<%= customer_staff_member_store_index_path(m.staff_member) %>">OPEN!!</a></h5>
-                  <% if m %>
-                  <h7><i class="ion-ios-location"></i> <%= m.prefecture %> <%= m.city %> <%= m.address1 %> </h7>
-                  <% end %>
-                  <% if m.staff_member.additional_info %>
-                  <h6><i class="ion-heart"></i> 看板野菜：<%= m.staff_member.additional_info.masterpiece %> </h6>
+                    <h5><i class="ion-leaf"></i> <%= y.staff_member.farm_name %></h5>
+                  <h5><a href="<%= customer_staff_member_store_index_path(y.staff_member) %>">OPEN!!</a></h5>
+                  
+                  <h7><i class="ion-ios-location"></i> <%= y.prefecture %> <%= y.city %> <%= y.address1 %> </h7>
+                  
+                  <% if y.staff_member.additional_info %>
+                  <h6><i class="ion-heart"></i> 看板野菜：<%= y.staff_member.additional_info.masterpiece %> </h6>
                   <% end %>
 
-                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, m.staff_member ], {:class => "btn" } %>
+                      <div class="new-btn"><%= link_to 'どんな農家？', [:customer, y.staff_member ], {:class => "btn" } %>
 
                         </div> 
 
                         <div class="new-btn">
-                      <%= link_to '商品を見る！', [:customer, m.staff_member, :store, :index ], {:class => "btn" } %>
+                      <%= link_to '商品を見る！', [:customer, y.staff_member, :store, :index ], {:class => "btn" } %>
                     </div>
                   </div>
 
@@ -696,11 +723,6 @@ $(".contents").eq(num).css("display","block");
    </div>
 </div>
 
-<div class="contents">
-news
-</div>
 
-<div class="contents">
-support
-</div>
+
 

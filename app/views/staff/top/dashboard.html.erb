@@ -1,164 +1,239 @@
 
                     
+<section class="staff-top bg-primary" id="home">
+            <div class="container">
+<div class="s-row">
+<div class="col-md-6 text-center offset-md-3">
+<div class="dashboard">
+              <h2 class="font300"><%= @staff_member.farm_name%>様<br>Dashboard<br><%= render 'stats' %></h2>
+            </div>
+            </div>
+          </div>
+<div class="row v-align-children bottom-margin15">
 
-<div class= "container">
-	<div class= "row">
-		<div class= "span12">
-<% @title = 'ダッシュボード' %>
-<h5>→現在のステータス<i class="ion-help-circled">
-          <span>下のボタンでステータスを変更できます。ステータスを開店にすると、登録商品が購入可能な様態になります。閉店時、お客様は商品をカートに追加できなくなります。</span></i></h5>
-<%= render 'toggle' %>
-
-<div class="left">
-
-</div>
-
-
-
-<br>
- <div class="stats">
-        <%= render 'stats' %>
- </div>
-
-
-<div class="pull-left"><h1><%= image_tag @staff_member.image_url(:thumb).to_s %>  <%= @staff_member.farm_name %></h1></div>
-<div class="span12">
-<div class="pull-left"><h1><%= link_to image_tag("fbshare.png"), 'http://www.facebook.com/sharer.php?u='+customer_staff_member_url(@staff_member), :target => :blank %></h1></div>
-<div class="pull-left"><h1>　<i class="ion-play"></i></h1></div><br>
-<div class="link_button"><%= link_to '店舗ページを確認', customer_staff_member_url(@staff_member), :target => :blank %></div></div>
-
-<div class="bread-bar clearfix">
-        <ul class="breadcrumb">
-          <li><%= link_to '農産品管理＞', :staff_products %></li>
-          <% if @staff_member.sales_term %>
-          <li><%= link_to '販売条件設定＞', [:edit_staff, @staff_member.sales_term] %></li>
-          <% else @staff_member.sales_term %>
-           <li><i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.sales_term, "販売条件設定＞", { :controller => "sales_terms", :action => "new" }) %></li>
-           <% end %>
-          <% if @staff_member.additional_info %>
-          <li><%= link_to '追加情報設定＞', [:edit_staff, @staff_member.additional_info] %></li>
-          <% else @staff_member.additional_info %>
-           <li><i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.additional_info, "追加情報設定＞", { :controller => "additional_infos", :action => "new" }) %></li>
-           <% end %>
-
-          <% if @staff_member.bank %>
-          <li><i class="ion-help-circled custom-icon">
-          </i><%= link_to '売上振込先＞', [:edit_staff, @staff_member.bank] %></li>
-          <% else @staff_member.bank %>
-           <li><i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.bank, "売上振込先＞", { :controller => "banks", :action => "new" }) %></li>
-           <% end %>
-
-
-           <li><% if @orders.count == 0 %>
+  <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-social-yen"></i><% if @orders.count == 0 %>
             <%= link_to '売上確認＞', :staff_orders %>
             <% else %>
-            <i class="ion-alert custom-icon"><strong>(<%= @orders.count %>)</strong><span>未発送の商品があります。<br>発送処理を完了して下さい。</span>
-          </i><%= link_to '　 売上確認＞', :staff_orders %><% end %></li>
-        </ul>
-      </div>
+            <%= link_to '売上確認＞', :staff_orders %>
+            <i class="ion-alert custom-icon"><strong>(<%= @orders.count %>)</strong><!--<span>未発送の商品があります。<br>発送処理を完了して下さい。</span>--></i>
+            <% end %>
+            </h3>
+                                <p>
+                                    売上の他に、注文確認、送り先確認、注文票印刷、発送完了メールの送信、を行えます。未発送の商品がある場合、アラートで件数表示されます。
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-ios-nutrition"></i><%= link_to '農産品管理＞', :staff_products %></h3>
+                                <p>
+                                    販売したい、農産品、加工品をご登録いただけます。登録いただいた在庫数が「0」になると自動で購入されなくなります。
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-clipboard"></i><% if @staff_member.sales_term %>
+          <%= link_to '販売条件＞', [:edit_staff, @staff_member.sales_term] %>
+          <% else @staff_member.sales_term %>
+           <i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.sales_term, "販売条件＞", { :controller => "sales_terms", :action => "new" }) %>
+           <% end %></h3>
+                                <p>
+                                    送料、特定商取引法に関わる表示、返品規定を編集していいただけます。販売開始前に必ず、送料の設定をするよう、よろしくお願い申し上げます。
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-information"></i><% if @staff_member.additional_info %>
+          <%= link_to '農園情報＞', [:edit_staff, @staff_member.additional_info] %>
+          <% else @staff_member.additional_info %>
+           <i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.additional_info, "農園情報＞", { :controller => "additional_infos", :action => "new" }) %>
+           <% end %></h3>
+                                <p>
+                                    おすすめの野菜、農園の紹介文をご登録いただけます。
+                                    農園の紹介文は、農園様のトップページに掲載されます。
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+                  <div class="row v-align-children bottom-margin15">
+  <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-card"></i><% if @staff_member.bank %>
+          <i class="ion-help-circled custom-icon">
+          </i><%= link_to '売上振込先＞', [:edit_staff, @staff_member.bank] %>
+          <% else @staff_member.bank %>
+           <i class="ion-plus-round custom-icon"></i><%= link_to_unless(@staff_member.bank, "売上振込先＞", { :controller => "banks", :action => "new" }) %>
+           <% end %></h3>
+                                <p>
+                                    こちらで登録いただいた振込先に、本サイトでの売り上げを月末締翌々月15日にてお振込いたします。販売開始前に必ずご登録ください。
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-person"></i><%= link_to 'アカウント編集＞', :staff_account %></h3>
+                                <p>
+                                  農園の所在地など、基本情報の編集が行えます。農園の所在地をご登録いただくと、お客様用のサイトの都道府県の分類に表示されるようになります。
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="hero-form-box-s-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-ios-glasses-outline"></i><%= link_to '店舗ページ確認＞', customer_staff_member_url(@staff_member), :target => :blank %></h3>
+                                <p>
+                                    お客様から見える農園のページをご確認いただけます。お客様用のページを別タブで開きます。　　　　　　　　　
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-social-facebook"></i><%= link_to "FBシェア", 'http://www.facebook.com/sharer.php?u='+customer_staff_member_url(@staff_member), :target => :blank %></h3>
+                                <p>
+                                    <%= @staff_member.farm_name %> 様の農園ページをFBでシェアできます。積極的にご活用ください。
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                  </div>
+
+                 <div class="row v-align-children bottom-margin15">
+                    
+                    <div class="col-lg-5">
+                        <div class="hero-form-box-s">
+                            <div class="form-hero-header-s">
+                                <h3 class="font300"><i class="ion-power"></i>ステータス変更</h3>
+                                <p>
+                                    下のボタンを押すことで、販売店舗の開店、閉店を変更できます。閉店の時は登録されている全商品がお客様から購入されない状態になります。
+                                </p>
+                                <%= render 'toggle' %>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+            </div>
+          </section>
 
 
 
 
 
 
-<div class="left">
-<div class="span6">
 
+
+
+
+
+
+
+
+
+
+
+<div class="margin15">
+<div class="col-md-6 text-center offset-md-3">
+<h2 class="font300">ブログ・スケジュール投稿</h2>
   <section class="comment-area">
   <%= render 'store_schedule_form' %>
   </section>
-	<section class="comment-area">
-	<%= render 'harvest_schedule_form' %>
-	</section>
 
 </div>
 </div>
 
 
-<div class="left">
-<div class="span5">
-<div class="events">
-  <div class="events-area">
- 
-      
-        <h5>スケジュールタイムライン<i class="ion-help-circled">
-          <span>ご自身が投稿したスケジュールを確認いただけます。</span></i>
-        </h5>
-     
-<% if @schedules.count == 0 %>
-<h4>ー現在投稿はありませんー</h4>
-<% else %>
-<%= paginate @schedules %>
+
+<br><br>
+       <h2 class="content-head is-center" style="clear:both;">ブログ・スケジュール</h2>
+
+        <div class="pure-g">
+
 <% @schedules.each do |schedules| %>
-
-           <li>
-             <div class="event-box">
-               <figure class="image">
-                <%= image_tag schedules.staff_member.image.thumb.url %>
-                 <a href="events-detail.html"></a>
-               </figure>
-             <div class="detail">
-               <a href="<%= schedules.event_url %>"><h5><%= @staff_member.farm_name %></h5>
-               <h6><%= schedules.harvest %><%= schedules.opening %></h6></a>
-                <ul>
-                  <li><span><i class="ion-ios-clock"></i><strong> 開始日時：</strong><h6>
-                    <% if schedules.harvest_date? %>
-                    <%= schedules.harvest_date.strftime("%Y年 %m月 %d日") %>
-                    <% end %>
-                    <% if schedules.opening_date? %>
-                    <%= schedules.opening_date.strftime("%Y年 %m月 %d日 %H:%M") %><br>　　　　&#8659;<br><%= schedules.closing_date.strftime("%Y年 %m月 %d日 %H:%M") %>
-                    <% end %>
-                   </h6></span></li>
-                  <% if @staff_member.staff_address %>
-                  <li><span><i class="ion-ios-location"></i>
-                  	<%= @staff_member.staff_address.prefecture %> 
-                  	<%= @staff_member.staff_address.city %> 
-                  	<%= @staff_member.staff_address.address1 %></span></li>
-                    <% end %>
-
-                    <% if schedules.image1? %>
-                    <div class="img">
-                    <%= image_tag schedules.image1.url, :class => "intense" %>
-                   </div>
+               <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
                     
-                    <% end %>
-                    <% if schedules.image2? %>
-                    <div class="img">
-                    <%= image_tag schedules.image2.url, :class => "intense"  %>
-                  </div>
-                    <% end %>
-                    <% if schedules.image3? %>
-                    <div class="img">
-                    <%= image_tag schedules.image3.url, :class => "intense"  %>
-                  </div>
-                    <% end %>
-                    <% if @staff_member.followers.count == 0 %>
-                    <li><i class="ion-share"></i> 現在フォロワーがいない為、送信できません。</li>
-                    <% else %>
-                    <li><i class="ion-share"> </i><%= link_to 'メールでシェア', [ :push, :staff, schedules ], { data: { confirm: 'フォロワー宛にメールが送信されます。本当に送信しますか？'}, :class => "btn"}  %></li>
-                    <% end %>
-                    <li><i class="ion-trash-a"> </i><%= link_to '削除', [ :staff, schedules ], method: :delete, data: { confirm: '本当に削除しますか？'} %></li>
+                    <!--<% if schedules.staff_member.image? %><%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %><% end %>
+                        <img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" class="post-avatar" src="img/common/ericf-avatar.png">-->
+                        <p><%= schedules.created_at.strftime("%Y年%m月%d日") %></p>
+                   <h3 class="content-subhead">
+                    <i class="fa fa-rocket"></i>
+                    <%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) do %><%= truncate(schedules.harvest, length: 30, :escape => false) %><%= truncate(schedules.title, length: 30, :escape => false) %><% end %>
+                   </h3>
+
+                        <p class="post-meta">
+                            By <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>", class="post-auther"><%= schedules.staff_member.farm_name %></a> under 
+                            <% if schedules.harvest %>
+                            <a class="post-category post-category-design" href="#">収穫予告</a>
+                            <% else %>
+                            <a class="post-category post-category-js" href="#">Blog</a>
+                            <% end %>
+                        </p>
                     
-                </ul>
-             </div>
-             </div><!-- event-box ends -->
-           </li>
-<% end %>
-           <%= paginate @schedules %>
-           <% end %>
-           
-       </div>
-   </div>
-</div>
-</div>
+
+                    <div class="post-description">
+
+
+                        <p>
+                        <%== truncate(schedules.harvest, length: 15, :escape => false)  %><%== truncate(schedules.blog, length: 15, :escape => false)  %>
+                        </p>
+                        <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) %>
+
+                            <div class="post-images pure-g">
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <% if schedules.image1? %>
+                                <%= image_tag schedules.image1.thumb.url, :class => "pure-img-responsive" %>
+                                <% end %>
+                                <!--<div class="post-image-meta">
+                                    <h3>CSSConf Photos</h3>
+                                </div>-->
+                            </div>
+
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                 <% if schedules.image2? %>
+                                <%= image_tag schedules.image2.thumb.url, :class => "pure-img-responsive" %>
+                                <% end %>
+
+                                <!--<div class="post-image-meta">
+                                    <h3>JSConf Photos</h3>
+                                </div>-->
+                            </div>
+                        </div>
+
+
+                    
+                    </div>
+                    
+                    </div>
+        <% end %>
+
+    </div>
 
 
 
-
-</div>
-</div>
-</div>
 
 <script>
 

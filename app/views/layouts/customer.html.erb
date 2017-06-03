@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<title> <%= document_title %></title>
-<meta name="viewport" content="width=device-width, maximum-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="HideakiTakahashi">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="Auther" content="自然栽培ちょくはん">
+    <meta name="Copyright" content="&copy; Copyright うむ株式会社. All Rights Reserved." />
+    <meta name="robots" content="index,follow">
+    <meta name="description" content="美味しいけれど売り切れがちな自然栽培野菜を、すぐに探せて、欲しい時に買える。生産者のスケジュールをもとに自然栽培、自然農法で作られた採りたての野菜を直販するウェブ生鮮市場です。">
+    <meta name="keywords" content="自然栽培,自然栽培ちょくはん,しぜんさいばいちょくはん,しぜんちょくはん,自然栽培直販">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>自然栽培農家から美味しい野菜を産地直送！｜自然栽培ちょくはん</title>
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <%= favicon_link_tag '/assets/images/favicon.ico' %>
@@ -15,7 +18,7 @@
 
 
 <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
+<%= javascript_include_tag "customer/application", "data-turbolinks-track" => true  %>
 
 <%= csrf_meta_tags %>
 <%= action_cable_meta_tag %>
@@ -62,7 +65,9 @@ $(".contents").eq(num).css("display","block");
 });
 });
 </script>
- 
+
+<script src="https://unpkg.com/grimoirejs-preset-basic/register/grimoire-preset-basic.js"></script>
+
 </head>
 
 <body>
@@ -72,15 +77,19 @@ $(".contents").eq(num).css("display","block");
 
   <%= yield %>
   
+
+  
   <footer class="footer">
       <div class="container">
         <div class="row">
+
           <div class="pull-right">
     <div class="top-nav">
 <%= link_to "＜Home", :customer_root, {:class => "btn" }%>
 <%= link_to '＜前に戻る', :back, {:class => "btn" } %> 
 </div>
 </div>
+<br><br>
          
           <div class="span2">
             <h2>INDEX</h2>
@@ -102,7 +111,7 @@ $(".contents").eq(num).css("display","block");
           <li><%= link_to '開店中の農家 一覧' , :customer_open_index %></li>
           <li></li>
           <li><i class="ion-information-circled"></i>
-            <%= link_to '自然農、自然栽培紹介ブログ「かすみんのお墨付き！」', "http://shizencyokuhan.cocolog-nifty.com/blog/", {:target => "_blank"} %></li>
+            <%= link_to '野菜のうんちく提供　自然栽培ちょくはん公式ブログ', "https://medium.com/@hideakitakahashi", {:target => "_blank"} %></li>
         </ul> 
         <div class="social-links">
           <h7>　</h7>

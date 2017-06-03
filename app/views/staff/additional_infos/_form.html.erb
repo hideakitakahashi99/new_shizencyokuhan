@@ -1,4 +1,7 @@
+<div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-1">
 <%= form_for [ :staff, @additional_infos ] do |f| %>
+<div class="pure-form pure-form-stacked">
 <div class="additional cf">
   <h4><strong>追加情報編集</strong></h4>
   <div class="field">
@@ -41,7 +44,7 @@
    '例：
    霧深い丹波の里で、新鮮な水と腐葉土で育まれた、自然栽培野菜をご堪能いただけます。
    大豆や大麦、里芋、栗など、地域の特色を活かした、旬の作物で健康になってください！
-   ' %>
+   ' , :size=>"50x10"%>
  </div>
   </td>
 
@@ -52,4 +55,6 @@
   <%= f.submit "追加情報を更新", class: "btn btn-large btn-primary" %>
  
  </div>
+ </div>
 <% end %>
+  </div></div>

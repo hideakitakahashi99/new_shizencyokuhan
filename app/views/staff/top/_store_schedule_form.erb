@@ -1,57 +1,36 @@
-
-<div class="schedule_harvest cf">
+<div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-1">
+            <ul class="product">
 <%= form_for [ :staff, @schedule ] do |f| %>
-  	<h4>開店予告をして<br/>集客につなげよう！</h4>
-	<h4><i class="ion-home">　</i><strong>開店予告</strong><i class="ion-help-circled">
-          <h5><span>　野菜の注文を受け付けたい日程が決まっている場合は、事前に告知できます。<br/><br/>　登録時にフォロワーにお知らせが飛び、【開店1週間前】と【前日】に、会員様への定期メール便で告知されます。<br/><br/>※登録後でも削除できます。</span></h5></i></h4>
-	<h7>※お客様トップ／お客様マイページに表示されます！</h7>
-  <div class="field">
-    <tr>
-      <th>販売開始日時</th>
-        <td>
-          <div class="inputrow">
-        <%= f.datetime_select(
-         :opening_date, 
-         :prompt => { :day => '日', :month => '月', :year => '年' },
-         use_month_numbers: true,
-         start_year: (Time.now.year),
-         minute_step: 60
-         ) %>
-      </div>
-        </td></br>
-      <th>販売終了日時</th>
-        <td>
-          <div class="inputrow">
-        <%= f.datetime_select(
-         :closing_date,
-         :prompt => { :day => '日', :month => '月', :year => '年' },
-         use_month_numbers: true,
-         start_year: (Time.now.year),
-         minute_step: 60
-         ) %>
-      </div>
-        </td></br>
-      <th>コメント</th>
-        <td>
-          <div class="inputrow">
-        <%= f.text_area :opening, placeholder: "Compose new micropost..." %>
-      </div>
-        </td>
+<div class="pure-form pure-form-stacked">
+
+                    <fieldset>
+
+                        <label for="name">タイトル</label>
+                        <%= f.text_field :title %>
+
+
+                        <label for="email">本文</label>
+                        <%= f.cktext_area :blog %>
+
+
+
         <th>※画像を付けられます（3枚まで）</th><br/>
   <td>
-    <%= f.file_field :image1 %>
+    <label for="email">画像一枚目</label><%= f.file_field :image1 %>
   </td></br>
   <td>
-    <%= f.file_field :image2 %>
+    <label for="email">画像二枚目</label><%= f.file_field :image2 %>
   </td></br>
   <td>
-    <%= f.file_field :image3 %>
+    <label for="email">画像三枚目</label><%= f.file_field :image3 %>
   </td>
-    </tr>
 
-  </div>
- 
- <%= f.submit "開店予告する", class: "btn btn-large btn-primary", :name => 'store'  %>
- 
+                        <%= f.submit "投稿する", class: "pure-button", :name => 'store'  %>
+                    </fieldset>
+                  </div>
 <% end %>
-</div>
+  </ul>
+  </div></div>
+
+

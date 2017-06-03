@@ -25,7 +25,7 @@ class Customer::Base < ApplicationController
 
 
 
-	TIMEOUT = 60.minutes
+	TIMEOUT = 20.years
 
 	def check_timeout
 		if current_customer

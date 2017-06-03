@@ -21,4 +21,8 @@
 //= require gmaps/google
 //= require moment
 //= require materialize-sprockets
+//= require froala_editor.min.js
+//= require ckeditor/init
+//= require social-share-button
 //= require_tree .
+

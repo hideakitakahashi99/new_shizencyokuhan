@@ -121,3 +121,12 @@ gem 'mini_magick'
 
 gem 'chain-sdk', '~> 1.1.0', require: 'chain'
 
+group :production, :staging do
+    gem 'unicorn'
+end
+
+gem 'wysiwyg-rails'
+
+gem 'ckeditor'
+
+gem 'social-share-button'

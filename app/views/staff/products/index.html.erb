@@ -36,7 +36,11 @@
 					</tr>
 						<% @products.each do |m| %>
 					<tr>
+					<% if m.productimg? %>
 						<td><%= image_tag m.productimg.thumb.url %></td>
+						<% else %>
+						<td>noimage</td>
+						<% end %>
 						<td><%= m.category %></td>
 						<td><%= m.variety %></td>
 						<% p = ProductPresenter.new(m, self) %>

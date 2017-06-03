@@ -25,5 +25,9 @@ class StaticPagesController < ApplicationController
   def randing
   # render 'static_pages/randing'
     redirect_to 'https://peraichi.com/landing_pages/view/shizencyokuhan'
-  end 
+  end
+  
+  def box
+      render 'static_pages/box'
+  end
 end

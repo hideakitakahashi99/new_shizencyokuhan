@@ -31,6 +31,7 @@ h3 {
     text-align: center;
     top: auto;
     margin: 3em auto;
+
 }
 
 .sidebar {
@@ -63,7 +64,7 @@ h3 {
 .nav-item a {
     background: transparent;
     border: 2px solid rgb(176, 202, 219);
-    color: #fff;
+    color: #000;
     margin-top: 1em;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -162,7 +163,7 @@ h3 {
     }
 
     .header {
-        margin: 80% 2em 0;
+        margin: 80% 0.1em 0;
         text-align: left;
     }
 
@@ -175,4 +176,8 @@ h3 {
     .footer {
         text-align: center;
     }
+}
+
+.nav .center {
+    text-align: center;
 }

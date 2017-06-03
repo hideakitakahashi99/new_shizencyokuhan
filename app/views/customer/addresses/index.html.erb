@@ -1,11 +1,22 @@
+
+<div class="container">
+        <div class="margin15">
+        <ul class="progressbar">
+            <li class="active">送り先選択</li>
+            <li>送り先確定</li>
+            <li>注文確認</li>
+            <li>確定</li>
+        </ul>
+      </div>
+</div>
 <div class="container">
 	<div class="row">
-		<div class="span12">
+		<div class="margin15">
 			<% @title = '送り先選択' %>
 			<h2><%= @title %></h2>
 
 		<div class="table-wrapper">
-<div class="right"><%= button_to "新しい住所で注文する", :new_customer_staff_member_address, method: :get %></div>
+<div class="margin15"><%= button_to "新しい住所で注文する", :new_customer_staff_member_address, method: :get, :class => "btn btn-primary" %></div>
 			<%= paginate @addresses %>
 
 				<table class="table">
@@ -28,7 +39,7 @@
 						
 
 						<td class="actions">
-							<%= link_to '選択', controller:"addresses", action:"edit", id:m %> 
+							<%= link_to '選択', controller:"addresses", action:"edit", id:m, :class => "btn btn-primary" %> 
 						</td>
 					</tr>
 						<% end %>

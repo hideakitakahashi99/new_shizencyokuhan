@@ -3,15 +3,17 @@
     <div class="span12">
       <div class="top-nav">
       <div class="pull-left">
-      <%= link_to '先月 >', [:staff_prev_orders], :class => "btn" %>
-       <%= link_to '当月 >', [:staff_orders], :class => "btn" %>
+      <%= link_to '先月 >', [:staff_prev_orders], :class => "btn btn-primary" %>
+       <%= link_to '当月 >', [:staff_orders], :class => "btn btn-primary" %>
        </div>
-<div class="span10"><h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1></div>
+ <div class="l-box-lrg pure-u-1 pure-u-md-1"><h1><%= @month %>月度の総売上　¥<%= @total_sales %>-</h1></div>
+
 </div>
+
 </br>
 
 
-<div class="span5">
+<div class="l-box-lrg pure-u-1 pure-u-md-2-5">
    <div class="pull-left">
   <h3><i class="ion-social-yen"></i>　代金引き換え</h3>
 </div>
@@ -21,8 +23,9 @@
   <th>売上</th>　
   <td>¥<%= @m_total_sales %></td>
 </tr>
+
  <tr>
-  <th>システム料</br>(売上の10％)</th>　
+  <th>システム料</br>(売上の10％)</th>
   <td>¥<%= @m_total_sales * 0.1 %></td>
 </tr>
  <tr>
@@ -32,7 +35,7 @@
 </table>
 </div>
 
-<div class="span5">
+<div class="l-box-lrg pure-u-1 pure-u-md-2-5">
    <div class="pull-left">
   <h3><i class="ion-card"></i>　クレジット支払い</h3>
 </div>
@@ -53,7 +56,7 @@
 </table>
 </div>
 
-<div class="span12">
+<div class="l-box-lrg pure-u-1 pure-u-md-1">
   <div class="pull-right">
 <table class="table">
 <tr>
@@ -70,10 +73,10 @@
 </div>
   </div>
 
-<div class="span12">
+<div class="l-box-lrg pure-u-1 pure-u-md-1">
   <h3><i class="ion-stats-bars"></i>　注文履歴</h3>
+  <h5>決済日から3日以内に商品の発送を完了し、「発送完了メール送信」ボタンを押してください。<br/>ボタンを押すと、発送完了のメールが、自動的にお客様に届きます。※一度押してしまうとキャンセルはできませんのでご注意下さい。</h5></div>
 <table class="table">
- 
     <tr>
       <th>ステータス</th>
       <th>支払い方法</th>
@@ -91,7 +94,7 @@
     <% @orders.each do |order| %>
       <tr>
         <% if order.shipped == false %>
-        <td><h3><%= link_to '発送完了メール送信', [:staff, order, :shipped], { :data => {:confirm => "発送完了の通知を送信しますか?"}, :class => "btn" } %> <i class="ion-alert-circled"><h5><span>　決済日から3日以内に商品の発送を完了し、「発送完了メール送信」ボタンを押してください。<br/><br/>　ボタンを押すと、発送完了のメールが、自動的にお客様に届きます。<br/><br/>　※一度押してしまうとキャンセルはできませんのでご注意下さい。</span></h5></i></h3></td>
+        <td><h3><%= link_to '発送完了メール送信', [:staff, order, :shipped], { :data => {:confirm => "発送完了の通知を送信しますか?"}, :class => "btn btn-yellow" } %> </h3></td>
         <% else %>
         <td>発送通知完了</td>
         <% end %>
@@ -100,7 +103,7 @@
 
         <td>¥<%= order.total_price %></td>
         <td><%= order.created_at %></td>
-        <td><%= link_to '詳細確認＞', [:staff, order] %></td>
+        <td><%= link_to '詳細確認＞', [:staff, order] , :class => "btn btn-dark"%></td>
         <td>  </td>
       </tr>
     <% end %>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   get 'rooms/show'
-  mount ActionCable.server => '/cable'
+  #mount ActionCable.server => '/cable'
 
   get '/', to: 'static_pages#company', as: :top
 
@@ -21,6 +22,7 @@ get 'projects/marker',  to: 'projects#marker',  as: :marker
     get 'static_pages/policy'
     get 'static_pages/disclaimer'
     get 'static_pages/term'
+    get 'static_pages/box'
   
 
 resources :projects do
@@ -121,6 +123,20 @@ namespace :admin, path: config[:admin][:path] do
   end
 end
 
+constraints host: config[:special][:host] do
+    namespace :special, path: config[:special][:path] do
+        root 'top#index'
+        resources :reservation 
+        post 'reservation/box1' => 'reservation#box1'
+        post 'reservation/box2' => 'reservation#box2'
+        post 'reservation/box3' => 'reservation#box3'
+        post 'reservation/confirm' => 'reservation#confirm'
+        post 'reservation/thanks'  => 'reservation#thanks'
+    end
+end
+
+
+
 constraints host: config[:customer][:host] do
 namespace :customer, path: config[:customer][:path] do
     root 'top#index'
@@ -138,6 +154,11 @@ namespace :customer, path: config[:customer][:path] do
     get 'static_pages/disclaimer'
     get 'static_pages/term'
     get 'static_pages/forbidden'
+    get 'static_pages/box'
+    get 'static_pages/shizen'
+    get  'inquiry'         => 'inquiry#index'
+    post 'inquiry/confirm' => 'inquiry#confirm'
+    post 'inquiry/thanks'  => 'inquiry#thanks'
     resource :session, only: [ :create, :destroy ]
     resource :signup, only: [ :create, :destroy ]
 
@@ -151,6 +172,7 @@ namespace :customer, path: config[:customer][:path] do
       get :schedules
       get :schedule_show
       resources :store, only: [ :index ]
+      resources :product, only: [ :show ]
       resources :carts
       resources :line_items
       resources :orders 

@@ -1,5 +1,5 @@
 class StaffMemberMailer < ActionMailer::Base
-  default from: "info@shizencyokuhan.org"
+  default from: '"自然ちょくはん"<info@shizencyokuhan.org>'
 
     def registration_confirmation(current_staff_member)
     @staff_member = current_staff_member

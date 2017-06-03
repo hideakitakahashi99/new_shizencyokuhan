@@ -10,6 +10,8 @@
 				<h2 class="text-pink">
 					<%= @title %>
 				</h2>
+				 <div class="margin15">
+<%= link_to "ホーム", :customer_root %> > <%= link_to "ストア", :customer_staff_member_store_index %> > 特定商取引に関する表示 </div>
 <div id="cart"
 	<% if @cart.line_items.empty? %>
 	style="display: none"

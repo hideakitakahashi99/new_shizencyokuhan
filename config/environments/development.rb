@@ -18,7 +18,7 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '192.168.33.11' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address => 'smtp.gmail.com', 
@@ -53,7 +53,8 @@ config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.taskapp = {
     staff: { host: '192.168.33.11', path: 'staff' },
     admin: { host: '192.168.33.11', path: 'admin' },
-    customer: { host: '192.168.33.11', path: 'mypage' }
+    customer: { host: '192.168.33.11', path: 'mypage' },
+    special: { host: '192.168.33.11', path: 'special' }
   }
  
   config.action_cable.allowed_request_origins = [ 'http://192.168.33.11:3000' ]

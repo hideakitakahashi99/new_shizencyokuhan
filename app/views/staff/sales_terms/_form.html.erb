@@ -1,4 +1,7 @@
+<div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-1">
 <%= form_for [ :staff, @sales_terms ] do |f| %>
+<div class="pure-form pure-form-stacked">
 <div class="additional cf">
   <h4><strong>販売条件編集</strong></h4>
   <div class="field">
@@ -32,7 +35,7 @@ FAX番号　　　　　　　　 123-456-7891
 主な商品　　　　　　　　野菜、または食品等
 価格　　　　　　　　　　商品毎に記載
 商品代金以外の費用　　　配送費
-消費税　　　　　　　　　8%" %>
+消費税　　　　　　　　　8%", :size => "50×10" %>
   </div>
   </th>
 
@@ -49,7 +52,7 @@ FAX番号　　　　　　　　 123-456-7891
 万が一、お客様のご注文と異なる商品が届いた場合や不良品の場合は、商品到着後3日以内にメールにてご連絡ください。
 収穫状況を確認の上、ご指定の商品、良品または同等品をお送りいたします。
 返品送料は、不良品交換、誤送交換は当社負担とさせていただきます。
-お客様都合の場合はお客様負担となります。" %>
+お客様都合の場合はお客様負担となります。" , :size => "50×10"%>
  </div>
   </th>
  
@@ -61,4 +64,6 @@ FAX番号　　　　　　　　 123-456-7891
   <%= f.submit "追加情報を更新", class: "btn btn-large btn-primary" %>
  
  </div>
+ </div>
 <% end %>
+  </div></div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170130102010) do
+ActiveRecord::Schema.define(version: 20170527060153) do
 
   create_table "additional_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "staff_member_id"
@@ -86,6 +86,18 @@ ActiveRecord::Schema.define(version: 20170130102010) do
     t.string   "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ckeditor_assets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "data_file_name",               null: false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.string   "type",              limit: 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type", using: :btree
   end
 
   create_table "customers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -223,7 +235,6 @@ ActiveRecord::Schema.define(version: 20170130102010) do
 
   create_table "schedules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "harvest"
-    t.string   "opening"
     t.integer  "staff_member_id"
     t.date     "harvest_date"
     t.datetime "opening_date"
@@ -235,6 +246,8 @@ ActiveRecord::Schema.define(version: 20170130102010) do
     t.string   "image1"
     t.string   "image2"
     t.string   "image3"
+    t.text     "title",           limit: 65535
+    t.text     "blog",            limit: 4294967295
     t.index ["staff_member_id", "created_at"], name: "index_schedules_on_staff_member_id_and_created_at", using: :btree
   end
 

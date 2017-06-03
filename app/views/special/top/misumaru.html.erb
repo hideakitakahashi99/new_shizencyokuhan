@@ -1,0 +1,453 @@
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>奥丹波里山便 - 予約受付中！</title>
+
+        <!-- Bootstrap -->
+        <link href="css/plugins/bundle.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body data-spy="scroll" data-target=".navbar-inverse" data-offset="90">
+         <!--  navbar -->
+        <nav class="navbar navbar-toggleable-sm fixed-top transparent-nav navbar-inverse bg-inverse">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <%= link_to :special_root , :class => "navbar-brand" do %>
+                <%= image_tag "/assets/logo_naturalB.png", :width => 50 %><% end %>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-scroll">
+                        <li class="nav-item"><a class="nav-link active" href="#home">奥丹波里山便とは</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">自然栽培とは</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#features">春夏秋冬</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#pricing">商品バリエーション</a></li>
+                        
+                        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                        
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <!--end navigation-->
+
+        <section class="full-height bg-image" id="home">
+            <div class="display-table">
+                <div class="verticle-center">
+                    <div class="container text-center">
+                        <div class="s-row">
+                            <div class="col-md-8 offset-md-2 navbar-scroll">
+                            <%= image_tag "/assets/logo_naturalB.png", :width => 300 %>
+                                <h1 class="font300">奥丹波里山便 お野菜BOX</h1>
+                                <p class="mt20 mb30">
+                                    丹波の清らかな水と深い霧で育まれた、色とりどりのお野菜
+                                    <br>平成29年6月度分　絶賛予約承り中！！
+                                </p>
+                                <div class="mb30 buttons">
+                                    <a href="#pricing" class="btn btn-lg btn-rounded btn-dark"> 予約する</a>
+                                    <a href="#" data-toggle="modal" data-target="#video-modal" class="btn btn-lg btn-rounded btn-white-border"><i class="social_youtube"></i> Watch Video</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!--/home-->
+
+       
+                <section class="pt90 pb40">
+            <div class="container">
+                <div class="s-row">
+                <div class="col-md-8 offset-md-2 text-center">
+                    <h1>うむ農園の栽培方法</h1>
+                        <p class="lead mb70">
+                           
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-4 mb40">
+                        <div class="icon-box">
+                            <i><span class="ion-checkmark-circled"></span></i>
+                            <h4>栽培期間中 農薬不使用</h4>
+                            <p>
+                                自然栽培のお野菜には自然と、病気や害虫による被害が出にくい為、農薬を使用する必要がありません。</p>
+                        </div>
+                    </div><!--/column-->
+                    <div class="col-md-4 col-lg-4 mb40">
+                        <div class="icon-box">
+                            <i><span class="ion-checkmark-circled"></span></i>
+                            <h4>無化学肥料</h4>
+                            <p>
+                                私たちは植物が生きている最中に呼び寄せる微生物によって土を肥やします。私たちが土に直接肥料を入れる事はありません。</p>
+                        </div>
+                    </div><!--/column-->
+                    <div class="col-md-4 col-lg-4 mb40">
+                        <div class="icon-box">
+                            <i><span class="ion-checkmark-circled"></span></i>
+                            <h4>無施肥</h4>
+                            <p>
+                                私たちは肥料だけでなく、土壌改良資材など、土壌の生物性に直接影響を与えるものを使用しません。自然の循環だけで土を肥やします。  </p>
+                        </div>
+                    </div><!--/column-->
+                    <!--<div class="col-md-6 col-lg-3 mb40">
+                        <div class="icon-box">
+                            <i class="icon_chat_alt"></i>
+                            <h4></h4>
+                            <p>
+                                Maecenas sollicitudin luctus neque at auctor sum lacinia. Phasellus conseodio vitae semper.</p>
+                        </div>
+                    </div>--><!--/column-->
+                </div><!--/row-->
+            </div><!--/container-->
+        </section><!--/about-->
+ <hr class="mb0 mt0">
+ <section class="pt90 pb40">
+            <div class="container">
+                <div class="s-row">
+                    <div class="col-md-8 offset-md-2 text-center">
+                        <h1>奥丹波里山農園の栽培方法</h1>
+                         <p class="lead mb70">
+                           
+                        </p>
+                    </div>
+                </div>
+                <div class="s-row">
+                    <div class="col-md-4 col-lg-4 mb40">
+                        <div class="icon-box">
+                            <i><span class="ion-checkmark-circled"></span></i>
+                            <h4>栽培期間中 農薬不使用</h4>
+                            <p>
+                                自然栽培のお野菜には自然と、病気や害虫による被害が出にくい為、農薬を使用する必要がありません。</p>
+                        </div>
+                    </div><!--/column-->
+                    <div class="col-md-4 col-lg-4 mb40">
+                        <div class="icon-box">
+                            <i><span class="ion-checkmark-circled"></span></i>
+                            <h4>無化学肥料</h4>
+                            <p>
+                                私たちは植物が生きている最中に呼び寄せる微生物によって土を肥やします。私たちが土に直接肥料を入れる事はありません。</p>
+                        </div>
+                    </div><!--/column-->
+                    <div class="col-md-4 col-lg-4 mb40">
+                        <div class="icon-box">
+                            <i><span class="ion-checkmark-circled"></span></i>
+                            <h4>米ぬかと酵素発酵液のみ使用</h4>
+                            <p>
+                                微生物の増加促進を促す発酵液と米ぬかを使用することにより、荒廃した土地の早期の生態系回復を促しています。 </p>
+                        </div>
+                    </div><!--/column-->
+                    <!--<div class="col-md-6 col-lg-3 mb40">
+                        <div class="icon-box">
+                            <i class="icon_chat_alt"></i>
+                            <h4></h4>
+                            <p>
+                                Maecenas sollicitudin luctus neque at auctor sum lacinia. Phasellus conseodio vitae semper.</p>
+                        </div>
+                    </div>--><!--/column-->
+                </div><!--/row-->
+            </div><!--/container-->
+        </section><!--/about-->
+
+        <hr class="mb0">
+        <section  id="about" class="pt90 gray-bg pb90">
+            <div class="container">
+                <div class="s-row v-align-children">
+                    <div class="col-lg-5">
+                        <h2 class="font300 mb30 mt30">自然栽培とは</h2>
+                        <p class="lead">
+                            　私たちの考えている自然栽培とは、栽培期間中の無施肥、無農薬はもちろん、自然界全体と、私たち人間が、渾然一体のものとして死と再生、分解と結合、引力と斥力により巡り続けている、流れそのものだと考えています。
+                        </p>
+                        <p>
+                            　そして、私たちの野菜が皆さんの口に入ることで、自然と寄り添う生き方を再発見、再認識するきっかけになれればと思っています。
+                        </p>
+                    </div><!--/col/-->
+                    <div class="col-lg-4 offset-lg-1">
+                        <img src="images/kuromame.jpg" alt="" class="img-fluid">
+                    </div><!--/col/-->
+                </div><!--/row/-->
+            </div><!--/container/-->
+        </section><!--feature 1 end-->
+        <hr class="mt0 mb0">
+        <section id="features" class="pt90 pb90">
+            <div class="container">
+                <div class="s-row v-align-children">
+                    <div class="col-lg-4">
+                    <%= image_tag "/assets/box-image.jpg", :class => "img-fluid" %>
+                    </div><!--/col/-->
+                    <div class="col-lg-5 offset-lg-1">
+                    <h2 class="font300 mb30">季節に応じた、旬のお野菜を<br><strong>6〜7品目</strong>の詰め合わせでお届けいたします。</h2>
+
+                        <p>
+                            　春には菜の花が咲き、冬には寒さに耐える為に糖分を蓄える。<br>　植物も、人と同じように気温や雨風など、様々なものを感じながら、その生命を次に繋げています。<br><br>
+                            　季節の野菜を食べよう。<br><br>　季節に応じた自然な作物は、人の健康を最大限引き出してくれます。
+                        </p>
+                        <ul class="features-list list-unstyled">
+                            <li>
+                                春の品目例　<br>ex) 葉物野菜（ホウレンソウ、小松菜、水菜、葉レタスなど）、根菜類（ビーツ、大根、ミニ人参など）、にんにく<img src="images/kuromame.jpg" alt="" class="img-fluid">
+                            </li>
+                            <li>
+                                夏の品目例　<br>ex) 果菜類（トマト、ナス、ズッキーニ、キュウリ、満願寺唐辛子、メロン類、スイカ類など）<img src="images/kuromame.jpg" alt="" class="img-fluid">
+                            </li>
+                            <li>
+                                秋の品目例　<br>ex) 根菜類（大根、人参、サツマイモ、ジャガイモ、里芋など）、葉物野菜（ホウレンソウ、葉レタスなど）<img src="images/kuromame.jpg" alt="" class="img-fluid">
+                            </li>
+                            <li>
+                                冬の品目例　<br>ex) 根菜類（大根、人参、サツマイモ、ジャガイモ、里芋など）、葉物野菜（ホウレンソウ）<img src="images/kuromame.jpg" alt="" class="img-fluid">
+                            </li>
+                        </ul>
+                    </div><!--/col/-->
+
+                </div><!--/row/-->
+            </div><!--/container/-->
+        </section><!--/feature 2/-->
+        <hr class="mb0 mt0">
+        <section id="pricing" class="pt90 pb50 gray-bg">
+            <div class="container">
+                <div class="text-center center-title mb50">
+                    <h2 class="text-capitalize text-center font300">価格一覧</h2>
+                    <p>
+                        ※6月2週開始分からの出荷を予定しております。<br>お試しパックは随時対応いたします。
+                    </p>
+                </div>
+                <div class="s-row">
+                    <div class="col-md-10 offset-md-1">
+                        <div class="s-row">
+                            <div class="col-lg-4 mb40">
+                                <div class="pricing-box danger">                            
+                                    <h1 class="text-right">
+                                        ¥1,500<span>送料：無料</span> 
+                                    </h1>
+                                    <h3>お試しパック</h3>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                           発送頻度：一回（注文都度）
+                                        </li>
+                                        <li>
+                                           発送時期：注文日から近い、火曜日か日曜日
+                                        </li>
+                                        <li>
+                                            内容：季節野菜3〜4品目
+                                        </li>
+                                        <li>包装：袋詰め</li>
+                                        <li>栽培方法：自然栽培</li>
+                                        <li>送料：無料</li>
+
+                                        <li><img src="images/kuromame.jpg" alt="" class="img-fluid"></li>
+                                    </ul>
+                                    <div class="text-center">
+                                    <%= button_to :special_reservation_box1, :class => "btn btn-lg btn-rounded btn-danger btn-block" do %>注文する<br>残り：50個<% end %>
+                                    </div>
+                                </div>
+                            </div><!--/price col-->
+                            <div class="col-lg-4 mb40">
+                                <div class="pricing-box primary">                            
+                                    <h1 class="text-right">
+                                        ¥2,300<span>送料：無料</span> 
+                                    </h1>
+                                    <h3>週一 わくわく便</h3>
+                                    <h1><span>
+                                           ※表示価格は一箱あたりの値段です。
+                                       </span></h1>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                           発送頻度：週1箱<br>（キャンセルされるまで毎週発送 ※いつでもキャンセルできます）
+                                        </li>
+                                        <li>
+                                           発送開始時期：6月2週目分から、毎週火曜日発送
+                                        </li>
+                                        <li>
+                                            内容：季節野菜6〜7品目
+                                        </li>
+                                        <li>包装：箱詰め（夏季[7月,8月,9月]はクール便のため+200円）</li>
+                                        <li>栽培方法：自然栽培</li>
+                                        <li>送料：無料</li>
+                                        <li><img src="images/kuromame.jpg" alt="" class="img-fluid"></li>
+                                    </ul>
+                                    <div class="text-center">
+                                    <%= button_to :special_reservation_box2, :class => "btn btn-lg btn-rounded btn-primary btn-block" do %>6月2週開始分より受付中<br>残り：72戸<% end %>
+
+                                    </div>
+                                </div>
+                            </div><!--/price col-->
+                            <div class="col-lg-4 mb40">
+                                <div class="pricing-box dark">                            
+                                    <h1 class="text-right">
+                                        ¥2,500<span>送料：無料</span> 
+                                    </h1>
+                                    <h3>隔週 どきどき便</h3>
+                                    <h1><span>
+                                           ※表示価格は一箱あたりの値段です。
+                                       </span></h1>
+                                    <ul class="list-unstyled">
+
+                                        <li>
+                                           発送頻度：2週間に1箱<br>（キャンセルされるまで毎週発送 ※いつでもキャンセルできます）
+                                        </li>
+                                        <li>
+                                           発送時期：6月2週目分から、隔週日曜日発送
+                                        </li>
+                                        <li>
+                                            内容：季節野菜6〜7品目
+                                        </li>
+                                        <li>包装：箱詰め（夏季[7月,8月,9月]はクール便のため+200円）</li>
+                                        <li>栽培方法：自然栽培</li>
+                                        <li>送料：無料</li>
+                                        <li><img src="images/kuromame.jpg" alt="" class="img-fluid"></li>
+                                    </ul>
+                                    <div class="text-center">
+                                    <%= button_to :special_reservation_box3, :class => "btn btn-lg btn-rounded btn-dark btn-block" do %>6月2週開始分より受付中<br>残り：99戸<% end %>
+                                    </div>
+                                </div>
+                            </div><!--/price col-->
+                        </div><!--/row-->
+                    </div><!--/offset col-->
+                </div><!--/row-->
+            </div><!--/container-->
+        </section><!--/pricing-->
+       <!-- <hr class="mt0 mb0">
+        <section id="testimonials" class="pt90 pb50">
+            <div class="container">
+                <div class="text-center center-title mb50">
+                    <h2 class="text-capitalize text-center font300">What customers say</h2>
+                </div>
+
+                <div class="s-row pb40">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="owl-carousel owl-theme owl-testimonials">
+                            <div class="item text-center">
+                                <img src="images/av1.jpg" alt="" class="img-thumbnail">
+                                <p>
+                                    " Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
+                                </p>
+                                <h4>Emily Doe</h4>
+                            </div>-->
+                            <!--/item-->
+                            <!--
+                            <div class="item text-center">
+                                <img src="images/av2.jpg" alt="" class="img-thumbnail">
+                                <p>
+                                    " Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
+                                </p>
+                                <h4>John Doe</h4>
+                            </div>-->
+                            <!--/item-->
+                            <!--
+                            <div class="item text-center">
+                                <img src="images/av3.jpg" alt="" class="img-thumbnail">
+                                <p>
+                                    " Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. "
+                                </p>
+                                <h4>Smith Doe</h4>
+                            </div>-->
+                            <!--/item-->
+                        <!--</div>
+                    </div>
+                </div>-->
+                <!--
+                <div class="s-row clients-row">
+                    <div class="col-md-2 col-sm-4">
+                        <a href="#"><img src="images/cl1.png" alt="" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="#"><img src="images/cl2.png" alt="" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="#"><img src="images/cl3.png" alt="" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="#"><img src="images/cl4.png" alt="" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="#"><img src="images/cl2.png" alt="" class="img-fluid"></a>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="#"><img src="images/cl5.png" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+        <!--/testimonials-->
+        <hr class="mt0 mb0">
+        <section id="faq" class="pt90 pb50 gray-bg">
+            <div class="container">
+                <div class="text-center center-title mb50">
+                    <h2 class="text-capitalize text-center font300">よくあるご質問</h2>
+                </div>
+                <div class="s-row">
+                    <div class="col-md-4 mb40">
+                        <h4 class="font300">支払方法、送料、クール便手数料について教えてください</h4>
+                        <p>
+                            今回、ご予約いただく際に、決済登録は必要ございません。<br>
+                            後日送られてくるメール中にある本登録画面にて、お支払い方法を選択いただけます。<br>
+                            お支払い方法は、クレジット(Visa、MasterCard、American Express)の自動決済、郵便振込がご利用いただけます。<br>送料は全国どこでも550円でお届けいたします。<br>お野菜の傷みやすい時期（5月〜9月）はクロネコヤマトクール便にて発送のため料金が200円、商品代金に上乗せされます。何卒ご了承ください。
+                        </p>
+                    </div><!--/col-->
+                    <div class="col-md-4 mb40">
+                        <h4 class="font300">定期便の解約、停止はどのように行えば良いのですか？</h4>
+                        <p>
+                            契約後、定期便の解約は本サイトより、いつでも行えます。<br>
+                            解約申請のあった週の翌週より配達、および自動でのお支払い機能を停止いたします。解約が行えない等何か問題がございましたら、以下のアドレスまでご連絡ください。<br>お問い合わせ先：info@shizencyokuhan.org<br>
+                            配達の一時停止は、大変お手数ですが、一度解約処理をしていただいた後、再度、本サイトの定期購入ボタンよりご購入いただければ幸いです。
+                        </p>
+                    </div><!--/col-->
+                    <div class="col-md-4 mb40">
+                        <h4 class="font300">届け先を変更することはできますか？</h4>
+                        <p>
+                            お届け先のご変更は、会員ページより行うことができます。<br>会員ログインページは本登録の際にご連絡いたします。<br>ご指定、ご変更のない場合は、会員登録時にご登録いただいたご住所にお送りいたします。
+                        </p>
+                    </div><!--/col-->
+                </div>
+             
+            </div>
+        </section><!--faqs-->
+        <!--<div class="newsletter primary-bg">
+            <div class="container">
+                <div class="s-row">
+                    <div class="col-md-6 text-center offset-md-3">
+                        <h2 class="font300"></h2>
+                        <p class="mb30">
+                            Don't worry, we won't need your credit card details. Just enter your 
+                            email address and we'll take care of the rest.
+                        </p>
+                        <div class="newsletter-form">
+                            <form>
+                                <input type="email" class="form-control" placeholder="Enter Email..." required="">
+                                <button type="submit" class="btn-newsletter">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>--><!--/newsletter-->
+
+        <!--video modal-->
+        <div class="modal fade videoModal" id="video-modal" tabindex="-1" role="dialog" aria-labelledby="video-modal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon_close"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 4:3 aspect ratio -->
+                        <div>
+                            <div style="position:relative;height:0;padding-bottom:56.21%"><iframe src="https://www.youtube.com/embed/LmdT2zhFmn4?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="641" height="360" frameborder="0" allowfullscreen></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end video modal-->
+        <!--jQuery-->
+       <script src="js/plugins/plugins.js"></script>
+        <script src="js/intro-custom.js"></script>
+    </body>

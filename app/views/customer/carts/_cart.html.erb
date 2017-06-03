@@ -1,3 +1,6 @@
+  <label for="Panel12"><i class="ion-ios-cart cart-icon"> </i><p class="circle"><%= cart.line_items.count %></p></label>
+        <input type="checkbox" id="Panel12" class="on-off" checked/>
+        <ul>
 
 <div class="cart_title"><strong>現在の注文カート</strong></div>
 <table>
@@ -10,12 +13,10 @@
 
 </table>
 </br>
-<div>
-<%= button_to "注文する", :customer_staff_member_addresses, method: :get %>
+<div class="margin15">
+<%= button_to "注文する", :customer_staff_member_addresses, method: :get, :class => "btn btn-yellow" %>
 
 </div>
-
-
-
+</ul>
 
 

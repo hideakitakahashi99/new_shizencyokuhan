@@ -1,45 +1,53 @@
-<div class="container">
-	<div class="row" >
-		<div class="span12">
 
-<% @title = 'Login' %>
+    <div class="container">
+      <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info st-panel">
+          <div class="panel-heading">
+            <div class="panel-title">ログイン</div>
+            <div style="float:right; font-size: 80%; position: relative; top:-10px">
+              <a href="#">パスワードをお忘れの方</a>
+            </div>
+          </div>
+          <div style="padding-top:30px" class="panel-body" >
+            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+            <!--<form id="loginform" class="form-horizontal" role="form">-->
+             <%= form_for @form, url: :customer_session, :html => {:class => "form-horizontal"} do |f| %>
+              <div style="margin-bottom: 25px" class="input-group">
+                <span class="input-group-addon">
+                  <i class="ion-person"></i>
+                </span>
+                <%= f.text_field :email, :class => "form-control", :placeholder => "メールアドレス" %>
+              </div>
+              <div style="margin-bottom: 25px" class="input-group">
+                <span class="input-group-addon">
+                  <i class="ion-locked"></i>
+                </span>
+                 <%= f.password_field :password, :class => "form-control", :placeholder => "パスワード" %>
+              </div>
 
-<div id="login-form">
-	
+              <div style="margin-top:10px" class="form-group">
+                <!-- Button -->
+                <div class="col-sm-12 controls">
 
-	<%= form_for @form, url: :customer_session do |f| %>
-	
+                  <%= f.submit 'ログイン', :class => "btn btn-info" %>
 
+                </div>
+              </div>
+              <% end %>
 
+              <div class="form-group">
+                <div class="col-md-12 control">
+                  <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >まだ会員登録されていない方は... 
+                    <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">今すぐ会員登録！ </a>
+                  </div>
+                </div>
+              </div>
+              
+            <!--</form>-->
+          </div>
+        </div>
+      </div>
 
-</div>
-
-
-
-<div class="signin cf">
-  <div class="center"><h1 style="color: white;"><%= @title %></h1></div>
-  <div class="avatar"></div>
-  <form>
-    <div class="inputrow">
-      
-      <%= f.text_field :email, :placeholder => "メールアドレス" %>
-      <label for="name" class="ion-person"></label>
     </div>
-    <div class="inputrow">
-      
-      <%= f.password_field :password,  :placeholder => "パスワード" %>
-      <label for="pass" class="ion-locked"></label>
-    </div>
-    <input type="checkbox" name="remember" id="remember"/>
-    <label for="remember" class="radio">ログイン状態を維持する</label>
-    <%= f.submit 'ログイン' %>
-    
-  </form>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 
-</div>
-<!--<h5><%= link_to "Sign up : 新規会員登録", :customer_signup, { :class => "sbtn" }  %></h5>-->
-<% end %>
-
-</div>
-</div>
-</div>

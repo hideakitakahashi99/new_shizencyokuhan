@@ -1,220 +1,147 @@
 
-<div class="container">
-	<div class="row">
-		<div class="span12"><% if @staff_member.image? %>
-			<div id="farm_prof"><%= image_tag @staff_member.image_url %></div>
+
+
+
+
+
+<div class="header">
+    <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href=""><%= @staff_member.farm_name %></a>
+
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+            <li class="pure-menu-item"><%= link_to '農産品', [:customer, @staff_member, :store, :index ], {:class => "pure-menu-link" } %></li>
+            <li class="pure-menu-item"><%= 
+                          if current_customer
+                           link_to 'ログアウト', :customer_session, method: :delete, :class => "pure-menu-link"
+                          else
+                           link_to 'ログイン', :customer_login, :class => "pure-menu-link"
+                          end
+                        %></li>
+        </ul>
+    </div>
+</div>
+
+<div class="splash-container">
+
+<% if @staff_member.image? %>
+            <%= image_tag @staff_member.image_url %>
       <% end %>
-<% @title = '販売者詳細' %>
-<h1><%= @staff_member.farm_name %></h1>
-<div>
-<% if @staff_member.additional_info %>
-<h1><i class="ion-ios-chatbubble"></i></h1><h4><%= @staff_member.additional_info.explanation %></h4>
+      <!--<%= image_tag "natural-w.gif", :class => "absolute"%>-->
+    <div class="splash">
+        <h1 class="splash-head"><%= @staff_member.farm_name %></h1>
+        <p class="splash-subhead">
+            <% if @staff_member.additional_info %>
+<%= @staff_member.additional_info.explanation %>
 <% end %>
-</div>
-
-
-	<div class= "container">
-       <div class= "row">
-		<div class="span12">
-		<% if current_customer %>
-<div class="pull-left">
-	<%= render 'follow_form' %>
-</div>
-<div class="pull-left">
-<div class="stats">
-    <%= render 'stats' %>
-</div>
-</div>
-<% else %>
-<%= link_to  'この農家をフォローする', :customer_root, {:class => "btn btn-large btn-primary" }  %>
-<% end %>
-</div></div></div><br>
-							<div class= "container">
-                               <div class= "row">
-								<div class="span12">
-							<div class="top-nav"><%= link_to '商品を見る！', [:customer, @staff_member, :store, :index ], {:class => "btn btn-large btn-primary" } %>
-							
-							<%= link_to 'スケジュールを見る！', [:customer, @staff_member, :schedules ], {:class => "btn btn-large btn-primary" } %>
-							</div>
-						</div></div></div>
-
-						
-<div class= "container">
-<div class= "row">
-<div class= "span12">
-<% p = StaffMemberPresenter.new(@staff_member, self) %>
-<h2> </h2>
-<h2><%= p.suspended_mark %></h2>
-</div>
-</div>
-</div>
-
-
-<div class="links">
-
-	<%= link_to 'ユーザートップ', :customer_root %>
-
+        </p>
+        <p>
+        <%= link_to 'ブログ', [:customer, @staff_member, :schedules ], {:class => "pure-button pure-button-primary" } %>
+        </p>
+        <p>
+        <%= link_to '農産品一覧', [:customer, @staff_member, :store, :index ], {:class => "pure-button pure-button-primary" } %>
+    </p>
+    </div>
 </div>
 
 
 
+<div class="content-wrapper">
+    <div class="content">
+<h2 class="content-head is-center">農産品一覧</h2>
 
-<table class="table">
-	<tr>
-		<th>Image:</th>
-		<td>
-  			<%= image_tag @staff_member.image_url(:thumb).to_s %>
-		</td>
-	</tr>
-	<tr>
-		<th>会社名／農場名</th>
-		<td>
-			<%= @staff_member.farm_name %>
-		</td>
-	</tr>
-	<% if @staff_member.staff_address %>
-	<% p1 = StaffAddressPresenter.new(@staff_member.staff_address, self) %>
-	<tr>
-		<th>所在地</th>
-		<td>
-			<%= p1.postal_code %>
-			<%= p1.prefecture %>
-			<%= p1.city %>
-			<%= p1.address1 %>
-			<%= p1.address2 %>
-		</td>
-	</tr>
-	<% end %>
-	
-	<tr>
-		<th>販売者氏名</th>
-		<td>
-			<%= @staff_member.family_name %>
-			<%= @staff_member.given_name %>
-		</td>
-	</tr>
-	<tr>
-		<th>フリガナ</th>
-		<td>
-			<%= @staff_member.family_name_kana %>
-			<%= @staff_member.given_name_kana %>
-		</td>
-	</tr>
-	<tr>
-	
-	</tr>
-	<% if @staff_member.sales_term %>
-	<tr>
-		<th>【全国一律送料】</th>
-		<td>
-			全国どこでも<%= @staff_member.sales_term.delivery_fee %>円で届きます。
-		</td>
-	</tr>
+      <div class="pure-g">
+        <div class="pricing-tables pure-g">
+          <% if @staff_member.products.count == 0 %>
+        <div class="span12">
+        <h4>大変、申し訳ございません。現在ご購入いただける商品はございません。</h4>
+        </div>
+        <% end %>
 
-	<tr>
-		<th>特定商取引法に基づく表示</th>
-		<td>
-			<%= @staff_member.sales_term.legal_info %>
-		</td>
-	</tr>
+          <% @staff_member.products.each do |m| %>
+          <div class="pure-u-1 pure-u-md-1-3">
+          <div class="thumbnail">
+                    <div class="entry">
+              <% if m.productimg? %>
+                    <div><%= image_tag m.productimg.thumb.url %></div>
+          <% end %>
+                    <h5><%= m.category %></h5>
+                    <h6><%= sanitize(m.description) %></h6>
+                    <h5><%= m.variety %></h5>
+                    <h5><%= m.method %></h5>
+                    <% if @staff_member.suspended? %>
+                        <div class="price_line">
+                        <span class="price">
+                        <%= m.net %><% if m.unit? %><%= m.unit %><% else %>g<% end %>
+                        <%= sprintf("¥%0.00f", m.price) %></span>
+                        <p style="margin-top: 15px;">
+                            <% if m.stock == 0 %>
+                            ごめんなさい。売り切れました。
+                            <% else %>
+                            <%= link_to '商品を見る', [:customer, m.staff_member, m ], :class => "btn btn-large btn-primary" %>
+                            <% end %>
+                        </p>
+                        </div>
+                        <% else %>
+                        スタンバイ
+                        <% end %>
+        </div>
+          </div>
+        </div><!-- events end -->
 
-	<tr>
-		<th>返品規定</th>
-		<td>
-			<%= @staff_member.sales_term.return_policy %>
-		</td>
-	</tr>
-<% end %>
+      <% end %>
 
+      </div>
 
+      </div>
 
-</table>
+        <h2 class="content-head is-center">ブログ・スケジュール</h2>
 
-<div class= "container">
-<div class= "row">
-<div class= "span8">
-<% if @staff_member.farmimg1? %>
-	<%= image_tag @staff_member.farmimg1_url %>
-	<% end %>
-</div>
-<div class= "span4">
-<% if @staff_member.farmimg2? %>
-	<%= image_tag @staff_member.farmimg2_url %>
-	<% end %>
-</div>
-<div class= "span4">
-<% if @staff_member.farmimg3? %>
-	<%= image_tag @staff_member.farmimg3_url %>
-	<% end %>
-</div>
-</div>
-</div>
-
-
-    <div class="content pure-u-1 pure-u-md-1">
-        <div>
-            <!-- A wrapper for all the blog posts -->
-            <% if @schedules.count == 0 %>
-
-            <div class="posts">
-                <h1 class="content-subhead">Pinned Post</h1>
-
-                <!-- A single blog post -->
-                <section class="post">
-                    <h4>ー現在表示できる投稿はありませんー</h4>
-                </section>
-            </div>
-
-            <% end %>
-
-            <div class="posts">
-                <h1 class="content-subhead">Recent Posts</h1>
+        <div class="pure-g">
 
 <% @schedules.each do |schedules| %>
-                <section class="post">
-                    <header class="post-header">
+               <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+                    
                     <!--<% if schedules.staff_member.image? %><%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %><% end %>
                         <img width="48" height="48" alt="Eric Ferraiuolo&#x27;s avatar" class="post-avatar" src="img/common/ericf-avatar.png">-->
-
-                        <h2 class="post-title"><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.opening, length: 15) %><% end %></h2>
+                        <p><%= schedules.created_at.strftime("%Y年%m月%d日") %></p>
+                   <h3 class="content-subhead">
+                    <i class="fa fa-rocket"></i>
+                    <%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) do %><%= truncate(schedules.harvest, length: 15, :escape => false) %><%= truncate(schedules.title, length: 15, :escape => false) %><% end %>
+                   </h3>
 
                         <p class="post-meta">
                             By <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>", class="post-auther"><%= schedules.staff_member.farm_name %></a> under 
                             <% if schedules.harvest %>
                             <a class="post-category post-category-design" href="#">収穫予告</a>
                             <% else %>
-                            <a class="post-category post-category-js" href="#">開店予告</a>
+                            <a class="post-category post-category-js" href="#">Blog</a>
                             <% end %>
                         </p>
-                    </header>
+                    
 
                     <div class="post-description">
 
 
-                        <p class="schedule-meta">
-                        <%= schedules.harvest %><%= schedules.opening %>
+                        <p>
+                        <%== truncate(schedules.harvest, length: 15, :escape => false)  %><%== truncate(strip_tags(schedules.blog), length: 15, :escape => false)  %>
                         </p>
                         <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: @staff_member.id ) %>
 
                             <div class="post-images pure-g">
                             <div class="pure-u-1 pure-u-md-1-2">
-                                <a href="http://www.flickr.com/photos/uberlife/8915936174/">
-                                    <img alt="Photo of someone working poolside at a resort"
-                                         class="pure-img-responsive"
-                                         src="http://farm8.staticflickr.com/7448/8915936174_8d54ec76c6.jpg">
-                                </a>
-
+                                <% if schedules.image1? %>
+                                <%= image_tag schedules.image1.thumb.url, :class => "pure-img-responsive" %>
+                                <% end %>
                                 <!--<div class="post-image-meta">
                                     <h3>CSSConf Photos</h3>
                                 </div>-->
                             </div>
 
                             <div class="pure-u-1 pure-u-md-1-2">
-                                <a href="http://www.flickr.com/photos/uberlife/8907351301/">
-                                    <img alt="Photo of the sunset on the beach"
-                                         class="pure-img-responsive"
-                                         src="http://farm8.staticflickr.com/7382/8907351301_bd7460cffb.jpg">
-                                </a>
+                                 <% if schedules.image2? %>
+                                <%= image_tag schedules.image2.thumb.url, :class => "pure-img-responsive" %>
+                                <% end %>
 
                                 <!--<div class="post-image-meta">
                                     <h3>JSConf Photos</h3>
@@ -223,25 +150,111 @@
                         </div>
 
 
-                        <% if schedules.harvest_date? %>
-                        予定日：
-                    <%= schedules.harvest_date.strftime("%Y年%m月%d日") %>
-                    <% end %>
-                    <% if schedules.opening_date? %>
-                    予定期間：<br>
-                    <%= schedules.opening_date %><br>　　　　&#8659;<br><%= schedules.closing_date %>
-                    <% end %>
+                    
                     </div>
-                    <h1 class="content-subhead"></h1>
-                </section>
+                    
+                    </div>
         <% end %>
 
-            </div>
 
         </div>
     </div>
 
-  </div>
+    <div class="ribbon l-box-lrg pure-g">
+        <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5">
+            <% if @staff_member.image? %>
+            <div id="farm_prof"><%= image_tag @staff_member.image_url %></div>
+
+      <% end %>
+        </div>
+        <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5">
+
+            <h2 class="content-head content-head-ribbon"><%= @staff_member.farm_name %>をフォローして畑の情報を手に入れよう！</h2>
+
+            <p>
+               <% if @staff_member.additional_info %>
+<%= @staff_member.additional_info.explanation %>
+<% end %>
+            </p>
+        <% if current_customer %>
+        <%= render 'follow_form' %>
+        <%= render 'stats' %>
+        <% else %>
+        <%= link_to  'この農家をフォローする', :customer_root, {:class => "btn btn-large btn-primary" }  %>
+<% end %>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2 class="content-head is-center"><%= @staff_member.farm_name %>詳細情報</h2>
+
+        <div class="pure-g">
+            <!--<div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+             <%= image_tag '/assets/organic.gif' %>
+                <form class="pure-form pure-form-stacked">
+                    <fieldset>
+
+                        <label for="name">Your Name</label>
+                        <input id="name" type="text" placeholder="Your Name">
+
+
+                        <label for="email">Your Email</label>
+                        <input id="email" type="email" placeholder="Your Email">
+
+                        <label for="password">Your Password</label>
+                        <input id="password" type="password" placeholder="Your Password">
+
+                        <button type="submit" class="pure-button">Sign Up</button>
+                    </fieldset>
+                </form>
+            </div>-->
+
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+
+
+                <h4>会社名／農場名</h4>
+                <p>
+                    <%= @staff_member.farm_name %></p>
+
+    <% if @staff_member.staff_address %>
+    <% p1 = StaffAddressPresenter.new(@staff_member.staff_address, self) %>
+    <h4>所在地</h4>
+            <p><%= p1.postal_code %>
+            <%= p1.prefecture %>
+            <%= p1.city %>
+            <%= p1.address1 %>
+            <%= p1.address2 %></p>
+    <% end %>
+
+    <h4>販売者氏名</h4>
+     
+           <p> <%= @staff_member.family_name %>
+            <%= @staff_member.given_name %></p>
+
+            <h4>フリガナ</h4>
+
+            <p><%= @staff_member.family_name_kana %>
+                <%= @staff_member.given_name_kana %></p>
+
+    <% if @staff_member.sales_term %>
+
+    <h4>【全国一律送料】</h4>
+
+    <p>全国どこでも<%= @staff_member.sales_term.delivery_fee %>円で届きます。</p>
+
+            <h4>返品規定</h4>
+            <p><%= simple_format(@staff_member.sales_term.return_policy) %></p>
+<% end %>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer l-box is-center">
+        
+    </div>
 
 </div>
-</div>
+
+

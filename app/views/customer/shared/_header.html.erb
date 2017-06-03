@@ -91,7 +91,7 @@
           <div class="pure-u-1 pure-u-md-1-3">
               <div class="pure-menu">
               <div class="logo">
-              <%= link_to image_tag ('st-logo1.png'), :action => "index" %>
+              <%= link_to customer_root_path do %><%= image_tag ('st-logo1.png')%><% end %>
             </div>
             <div class="mugi">
             <%= link_to image_tag ('mugi2.png'), :action => "index" %></div>
@@ -101,7 +101,7 @@
           <div class="pure-u-1 pure-u-md-1-3">
               <div class="pure-menu pure-menu-horizontal custom-can-transform">
                   <ul class="pure-menu-list">
-                      <li class="pure-menu-item"><a href="#" class="pure-menu-link">自然栽培とは</a></li>
+                      <li class="pure-menu-item"><%= link_to "自然栽培とは", customer_static_pages_shizen_path, :class => "pure-menu-link" %></li>
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link">ちょくはんの野菜基準</a></li>
                       <li class="pure-menu-item">
                       <%= link_to "ごひいき農家予定一覧", customer_static_pages_feed_page_path, :class => "pure-menu-link" %></li>

@@ -1,5 +1,5 @@
 class CustomerMailer < ActionMailer::Base
-  default from: 'info@shizencyokuhan.org'
+  default from: '"自然ちょくはん"<info@shizencyokuhan.org>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

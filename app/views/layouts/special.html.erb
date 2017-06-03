@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>奥丹波里山便 事前予約受付中</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="HideakiTakahashi">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<%= favicon_link_tag '/assets/images/favicon.ico' %>
+
+
+
+
+
+<%= stylesheet_link_tag "special/application", :media => "all", "data-turbolinks-track" => true  %>
+<%= javascript_include_tag "special/application", "data-turbolinks-track" => true  %>
+
+<%= csrf_meta_tags %>
+<%= action_cable_meta_tag %>
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
+
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_KS/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+                    <script>
+                        window.onload = function() {
+                          // Intensify all images with the 'intense' classname.
+                        var elements = document.querySelectorAll( '.intense' );
+                        Intense( elements );
+                        }
+                    </script>
+
+<!-- Compiled and minified CSS -->
+ 
+
+  <!-- Compiled and minified JavaScript -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script>
+$(function (){
+$(".contents:gt(0)").css("display","none");
+
+$("#tab li").click(function() {
+var num = $("#tab li").index(this);
+$("#tab li").removeClass("now");
+$(this).addClass("now");
+
+$(".contents").css("display","none");
+$(".contents").eq(num).css("display","block");
+});
+});
+</script>
+ 
+</head>
+
+   <body data-spy="scroll" data-target=".navbar-inverse" data-offset="90">
+
+
+
+
+  <%= yield %>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="s-row">
+                    <div class="col-sm-6">
+                        <ul class="list-inline f-links">
+                            <li class="list-inline-item"><%= link_to "＜Home", :special_root %></li>
+                            <li class="list-inline-item"><%= link_to '＜前に戻る', :back %></li>
+                            <li class="list-inline-item"><%= link_to '自然栽培ちょくはん とは', :customer_root %></li>
+                        </ul>
+                        <div><a href="#" class="f-mail">info@shizencyokuhan.org</a><a href="#" class="f-phone">090-1735-2078</a></div>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <ul class="list-inline f-social">
+                            <li class="list-inline-item"><%= link_to '会社概要', :customer_static_pages_company %></li>
+                            
+                        </ul>
+                        <span>&copy;2017 うむ株式会社 All rights reserved. </span>
+                    </div>
+                </div>
+            </div>
+        </footer><!--/footer-->
+
+
+
+ 
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>奥丹波里山便 - 予約受付中！</title>
+
+        <!-- Bootstrap -->
+        <link href="css/plugins/bundle.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body data-spy="scroll" data-target=".navbar-inverse" data-offset="90">
+         <!--  navbar -->
+        <nav class="navbar navbar-toggleable-sm fixed-top transparent-nav navbar-inverse bg-inverse">
+            <div class="container">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+               <%= link_to :special_root , :class => "navbar-brand" do %>
+                <%= image_tag "/assets/st-logob2.png", :width => 50 %><% end %>
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-scroll">
+                        <li class="nav-item"><%= link_to 'トップに戻る', :special_root , :class => "nav-link active" %></li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+ <div class="newsletter primary-bg">
+            <div class="container">
+                <div class="s-row">
+                    <div class="col-md-6 text-center offset-md-3">
+                        <h2 class="font300">ご予約を承りました！</h2>
+                        <p class="mb30">
+                            この度はご予約ありがとうございます。6月1週目にメールにてお支払い方法、発送先等のご登録フォームをお送りいたします。お野菜の発想は6月2週目より順次、発送開始いたします。(お試しボックスをご注文のお客様はすぐにご連絡させていただきます。)
+
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div><!--/newsletter-->
+  </body>

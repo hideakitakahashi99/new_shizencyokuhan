@@ -1,37 +1,41 @@
+<form class="pure-form pure-form-stacked">
+    <fieldset>
+        <h2>お客様情報を入力してください</h2>
 
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="post-code">郵便番号（半角数字のみ）</label>
+                <%= f.text_field :postal_code, size: 7, :class => "pure-u-23-24"%>
 
-<fieldset>
-		<legend>お客様の情報を入力して下さい</legend>
-<div class="field">
-	<%= f.label :postal_code, '郵便番号（半角数字のみ）' %><br/>
-	<%= f.text_field :postal_code, size: 7 %>
-</div>
+            </div>
 
-<div class="field">
-	<%= f.label :prefecture, '都道府県' %><br/>
-	<%= f.select :prefecture, Address::PREFECTURE_NAMES, prompt: '以下よりお選びください。'%>
-</div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="state">都道府県</label>
+                <%= f.select :prefecture, Address::PREFECTURE_NAMES, prompt: '以下よりお選びください。', :class => "pure-u-23-24" %>
+            </div>
 
-<div class="field">
-	<%= f.label :city, '市町村区' %><br/>
-	<%= f.text_field :city %>
-</div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="last-name">市町村区</label>
+                <%= f.text_field :city, :class => "pure-u-23-24" %>
+            </div>
 
-<div class="field">
-	<%= f.label :address1, '番地' %><br/>
-	<%= f.text_field :address1 %>
-</div>
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="email">番地</label>
 
-<div class="field">
-	<%= f.label :address2, '建物名等' %><br/>
-	<%= f.text_field :address2 %>
-</div>
+                <%= f.text_field :address1, :class => "pure-u-23-24" %>
 
-<div class="field">
-	<%= f.label :phone, '電話番号（半角数字のみ）' %><br/>
-	<%= f.text_field :phone, size:11 %>
-</div>
+            </div>
 
+            <div class="pure-u-1 pure-u-md-1-3">
+                <label for="city">建物</label>
+                <%= f.text_field :address2, :class => "pure-u-23-24"  %>
+            </div>
+
+            <div class="pure-u-1 pure-u-md-1-3">
+            <label for="city">電話番号（半角数字のみ）</label>
+                <%= f.text_field :phone, size:11, :class => "pure-u-23-24"  %>
+	          </div>
+        </div>
 
 
 

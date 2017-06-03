@@ -1,10 +1,19 @@
-
+<div class="container">
+        <div class="margin15">
+        <ul class="progressbar">
+            <li>送り先選択</li>
+            <li>送り先確定</li>
+            <li class="active">注文確認</li>
+            <li>確定</li>
+        </ul>
+      </div>
+</div>
 <div class="container">
 	<div class="row">
-		<div class="span12">
+		<div class="margin15">
 <% @title = 'ご注文内容確認' %>
 <h3><%= @title %></h3>
-<h5>以下の内容でご注文を承ります。内容をご確認の上「代金引き換え」もしくは「カード支払い」にてご注文を確定して下さい。</h5>
+<h5>以下の内容でご注文を承ります。内容をご確認の上、お支払い方法を選択してください。</h5>
 
 <table class="table">
 	<tr>
@@ -105,12 +114,17 @@
 </h6>
 
 </table>
+
+<h3>お支払い方法</h3>
+<h5>「代金引き換え」もしくは「カード支払い」にてご注文を確定して下さい。</h5>
 <div class="pull-left">
-<%= link_to '代金引き換えで注文', order_conf_customer_staff_member_address_path(@staff_member, @address), method: :post, :class => "btn", data: {confirm: "ご注文が確定します。宜しいですか？"} %>
+<div class="margin15">
+<%= link_to '代金引き換えで注文', order_conf_customer_staff_member_address_path(@staff_member, @address), method: :post, :class => "btn btn-yellow", data: {confirm: "ご注文が確定します。宜しいですか？"} %>
+	</div>
 
+<div class="margin15">
 <%= form_tag(:action => 'order_conf', :name => 'webpay') do %>
-
-
+<h5>クレジットカード支払いはこちら</h5>
 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="<%= @staff_member.farm_name %>の農産品"
@@ -119,6 +133,10 @@
           data-currency="jpy"
           data-image="https://stripe.com/img/documentation/checkout/marketplace.png"></script>
 <% end %>
+	</div>
+<div class="margin15">
+<%= image_tag "Visa.png"%><%= image_tag "MasterCard.png"%> <%= image_tag "American Express.png"%>
+	</div>
 </div>
 
 

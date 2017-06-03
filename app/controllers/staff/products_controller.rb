@@ -39,7 +39,7 @@ class Staff::ProductsController < Staff::Base
         @customers = @staff_member.followers.all
         @product = @staff_member.products.build(product_params)
         if @product.save
-            StaffMemberMailer.push_info_prod(@product, @staff_member, @customers).deliver
+            
             flash.notice = '農産品を新規登録しました。'
             redirect_to :staff_products
             else

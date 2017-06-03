@@ -27,4 +27,8 @@ class Customer::StaticPagesController < Customer::Base
   def term
     render 'customer/static_pages/term'
   end
+
+  def shizen
+    render 'customer/static_pages/shizen'
+  end
 end

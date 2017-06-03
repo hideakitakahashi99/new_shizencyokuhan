@@ -10,7 +10,7 @@ class IpAddressRejected < ActionController::ActionControllerError; end
 
 
 
-include ErrorHandlers if Rails.env.production?
+
 
   private
   def set_layout

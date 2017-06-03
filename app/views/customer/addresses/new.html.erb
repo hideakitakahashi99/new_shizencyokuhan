@@ -1,16 +1,28 @@
+<div class="container">
+        
+        <div class"margin15">
+        <ul class="progressbar">
+            <li class="active">送り先選択</li>
+            <li>送り先確定</li>
+            <li>注文確認</li>
+            <li>確定</li>
+        </ul>
+      </div>
+</div>
+
 
 <div class="container">
 	<div class="row">
-		<div class="span8">
+		<div class="margin15">
 <div class="depot_form">
 	<%= form_for [:customer, :staff_member, @address] do |f| %>
 		<%= render 'form', f: f %>
 		
 		
-<div class="actions">
-	<%= f.submit '新規登録' %>
-</div>
-	
+<div class="margin15">
+	<%= f.submit '新規登録', :class => "pure-button pure-button-primary" %>
+  </div>
+
 </fieldset>
 
 <% end %>

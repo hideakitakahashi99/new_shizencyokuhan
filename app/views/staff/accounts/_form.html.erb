@@ -1,3 +1,5 @@
+
+
 <% p = StaffMemberFormPresenter.new(f, self) %>
 <div class="pull-right">
 	<%= p.notes %>
@@ -13,14 +15,10 @@
 　<%= f.file_field :image %>
 　<%= f.hidden_field :image_cache %> 
 </div>
-<div>
 	<% if @staff_member.persisted? && @staff_member.image? %>
-	
+	<p>画像を削除</p>
 		<%= f.check_box :remove_image %>
-		画像を削除
-	
 	<% end %>
-</div>
 
 <% if @staff_member.staff_address %>
 <%= f.fields_for :staff_address, f.object.staff_address do |ff| %>
@@ -58,46 +56,33 @@
 　<%= f.file_field :farmimg1 %>
 　<%= f.hidden_field :farmimg1_cache %> 
 </div>
-<div>
 	<% if @staff_member.persisted? && @staff_member.farmimg1? %>
-	
 		<%= f.check_box :remove_farmimg1 %>
 		画像を削除
-	
 	<% end %>
-</div>
 
 <div>
 　<%= image_tag @staff_member.farmimg2.thumb.url if @staff_member.farmimg2? %>
 　<%= f.file_field :farmimg2 %>
 　<%= f.hidden_field :farmimg2_cache %> 
 </div>
-<div>
 	<% if @staff_member.persisted? && @staff_member.farmimg2? %>
-	
 		<%= f.check_box :remove_farmimg2 %>
 		画像を削除
-	
 	<% end %>
-</div>
 
 <div>
 　<%= image_tag @staff_member.farmimg3.thumb.url if @staff_member.farmimg3? %>
 　<%= f.file_field :farmimg3 %>
 　<%= f.hidden_field :farmimg3_cache %> 
 </div>
-<div>
 	<% if @staff_member.persisted? && @staff_member.farmimg3? %>
-	
 		<%= f.check_box :remove_farmimg3 %>
 		画像を削除
-	
 	<% end %>
-</div>
-
-
 
 </div>
+
 
 
 

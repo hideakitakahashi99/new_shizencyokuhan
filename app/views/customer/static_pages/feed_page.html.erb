@@ -6,7 +6,7 @@
 
 
     <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
+        <div class="margin15">
             <!-- A wrapper for all the blog posts -->
             <% if @feed_items.count == 0 %>
 
@@ -30,14 +30,14 @@
                     <% if schedules.staff_member.image? %>
                     <%= image_tag schedules.staff_member.image.thumb.url, :size => "48x48", :class => "post-avatar" %>
                         <% end %>
-                        <h2 class="post-title"><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: schedules.staff_member.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.opening, length: 15) %><% end %></h2>
+                        <h2 class="post-title"><%= link_to customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: schedules.staff_member.id ) do %><%= truncate(schedules.harvest, length: 15) %><%= truncate(schedules.title, length: 15) %><% end %></h2>
 
                         <p class="post-meta">
                             By <a href="<%= customer_staff_member_schedules_path(schedules.staff_member) %>", class="post-auther"><%= schedules.staff_member.farm_name %></a> under 
                             <% if schedules.harvest %>
                             <a class="post-category post-category-design" href="#">収穫予告</a>
                             <% else %>
-                            <a class="post-category post-category-js" href="#">開店予告</a>
+                            <a class="post-category post-category-js" href="#">Blog</a>
                             <% end %>
                         </p>
                     </header>
@@ -46,35 +46,34 @@
 
 
                         <p class="schedule-meta">
-                        <%= schedules.harvest %><%= schedules.opening %>
+                        <%= truncate(schedules.harvest, length: 120) %><%= truncate(strip_tags(schedules.blog), length: 120) %>
                         </p>
                         <%= link_to '...続きを読む', customer_staff_member_schedule_show_path( schedule_id: schedules.id, staff_member_id: schedules.staff_member.id ) %>
 
                             <div class="post-images pure-g">
                             <div class="pure-u-1 pure-u-md-1-2">
-                                <a href="http://www.flickr.com/photos/uberlife/8915936174/">
-                                    <img alt="Photo of someone working poolside at a resort"
-                                         class="pure-img-responsive"
-                                         src="http://farm8.staticflickr.com/7448/8915936174_8d54ec76c6.jpg">
-                                </a>
+                                <% if schedules.image1? %>
+                                <%= image_tag schedules.image1.thumb.url, :class => "pure-img-responsive" %>
+                                <% end %>
+
+
+                                <!--<div class="post-image-meta">
+                                    <h3>CSSConf Photos</h3>
+                                </div>-->
+                            </div>
+                            <div class="pure-u-1 pure-u-md-1-2">
+                                <% if schedules.image2? %>
+                                <%= image_tag schedules.image2.thumb.url, :class => "pure-img-responsive" %>
+                                <% end %>
+
 
                                 <!--<div class="post-image-meta">
                                     <h3>CSSConf Photos</h3>
                                 </div>-->
                             </div>
 
-                            <div class="pure-u-1 pure-u-md-1-2">
-                                <a href="http://www.flickr.com/photos/uberlife/8907351301/">
-                                    <img alt="Photo of the sunset on the beach"
-                                         class="pure-img-responsive"
-                                         src="http://farm8.staticflickr.com/7382/8907351301_bd7460cffb.jpg">
-                                </a>
-
-                                <!--<div class="post-image-meta">
-                                    <h3>JSConf Photos</h3>
-                                </div>-->
-                            </div>
                         </div>
+
 
 
                         <% if schedules.harvest_date? %>

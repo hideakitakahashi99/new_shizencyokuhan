@@ -23,7 +23,7 @@ class Staff::Base < ApplicationController
 
 
 
-	TIMEOUT = 60.minutes
+	TIMEOUT = 1.years
 
 	def check_timeout
 		if current_staff_member
