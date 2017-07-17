@@ -56,11 +56,11 @@ $(".contents").eq(num).css("display","block");
             <ul class="events-list">
               <li>
                 <div class="event-box event-box-featured">
-                  <% if o.image? %>
-                  <div class="prof"><%= image_tag o.image.thumb.url %></div>
+                  <% if o.productimg? %>
+                  <div class="prof margin15"><%= image_tag o.productimg.thumb.url %></div>
                   <% else %>
                   <div draggable="true" ondragstart="f1(event)" >
-                  <div class="prof"><%= image_tag ("sample_img.png"), :id => o.id %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png"), :id => o.id %></div>
                 </div>
                   <% end %>
 
@@ -121,9 +121,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if p.image? %>
-                  <div class="prof"><%= image_tag p.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag p.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -186,9 +186,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if q.staff_member.image? %>
-                  <div class="prof"><%= image_tag q.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag q.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -251,9 +251,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if r.staff_member.image? %>
-                  <div class="prof"><%= image_tag r.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag r.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -312,9 +312,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if s.staff_member.image? %>
-                  <div class="prof"><%= image_tag s.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag s.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -373,9 +373,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if t.staff_member.image? %>
-                  <div class="prof"><%= image_tag t.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag t.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -434,9 +434,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if u.staff_member.image? %>
-                  <div class="prof"><%= image_tag u.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag u.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -495,9 +495,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if v.staff_member.image? %>
-                  <div class="prof"><%= image_tag v.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag v.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -558,10 +558,10 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if w.staff_member.image? %>
-                  <div class="prof"><%= image_tag w.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag w.staff_member.image.thumb.url %></div>
                   <% else %>
 
-                  <div class="prof"><%= image_tag ("sample_img.png"), :id => w.staff_member.id %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png"), :id => w.staff_member.id %></div>
 
                   <% end %>
 
@@ -620,9 +620,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if x.staff_member.image? %>
-                  <div class="prof"><%= image_tag x.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag x.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">
@@ -682,9 +682,9 @@ $(".contents").eq(num).css("display","block");
               <li>
                 <div class="event-box event-box-featured">
                   <% if y.staff_member.image? %>
-                  <div class="prof"><%= image_tag y.staff_member.image.thumb.url %></div>
+                  <div class="prof margin15"><%= image_tag y.staff_member.image.thumb.url %></div>
                   <% else %>
-                  <div class="prof"><%= image_tag ("sample_img.png") %></div>
+                  <div class="prof margin15"><%= image_tag ("sample_img.png") %></div>
                   <% end %>
 
                   <div class="detail">

@@ -31,4 +31,7 @@ class Customer::StaticPagesController < Customer::Base
   def shizen
     render 'customer/static_pages/shizen'
   end
+    def rule
+    render 'customer/static_pages/rule'
+  end
 end

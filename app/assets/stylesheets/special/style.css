@@ -102,6 +102,13 @@ button:focus, input[type="submit"]:focus {
 
 .bg-image {
   background-image: url("/assets/yasai1.jpg");
+  width: 100%;
+}
+
+.bg-image-u {
+  background-image: url("/assets/oomugi.jpg");
+  width: 100%;
+  background-size: cover;
 }
 
 .bg-image-s img {

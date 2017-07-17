@@ -1,0 +1,154 @@
+
+<div class="margin15">
+<%= link_to "ホーム", :customer_root %> > <%= link_to "ストア", :customer_staff_member_store_index %> > 農産品詳細 </div>
+
+
+    <% if @staff_member.suspended? %>
+<div class="fixing-base">
+        <div class="fixing-box">
+
+    
+        <div class="span-border">
+                <div class="margin15">
+                
+                    <div id="cart"
+                        <% if @cart.line_items.empty? %>
+                        style="display: none"
+                        <% end %>
+                        >
+                    <%= render (@cart) %>
+
+                    </div>
+                    <div class="margin15">
+    <%= button_to "カートを空にする", [:customer, @staff_member, @cart], method: :delete, :name => 'delete', :class => "btn btn-dark"%>
+    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+<% end %>
+
+    <div class="content">
+        <h1 class="content-head is-center">【<%= @product.category %>】　<%= @product.variety %></h1>
+
+        <div class="pure-g">
+            <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+            <% if @product.productimg? %>
+            <%= image_tag @product.productimg.url %>
+            <% else %>
+            <% end %>
+             <%= image_tag 'natural.gif' %>
+
+             <% if @inquiry.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <strong>入力内容にエラーがあります</strong>
+          <ul>
+            <% @inquiry.errors.each do |attr, msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+       <!--<form class="pure-form pure-form-stacked">
+       <%= form_for @inquiry, :url => staff_inquiry_confirm_path do |f| %>
+               
+                    <fieldset>
+
+                        <label for="name">お名前</label>
+                        <%= f.text_field :name %>
+
+
+                        <label for="email">e-mail</label>
+                        <%= f.text_field :email %>
+
+                        <label for="password">お問い合わせ内容</label>
+                        <%= f.text_area :message %>
+
+                        <%= f.submit 'この商品について問い合わせる', class: 'btn btn-primary' %>
+                    </fieldset>
+              
+            <% end %>
+              </form>-->
+            </div>
+
+            <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+
+                    <h5>品目：　　　<%= @product.category %></h5>
+                    <h5>品種：　　　<%= @product.variety %></h5>
+                    <h5>作付け方法：<%= @product.method %></h5>
+
+                        <div class="price_line">
+                        <span class="price">
+                    <h5>内容量：　　<%= @product.net %><% if @product.unit? %><%= @product.unit %><% else %>g<% end %></h5>
+                    <h5><%= sanitize(@product.description) %></h5>
+
+                    <br>
+
+                    <h3>販売価格：<%= sprintf("%0.00fyen", @product.price) %>(税込)
+                    </h3>
+
+                    <% if @staff_member.suspended? %>
+                            <% if @product.stock == 0 %>
+                            ごめんなさい。売り切れました。
+                            <% else %>
+                            <div class="margin15">
+                            <div class="float-left">
+
+                            <%= button_to 'カートに入れる', customer_staff_member_line_items_path(product_id: @product.id, cart_id: @cart.id), :class => "btn btn-yellow", remote: true %>
+                        </div>
+                        <div class="left-margin150">
+                        <%= link_to '一覧に戻る', customer_staff_member_store_index_path, :class => "btn btn-dark " %>
+                    </div>
+                        </div>
+                        <% end %>
+                        </div>
+                        <% else %>
+                        スタンバイ
+                        <% end %>
+<div class="margin15">
+<ul class="product">
+
+    <% if @staff_member.sales_term %>
+
+    <li>【全国一律送料】</li>
+
+    <p>全国どこでも<%= @staff_member.sales_term.delivery_fee %>円で届きます。</p>
+
+    <li>※生鮮物の為、注文完了後3日以内の発送を予定しております。</li>
+
+    <li>返品規定</li>
+            <p><%= simple_format(@staff_member.sales_term.return_policy) %></p>
+<% end %>
+
+<li>生産者</li>
+                <p>
+                    <%= @staff_member.farm_name %></p>
+
+    <% if @staff_member.staff_address %>
+    <% p1 = StaffAddressPresenter.new(@staff_member.staff_address, self) %>
+    <li>所在地</li>
+            <p><%= p1.postal_code %>
+            <%= p1.prefecture %>
+            <%= p1.city %>
+            <%= p1.address1 %>
+            <%= p1.address2 %></p>
+    <% end %>
+
+    <li>販売者氏名</li>
+     
+           <p> <%= @staff_member.family_name %>
+            <%= @staff_member.given_name %></p>
+
+            <li>フリガナ</li>
+
+            <p><%= @staff_member.family_name_kana %>
+                <%= @staff_member.given_name_kana %></p>
+
+
+    </ul>
+    </div>
+
+            </div>
+        </div>
+
+    </div>

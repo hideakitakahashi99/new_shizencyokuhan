@@ -24,7 +24,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <%= link_to :special_root , :class => "navbar-brand" do %>
-                <%= image_tag "/assets/logo_naturalB.png", :width => 50 %><% end %>
+                <%= image_tag "/assets/st-logob2.png", :width => 50 %><% end %>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-scroll">
@@ -42,21 +42,20 @@
         </nav>
         <!--end navigation-->
 
-        <section class="full-height bg-image" id="home">
+        <section class="full-height bg-image-u" id="home">
             <div class="display-table">
                 <div class="verticle-center">
                     <div class="container text-center">
                         <div class="s-row">
                             <div class="col-md-8 offset-md-2 navbar-scroll">
-                            <%= image_tag "/assets/logo_naturalB.png", :width => 300 %>
-                                <h1 class="font300">奥丹波里山便 お野菜BOX</h1>
+                                <h1 class="font300">うむ農園 お野菜BOX</h1>
                                 <p class="mt20 mb30">
                                     丹波の清らかな水と深い霧で育まれた、色とりどりのお野菜
                                     <br>平成29年6月度分　絶賛予約承り中！！
                                 </p>
                                 <div class="mb30 buttons">
                                     <a href="#pricing" class="btn btn-lg btn-rounded btn-dark"> 予約する</a>
-                                    <a href="#" data-toggle="modal" data-target="#video-modal" class="btn btn-lg btn-rounded btn-white-border"><i class="social_youtube"></i> Watch Video</a>
+                                    <!--<a href="#" data-toggle="modal" data-target="#video-modal" class="btn btn-lg btn-rounded btn-white-border"><i class="social_youtube"></i> Watch Video</a>-->
                                 </div>
                             </div>
                         </div>
@@ -65,12 +64,27 @@
             </div>
         </section><!--/home-->
 
+        <div class="newsletter primary-bg">
+            <div class="container">
+                <div class="s-row">
+                    <div class="col-md-6 text-center offset-md-3">
+                        <h2 class="font300">うむ農園とは</h2>
+                        <p class="mb30">
+                            うむ農園（兵庫県丹波市市島町）は<br>
+                            ケミカルフリーで、在来種、固定種のお野菜だけを<br>丹波の清らかな環境で育てる農家です。
+                        </p>
+<%= image_tag "/assets/natural-w.gif", :width => 500 %>
+                    </div>
+                </div>
+            </div>
+        </div><!--/newsletter-->
+
        
                 <section class="pt90 pb40">
             <div class="container">
                 <div class="s-row">
                 <div class="col-md-8 offset-md-2 text-center">
-                    <h1>うむ農園の栽培方法</h1>
+                    <h1><span class="under">うむ農園の栽培方法</span></h1>
                         <p class="lead mb70">
                            
                         </p>
@@ -110,53 +124,7 @@
                 </div><!--/row-->
             </div><!--/container-->
         </section><!--/about-->
- <hr class="mb0 mt0">
- <section class="pt90 pb40">
-            <div class="container">
-                <div class="s-row">
-                    <div class="col-md-8 offset-md-2 text-center">
-                        <h1>奥丹波里山農園の栽培方法</h1>
-                         <p class="lead mb70">
-                           
-                        </p>
-                    </div>
-                </div>
-                <div class="s-row">
-                    <div class="col-md-4 col-lg-4 mb40">
-                        <div class="icon-box">
-                            <i><span class="ion-checkmark-circled"></span></i>
-                            <h4>栽培期間中 農薬不使用</h4>
-                            <p>
-                                自然栽培のお野菜には自然と、病気や害虫による被害が出にくい為、農薬を使用する必要がありません。</p>
-                        </div>
-                    </div><!--/column-->
-                    <div class="col-md-4 col-lg-4 mb40">
-                        <div class="icon-box">
-                            <i><span class="ion-checkmark-circled"></span></i>
-                            <h4>無化学肥料</h4>
-                            <p>
-                                私たちは植物が生きている最中に呼び寄せる微生物によって土を肥やします。私たちが土に直接肥料を入れる事はありません。</p>
-                        </div>
-                    </div><!--/column-->
-                    <div class="col-md-4 col-lg-4 mb40">
-                        <div class="icon-box">
-                            <i><span class="ion-checkmark-circled"></span></i>
-                            <h4>米ぬかと酵素発酵液のみ使用</h4>
-                            <p>
-                                微生物の増加促進を促す発酵液と米ぬかを使用することにより、荒廃した土地の早期の生態系回復を促しています。 </p>
-                        </div>
-                    </div><!--/column-->
-                    <!--<div class="col-md-6 col-lg-3 mb40">
-                        <div class="icon-box">
-                            <i class="icon_chat_alt"></i>
-                            <h4></h4>
-                            <p>
-                                Maecenas sollicitudin luctus neque at auctor sum lacinia. Phasellus conseodio vitae semper.</p>
-                        </div>
-                    </div>--><!--/column-->
-                </div><!--/row-->
-            </div><!--/container-->
-        </section><!--/about-->
+ 
 
         <hr class="mb0">
         <section  id="about" class="pt90 gray-bg pb90">
@@ -172,7 +140,7 @@
                         </p>
                     </div><!--/col/-->
                     <div class="col-lg-4 offset-lg-1">
-                        <img src="images/kuromame.jpg" alt="" class="img-fluid">
+                        <%= image_tag "/assets/natural-b.gif", :class => "img-fluid" %>
                     </div><!--/col/-->
                 </div><!--/row/-->
             </div><!--/container/-->
@@ -182,7 +150,7 @@
             <div class="container">
                 <div class="s-row v-align-children">
                     <div class="col-lg-4">
-                    <%= image_tag "/assets/box-image.jpg", :class => "img-fluid" %>
+                    <%= image_tag "/assets/shizenyasai.gif", :class => "img-fluid" %>
                     </div><!--/col/-->
                     <div class="col-lg-5 offset-lg-1">
                     <h2 class="font300 mb30">季節に応じた、旬のお野菜を<br><strong>6〜7品目</strong>の詰め合わせでお届けいたします。</h2>
@@ -389,7 +357,7 @@
                         <p>
                             今回、ご予約いただく際に、決済登録は必要ございません。<br>
                             後日送られてくるメール中にある本登録画面にて、お支払い方法を選択いただけます。<br>
-                            お支払い方法は、クレジット(Visa、MasterCard、American Express)の自動決済、郵便振込がご利用いただけます。<br>送料は全国どこでも550円でお届けいたします。<br>お野菜の傷みやすい時期（5月〜9月）はクロネコヤマトクール便にて発送のため料金が200円、商品代金に上乗せされます。何卒ご了承ください。
+                            お支払い方法は、クレジット(Visa、MasterCard、American Express)の自動決済、郵便振込がご利用いただけます。<br>送料は全国どこでも無料でお届けいたします。<br>お野菜の傷みやすい時期（5月〜9月）はクロネコヤマトクール便にて発送のため料金が200円、商品代金に上乗せされます。何卒ご了承ください。
                         </p>
                     </div><!--/col-->
                     <div class="col-md-4 mb40">

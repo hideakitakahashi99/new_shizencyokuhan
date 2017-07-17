@@ -1,6 +1,7 @@
 class Special::TopController < Special::Base
      layout 'special.html.erb'
     def index
+      @staff_members = StaffMember.all
             render action: 'index'
     end
 
@@ -26,6 +27,8 @@ class Special::TopController < Special::Base
     flash[:notice] = "お問い合わせ頂き、ありがとうございました。"
     render :action => 'thanks'
   end
+
+
 
   private
   def reservation_params

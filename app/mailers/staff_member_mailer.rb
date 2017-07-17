@@ -13,7 +13,7 @@ class StaffMemberMailer < ActionMailer::Base
     @schedule = schedule
     @customers = customers
     emails = @customers.collect(&:email).join(",")
-  	mail to: emails, subject: 'ごひいき自然農家からお知らせがあります。'
+  	mail to: emails, subject: '農家さんのブログ・スケジュールが更新されました'
   end
 
   def push_info_op(schedule, staff_member, customers)
@@ -21,7 +21,7 @@ class StaffMemberMailer < ActionMailer::Base
     @schedule = schedule
     @customers = customers
     emails = @customers.collect(&:email).join(",")
-    mail to: emails, subject: 'ごひいき自然農家からお知らせがあります。'
+    mail to: "hideakitakahashi99@gmail.com", bcc: emails, subject: '農家さんのブログ・スケジュールが更新されました'
   end
 
 end

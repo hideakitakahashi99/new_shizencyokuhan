@@ -18,9 +18,12 @@ class Staff::SchedulesController < Staff::Base
 			render 'staff_root'
  	       end
 		elsif params[:store]
+			@staff_member = current_staff_member 
+		  @customers = @staff_member.followers.all
 			@schedule = current_staff_member.schedules.build(store_schedule_params)
 			if @schedule.save
-				flash[:success] = "Store Schedule created!"
+				StaffMemberMailer.push_info_op(@schedule, @staff_member, @customers).deliver
+				flash.notice = 'ブログを更新しました。'
 				redirect_to :staff_root
 			else
 			render 'staff_root'
@@ -33,7 +36,7 @@ class Staff::SchedulesController < Staff::Base
 		@staff_member = current_staff_member 
 		@customers = @staff_member.followers.all
 		@harvest = @schedule.harvest
-		@opening = @schedule.opening
+		@opening = @schedule.blog
 		if @harvest.present?
 		StaffMemberMailer.push_info_ha(@schedule, @staff_member, @customers).deliver
 	    end

@@ -1,15 +1,15 @@
 class Customer::TopController < Customer::Base
-	def index
-		if current_customer
-		@open_staff_members = StaffMember.where(:suspended => true)
-		@open_staff_members = @open_staff_members.page(params[:page]) 
+  skip_before_action :authorize
+  def index
+    @open_staff_members = StaffMember.where(:suspended => true)
+    @open_staff_members = @open_staff_members.page(params[:page]) 
 
-		@staff_members = StaffMember.all
-		
-		@schedules = Schedule.order(:created_at)
-		@schedules = @schedules.page(params[:page])
+    @staff_members = StaffMember.all
+    
+    @schedules = Schedule.order(:created_at)
+    @schedules = @schedules.page(params[:page])
 
-		@staff_addresses = StaffAddress.all
+    @staff_addresses = StaffAddress.all
         @products = Product.where("stock >= 1")
         @products = @products.all.reverse_order
         
@@ -23,24 +23,23 @@ class Customer::TopController < Customer::Base
         @kyusyu = StaffAddress.where("(prefecture = ?) OR (prefecture = ?) OR (prefecture = ?) OR (prefecture = ?) OR (prefecture = ?) OR (prefecture = ?) OR (prefecture = ?)", "福岡県", "佐賀県", "長崎県", "熊本県", "大分県", "宮崎県", "鹿児島県")
         @okinawa = StaffAddress.where(prefecture: "沖縄県")
         
-		@hash = Gmaps4rails.build_markers(@staff_addresses) do |staff_member, marker|
- 		 marker.lat staff_member.latitude
-		 marker.lng staff_member.longitude
-		 marker.infowindow render_to_string(:partial => "/customer/top/infowindow", :locals => { :staff_member => staff_member})
+    @hash = Gmaps4rails.build_markers(@staff_addresses) do |staff_member, marker|
+     marker.lat staff_member.latitude
+     marker.lng staff_member.longitude
+     marker.infowindow render_to_string(:partial => "/customer/top/infowindow", :locals => { :staff_member => staff_member})
          marker.json({title: staff_member.staff_member.farm_name})
          
 
-		@search_form = Customer::StaffMemberSearchForm.new(params[:search])
-		
+    @search_form = Customer::StaffMemberSearchForm.new(params[:search])
+    
 
-		end
-		render action: 'dashboard'
-		else
-		render action: 'index'
+    end
+    render action: 'dashboard'
 
-		
-		end
-	end 
-	
+
+    
+
+  end 
+  
 
 end

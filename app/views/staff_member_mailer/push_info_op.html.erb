@@ -1,16 +1,13 @@
     
-    <div><h4>【<%= @staff_member.farm_name %>】さんから販売のお知らせです！</h4></div>
+    <div><h4><%= @staff_member.farm_name %>さんのブログが更新されました。</h4></div>
     <regend>
-      <div>[メッセージ]：</div>
-      <div>	<%= @schedule.opening %> </div><br>
-      <div>[開店期間] ：</div>
-      <div>	<%= @schedule.opening_date %> - <%= @schedule.closing_date %>  </div></regend><br>
-
-      <div><%= link_to 'このごひいき農家さんのお店に行く', customer_staff_member_store_index_url(@staff_member) %> </div>
+      <div>[タイトル]：</div>
+      <div>	<%= @schedule.title %> </div><br>
+     </regend><br>
+      <div><%= link_to '農家さんのBlog/Scheduleを見に行く', customer_staff_member_schedules_url(@staff_member, host: '192.168.33.11:3000') %> </div>
 
 <br>
 <div>＊自然と人を繋ぐ＊</div>
 <div>自然栽培ちょくはん　</div>
 <div>http://www.shizencyokuhan.com</div>
 
-    

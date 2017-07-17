@@ -71,7 +71,9 @@ class Staff::ProductsController < Staff::Base
         @product = @staff_member.products.build
     end
     
-    
+
+
+
     private
     def product_params
         params.require(:product).permit(

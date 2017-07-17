@@ -126,6 +126,7 @@ end
 constraints host: config[:special][:host] do
     namespace :special, path: config[:special][:path] do
         root 'top#index'
+        
         resources :reservation 
         post 'reservation/box1' => 'reservation#box1'
         post 'reservation/box2' => 'reservation#box2'
@@ -156,6 +157,7 @@ namespace :customer, path: config[:customer][:path] do
     get 'static_pages/forbidden'
     get 'static_pages/box'
     get 'static_pages/shizen'
+    get 'static_pages/rule'
     get  'inquiry'         => 'inquiry#index'
     post 'inquiry/confirm' => 'inquiry#confirm'
     post 'inquiry/thanks'  => 'inquiry#thanks'

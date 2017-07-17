@@ -1,5 +1,5 @@
 class Customer::StoreController < Customer::Base
- before_action :authorize
+ skip_before_action :authorize
 
 
 
@@ -12,14 +12,14 @@ class Customer::StoreController < Customer::Base
 	end
 		@products = @products.order(:category)
 		.page(params[:page]) 
-
+if current_customer
 	customer = current_customer
 	@customer = current_customer
     @cart = Cart.find_by!(staff_member_id: @staff_member.id, customer_id: customer.id)
-   
+   end
     rescue ActiveRecord::RecordNotFound
     @cart = Cart.create(:staff_member_id => @staff_member.id, :customer_id => customer.id)
-	
+
 	end
 
 
@@ -27,10 +27,12 @@ class Customer::StoreController < Customer::Base
 		@staff_member = StaffMember.find(params[:staff_member_id])
 		@store = @staff_member.store
 
+if current_customer
 		@cart = Cart.find!(["staff_member_id = ? and customer_id = ?", @staff_member.id, customer.id])
+	end
   rescue ActiveRecord::RecordNotFound
     	 @cart = Cart.create(:staff_member_id => @staff_member.id, :customer_id => customer.id)
-	
+
 	end
 
 

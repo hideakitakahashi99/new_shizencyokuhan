@@ -175,7 +175,7 @@ nav.st-g-nav ul li:last-child {
 /** main image
 ===================================*/
 #st-main-img {
-	background-image: url(../top-img/stback1a2.jpg);
+	background-image: url(/assets/top-img/stback1a2.jpg);
 	background-position: center top;
 	background-size: cover;
 	background-attachment: fixed;
@@ -274,6 +274,11 @@ h2.user-guide-title {
     color: #fff;
 }
 
+.ug3-text h3{
+
+    color: #fff;
+}
+
 .maru-1 {
     position: absolute;
     left: -20px;
@@ -303,7 +308,7 @@ h2.user-guide-title {
 }
 
 .st-farmback {
-	background-image: url(../top-img/ug-back1.jpg);
+	background-image: url(/assets/top-img/ug-back1.jpg);
     background-position: center bottom;
     background-size: cover;
     background-attachment: fixed;
@@ -488,7 +493,7 @@ a.navbar-brand.hidden-sm {
 }
 
 #st-main-img {
-	background-image: url(../top-img/stback1a2-sp.jpg);
+	background-image: url(/assets/top-img/stback1a2-sp.jpg);
     padding: 100px 0;
 	background-attachment: scroll;
 }
@@ -546,7 +551,7 @@ h2.user-guide-title img {
 }
 
 .st-farmback {
-	background-image: url(../top-img/ug-back1-sp.jpg);
+	background-image: url(/assets/top-img/ug-back1-sp.jpg);
 	height: 630px;
     padding: 0px 0 0px;
 }

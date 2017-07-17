@@ -12,13 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bxslider
 //= require jquery.turbolinks
 //= require turbolinks
-//= require fullcalendar
 //= require jquery-ui
 //= require underscore
 //= require gmaps/google
-//= require moment
 //= require materialize-sprockets
 //= require_tree .
